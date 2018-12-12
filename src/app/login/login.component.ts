@@ -1,4 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -13,16 +14,16 @@ export class LoginComponent implements OnInit {
     password: ''
   };
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
   }
 
   onSubmit() {
+    this.http.post<>()
     this.user.username = this.loginForm.value.username;
     this.user.password = this.loginForm.value.password;
     console.log(this.loginForm);
     console.log(this.user);
   }
-
 }
