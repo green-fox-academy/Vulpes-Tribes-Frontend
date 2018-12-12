@@ -7,9 +7,10 @@ import { RegisterComponent } from './register/register.component';
 import { FormsModule} from '@angular/forms';
 import { AppRoutingModule} from './app.routes';
 import { HttpClientModule} from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
-import { InMemoryUsersService} from './_helpers/InMemoryDataService';
+import {HttpClientInMemoryWebApiModule, InMemoryDbService} from 'angular-in-memory-web-api';
+import { InMemoryUsersService} from './_helpers/InMemoryUsersService';
 import { HttpModule} from '@angular/http';
+import {InMemoryTokenService} from './_helpers/InMemoryTokenService';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { HttpModule} from '@angular/http';
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryUsersService)
   ],
-  providers: [],
+  providers: [InMemoryTokenService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
