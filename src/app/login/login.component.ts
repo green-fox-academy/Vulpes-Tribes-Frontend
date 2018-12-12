@@ -20,9 +20,9 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.http.post<>()
     this.user.username = this.loginForm.value.username;
     this.user.password = this.loginForm.value.password;
+    this.http.post('login', this.user);
     console.log(this.loginForm);
     console.log(this.user);
   }

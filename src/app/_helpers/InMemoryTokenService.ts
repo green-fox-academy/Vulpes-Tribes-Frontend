@@ -11,8 +11,10 @@ export class InMemoryTokenService implements InMemoryDbService {
         token: '123456'
       }
     ];
-    return {token};
+    return {'game' : token};
   }
 
-  getToken()
+  isLoggedIn() {
+    return true;
+  }
 }
