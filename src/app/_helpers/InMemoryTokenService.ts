@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class InMemoryTokenService implements InMemoryDbService {
   createDb() {
-    let token = [
+    const token = [
       {
         id: 1,
         token: '123456'
