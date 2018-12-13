@@ -25,6 +25,6 @@ export class LoginService {
   }
 
   isLoggedIn() {
-    return 1 //(localStorage.getItem('token').length > 0);
+    return (localStorage.getItem('token') !== null);
   }
 }
