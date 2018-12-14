@@ -31,7 +31,9 @@ export class MockBackend implements HttpInterceptor {
         ));
         observer.complete();
       });
-    } else if (req.url.endsWith('/game'))
+    } else if (req.url.endsWith('/game') && localStorage.getItem('token').length > 0) {
+      return new Observable()
+    }
     return next.handle(req);
 
   }
