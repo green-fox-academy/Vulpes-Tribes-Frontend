@@ -1,21 +1,37 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { InMemoryTokenService } from '../_helpers/InMemoryTokenService';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': localStorage.getItem('token')
+  })
+};
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class LoginService {
 
-  constructor(private http: HttpClient,
-              private token: InMemoryTokenService) { }
+  constructor(private http: HttpClient) {
+  }
 
   login(user) {
-    this.http.post('login', user);
-    this.token.saveToken();
+    this.http.post<any>('/login', user)
+      .subscribe(
+        response => {
+          console.log(response.tribes_token);
+          this.saveToken(response.tribes_token);
+        }
+      );
+  }
+
+  saveToken(tokenValue: number) {
+    localStorage.setItem('token', tokenValue.toString());
   }
 
   isLoggedIn() {
-    return true;
+    return (localStorage.getItem('token') !== null);
   }
 }

@@ -6,20 +6,15 @@ import { Injectable } from '@angular/core';
 })
 export class InMemoryTokenService implements InMemoryDbService {
   createDb() {
-    let token = [
+    const login: Object[] = [
       {
         id: 1,
-        token: '123456'
+        tribes_token: '56987'
       }
     ];
-    return {'login' : token};
+    return {'/login' : login};
   }
 
-  checkToken() {
-    return (localStorage.getItem('token'));
-  }
 
-  saveToken() {
-    localStorage.setItem('token', '123456');
-  }
+
 }
