@@ -6,7 +6,7 @@ import {NgModule} from '@angular/core';
 const APP_ROUTES: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'logout', redirectTo: '', component: LoginComponent}
+  {path: 'logout', redirectTo: 'login', component: LoginComponent}
 ];
 
 @NgModule({
