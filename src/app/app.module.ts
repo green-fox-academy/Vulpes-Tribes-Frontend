@@ -12,12 +12,14 @@ import { InMemoryUsersService} from './_helpers/InMemoryUsersService';
 import { HttpModule} from '@angular/http';
 import { InMemoryTokenService} from './_helpers/InMemoryTokenService';
 import { MockBackend} from './_helpers/mock_backend.interceptor';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,6 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 export class AppComponent {
   title = 'Vulpes|Tribes';
   @ViewChild('formElement') signupForm;
-
+  @ViewChild('logout') logout;
 
 }

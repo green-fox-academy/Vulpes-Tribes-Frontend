@@ -28,11 +28,13 @@ describe('LoginService', () => {
       HttpClientModule,
       HttpClientInMemoryWebApiModule.forRoot(InMemoryUsersService)
     ],
+    providers: [
+      LoginService,
+    ]
   }));
 
   it('should be created', () => {
     const service: LoginService = TestBed.get(LoginService);
     expect(service).toBeTruthy();
   });
-
 });

@@ -49,6 +49,19 @@ export class MockBackend implements HttpInterceptor {
           ));
           observer.complete();
         });
+    } else if (req.url.endsWith('/logout')) {
+      return new Observable(
+        observer => {
+          observer.next(new HttpResponse<any>(
+            {
+              body: {
+                status: 'ok',
+                message: 'Logged out successfully!'
+              }
+            }
+          ));
+          observer.complete();
+        });
     }
     return next.handle(req);
   }
