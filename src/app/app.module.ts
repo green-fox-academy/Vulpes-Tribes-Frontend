@@ -20,13 +20,13 @@ import {CustomHeaders} from './_models/head.model';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    LogoutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    LogoutComponent,
     HttpModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryUsersService)
