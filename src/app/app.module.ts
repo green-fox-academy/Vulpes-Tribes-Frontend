@@ -13,6 +13,7 @@ import { HttpModule} from '@angular/http';
 import { InMemoryTokenService} from './_helpers/InMemoryTokenService';
 import { MockBackend} from './_helpers/mock_backend.interceptor';
 import { LogoutComponent } from './logout/logout.component';
+import {CustomHeaders} from './_models/head.model';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { LogoutComponent } from './logout/logout.component';
     InMemoryUsersService,
     {provide: HTTP_INTERCEPTORS, useClass: MockBackend, multi: true},
     MockBackend,
-    LogoutComponent
+    LogoutComponent,
+    CustomHeaders
     ],
   bootstrap: [AppComponent]
 })
