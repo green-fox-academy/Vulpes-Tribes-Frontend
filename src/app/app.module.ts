@@ -34,7 +34,8 @@ import { LogoutComponent } from './logout/logout.component';
     InMemoryTokenService,
     InMemoryUsersService,
     {provide: HTTP_INTERCEPTORS, useClass: MockBackend, multi: true},
-    MockBackend
+    MockBackend,
+    LogoutComponent
     ],
   bootstrap: [AppComponent]
 })
