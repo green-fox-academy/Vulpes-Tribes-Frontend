@@ -9,9 +9,9 @@ export class WelcomeScreenComponent implements OnInit {
   title = 'Vulpes|Tribes';
   @ViewChild('formElement') signupForm;
 
-  constructor() { }
+  constructor() {
+   }
 
   ngOnInit() {
   }
-
 }

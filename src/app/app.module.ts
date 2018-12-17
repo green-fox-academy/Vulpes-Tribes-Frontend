@@ -13,6 +13,7 @@ import { HttpModule} from '@angular/http';
 import { InMemoryTokenService} from './_helpers/InMemoryTokenService';
 import { GameComponent } from './game/game.component';
 import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.componen
     LoginComponent,
     RegisterComponent,
     GameComponent,
-    WelcomeScreenComponent
+    WelcomeScreenComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
