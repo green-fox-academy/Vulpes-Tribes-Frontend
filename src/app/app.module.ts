@@ -13,13 +13,15 @@ import { HttpModule} from '@angular/http';
 import { InMemoryTokenService} from './_helpers/InMemoryTokenService';
 import { MockBackend} from './_helpers/mock_backend.interceptor';
 import { LogoutComponent } from './logout/logout.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    LogoutComponent
+    LogoutComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
