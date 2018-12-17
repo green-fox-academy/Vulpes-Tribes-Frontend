@@ -1,0 +1,27 @@
+<form #registerFormElement="ngForm" (ngSubmit)="onSumbit(registerFormElement)">
+  <div class="form__row">
+    <label for="username">Username: </label>
+    <input id="username"
+           type="text"
+           ngModel
+           required
+           name="username">
+  </div>
+  <div class="form__row">
+    <label for="password">Password: </label>
+    <input id="password"
+           type="password"
+           ngModel
+           required
+           name="password">
+  </div>
+  <div class="form__row">
+    <label for="password">Kingdom's name:</label>
+    <input id="kingdom"
+           type="text"
+           ngModel
+           required
+           name="kingdom">
+  </div>
+  <button type="submit" [disabled]="!registerFormElement.form.valid">Register</button>
+</form>
