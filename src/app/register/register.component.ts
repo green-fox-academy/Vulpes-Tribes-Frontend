@@ -21,9 +21,6 @@ export class RegisterComponent implements OnInit {
   }
 
   onSumbit() {
-    this.user.username = this.registerForm.value.username;
-    this.user.password = this.registerForm.value.password;
-    this.user.kingdom = this.registerForm.value.kingdom;
     this.registerService.createUser(this.user);
     console.log(this.user);
   }

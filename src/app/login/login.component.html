@@ -3,7 +3,7 @@
     <label for="username">Username</label>
     <input id="username"
            type="text"
-           ngModel
+           [(ngModel)]="user.username"
            name="username"
            required>
   </div>
@@ -11,7 +11,7 @@
     <label for="password">Password</label>
     <input id="password"
            type="password"
-           ngModel
+           [(ngModel)]="user.password"
            name="password"
            required>
   </div>

@@ -10,7 +10,6 @@ import { HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule, InMemoryDbService} from 'angular-in-memory-web-api';
 import { InMemoryUsersService} from './_helpers/InMemoryUsersService';
 import { HttpModule} from '@angular/http';
-import { InMemoryTokenService} from './_helpers/InMemoryTokenService';
 import { MockBackend} from './_helpers/mock_backend.interceptor';
 import { LogoutComponent } from './logout/logout.component';
 import {CustomHeaders} from './_models/head.model';
@@ -19,6 +18,7 @@ import {CustomHeaders} from './_models/head.model';
   declarations: [
     AppComponent,
     LoginComponent,
+    LogoutComponent,
     RegisterComponent,
   ],
   imports: [
@@ -26,17 +26,14 @@ import {CustomHeaders} from './_models/head.model';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    LogoutComponent,
     HttpModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryUsersService)
   ],
   providers: [
-    InMemoryTokenService,
     InMemoryUsersService,
     {provide: HTTP_INTERCEPTORS, useClass: MockBackend, multi: true},
     MockBackend,
-    LogoutComponent,
     CustomHeaders
     ],
   bootstrap: [AppComponent]

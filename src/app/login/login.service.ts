@@ -1,9 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
-
-
-
+import {delay} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +13,12 @@ export class LoginService {
   }
 
   login(user) {
-    this.http.post<any>(environment.login, user)
+    this.http.post<any>(environment.login, user, {reportProgress: true})
+      .pipe(
+        delay(5000)
+      )
       .subscribe(
         response => {
-          console.log(response.tribes_token);
           this.saveToken(response.tribes_token);
         }
       );

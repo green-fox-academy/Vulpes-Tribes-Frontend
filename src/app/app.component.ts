@@ -1,5 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {LogoutComponent} from './logout/logout.component';
+import {Component, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +9,5 @@ export class AppComponent {
   title = 'Vulpes|Tribes';
   @ViewChild('formElement') signupForm;
 
-  constructor(private logoutComponent: LogoutComponent) {}
+  constructor() {}
 }
