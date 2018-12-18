@@ -11,12 +11,14 @@ import {HttpClientInMemoryWebApiModule, InMemoryDbService} from 'angular-in-memo
 import { InMemoryUsersService} from './_helpers/InMemoryUsersService';
 import { HttpModule} from '@angular/http';
 import {InMemoryTokenService} from './_helpers/InMemoryTokenService';
+import { ResourcesComponent } from './resources/resources.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ResourcesComponent
   ],
   imports: [
     BrowserModule,
