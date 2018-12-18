@@ -22,7 +22,6 @@ export class RegisterComponent implements OnInit {
 
   onSumbit() {
     this.registerService.createUser(this.user);
-    console.log(this.user);
   }
 
 }
