@@ -1,6 +1,17 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LogoutComponent } from './logout.component';
+import {AppComponent} from '../app.component';
+import {LoginComponent} from '../login/login.component';
+import {RegisterComponent} from '../register/register.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {AppRoutingModule} from '../app.routes';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpModule} from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
+import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
+import {InMemoryUsersService} from '../_helpers/InMemoryUsersService';
+import {CustomHeaders} from '../_models/head.model';
 
 describe('LogoutComponent', () => {
   let component: LogoutComponent;
@@ -8,7 +19,24 @@ describe('LogoutComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LogoutComponent ]
+      declarations: [
+        AppComponent,
+        LoginComponent,
+        LogoutComponent,
+        RegisterComponent
+      ],
+      imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpModule,
+        HttpClientModule,
+        HttpClientInMemoryWebApiModule.forRoot(InMemoryUsersService)
+      ],
+      providers: [
+        CustomHeaders
+      ]
     })
     .compileComponents();
   }));

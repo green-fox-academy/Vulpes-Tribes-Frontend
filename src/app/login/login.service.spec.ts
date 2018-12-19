@@ -11,12 +11,14 @@ import {HttpModule} from '@angular/http';
 import {HttpClientModule} from '@angular/common/http';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {InMemoryUsersService} from '../_helpers/InMemoryUsersService';
+import {LogoutComponent} from '../logout/logout.component';
 
 describe('LoginService', () => {
   beforeEach(() => TestBed.configureTestingModule({
     declarations: [
       AppComponent,
       LoginComponent,
+      LogoutComponent,
       RegisterComponent
     ],
     imports: [
