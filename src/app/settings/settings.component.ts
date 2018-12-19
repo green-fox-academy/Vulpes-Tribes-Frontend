@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {SettingService} from '../setting.service';
+
+
 
 @Component({
   selector: 'app-settings',
@@ -7,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsComponent implements OnInit {
 
-  constructor() { }
+  kingdom = {
+    name: 'My Kingdom',
+  };
+
+  constructor(private settingService: SettingService) { }
 
   ngOnInit() {
   }
