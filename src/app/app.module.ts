@@ -15,6 +15,7 @@ import { LogoutComponent } from './logout/logout.component';
 import {CustomHeaders} from './_models/head.model';
 import {APP_BASE_HREF} from '@angular/common';
 import {ROUTER_PROVIDERS} from '@angular/router/src/router_module';
+import {TokenInterceptor} from './_helpers/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import {ROUTER_PROVIDERS} from '@angular/router/src/router_module';
   ],
   providers: [
     InMemoryUsersService,
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: LoginInterceptor, multi: true},
     LoginInterceptor,
     CustomHeaders,

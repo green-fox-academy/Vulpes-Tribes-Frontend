@@ -18,13 +18,13 @@ export class TokenInterceptor implements HttpInterceptor {
     Observable<HttpEvent<any> | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any>> {
 
     const authHeader = req.clone({
-      headers: new HttpHeaders({
+      setHeaders: {
         'Content-Type':  'application/json',
-        'Authorization': environment.tribes_token.valueOf()
-      })
+        'X-Tribes-Token': localStorage.getItem(environment.tribes_token)
+      }
     });
 
    console.log('Intercepted Http call', authHeader);
-    return next.handle(req);
+   return next.handle(req);
   }
 }
