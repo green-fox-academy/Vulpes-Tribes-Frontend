@@ -5,7 +5,11 @@
            type="text"
            [(ngModel)]="user.username"
            required
-           name="username">
+           name="username"
+           #username="ngModel">
+    <div  class="error" *ngIf="username.invalid && username.touched">
+      <p >Please enter your username</p>
+    </div>
   </div>
   <div class="form__row">
     <label for="password">Password: </label>
@@ -13,7 +17,11 @@
            type="password"
            [(ngModel)]="user.password"
            required
-           name="password">
+           name="password"
+           #password="ngModel">
+    <div  class="error" *ngIf="password.invalid && password.touched">
+      <p >Please enter your password</p>
+    </div>
   </div>
   <div class="form__row">
     <label for="password">Kingdom's name:</label>
@@ -21,7 +29,11 @@
            type="text"
            [(ngModel)]="user.kingdom"
            required
-           name="kingdom">
+           name="kingdom"
+           #kingdom="ngModel">
+    <div  class="error" *ngIf="kingdom.invalid && kingdom.touched">
+      <p >Please enter the name of your Kingdom</p>
+    </div>
   </div>
   <button type="submit" [disabled]="!registerFormElement.form.valid">Register</button>
 </form>
