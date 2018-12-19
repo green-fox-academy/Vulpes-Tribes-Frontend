@@ -12,6 +12,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {InMemoryUsersService} from '../_helpers/InMemoryUsersService';
 import {CustomHeaders} from '../_models/head.model';
+import {APP_BASE_HREF} from '@angular/common';
 
 describe('LogoutComponent', () => {
   let component: LogoutComponent;
@@ -35,7 +36,8 @@ describe('LogoutComponent', () => {
         HttpClientInMemoryWebApiModule.forRoot(InMemoryUsersService)
       ],
       providers: [
-        CustomHeaders
+        CustomHeaders,
+        { provide: APP_BASE_HREF, useValue : '/' }
       ]
     })
     .compileComponents();

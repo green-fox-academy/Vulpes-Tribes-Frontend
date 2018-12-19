@@ -15,6 +15,7 @@ import {LoginService} from '../login/login.service';
 import {RegisterService} from '../register/register.service';
 import {CustomHeaders} from '../_models/head.model';
 import {LogoutComponent} from './logout.component';
+import {APP_BASE_HREF} from '@angular/common';
 
 describe('LogoutService', () => {
   beforeEach(() => TestBed.configureTestingModule({
@@ -34,7 +35,8 @@ describe('LogoutService', () => {
       HttpClientInMemoryWebApiModule.forRoot(InMemoryUsersService)
     ],
     providers: [
-      CustomHeaders
+      CustomHeaders,
+      { provide: APP_BASE_HREF, useValue : '/' }
     ]
   }));
 

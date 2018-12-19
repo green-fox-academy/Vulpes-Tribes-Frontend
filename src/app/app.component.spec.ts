@@ -8,6 +8,7 @@ import {FormsModule} from '@angular/forms';
 import {LogoutComponent} from './logout/logout.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {CustomHeaders} from './_models/head.model';
+import {APP_BASE_HREF} from '@angular/common';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -25,7 +26,8 @@ describe('AppComponent', () => {
         HttpClientModule
       ],
       providers: [
-        CustomHeaders
+        CustomHeaders,
+        { provide: APP_BASE_HREF, useValue : '/' }
       ]
     }).compileComponents();
   }));
