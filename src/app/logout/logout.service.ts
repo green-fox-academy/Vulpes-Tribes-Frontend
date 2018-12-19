@@ -16,7 +16,10 @@ export class LogoutService {
   logout() {
     this.http.delete<any>('/logout', this.headers).subscribe(
       response => {
+        console.log(localStorage.getItem(environment.tribes_token));
+
         localStorage.removeItem(environment.tribes_token);
+        console.log(localStorage.getItem(environment.tribes_token));
         this.router.navigate(['/']);
         alert(response.message);
       });

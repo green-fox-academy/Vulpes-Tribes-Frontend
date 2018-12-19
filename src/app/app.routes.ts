@@ -7,7 +7,7 @@ import {LogoutComponent} from './logout/logout.component';
 const APP_ROUTES: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'logout', redirectTo: '', component: LogoutComponent}
+  {path: 'logout', component: LogoutComponent}
 
 ];
 
