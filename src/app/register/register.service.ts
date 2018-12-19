@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
+import {Injectable, ViewChild} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegisterService {
+  @ViewChild('registerFormElement') registerForm;
 
   constructor(private http: HttpClient) { }
 

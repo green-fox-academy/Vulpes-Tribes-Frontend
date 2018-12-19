@@ -13,12 +13,16 @@ import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {InMemoryUsersService} from '../_helpers/InMemoryUsersService';
 import {LoginService} from '../login/login.service';
 import {RegisterService} from '../register/register.service';
+import {CustomHeaders} from '../_models/head.model';
+import {LogoutComponent} from './logout.component';
+import {APP_BASE_HREF} from '@angular/common';
 
 describe('LogoutService', () => {
   beforeEach(() => TestBed.configureTestingModule({
     declarations: [
       AppComponent,
       LoginComponent,
+      LogoutComponent,
       RegisterComponent
     ],
     imports: [
@@ -31,7 +35,8 @@ describe('LogoutService', () => {
       HttpClientInMemoryWebApiModule.forRoot(InMemoryUsersService)
     ],
     providers: [
-      LogoutService,
+      CustomHeaders,
+      { provide: APP_BASE_HREF, useValue : '/' }
     ]
   }));
 

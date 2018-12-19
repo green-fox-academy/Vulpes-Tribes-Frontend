@@ -1,12 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Authorization': localStorage.getItem('token')
-  })
-};
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -18,20 +12,19 @@ export class LoginService {
   }
 
   login(user) {
-    this.http.post<any>('/login', user)
+    this.http.post<any>(environment.login, user, {reportProgress: true})
       .subscribe(
         response => {
-          console.log(response.tribes_token);
           this.saveToken(response.tribes_token);
         }
       );
   }
 
   saveToken(tokenValue: number) {
-    localStorage.setItem('token', tokenValue.toString());
+    localStorage.setItem(environment.tribes_token, tokenValue.toString());
   }
 
   isLoggedIn() {
-    return (localStorage.getItem('token') !== null);
+    return (localStorage.getItem(environment.tribes_token) !== null);
   }
 }

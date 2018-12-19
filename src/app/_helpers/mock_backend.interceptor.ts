@@ -16,8 +16,8 @@ export class MockBackend implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler):
     Observable<HttpEvent<any> | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any>> {
     if (req.url.endsWith('/login') &&
-      (req.method === 'POST') &&
-      (req.body.username.length > 0 &&
+       (req.method === 'POST') &&
+       (req.body.username.length > 0 &&
         req.body.password.length > 0)) {
       console.log('Intercepted', req);
       return new Observable(observer => {

@@ -12,12 +12,15 @@ import {HttpClientModule} from '@angular/common/http';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {InMemoryUsersService} from '../_helpers/InMemoryUsersService';
 import {LoginService} from '../login/login.service';
+import {LogoutComponent} from '../logout/logout.component';
+import {APP_BASE_HREF} from '@angular/common';
 
 describe('RegisterService', () => {
   beforeEach(() => TestBed.configureTestingModule({
     declarations: [
       AppComponent,
       LoginComponent,
+      LogoutComponent,
       RegisterComponent
     ],
     imports: [
@@ -31,6 +34,7 @@ describe('RegisterService', () => {
     ],
     providers: [
       RegisterService,
+      { provide: APP_BASE_HREF, useValue : '/' }
     ]
   }));
 
