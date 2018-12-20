@@ -1,47 +1,73 @@
-import { TestBed } from '@angular/core/testing';
-
-import { LogoutService } from './logout.service';
-import {AppComponent} from '../app.component';
-import {LoginComponent} from '../login/login.component';
-import {RegisterComponent} from '../register/register.component';
-import {BrowserModule} from '@angular/platform-browser';
-import {AppRoutingModule} from '../app.routes';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
-import {HttpClientModule} from '@angular/common/http';
-import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
-import {InMemoryUsersService} from '../_helpers/InMemoryUsersService';
-import {LoginService} from '../login/login.service';
-import {RegisterService} from '../register/register.service';
-import {CustomHeaders} from '../_models/head.model';
-import {LogoutComponent} from './logout.component';
-import {APP_BASE_HREF} from '@angular/common';
-
-describe('LogoutService', () => {
-  beforeEach(() => TestBed.configureTestingModule({
-    declarations: [
-      AppComponent,
-      LoginComponent,
-      LogoutComponent,
-      RegisterComponent
-    ],
-    imports: [
-      BrowserModule,
-      AppRoutingModule,
-      FormsModule,
-      ReactiveFormsModule,
-      HttpModule,
-      HttpClientModule,
-      HttpClientInMemoryWebApiModule.forRoot(InMemoryUsersService)
-    ],
-    providers: [
-      CustomHeaders,
-      { provide: APP_BASE_HREF, useValue : '/' }
-    ]
-  }));
-
-  it('should be created', () => {
-    const service: LogoutService = TestBed.get(LogoutService);
-    expect(service).toBeTruthy();
-  });
-});
+// import {HTTP_INTERCEPTORS, HttpClient} from '@angular/common/http';
+//
+// import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+// import {TestBed} from '@angular/core/testing';
+// import {environment} from '../../environments/environment';
+// import {LogoutService} from './logout.service';
+// import {ChildrenOutletContexts, Router, ROUTER_CONFIGURATION, ROUTES, UrlHandlingStrategy, UrlSerializer} from '@angular/router';
+// import {setupTestingRouter} from '@angular/router/testing';
+// import {Compiler, Injector, NgModuleFactoryLoader} from '@angular/core';
+//
+//
+// describe('LogoutService', () => {
+//
+//   let httpClient: HttpClient;
+//   let httpTestingController: HttpTestingController;
+//   let logoutService: LogoutService;
+//   let router: Router;
+//
+//   beforeEach(() => {
+//     TestBed.configureTestingModule({
+//       imports: [HttpClientTestingModule],
+//       providers: [
+//         LogoutService,
+//         {provide: Router,
+//           useFactory: setupTestingRouter,
+//         },
+//       ]
+//     });
+//
+//     httpClient = TestBed.get(HttpClient);
+//     httpTestingController = TestBed.get(HttpTestingController);
+//     logoutService = TestBed.get(LogoutService);
+//     router = TestBed.get(Router);
+//
+//     let store = {};
+//     const mockLocalStorage = {
+//       getItem: (key: string): string => {
+//         return key in store ? store[key] : null;
+//       },
+//       setItem: (key: string, value: string) => {
+//         store[key] = `${value}`;
+//       },
+//       removeItem: (key: string) => {
+//         delete store[key];
+//       },
+//       clear: () => {
+//         store = {};
+//       }
+//     };
+//     spyOn(localStorage, 'getItem')
+//       .and.callFake(mockLocalStorage.getItem);
+//     spyOn(localStorage, 'setItem')
+//       .and.callFake(mockLocalStorage.setItem);
+//     spyOn(localStorage, 'removeItem')
+//       .and.callFake(mockLocalStorage.removeItem);
+//     spyOn(localStorage, 'clear')
+//       .and.callFake(mockLocalStorage.clear);
+//
+//   });
+//
+//   afterEach(() => {
+//     httpTestingController.verify();
+//   });
+//
+//   describe('logout', () => {
+//
+//     it('should send DELETE request to mock backend', () => {
+//       logoutService.logout();
+//       const req = httpTestingController.expectOne(environment.logout);
+//       expect(req.request.method).toEqual('DELETE');
+//     });
+//   });
+// });

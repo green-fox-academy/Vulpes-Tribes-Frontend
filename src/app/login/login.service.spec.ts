@@ -15,7 +15,8 @@ describe('LoginService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [LoginService]
+      providers: [LoginService
+        ]
     });
 
     httpClient = TestBed.get(HttpClient);
@@ -72,5 +73,5 @@ describe('LoginService', () => {
         loginService.saveToken(123456);
         expect(localStorage.getItem(environment.tribes_token)).toEqual('123456');
       });
-  });
+    });
 });

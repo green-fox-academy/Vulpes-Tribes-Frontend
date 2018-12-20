@@ -8,12 +8,13 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from '../app.routes';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {InMemoryUsersService} from '../_helpers/InMemoryUsersService';
 import {LoginService} from '../login/login.service';
 import {LogoutComponent} from '../logout/logout.component';
 import {APP_BASE_HREF} from '@angular/common';
+import {LoginInterceptor} from '../_helpers/login.interceptor';
 
 describe('RegisterService', () => {
   beforeEach(() => TestBed.configureTestingModule({
@@ -34,7 +35,7 @@ describe('RegisterService', () => {
     ],
     providers: [
       RegisterService,
-      { provide: APP_BASE_HREF, useValue : '/' }
+      {provide: HTTP_INTERCEPTORS, useClass: LoginInterceptor, multi: true},
     ]
   }));
 
@@ -42,4 +43,6 @@ describe('RegisterService', () => {
     const service: RegisterService = TestBed.get(RegisterService);
     expect(service).toBeTruthy();
   });
+
+
 });
