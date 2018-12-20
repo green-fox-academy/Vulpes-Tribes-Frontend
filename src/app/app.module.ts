@@ -13,6 +13,7 @@ import { HttpModule} from '@angular/http';
 import {InMemoryTokenService} from './_helpers/InMemoryTokenService';
 import { ResourcesComponent } from './resources/resources.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
