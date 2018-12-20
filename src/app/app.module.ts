@@ -6,12 +6,13 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule} from '@angular/forms';
 import { AppRoutingModule} from './app.routes';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {HttpClientInMemoryWebApiModule, InMemoryDbService} from 'angular-in-memory-web-api';
 import { InMemoryUsersService} from './_helpers/InMemoryUsersService';
 import { HttpModule} from '@angular/http';
 import {InMemoryTokenService} from './_helpers/InMemoryTokenService';
 import { ResourcesComponent } from './resources/resources.component';
+import { ResourceInterceptor } from './_helpers/resources.interceptor';
 
 
 @NgModule({
@@ -29,7 +30,7 @@ import { ResourcesComponent } from './resources/resources.component';
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryUsersService)
   ],
-  providers: [InMemoryTokenService],
+  providers: [InMemoryTokenService, { provide: HTTP_INTERCEPTORS, useClass: ResourceInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
