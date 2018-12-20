@@ -19,12 +19,11 @@ export class TokenInterceptor implements HttpInterceptor {
 
     const authHeader = req.clone({
       setHeaders: {
-        'Content-Type':  'application/json',
+        'Content-Type': 'application/json',
         'X-Tribes-Token': localStorage.getItem(environment.tribes_token)
       }
     });
-
-   console.log('Intercepted Http call', authHeader);
-   return next.handle(req);
+    console.log('Intercepted Http call', authHeader);
+    return next.handle(authHeader);
   }
 }

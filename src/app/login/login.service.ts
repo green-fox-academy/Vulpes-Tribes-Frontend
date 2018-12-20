@@ -24,7 +24,8 @@ export class LoginService {
     localStorage.setItem(environment.tribes_token, tokenValue.toString());
   }
 
-  isLoggedIn() {
+  isLoggedIn(): boolean {
+    console.log(localStorage.getItem(environment.tribes_token) !== null);
     return (localStorage.getItem(environment.tribes_token) !== null);
   }
 }

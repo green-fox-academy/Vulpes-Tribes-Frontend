@@ -16,6 +16,7 @@ import {CustomHeaders} from './_models/head.model';
 import {APP_BASE_HREF} from '@angular/common';
 import {ROUTER_PROVIDERS} from '@angular/router/src/router_module';
 import {TokenInterceptor} from './_helpers/token.interceptor';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import {TokenInterceptor} from './_helpers/token.interceptor';
     LoginComponent,
     LogoutComponent,
     RegisterComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

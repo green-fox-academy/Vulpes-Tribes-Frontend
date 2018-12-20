@@ -16,7 +16,7 @@ describe('LoginService', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [LoginService
-        ]
+      ]
     });
 
     httpClient = TestBed.get(HttpClient);
@@ -73,5 +73,16 @@ describe('LoginService', () => {
         loginService.saveToken(123456);
         expect(localStorage.getItem(environment.tribes_token)).toEqual('123456');
       });
+  });
+
+  describe('Checking credentials', () => {
+    const user = {
+      username: 'Honza',
+      password: '123',
+    };
+
+    it('should return error when user does not exist', () => {
+      loginService.login(user)
     });
+  });
 });
