@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {SettingsService} from '../settings/settings.service';
+import {KingdomSettingsService} from '../kingdom-settings/kingdom-settings.service';
 
 
 
@@ -8,20 +8,20 @@ import {SettingsService} from '../settings/settings.service';
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.css']
 })
-export class SettingsComponent implements OnInit {
+export class KingdomSettingsComponent implements OnInit {
 
   kingdom = {
     name: 'My Kingdom',
   };
 
-  constructor(private settingsService: SettingsService) { }
+  constructor(private settingsService: KingdomSettingsService) { }
 
   ngOnInit() {
     this.showSettings();
   }
 
   showSettings(): void {
-    this.settings = this.settingsService.showSettings();
+    this.kingdom = this.settingsService.getSettings();
   }
 
 }

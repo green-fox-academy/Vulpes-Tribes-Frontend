@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SettingsService {
+export class KingdomService {
+  kingdom
 
   constructor() { }
 
-showSettings(): 
+  getKingdom():  {
+    this.kingdom = this.getKingdom();
+  }
 }
-

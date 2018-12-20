@@ -13,7 +13,7 @@ import { HttpModule} from '@angular/http';
 import { InMemoryTokenService} from './_helpers/InMemoryTokenService';
 import { MockBackend} from './_helpers/mock_backend.interceptor';
 import { LogoutComponent } from './logout/logout.component';
-import { SettingsComponent } from './settings/settings.component';
+import { KingdomSettingsComponent } from './kingdom-settings/kingdom-settings.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,7 @@ import { SettingsComponent } from './settings/settings.component';
     LoginComponent,
     RegisterComponent,
     LogoutComponent,
-    SettingsComponent
+    KingdomSettingsComponent
   ],
   imports: [
     BrowserModule,

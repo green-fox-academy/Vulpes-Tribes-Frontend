@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SettingService } from './setting.service';
+import { KingdomSettingsService } from './kingdom-settings/kingdom-settings.service';
 
 describe('SettingService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: SettingService = TestBed.get(SettingService);
+    const service: KingdomSettingsService = TestBed.get(KingdomSettingsService);
     expect(service).toBeTruthy();
   });
 });
