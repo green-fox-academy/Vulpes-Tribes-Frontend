@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/observable';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import {
@@ -17,7 +17,8 @@ export class ResourceInterceptor implements HttpInterceptor {
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
-  ): Observable<HttpEvent<any>> {
+  ):
+   Observable<HttpEvent<any>> {
     // how to update the request Parameters
     const updatedRequest = request.clone({
       headers: request.headers.set('Authorization', 'Some-dummyCode')
