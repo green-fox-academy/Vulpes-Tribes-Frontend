@@ -17,6 +17,7 @@ import {APP_BASE_HREF} from '@angular/common';
 import {ROUTER_PROVIDERS} from '@angular/router/src/router_module';
 import {TokenInterceptor} from './_helpers/token.interceptor';
 import { HeaderComponent } from './header/header.component';
+import { GameComponent } from './game/game.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { HeaderComponent } from './header/header.component';
     LogoutComponent,
     RegisterComponent,
     HeaderComponent,
+    GameComponent,
   ],
   imports: [
     BrowserModule,

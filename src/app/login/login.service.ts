@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,8 @@ import {environment} from '../../environments/environment';
 
 export class LoginService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private router: Router) {
   }
 
   login(user) {
@@ -16,6 +18,7 @@ export class LoginService {
       .subscribe(
         response => {
           this.saveToken(response.tribes_token);
+          this.router.navigate(['/game']);
         }
       );
   }

@@ -13,9 +13,9 @@ import {Observable} from 'rxjs';
 import {User} from '../_models/user.model';
 
 const users: User[] = [
-    {userId: 1, username: 'Honza', kingdomId: 1, kingdomName: 'Honza\'s kingdom', password: '12345'},
-    {userId: 2, username: 'Karel', kingdomId: 1, kingdomName: 'KArel\'s kingdom', password: '12345'}
-  ];
+  {userId: 1, username: 'Honza', kingdomId: 1, kingdomName: 'Honza\'s kingdom', password: '12345'},
+  {userId: 2, username: 'Karel', kingdomId: 1, kingdomName: 'Karel\'s kingdom', password: '12345'}
+];
 
 @Injectable()
 export class LoginInterceptor implements HttpInterceptor {
@@ -43,6 +43,9 @@ export class LoginInterceptor implements HttpInterceptor {
         });
       }
     } else if (req.url.endsWith('/register')) {
+      console.log(users);
+      users.push(new User(req.body.username, (users.length + 1), req.body.password, req.body.kingdom, users.length + 100));
+      console.log(users);
       return new Observable(
         observer => {
           observer.next(new HttpResponse<any>(
