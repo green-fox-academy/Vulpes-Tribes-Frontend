@@ -51,11 +51,12 @@ export class LoginInterceptor implements HttpInterceptor {
           observer.next(new HttpResponse<any>(
             {
               body: {
-                id: 123,
-                username: 'adam',
-                kingdom_id: 222,
+                id: users[users.length - 1].userId,
+                username: users[users.length - 1].username,
+                kingdom_id: users[users.length - 1].kingdomId,
                 avatar: 'http://avatar.loc/my.png',
-                points: 0
+                points: 0,
+                tribes_token: this.generateToken()
               }
             }
           ));

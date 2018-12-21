@@ -1,8 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {LoginService} from '../login/login.service';
-import {LogoutComponent} from '../logout/logout.component';
-import {LogoutService} from '../logout/logout.service';
-import {RegisterService} from '../register/register.service';
 import {environment} from '../../environments/environment';
 
 @Component({
@@ -12,9 +8,7 @@ import {environment} from '../../environments/environment';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private loginService: LoginService,
-              private logout: LogoutService,
-              private register: RegisterService) {
+  constructor() {
   }
 
   ngOnInit() {

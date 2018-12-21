@@ -18,6 +18,8 @@ import {ROUTER_PROVIDERS} from '@angular/router/src/router_module';
 import {TokenInterceptor} from './_helpers/token.interceptor';
 import { HeaderComponent } from './header/header.component';
 import { GameComponent } from './game/game.component';
+import {ResourcesComponent} from './game/resources/resources.component';
+import {SettingsComponent} from './game/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { GameComponent } from './game/game.component';
     RegisterComponent,
     HeaderComponent,
     GameComponent,
+    ResourcesComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
