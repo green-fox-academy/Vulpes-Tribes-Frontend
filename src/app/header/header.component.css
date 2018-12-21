@@ -10,7 +10,13 @@ h1 {
   height: 60px;
   width: 100vw;
 
-  background: #98BA81;
+  background: #67A835;
+}
+
+.header div:first-child {
+  color: white;
+  font-weight: 900;
+  font-size: 1.2em;
 }
 
 .header div:last-child {
@@ -36,7 +42,9 @@ h1 {
   justify-items: center;
 
   text-decoration: none;
-  font-weight: bold;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 700;
 }
 
 .header div:last-child a:hover {

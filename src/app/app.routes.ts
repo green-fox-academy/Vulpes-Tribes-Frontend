@@ -4,12 +4,13 @@ import {LoginComponent} from './login/login.component';
 import {NgModule} from '@angular/core';
 import {LogoutComponent} from './logout/logout.component';
 import {GameComponent} from './game/game.component';
+import {AuthGuard} from './_helpers/auth.guard';
 
 const APP_ROUTES: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'logout', component: LogoutComponent},
-  {path: 'game', component: GameComponent}
+  {path: 'game', component: GameComponent, canActivate: [AuthGuard]}
 
 ];
 

@@ -1,8 +1,9 @@
 <form #registerFormElement="ngForm" (ngSubmit)="onSumbit()">
   <div class="form__row">
-    <label for="username">Username: </label>
+    <label for="username" style="display: none">Username: </label>
     <input id="username"
            type="text"
+           placeholder="Username"
            [(ngModel)]="user.username"
            required
            name="username"
@@ -12,9 +13,10 @@
     </div>
   </div>
   <div class="form__row">
-    <label for="password">Password: </label>
+    <label for="password" style="display: none">Password: </label>
     <input id="password"
            type="password"
+           placeholder="Password"
            [(ngModel)]="user.password"
            required
            name="password"
@@ -24,9 +26,10 @@
     </div>
   </div>
   <div class="form__row">
-    <label for="password">Kingdom's name:</label>
+    <label for="password" style="display: none">Kingdom's name:</label>
     <input id="kingdom"
            type="text"
+           placeholder="Kingdom's name"
            [(ngModel)]="user.kingdom"
            required
            name="kingdom"

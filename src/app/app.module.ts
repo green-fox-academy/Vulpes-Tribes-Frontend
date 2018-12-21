@@ -20,6 +20,8 @@ import { HeaderComponent } from './header/header.component';
 import { GameComponent } from './game/game.component';
 import {ResourcesComponent} from './game/resources/resources.component';
 import {SettingsComponent} from './game/settings/settings.component';
+import {AuthService} from './_helpers/auth.service';
+import {AuthGuard} from './_helpers/auth.guard';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,7 @@ import {SettingsComponent} from './game/settings/settings.component';
     HeaderComponent,
     GameComponent,
     ResourcesComponent,
-    SettingsComponent
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,8 @@ import {SettingsComponent} from './game/settings/settings.component';
     {provide: HTTP_INTERCEPTORS, useClass: LoginInterceptor, multi: true},
     LoginInterceptor,
     CustomHeaders,
-    {provide: APP_BASE_HREF, useValue : '/' }
+    {provide: APP_BASE_HREF, useValue : '/' },
+    AuthService
     ],
   bootstrap: [AppComponent]
 })
