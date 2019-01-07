@@ -1,4 +1,5 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import {AuthService} from './_helpers/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +10,6 @@ export class AppComponent {
   title = 'Vulpes|Tribes';
   @ViewChild('formElement') signupForm;
 
-
+  constructor() {
+  }
 }

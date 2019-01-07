@@ -1,7 +1,8 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {LoginComponent} from './login.component';
+import { LogoutComponent } from './logout.component';
 import {AppComponent} from '../app.component';
+import {LoginComponent} from '../login/login.component';
 import {RegisterComponent} from '../register/register.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from '../app.routes';
@@ -10,12 +11,12 @@ import {HttpModule} from '@angular/http';
 import {HttpClientModule} from '@angular/common/http';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {InMemoryUsersService} from '../_helpers/InMemoryUsersService';
-import {LogoutComponent} from '../logout/logout.component';
+import {CustomHeaders} from '../_models/head.model';
 import {APP_BASE_HREF} from '@angular/common';
 
-describe('LoginComponent', () => {
-  let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
+describe('LogoutComponent', () => {
+  let component: LogoutComponent;
+  let fixture: ComponentFixture<LogoutComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -35,14 +36,15 @@ describe('LoginComponent', () => {
         HttpClientInMemoryWebApiModule.forRoot(InMemoryUsersService)
       ],
       providers: [
+        CustomHeaders,
         { provide: APP_BASE_HREF, useValue : '/' }
       ]
     })
-      .compileComponents();
+    .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginComponent);
+    fixture = TestBed.createComponent(LogoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
