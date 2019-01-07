@@ -9,8 +9,9 @@ import {
   HttpUserEvent
 } from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
+import {Observable, throwError} from 'rxjs';
 import {User} from '../_models/user.model';
+import {BackendResponse} from '../_models/response.model';
 
 const users: User[] = [
   {userId: 1, username: 'Honza', kingdomId: 1, kingdomName: 'Honza\'s kingdom', password: '12345'},
@@ -22,9 +23,9 @@ export class LoginInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler):
     Observable<HttpEvent<any> | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any>> {
     if (req.url.endsWith('/login') &&
-       (req.method === 'POST') &&
-       (req.body.username.length > 0 &&
-        req.body.password.length > 0)) {
+      (req.method === 'POST') &&
+      (req.body.username.length > 0 &&
+       req.body.password.length > 0)) {
       if (this.checkUser(req.body.username, req.body.password)) {
         return new Observable(observer => {
           observer.next(new HttpResponse<any>(
@@ -39,6 +40,8 @@ export class LoginInterceptor implements HttpInterceptor {
           ));
           observer.complete();
         });
+      } else {
+        return throwError({ error: { message: 'No such user ' + req.body.username + '!'} });
       }
     } else if (req.url.endsWith('/register')) {
       users.push(new User(req.body.username, (users.length + 1), req.body.password, req.body.kingdom, users.length + 100));

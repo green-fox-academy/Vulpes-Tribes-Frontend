@@ -10,7 +10,8 @@ const APP_ROUTES: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'logout', component: LogoutComponent},
-  {path: 'game', component: GameComponent, canActivate: [AuthGuard]}
+  {path: 'game', component: GameComponent, canActivate: [AuthGuard]},
+  {path: '**', redirectTo: 'game', pathMatch: 'full', canActivate: [AuthGuard]}
 
 ];
 

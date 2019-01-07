@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Router} from '@angular/router';
+import {AlertService} from '../alert/alert.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ import {Router} from '@angular/router';
 export class LoginService {
 
   constructor(private http: HttpClient,
-              private router: Router) {
+              private router: Router,
+              private alert: AlertService) {
   }
 
   login(user) {
@@ -19,6 +21,9 @@ export class LoginService {
         response => {
           this.saveToken(response.tribes_token);
           this.router.navigate(['/game']);
+        },
+        error => {
+          this.alert.error('No such user ' + user.username + '!');
         }
       );
   }

@@ -22,6 +22,8 @@ import {ResourcesComponent} from './game/resources/resources.component';
 import {SettingsComponent} from './game/settings/settings.component';
 import {AuthService} from './_helpers/auth.service';
 import {AuthGuard} from './_helpers/auth.guard';
+import { AlertComponent } from './alert/alert.component';
+import {AlertService} from './alert/alert.service';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import {AuthGuard} from './_helpers/auth.guard';
     GameComponent,
     ResourcesComponent,
     SettingsComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,8 @@ import {AuthGuard} from './_helpers/auth.guard';
     LoginInterceptor,
     CustomHeaders,
     {provide: APP_BASE_HREF, useValue : '/' },
-    AuthService
+    AuthService,
+    AlertService
     ],
   bootstrap: [AppComponent]
 })
