@@ -1,9 +1,26 @@
-p {
-  border: 4px solid palevioletred;
-  padding: 30px;
-  background-color: bisque;
-  font-family: Arial, Helvetica, sans-serif
+div {
+  border: 2px dotted rgba(255, 255, 255, 0.8);
+  padding: 21px;
+  background-color: rgb(132, 201, 79);
+  font-family: 'Roboto', sans-serif;
+
 }
  h1 {
-   font-family: Arial, Helvetica, sans-serif
+   font-family: 'Roboto', sans-serif;
+   color:  rgba(255, 255, 255, 0.8);
+   text-align: center
+ }
+
+ .gold {
+    width: 150px;
+    height: 75px;
+    margin: 50px;
+    float: left;
+ }
+
+ .food {
+  width: 150px;
+  height: 75px;
+  margin: 50px;
+  float: right;
  }
