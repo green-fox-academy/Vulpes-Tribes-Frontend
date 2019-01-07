@@ -11,16 +11,22 @@ div {
    text-align: center
  }
 
- .gold {
-    width: 150px;
-    height: 75px;
-    margin: 50px;
+ .diamond {
+    width: 300px;
+    height: 300px;
+    margin: 0, 0, 300, 300;
     float: left;
+    border-radius: 67%;
  }
 
  .food {
-  width: 150px;
-  height: 75px;
-  margin: 50px;
+  width: 300px;
+  height:300px;
+  margin: 300,300, 0, 0;
   float: right;
+  border-radius: 67%;
+ }
+
+ label{
+   color: rgba(255, 255, 255, 0.8);
  }
