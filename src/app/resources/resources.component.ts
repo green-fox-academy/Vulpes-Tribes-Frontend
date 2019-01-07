@@ -7,8 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./resources.component.css']
 })
 export class ResourcesComponent implements OnInit {
-  name = 'Testing';
+
+
   constructor(private _http: HttpClient) {
+  }
+
+  ngOnInit() {
     this._http.get('https://api.myjson.com/bins/7xq2x1').subscribe(() => {
       console.log('Http Call is success from component');
     }, (error) => {
@@ -16,6 +20,3 @@ export class ResourcesComponent implements OnInit {
     });
   }
 }
-
-  ngOnInit(); {
-  }
