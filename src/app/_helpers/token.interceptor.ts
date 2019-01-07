@@ -23,7 +23,6 @@ export class TokenInterceptor implements HttpInterceptor {
         'X-Tribes-Token': localStorage.getItem(environment.tribes_token)
       }
     });
-    console.log('Intercepted Http call', authHeader);
     return next.handle(authHeader);
   }
 }

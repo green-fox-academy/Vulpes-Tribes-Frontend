@@ -21,12 +21,10 @@ const users: User[] = [
 export class LoginInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler):
     Observable<HttpEvent<any> | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any>> {
-    console.log(req);
     if (req.url.endsWith('/login') &&
-      (req.method === 'POST') &&
-      (req.body.username.length > 0 &&
+       (req.method === 'POST') &&
+       (req.body.username.length > 0 &&
         req.body.password.length > 0)) {
-      console.log('Intercepted', req);
       if (this.checkUser(req.body.username, req.body.password)) {
         return new Observable(observer => {
           observer.next(new HttpResponse<any>(
@@ -43,9 +41,7 @@ export class LoginInterceptor implements HttpInterceptor {
         });
       }
     } else if (req.url.endsWith('/register')) {
-      console.log(users);
       users.push(new User(req.body.username, (users.length + 1), req.body.password, req.body.kingdom, users.length + 100));
-      console.log(users);
       return new Observable(
         observer => {
           observer.next(new HttpResponse<any>(

@@ -82,7 +82,7 @@ describe('LoginService', () => {
     };
 
     it('should return error when user does not exist', () => {
-      loginService.login(user)
+      loginService.login(user);
     });
   });
 });
