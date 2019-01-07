@@ -73,8 +73,8 @@ form button {
 }
 
 form button:hover {
-  color: #497227;
-  border: #497227;
+  color: #67A835;
+  border: 2px solid #67A835;
   background-color: white;
   cursor: pointer;
 }

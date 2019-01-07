@@ -16,9 +16,6 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class LogoutService {
-
-
-
   constructor(private http: HttpClient,
               private router: Router,
               private headers: CustomHeaders,
