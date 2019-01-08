@@ -33,7 +33,7 @@ export class Kingdom {
     location: {
       x: number,
       y: number
-    }
+    };
   }
 
 

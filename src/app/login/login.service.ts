@@ -21,7 +21,6 @@ export class LoginService {
     this.http.post<any>('/login', user)
       .subscribe(
         response => {
-          console.log(response.tribes_token);
           this.saveToken(response.tribes_token);
         }
       );
