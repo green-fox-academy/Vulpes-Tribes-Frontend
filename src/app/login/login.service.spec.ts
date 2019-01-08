@@ -4,6 +4,7 @@ import {LoginService} from './login.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {TestBed} from '@angular/core/testing';
 import {environment} from '../../environments/environment';
+import {RouterTestingModule} from '@angular/router/testing';
 
 
 describe('LoginService', () => {
@@ -81,7 +82,7 @@ describe('LoginService', () => {
       password: '123',
     };
 
-    it('should return error when user does not exist', () => {
+    it('should redirect to game component upon successful login', () => {
       loginService.login(user);
     });
   });

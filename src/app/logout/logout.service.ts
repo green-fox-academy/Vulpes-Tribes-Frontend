@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {CustomHeaders} from '../_models/head.model';
 import {Router} from '@angular/router';
+import {AlertService} from '../alert/alert.service';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -15,12 +16,10 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class LogoutService {
-
-
-
   constructor(private http: HttpClient,
               private router: Router,
-              private headers: CustomHeaders) {
+              private headers: CustomHeaders,
+              private alert: AlertService) {
   }
 
   logout() {
@@ -28,7 +27,7 @@ export class LogoutService {
       response => {
         localStorage.removeItem(environment.tribes_token);
         this.router.navigate(['/login']);
-        alert(response.message);
+        this.alert.success('Logged out successfully!');
       });
   }
 }
