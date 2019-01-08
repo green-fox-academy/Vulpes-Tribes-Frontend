@@ -1,10 +1,24 @@
-import {HttpClient} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 
 import {LoginService} from './login.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {TestBed} from '@angular/core/testing';
 import {environment} from '../../environments/environment';
 import {RouterTestingModule} from '@angular/router/testing';
+import {BrowserModule} from '@angular/platform-browser';
+import {AppRoutingModule} from '../app.routes';
+import {FormsModule} from '@angular/forms';
+import {RegisterService} from '../register/register.service';
+import {LoginInterceptor} from '../_helpers/login.interceptor';
+import {AppComponent} from '../app.component';
+import {LoginComponent} from './login.component';
+import {LogoutComponent} from '../logout/logout.component';
+import {RegisterComponent} from '../register/register.component';
+import {HeaderComponent} from '../header/header.component';
+import {GameComponent} from '../game/game.component';
+import {ResourcesComponent} from '../game/resources/resources.component';
+import {SettingsComponent} from '../game/settings/settings.component';
+import {AlertComponent} from '../alert/alert.component';
 
 
 describe('LoginService', () => {
@@ -15,8 +29,28 @@ describe('LoginService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [LoginService
+      declarations: [
+        AppComponent,
+        LoginComponent,
+        LogoutComponent,
+        RegisterComponent,
+        HeaderComponent,
+        GameComponent,
+        ResourcesComponent,
+        SettingsComponent,
+        AlertComponent
+      ],
+      imports: [
+        RouterTestingModule.withRoutes([]),
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientTestingModule,
+        HttpClientModule
+      ],
+      providers: [
+        LoginService,
+        {provide: HTTP_INTERCEPTORS, useClass: LoginInterceptor, multi: true},
       ]
     });
 

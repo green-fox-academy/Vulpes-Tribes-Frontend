@@ -12,6 +12,12 @@ import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {InMemoryUsersService} from '../_helpers/InMemoryUsersService';
 import {LogoutComponent} from '../logout/logout.component';
 import {APP_BASE_HREF} from '@angular/common';
+import {GameComponent} from '../game/game.component';
+import {HeaderComponent} from '../header/header.component';
+import {ResourcesComponent} from '../game/resources/resources.component';
+import {SettingsComponent} from '../game/settings/settings.component';
+import {AlertComponent} from '../alert/alert.component';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
@@ -23,7 +29,12 @@ describe('RegisterComponent', () => {
         AppComponent,
         LoginComponent,
         LogoutComponent,
-        RegisterComponent
+        RegisterComponent,
+        HeaderComponent,
+        GameComponent,
+        ResourcesComponent,
+        SettingsComponent,
+        AlertComponent
       ],
       imports: [
         BrowserModule,
@@ -32,6 +43,7 @@ describe('RegisterComponent', () => {
         ReactiveFormsModule,
         HttpModule,
         HttpClientModule,
+        RouterTestingModule.withRoutes([]),
         HttpClientInMemoryWebApiModule.forRoot(InMemoryUsersService)
       ],
       providers: [

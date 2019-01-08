@@ -15,6 +15,12 @@ import {LoginService} from '../login/login.service';
 import {LogoutComponent} from '../logout/logout.component';
 import {APP_BASE_HREF} from '@angular/common';
 import {LoginInterceptor} from '../_helpers/login.interceptor';
+import {GameComponent} from '../game/game.component';
+import {HeaderComponent} from '../header/header.component';
+import {ResourcesComponent} from '../game/resources/resources.component';
+import {SettingsComponent} from '../game/settings/settings.component';
+import {AlertComponent} from '../alert/alert.component';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('RegisterService', () => {
   beforeEach(() => TestBed.configureTestingModule({
@@ -22,16 +28,19 @@ describe('RegisterService', () => {
       AppComponent,
       LoginComponent,
       LogoutComponent,
-      RegisterComponent
+      RegisterComponent,
+      HeaderComponent,
+      GameComponent,
+      ResourcesComponent,
+      SettingsComponent,
+      AlertComponent
     ],
     imports: [
+      RouterTestingModule.withRoutes([]),
       BrowserModule,
       AppRoutingModule,
       FormsModule,
-      ReactiveFormsModule,
-      HttpModule,
-      HttpClientModule,
-      HttpClientInMemoryWebApiModule.forRoot(InMemoryUsersService)
+      HttpClientModule
     ],
     providers: [
       RegisterService,
