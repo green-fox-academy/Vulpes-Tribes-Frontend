@@ -1,12 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Authorization': localStorage.getItem('token')
-  })
-};
+import {environment} from '../../environments/environment';
+import {Router} from '@angular/router';
+import {AlertService} from '../alert/alert.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,23 +10,30 @@ const httpOptions = {
 
 export class LoginService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private router: Router,
+              private alert: AlertService) {
   }
 
   login(user) {
-    this.http.post<any>('/login', user)
+    this.http.post<any>(environment.login, user, {reportProgress: true})
       .subscribe(
         response => {
           this.saveToken(response.tribes_token);
+          this.router.navigate(['/game']);
+        },
+        error => {
+          this.alert.error('No such user ' + user.username + '!');
         }
       );
   }
 
   saveToken(tokenValue: number) {
-    localStorage.setItem('token', tokenValue.toString());
+    localStorage.setItem(environment.tribes_token, tokenValue.toString());
   }
 
-  isLoggedIn() {
-    return (localStorage.getItem('token') !== null);
+  isLoggedIn(): boolean {
+    console.log(localStorage.getItem(environment.tribes_token) !== null);
+    return (localStorage.getItem(environment.tribes_token) !== null);
   }
 }

@@ -1,19 +1,31 @@
-<form #loginFormElement="ngForm" (ngSubmit)="onSubmit(loginFormElement)">
+<form #loginFormElement="ngForm" (ngSubmit)="onSubmit()">
   <div class="form__row">
-    <label for="username">Username</label>
-    <input id="username"
-           type="text"
-           ngModel
-           name="username"
-           required>
+    <label for="username" style="display: none">Username</label>
+    <input type="text"
+            id="username"
+            class="form-control"
+            placeholder="Username"
+            [(ngModel)]="user.username"
+            required
+            name="username"
+            #username="ngModel">
+    <div  class="error" *ngIf="username.invalid && username.touched">
+      <p >Please enter your username</p>
+    </div>
   </div>
   <div class="form__row">
-    <label for="password">Password</label>
-    <input id="password"
-           type="password"
-           ngModel
+    <label for="password" style="display: none">Password</label>
+    <input type="text"
+           id="password"
+           class="form-control"
+           placeholder="Password"
+           [(ngModel)]="user.password"
+           required
            name="password"
-           required>
+           #password="ngModel">
+    <div [className]="'error'" *ngIf="password.invalid && password.touched">
+      <p >Please enter your password</p>
+    </div>
   </div>
   <button type="submit" [disabled]="!loginFormElement.form.valid">Login</button>
 </form>

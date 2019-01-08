@@ -1,0 +1,35 @@
+div {
+  padding: 5%;
+  background-color: rgb(132, 201, 79);
+  font-family: 'Roboto', sans-serif;
+
+}
+ h3 {
+   font-family: 'Roboto', sans-serif;
+   color:  rgba(255, 255, 255, 0.8);
+   text-align: center;
+ }
+
+ .resources {
+   background: transparent;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   width: 50%;
+   margin-left: auto;
+   max-height: 300px;
+ }
+
+  .resource {
+    width: 40%;
+    height: 80%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+ }
+
+ p {
+   color: rgba(255, 255, 255, 0.973);
+   text-align: center;
+
+ }

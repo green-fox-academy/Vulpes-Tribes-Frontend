@@ -9,12 +9,10 @@ import {LogoutService} from './logout.service';
 })
 export class LogoutComponent implements OnInit {
 
+
   constructor(private logoutService: LogoutService) { }
 
   ngOnInit() {
-  }
-
-  logout() {
     this.logoutService.logout();
   }
 

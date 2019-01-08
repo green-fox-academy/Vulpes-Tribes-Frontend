@@ -1,27 +1,42 @@
-<form #registerFormElement="ngForm" (ngSubmit)="onSumbit(registerFormElement)">
+<form #registerFormElement="ngForm" (ngSubmit)="onSumbit()">
   <div class="form__row">
-    <label for="username">Username: </label>
+    <label for="username" style="display: none">Username: </label>
     <input id="username"
            type="text"
-           ngModel
+           placeholder="Username"
+           [(ngModel)]="user.username"
            required
-           name="username">
+           name="username"
+           #username="ngModel">
+    <div  class="error" *ngIf="username.invalid && username.touched">
+      <p >Please enter your username</p>
+    </div>
   </div>
   <div class="form__row">
-    <label for="password">Password: </label>
+    <label for="password" style="display: none">Password: </label>
     <input id="password"
            type="password"
-           ngModel
+           placeholder="Password"
+           [(ngModel)]="user.password"
            required
-           name="password">
+           name="password"
+           #password="ngModel">
+    <div  class="error" *ngIf="password.invalid && password.touched">
+      <p >Please enter your password</p>
+    </div>
   </div>
   <div class="form__row">
-    <label for="password">Kingdom's name:</label>
+    <label for="password" style="display: none">Kingdom's name:</label>
     <input id="kingdom"
            type="text"
-           ngModel
+           placeholder="Kingdom's name"
+           [(ngModel)]="user.kingdom"
            required
-           name="kingdom">
+           name="kingdom"
+           #kingdom="ngModel">
+    <div  class="error" *ngIf="kingdom.invalid && kingdom.touched">
+      <p >Please enter the name of your Kingdom</p>
+    </div>
   </div>
   <button type="submit" [disabled]="!registerFormElement.form.valid">Register</button>
 </form>
