@@ -1,14 +1,14 @@
 <div class="buildings">
   <app-building class="building" *ngFor="let building of buildings.buildings" (click)="initBuildingModal(building.id)" [building]="building"></app-building>
-  <div class="building building-add">
+  <div class="building building-add" (click)="createbuilding('academy')">
     <img src="../../../assets/images/buildings/addacademy.svg" alt="">
     <p class="building__type--add">Add Academy</p>
   </div>
-  <div class="building building-add">
+  <div class="building building-add" (click)="createbuilding('mine')">
     <img src="../../../assets/images/buildings/addmine.svg" alt="">
     <p class="building__type--add">Add Mine</p>
   </div>
-  <div class="building building-add ">
+  <div class="building building-add " (click)="createbuilding('factory')">
     <img src="../../../assets/images/buildings/addfactory.svg" alt="">
     <p class="building__type--add">Add Factory</p>
   </div>

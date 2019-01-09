@@ -4,6 +4,7 @@ import {BuildingDetailComponent} from './building-details/building-detail.compon
 import {ModalService} from './building-details/modal.service';
 import {forEach} from '@angular/router/src/utils/collection';
 import {Building} from '../../_models/building.model';
+import {timestamp} from 'rxjs/operators';
 
 @Component({
   selector: 'app-buildings',
@@ -27,11 +28,6 @@ export class BuildingsComponent implements OnInit {
     this.buildingsService.getBuildings().subscribe(response =>
       this.buildings = {...response.body});
     console.log(this.buildings);
-
-    for (let i = 0; i < this.buildings.length; i++) {
-      this.buildingComponents.push(this.buildings[i]);
-    }
-    console.log('Buildings components' + this.buildingComponents);
   }
 
   findBuilding(index: number): Building {
@@ -49,15 +45,9 @@ export class BuildingsComponent implements OnInit {
     return building;
   }
 
-  // createbuilding(buildingType: string) {
-  //   let lastId = this.findBuilding(this.buildings.buildings.length - 1).id;
-  //   let newBuilding = new Building();
-  //   newBuilding.id = lastId + 1;
-  //   if (buildingType === 'mine') {
-  //     newBuilding.type = 'mine';
-  //   }
-  //     this.buildingComponents.push(new Building())
-  //   }
-  // }
-
+  createbuilding(buildingType: string) {
+    let newBuilding = new Building(this.buildings.buildings.length, buildingType);
+    console.log(newBuilding);
+    this.buildings.buildings.push(newBuilding);
+  }
 }
