@@ -1,4 +1,4 @@
-import { Resources } from './../_models/resources.model';
+import { Resources } from '../../_models/resources.model';
 import { Injectable } from '@angular/core';
 
 @Injectable({

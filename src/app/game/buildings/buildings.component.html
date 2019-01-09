@@ -1,0 +1,28 @@
+<div class="buildings">
+  <div class="building" *ngFor="let building of buildings.buildings" (click)="initBuildingModal(building.id)">
+    <img *ngIf="building.type === 'academy'" src="../../../assets/images/buildings/academy.svg" alt="">
+    <img *ngIf="building.type === 'factory'" src="../../../assets/images/buildings/factory.svg" alt="">
+    <img *ngIf="building.type === 'mine'" src="../../../assets/images/buildings/mine.svg" alt="">
+    <img *ngIf="building.type === 'townhall'" src="../../../assets/images/buildings/townhall.svg" alt="">
+    <p class="building__type">{{building.type}}</p>
+    <p class="building__level">Level: {{building.level}}</p>
+  </div>
+  <div class="building">
+    <img src="../../../assets/images/buildings/addacademy.svg" alt="">
+    <p class="building__type--add">Add Academy</p>
+  </div>
+  <div class="building ">
+    <img src="../../../assets/images/buildings/addmine.svg" alt="">
+    <p class="building__type--add">Add Mine</p>
+  </div>
+  <div class="building ">
+    <img src="../../../assets/images/buildings/addfactory.svg" alt="">
+    <p class="building__type--add">Add Factory</p>
+  </div>
+
+  <div id="modal-container" class="hidden"></div>
+  <div id="overlay" (click)="removeModal()" class="hidden"></div>
+
+</div>
+
+

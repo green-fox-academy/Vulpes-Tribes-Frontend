@@ -1,0 +1,53 @@
+.buildings {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  width: 90%;
+  max-width: 1024px;
+  margin: 10px auto;
+  justify-content: flex-start;
+
+
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.building,
+.building-add {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  width: 25%;
+  height: 150px;
+}
+
+.building:hover {
+  background: white;
+}
+
+.building img {
+  max-height: 150px;
+  width: 90%;
+  margin: 5px auto;
+}
+
+.building__type {
+  margin-bottom: 0;
+}
+
+.building__type--add {
+  color: #67A835;
+}
+
+@media (min-width: 576px) {
+  .buildings {
+    width: 90%;
+  }
+
+  .building {
+    height: 250px;
+  }
+  
+}

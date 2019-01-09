@@ -1,0 +1,15 @@
+<div id="overlay" (click)="destroy()">
+  <div id="modal-container">
+    <div class="building__details">
+      <img *ngIf="building.type === 'academy'" src="../../../../assets/images/buildings/academy.svg" alt="">
+      <img *ngIf="building.type === 'factory'" src="../../../../assets/images/buildings/factory.svg" alt="">
+      <img *ngIf="building.type === 'mine'" src="../../../../assets/images/buildings/mine.svg" alt="">
+      <img *ngIf="building.type === 'townhall'" src="../../../../assets/images/buildings/townhall.svg" alt="">
+      <p>Id: {{building.id}}</p>
+      <p>Type: {{building.type}}</p>
+      <p>Level: {{building.level}}</p>
+      <p>Started: {{building.started_at}}</p>
+      <p>Finished: {{building.finished_at}}</p>
+    </div>
+  </div>
+</div>

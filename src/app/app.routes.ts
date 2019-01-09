@@ -7,6 +7,7 @@ import {GameComponent} from './game/game.component';
 import {AuthGuard} from './_helpers/auth.guard';
 import {SettingsComponent} from './game/settings/settings.component';
 import {ResourcesComponent} from './game/resources/resources.component';
+import {BuildingsComponent} from './game/buildings/buildings.component';
 
 const APP_ROUTES: Routes = [
   {path: 'login', component: LoginComponent},
@@ -16,7 +17,8 @@ const APP_ROUTES: Routes = [
   {
     path: 'game', component: GameComponent, canActivate: [AuthGuard], children: [
       {path: 'settings', component: SettingsComponent},
-      {path: 'resources', component: ResourcesComponent}
+      {path: 'resources', component: ResourcesComponent},
+      {path: 'buildings', component: BuildingsComponent}
     ]
   },
 
