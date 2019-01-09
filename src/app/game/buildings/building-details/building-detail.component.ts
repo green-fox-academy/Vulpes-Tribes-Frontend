@@ -3,7 +3,7 @@ import {DomService} from './domService';
 import {Building} from '../../../_models/building.model';
 
 @Component({
-  selector: 'app-building',
+  selector: 'app-building-detail',
   templateUrl: './building-detail.component.html',
   styleUrls: ['./building-detail.component.css']
 })

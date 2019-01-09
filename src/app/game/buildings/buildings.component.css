@@ -14,23 +14,17 @@
 
 .building,
 .building-add {
-  display: flex;
-  flex-direction: column;
-
-  align-items: center;
-
   width: 25%;
   height: 150px;
 }
 
 .building:hover {
   background: white;
-}
+  cursor: pointer;
 
-.building img {
-  max-height: 150px;
-  width: 90%;
-  margin: 5px auto;
+  -webkit-box-shadow: 10px 10px 47px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 47px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 47px 0px rgba(0,0,0,0.75);
 }
 
 .building__type {
