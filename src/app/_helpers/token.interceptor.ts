@@ -16,13 +16,13 @@ import {environment} from '../../environments/environment';
 export class TokenInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler):
     Observable<HttpEvent<any> | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any>> {
-
     const authHeader = req.clone({
       setHeaders: {
         'Content-Type': 'application/json',
         'X-Tribes-Token': localStorage.getItem(environment.tribes_token)
       }
     });
+    console.log(req);
     return next.handle(authHeader);
   }
 }
