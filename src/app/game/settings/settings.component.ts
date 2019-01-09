@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 
 @Component({
-  selector: 'app-settings',
+  selector: 'app-settings2',
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.css']
 })

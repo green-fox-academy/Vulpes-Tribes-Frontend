@@ -28,6 +28,7 @@ import { AlertComponent } from './alert/alert.component';
 import {AlertService} from './alert/alert.service';
 import { ResourceInterceptor } from './_helpers/resources.interceptor';
 import {WelcomeScreenComponent} from './welcome-screen/welcome-screen.component';
+import { TroopsComponent } from './troops/troops.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import {WelcomeScreenComponent} from './welcome-screen/welcome-screen.component'
     ResourcesComponent,
     SettingsComponent,
     AlertComponent,
-    WelcomeScreenComponent
+    WelcomeScreenComponent,
+    TroopsComponent
   ],
   imports: [
     BrowserModule,
