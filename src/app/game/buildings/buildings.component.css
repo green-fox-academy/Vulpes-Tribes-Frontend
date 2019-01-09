@@ -18,6 +18,11 @@
   height: 150px;
 }
 
+.building-add img {
+  margin: 5px auto;
+  max-width: 150px;
+}
+
 .building:hover {
   background: white;
   cursor: pointer;

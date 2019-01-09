@@ -1,4 +1,4 @@
-<div id="overlay" (click)="destroy()">
+<div id="overlay">
   <div id="modal-container">
     <div class="building__details">
       <img *ngIf="building.type === 'academy'" src="../../../../assets/images/buildings/academy.svg" alt="">
@@ -10,6 +10,7 @@
       <p>Level: {{building.level}}</p>
       <p>Started: {{building.started_at }}</p>
       <p>Finished: {{building.finished_at}}</p>
+      <button (click)="destroy()">Close</button>
     </div>
   </div>
 </div>

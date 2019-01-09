@@ -15,6 +15,7 @@
   text-align: center;
   box-shadow: 0 0 2px 1px black;
   z-index: 100;
+  border-radius: 10px;
 }
 
 app-building-detail {
@@ -25,8 +26,21 @@ app-building-detail {
   height: 75%;
 
   background: rgba(255, 255, 255, 0.8);
+  border: 1px  rgba(255, 255, 255, 0.8) solid;
 
+}
+
+.building__details button {
+  width: 100px;
+  height: 30px;
+
+  margin: 15px auto;
+
+  background: #FD8B4F;
+  color: white;
   border-radius: 10px;
+
+  font-weight: bold;
 }
 
 .building__details img {
@@ -36,10 +50,12 @@ app-building-detail {
 
 #overlay {
   position: absolute;
-  top: 0;
+  top: 60px;
   left:  0;
   z-index:  99;
   background:  rgba(0,0,0,0.8);
   width:  100vw;
   height: 100vh;
 }
+
+
