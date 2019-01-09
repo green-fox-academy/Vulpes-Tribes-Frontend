@@ -13,6 +13,7 @@ import { InMemoryUsersService} from './_helpers/InMemoryUsersService';
 import { HttpModule} from '@angular/http';
 import { LoginInterceptor} from './_helpers/login.interceptor';
 import { LogoutComponent } from './logout/logout.component';
+import { KingdomSettingsComponent } from './kingdom-settings/kingdom-settings.component';
 import {CustomHeaders} from './_models/head.model';
 import {APP_BASE_HREF} from '@angular/common';
 import {ROUTER_PROVIDERS} from '@angular/router/src/router_module';
@@ -26,6 +27,7 @@ import {AuthGuard} from './_helpers/auth.guard';
 import { AlertComponent } from './alert/alert.component';
 import {AlertService} from './alert/alert.service';
 import { ResourceInterceptor } from './_helpers/resources.interceptor';
+import {WelcomeScreenComponent} from './welcome-screen/welcome-screen.component';
 
 @NgModule({
   declarations: [
@@ -33,11 +35,14 @@ import { ResourceInterceptor } from './_helpers/resources.interceptor';
     LoginComponent,
     LogoutComponent,
     RegisterComponent,
+    LogoutComponent,
+    KingdomSettingsComponent,
     HeaderComponent,
     GameComponent,
     ResourcesComponent,
     SettingsComponent,
-    AlertComponent
+    AlertComponent,
+    WelcomeScreenComponent
   ],
   imports: [
     BrowserModule,
