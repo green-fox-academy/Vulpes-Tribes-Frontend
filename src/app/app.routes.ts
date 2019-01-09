@@ -12,8 +12,8 @@ import {ResourcesComponent} from './game/resources/resources.component';
 const APP_ROUTES: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'logout', redirectTo: '', component: LoginComponent},
-  {path: 'kingdom', component: KingdomSettingsComponent}
+  {path: 'logout', component: LogoutComponent},
+  {path: 'kingdom', component: KingdomSettingsComponent},
   {path: 'logout', component: LogoutComponent},
   {path: '**', redirectTo: 'game', pathMatch: 'full', canActivate: [AuthGuard]},
   {

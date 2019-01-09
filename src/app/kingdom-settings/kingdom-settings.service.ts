@@ -17,6 +17,7 @@ export class KingdomSettingsService {
   constructor(private kingdomService: KingdomService) { }
 
   getSettings(): Observable<any> {
+    console.log(this.kingdomService.getKingdom());
     return this.kingdomService.getKingdom();
   }
 }

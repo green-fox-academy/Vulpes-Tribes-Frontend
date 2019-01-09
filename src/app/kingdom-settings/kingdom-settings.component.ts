@@ -21,12 +21,7 @@ export class KingdomSettingsComponent implements OnInit {
   }
 
   showSettings(): void {
-    console.log('========');
-    console.log(this.settingsService.getSettings());
-    console.log('settings service called');
-    this.name = this.settingsService.getSettings().subscribe(response => this.name = response.body.name);
-    console.log(this.name);
-    console.log('========');
+    this.name = this.settingsService.getSettings().subscribe(response => this.name = {...response.name});
   }
 
 }

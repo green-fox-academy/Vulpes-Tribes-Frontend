@@ -27,6 +27,7 @@ import {AuthGuard} from './_helpers/auth.guard';
 import { AlertComponent } from './alert/alert.component';
 import {AlertService} from './alert/alert.service';
 import { ResourceInterceptor } from './_helpers/resources.interceptor';
+import { KingdomInterceptor } from './_helpers/kingdom.interceptor';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,8 @@ import { ResourceInterceptor } from './_helpers/resources.interceptor';
     { provide: HTTP_INTERCEPTORS, useClass: ResourceInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: LoginInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: KingdomInterceptor, multi: true},
+
     LoginInterceptor,
     CustomHeaders,
     {provide: APP_BASE_HREF, useValue : '/' },

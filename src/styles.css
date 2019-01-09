@@ -24,14 +24,18 @@ body {
 }
 
 app-login,
-app-register {
+app-register,
+app-settings
+ {
   background: rgba(255, 255, 255, 0.8);
 
 }
 
 form,
 app-login,
-app-register {
+app-register,
+app-settings
+ {
   display: flex;
   flex-direction: column;
   margin: 50px auto;
