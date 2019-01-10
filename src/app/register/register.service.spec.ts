@@ -14,7 +14,7 @@ import {InMemoryUsersService} from '../_helpers/InMemoryUsersService';
 import {LoginService} from '../login/login.service';
 import {LogoutComponent} from '../logout/logout.component';
 import {APP_BASE_HREF} from '@angular/common';
-import {LoginInterceptor} from '../_helpers/login.interceptor';
+import {LoginInterceptor} from '../_helpers/interceptors/login.interceptor';
 import {GameComponent} from '../game/game.component';
 import {environment} from '../../environments/environment';
 import {HeaderComponent} from '../header/header.component';

@@ -10,8 +10,8 @@ export class BuildingDetailService {
 
   constructor(private http: HttpClient) { }
 
-  levelUpBuilding(building: Building): Observable<any> {
-    return this.http.put('/game/buildings/' + building.id,
+  levelUpBuilding(building: Building) {
+    return this.http.put(`/game/buildings/${building.id}`,
       {
         id: building.id,
         level: building.level

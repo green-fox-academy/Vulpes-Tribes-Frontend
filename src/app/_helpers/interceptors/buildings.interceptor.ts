@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Building} from '../_models/building.model';
-import {environment} from '../../environments/environment';
+import {Building} from '../../_models/building.model';
+import {environment} from '../../../environments/environment';
 import {el} from '@angular/platform-browser/testing/src/browser_util';
 
 const buildings = [
@@ -66,7 +66,7 @@ export class BuildingsInterceptor implements HttpInterceptor {
           ));
           observer.complete();
         });
-    } else if (req.url.endsWith('/game/buildings/' + req.body.id) && req.method === 'PUT') {
+    } else if (req.url.endsWith(`/game/buildings/${req.body.id}`) && req.method === 'PUT') {
       let buildingToUpdate = this.findBuilding(req.body.id);
       buildingToUpdate.level += 1;
       buildings[buildings.indexOf(this.findBuilding(req.body.id))] = buildingToUpdate;
