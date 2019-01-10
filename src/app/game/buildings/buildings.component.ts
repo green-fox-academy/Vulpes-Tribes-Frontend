@@ -6,6 +6,7 @@ import {forEach} from '@angular/router/src/utils/collection';
 import {Building} from '../../_models/building.model';
 import {timestamp} from 'rxjs/operators';
 import {componentRefresh} from '@angular/core/src/render3/instructions';
+import {AlertService} from '../../alert/alert.service';
 
 @Component({
   selector: 'app-buildings',
@@ -20,7 +21,9 @@ export class BuildingsComponent implements OnInit, OnChanges {
   @Output() building: Building;
 
 
-  constructor(private buildingsService: BuildingsService, private modalService: ModalService) {
+  constructor(private buildingsService: BuildingsService,
+              private alertService: AlertService,
+              private modalService: ModalService) {
 
   }
 
@@ -53,7 +56,8 @@ export class BuildingsComponent implements OnInit, OnChanges {
   }
 
   createBuilding(buildingType: string) {
-    this.buildingsService.createBuilding(buildingType);
+    this.buildingsService.createBuilding(buildingType)
+      .subscribe(response => this.alertService.success(response.type + ' was created successfully'));
     console.log(this.buildings);
   }
 }

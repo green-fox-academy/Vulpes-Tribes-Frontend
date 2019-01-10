@@ -5,6 +5,18 @@ import {HttpClientTestingModule, HttpTestingController} from '@angular/common/ht
 import {TestBed} from '@angular/core/testing';
 import {environment} from '../../environments/environment';
 import {RouterTestingModule} from '@angular/router/testing';
+import {AppComponent} from '../app.component';
+import {LoginComponent} from './login.component';
+import {LogoutComponent} from '../logout/logout.component';
+import {RegisterComponent} from '../register/register.component';
+import {HeaderComponent} from '../header/header.component';
+import {GameComponent} from '../game/game.component';
+import {ResourcesComponent} from '../game/resources/resources.component';
+import {SettingsComponent} from '../game/settings/settings.component';
+import {AlertComponent} from '../alert/alert.component';
+import {BuildingsComponent} from '../game/buildings/buildings.component';
+import {BuildingDetailComponent} from '../game/buildings/building-details/building-detail.component';
+import {BuildingComponent} from '../game/buildings/building/building.component';
 
 
 describe('LoginService', () => {
@@ -15,6 +27,20 @@ describe('LoginService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      declarations: [
+        AppComponent,
+        LoginComponent,
+        LogoutComponent,
+        RegisterComponent,
+        HeaderComponent,
+        GameComponent,
+        ResourcesComponent,
+        SettingsComponent,
+        AlertComponent,
+        BuildingsComponent,
+        BuildingDetailComponent,
+        BuildingComponent
+      ],
       imports: [HttpClientTestingModule],
       providers: [LoginService]
     });

@@ -5,11 +5,35 @@
       <img *ngIf="building.type === 'factory'" src="../../../../assets/images/buildings/factory.svg" alt="">
       <img *ngIf="building.type === 'mine'" src="../../../../assets/images/buildings/mine.svg" alt="">
       <img *ngIf="building.type === 'townhall'" src="../../../../assets/images/buildings/townhall.svg" alt="">
-      <p>Id: {{building.id}}</p>
-      <p>Type: {{building.type}}</p>
-      <p>Level: {{building.level}}</p>
-      <p>Started: {{building.started_at }}</p>
-      <p>Finished: {{building.finished_at}}</p>
+      <table class="building__details--table">
+        <thead>
+        <tr >
+          <td colspan="2">{{building.type}}  details</td>
+        </tr>
+        </thead>
+        <tbody>
+          <tr class="building__details--tableRow">
+            <td>Id:</td>
+            <td>{{building.id}}</td>
+          </tr>
+          <tr class="building__details--tableRow">
+            <td>Type:</td>
+            <td>{{building.type}}</td>
+          </tr>
+          <tr class="building__details--tableRow">
+            <td>Level:</td>
+            <td>{{building.level}}</td>
+          </tr>
+          <tr class="building__details--tableRow">
+            <td>Started:</td>
+            <td>{{building.started_at}}</td>
+          </tr>
+          <tr class="building__details--tableRow">
+            <td>Finished:</td>
+            <td>{{building.finished_at}}</td>
+          </tr>
+        </tbody>
+      </table>
       <button (click)="destroy()">Close</button>
     </div>
   </div>

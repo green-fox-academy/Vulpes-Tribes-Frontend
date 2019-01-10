@@ -40,6 +40,8 @@
   color: #67A835;
 }
 
+
+
 @media (min-width: 576px) {
   .buildings {
     width: 90%;
@@ -48,5 +50,4 @@
   .building {
     height: 250px;
   }
-  
 }

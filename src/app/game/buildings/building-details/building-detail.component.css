@@ -43,6 +43,10 @@ app-building-detail {
   font-weight: bold;
 }
 
+.building__details button:hover {
+  cursor: pointer;
+}
+
 .building__details img {
   width: 50%;
   margin: 20px auto;
@@ -56,6 +60,25 @@ app-building-detail {
   background:  rgba(0,0,0,0.8);
   width:  100vw;
   height: 100vh;
+}
+
+.building__details--table {
+  width: 80%;
+  margin-left: 10%;
+}
+
+.building__details--table thead {
+  text-align: center;
+  height: 30px;
+  font-weight: bold;
+}
+
+.building__details--tableRow {
+  text-align: left;
+}
+
+.building__details--tableRow td:last-child{
+  text-align: right;
 }
 
 
