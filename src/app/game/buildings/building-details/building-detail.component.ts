@@ -12,6 +12,8 @@ import {AlertService} from '../../../alert/alert.service';
 export class BuildingDetailComponent implements OnInit {
 
   @Input() building: Building;
+  @Input() imgSrc: string;
+
 
   constructor(private domService: DomService,
               private buildingDetailService: BuildingDetailService,

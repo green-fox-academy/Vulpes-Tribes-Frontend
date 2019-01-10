@@ -54,33 +54,21 @@ export class BuildingsInterceptor implements HttpInterceptor {
     } else if (req.url.endsWith(environment.createBuilding)) {
       let newBuilding = this.createBuilding(buildings.length, req.body);
       buildings.push(newBuilding);
-      return new Observable<any>(
-        observer => {
-          observer.next(new HttpResponse<any>(
-            {
-              body: {
-                type: newBuilding.type,
-                status: 200
-              }
-            }
-          ));
-          observer.complete();
-        });
+      return this.sendResponse({
+        type: newBuilding.type,
+        status: 200
+      });
     } else if (req.url.endsWith(`/game/buildings/${req.body.id}`) && req.method === 'PUT') {
       let buildingToUpdate = this.findBuilding(req.body.id);
       buildingToUpdate.level += 1;
       buildings[buildings.indexOf(this.findBuilding(req.body.id))] = buildingToUpdate;
+      return this.sendResponse({
+        status: 200
+      });
     } else if (req.url.endsWith('/game/buildings/' + req.body.id) && req.method === 'GET') {
       let building = this.findBuilding(req.body.id);
-      return new Observable<any>(observer => {
-        observer.next(new HttpResponse<any>(
-          {
-            body: {
-              building
-            }
-          }
-        ));
-        observer.complete();
+      return this.sendResponse({
+        building
       });
     }
     return next.handle(req);
@@ -96,6 +84,20 @@ export class BuildingsInterceptor implements HttpInterceptor {
         return buildings[i];
       }
     }
+  }
+
+  sendResponse(responseBody: {}): Observable<any> {
+    return new Observable<any>(
+      observer => {
+        observer.next(new HttpResponse<any>(
+          {
+            body: {
+              responseBody
+            }
+          }
+        ));
+        observer.complete();
+      });
   }
 
 }
