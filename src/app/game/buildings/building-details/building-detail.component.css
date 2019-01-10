@@ -47,6 +47,10 @@ app-building-detail {
   cursor: pointer;
 }
 
+.building__details button:last-child {
+  background: #67A835;
+}
+
 .building__details img {
   width: 50%;
   margin: 20px auto;

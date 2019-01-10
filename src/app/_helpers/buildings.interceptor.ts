@@ -66,14 +66,22 @@ export class BuildingsInterceptor implements HttpInterceptor {
           ));
           observer.complete();
         });
-    } else if (req.url.endsWith('/game/buildings/' + req.body.id)) {
-      console.log('============');
-      console.log(buildings);
+    } else if (req.url.endsWith('/game/buildings/' + req.body.id) && req.method === 'PUT') {
       let buildingToUpdate = this.findBuilding(req.body.id);
       buildingToUpdate.level += 1;
       buildings[buildings.indexOf(this.findBuilding(req.body.id))] = buildingToUpdate;
-      console.log(buildings);
-      console.log('============');
+    } else if (req.url.endsWith('/game/buildings/' + req.body.id) && req.method === 'GET') {
+      let building = this.findBuilding(req.body.id);
+      return new Observable<any>(observer => {
+        observer.next(new HttpResponse<any>(
+          {
+            body: {
+              building
+            }
+          }
+        ));
+        observer.complete();
+      });
     }
     return next.handle(req);
   }
