@@ -3,6 +3,7 @@ import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from
 import {Observable} from 'rxjs';
 import {Building} from '../_models/building.model';
 import {environment} from '../../environments/environment';
+import {el} from '@angular/platform-browser/testing/src/browser_util';
 
 const buildings = [
   {
@@ -52,9 +53,6 @@ export class BuildingsInterceptor implements HttpInterceptor {
       ));
     } else if (req.url.endsWith(environment.createBuilding)) {
       let newBuilding = this.createBuilding(buildings.length, req.body);
-      console.log('==========');
-      console.log('POST call intercepted');
-      console.log(buildings);
       buildings.push(newBuilding);
       return new Observable<any>(
         observer => {
@@ -66,16 +64,30 @@ export class BuildingsInterceptor implements HttpInterceptor {
               }
             }
           ));
-        observer.complete();
+          observer.complete();
         });
+    } else if (req.url.endsWith('/game/buildings/' + req.body.id)) {
+      console.log('============');
       console.log(buildings);
-      console.log('==========');
+      let buildingToUpdate = this.findBuilding(req.body.id);
+      buildingToUpdate.level += 1;
+      buildings[buildings.indexOf(this.findBuilding(req.body.id))] = buildingToUpdate;
+      console.log(buildings);
+      console.log('============');
     }
     return next.handle(req);
   }
 
   createBuilding(id: number, type: string): Building {
     return new Building(id, type);
+  }
+
+  findBuilding(buildingId: number): Building {
+    for (let i = 0; i < buildings.length; i++) {
+      if (buildings[i].id === buildingId) {
+        return buildings[i];
+      }
+    }
   }
 
 }

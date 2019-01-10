@@ -60,8 +60,8 @@ import { BuildingComponent } from './game/buildings/building/building.component'
 
   providers: [
     InMemoryUsersService,
-    {provide: HTTP_INTERCEPTORS, useClass: ResourceInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ResourceInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: LoginInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: BuildingsInterceptor, multi: true},
     LoginInterceptor,

@@ -21,8 +21,8 @@ export class TokenInterceptor implements HttpInterceptor {
         'Content-Type': 'application/json',
         'X-Tribes-Token': localStorage.getItem(environment.tribes_token)
       }
-    });
-    console.log(req);
+  });
+    console.log(authHeader);
     return next.handle(authHeader);
   }
 }

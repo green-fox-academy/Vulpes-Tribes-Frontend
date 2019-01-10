@@ -60,4 +60,5 @@ export class BuildingsComponent implements OnInit, OnChanges {
       .subscribe(response => this.alertService.success(response.type + ' was created successfully'));
     console.log(this.buildings);
   }
+
 }
