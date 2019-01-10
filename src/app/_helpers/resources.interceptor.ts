@@ -22,20 +22,21 @@ export class ResourceInterceptor implements HttpInterceptor {
    Observable<HttpEvent<any>> {
     // how to update the request Parameters
 
-    if (request.url.endsWith('/kingdom/resources') &&
-    (request.method === 'GET'))  {
+    if (request.url.endsWith('/game/resources'))  {
       return new Observable(observable => {
         observable.next(new HttpResponse<any>(
           {
-            body:
-            {
+            body: {
+              resources: [
+                {
               amount: 500,
               type: 'food',
               generation: 0
-            },
+            }],
             status: 200
           }
-        ));
+        }));
+        console.log(observable);
         observable.complete();
       });
     }
