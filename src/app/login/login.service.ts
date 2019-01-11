@@ -19,6 +19,7 @@ export class LoginService {
     this.http.post<any>(environment.login, user, {reportProgress: true})
       .subscribe(
         response => {
+          console.log(response);
           this.saveToken(response.tribes_token);
           this.router.navigate(['/game']);
         },

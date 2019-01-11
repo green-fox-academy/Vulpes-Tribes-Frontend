@@ -6,8 +6,7 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
-  HttpResponse,
-  HttpErrorResponse
+  HttpResponse
 } from '@angular/common/http';
 
 
@@ -28,11 +27,18 @@ export class ResourceInterceptor implements HttpInterceptor {
           {
             body: {
               resources: [
-                {
-              amount: 500,
-              type: 'food',
-              generation: 0
-            }],
+              {
+                amount: 500,
+                type: 'food',
+                generation: 0
+              }],
+              resources2: [
+              {
+                amount: 340,
+                type: 'money',
+                generation: 1
+              }
+            ],
             status: 200
           }
         }));
@@ -40,26 +46,5 @@ export class ResourceInterceptor implements HttpInterceptor {
         observable.complete();
       });
     }
-    const newRequest = request.clone({
-      headers: request.headers.set('Authorization', 'Bearer of resources')
-    });
-    // logging the updated Parameters to browser's console
-    console.log('Updated the resources', newRequest);
-    return next.handle(request).pipe(
-      tap(
-        event => {
-          // logging the http response to browser's console in case of a success
-          if (event instanceof HttpResponse) {
-            console.log('api call success :', event);
-          }
-        },
-        () => {
-          // logging the http response to browser's console in case of a failure
-          if (event instanceof HttpErrorResponse) {
-            console.log('api call error :', event);
-          }
-        }
-      )
-    );
   }
 }

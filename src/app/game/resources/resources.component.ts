@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ResourcesService } from './resources.service';
 
@@ -21,21 +20,8 @@ export class ResourcesComponent implements OnInit {
   showResources() {
     this.resourceService.getResources().subscribe(response =>
       this.food = response.resources[0].amount);
+      this.resourceService.getResources().subscribe(response =>
+        this.money = response.resources2[0].amount);
   }
 }
-
-
-
-
-
-
-
-
-
-
-    // this._http.get('https://api.myjson.com/bins/7xq2x1').subscribe(() => {
-    //   console.log('Http Call is success from component');
-    // }, (error) => {
-    //   console.log('Http Call is failed from component');
-    // });
 

@@ -30,7 +30,7 @@ div {
  }
 
  p {
-   color: rgba(255, 255, 255, 0.973);
+   color: rgba(27, 179, 47, 0.973);
    text-align: center;
  }
 
@@ -51,5 +51,5 @@ div {
 @keyframes Capa2{
   0%{transform: rotate3d(2deg)}
   50%{transform: rotate(4deg)}
-  100%{transform: rotate3d(2deg)}
+  100%{transform: rotate3d(2eg)}
 }
