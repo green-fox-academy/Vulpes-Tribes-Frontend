@@ -12,11 +12,9 @@ import {AlertComponent} from '../../alert/alert.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from '../../app.routes';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
+import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
-import {InMemoryUsersService} from '../../_helpers/InMemoryUsersService';
+
 import {APP_BASE_HREF} from '@angular/common';
 
 describe('SettingsComponent', () => {

@@ -16,6 +16,9 @@ import {HttpModule} from '@angular/http';
 import {HttpClientModule} from '@angular/common/http';
 import {APP_BASE_HREF} from '@angular/common';
 import {FormsModule} from '@angular/forms';
+import {BuildingsComponent} from '../game/buildings/buildings.component';
+import {BuildingComponent} from '../game/buildings/building/building.component';
+import {BuildingDetailComponent} from '../game/buildings/building-details/building-detail.component';
 
 describe('AlertComponent', () => {
   let component: AlertComponent;
@@ -32,7 +35,10 @@ describe('AlertComponent', () => {
         GameComponent,
         ResourcesComponent,
         SettingsComponent,
-        AlertComponent
+        AlertComponent,
+        BuildingsComponent,
+        BuildingComponent,
+        BuildingDetailComponent
       ],
       imports: [
         RouterTestingModule.withRoutes([]),

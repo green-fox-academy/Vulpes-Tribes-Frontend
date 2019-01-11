@@ -23,6 +23,7 @@ import {AlertComponent} from '../alert/alert.component';
 
 import {BuildingsComponent} from '../game/buildings/buildings.component';
 import {BuildingDetailComponent} from '../game/buildings/building-details/building-detail.component';
+import {BuildingComponent} from '../game/buildings/building/building.component';
 
 
 
@@ -43,7 +44,9 @@ describe('LoginService', () => {
         GameComponent,
         ResourcesComponent,
         SettingsComponent,
-        AlertComponent
+        AlertComponent,
+        BuildingComponent,
+        BuildingsComponent
       ],
       imports: [
         RouterTestingModule.withRoutes([]),

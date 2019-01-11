@@ -9,7 +9,7 @@ import {LogoutComponent} from './logout/logout.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {CustomHeaders} from './_models/head.model';
 import {APP_BASE_HREF} from '@angular/common';
-<<<<<<< HEAD
+
 import {RouterOutlet} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
 import {HeaderComponent} from './header/header.component';
@@ -17,16 +17,10 @@ import {GameComponent} from './game/game.component';
 import {ResourcesComponent} from './game/resources/resources.component';
 import {SettingsComponent} from './game/settings/settings.component';
 import {AlertComponent} from './alert/alert.component';
-=======
-import {GameComponent} from './game/game.component';
-import {HeaderComponent} from './header/header.component';
-import {ResourcesComponent} from './game/resources/resources.component';
-import {SettingsComponent} from './game/settings/settings.component';
-import {AlertComponent} from './alert/alert.component';
 import {BuildingsComponent} from './game/buildings/buildings.component';
 import {BuildingDetailComponent} from './game/buildings/building-details/building-detail.component';
 import {BuildingComponent} from './game/buildings/building/building.component';
->>>>>>> buildings-HonzaDudek
+
 
 describe('AppComponent', () => {
 
@@ -44,14 +38,11 @@ describe('AppComponent', () => {
         GameComponent,
         ResourcesComponent,
         SettingsComponent,
-<<<<<<< HEAD
-        AlertComponent
-=======
         AlertComponent,
         BuildingsComponent,
         BuildingDetailComponent,
         BuildingComponent
->>>>>>> buildings-HonzaDudek
+
       ],
       imports: [
         RouterTestingModule.withRoutes([]),
@@ -82,12 +73,10 @@ describe('AppComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app.title).toEqual('Vulpes|Tribes');
   });
-<<<<<<< HEAD
 
   it('should have the router outlet ', () => {
     let de = fixture.debugElement.query(By.directive(RouterOutlet));
     expect(de).not.toBe(null);
   });
-=======
->>>>>>> buildings-HonzaDudek
+
 });

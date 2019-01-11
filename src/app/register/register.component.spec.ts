@@ -8,27 +8,19 @@ import {AppRoutingModule} from '../app.routes';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {HttpClientModule} from '@angular/common/http';
-import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
-import {InMemoryUsersService} from '../_helpers/InMemoryUsersService';
 import {LogoutComponent} from '../logout/logout.component';
 import {APP_BASE_HREF} from '@angular/common';
-<<<<<<< HEAD
+
 import {GameComponent} from '../game/game.component';
 import {HeaderComponent} from '../header/header.component';
 import {ResourcesComponent} from '../game/resources/resources.component';
 import {SettingsComponent} from '../game/settings/settings.component';
 import {AlertComponent} from '../alert/alert.component';
 import {RouterTestingModule} from '@angular/router/testing';
-=======
-import {HeaderComponent} from '../header/header.component';
-import {GameComponent} from '../game/game.component';
-import {ResourcesComponent} from '../game/resources/resources.component';
-import {SettingsComponent} from '../game/settings/settings.component';
-import {AlertComponent} from '../alert/alert.component';
 import {BuildingsComponent} from '../game/buildings/buildings.component';
 import {BuildingDetailComponent} from '../game/buildings/building-details/building-detail.component';
 import {BuildingComponent} from '../game/buildings/building/building.component';
->>>>>>> buildings-HonzaDudek
+
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
@@ -45,14 +37,10 @@ describe('RegisterComponent', () => {
         GameComponent,
         ResourcesComponent,
         SettingsComponent,
-<<<<<<< HEAD
-        AlertComponent
-=======
         AlertComponent,
         BuildingsComponent,
         BuildingDetailComponent,
         BuildingComponent
->>>>>>> buildings-HonzaDudek
       ],
       imports: [
         BrowserModule,
@@ -62,7 +50,6 @@ describe('RegisterComponent', () => {
         HttpModule,
         HttpClientModule,
         RouterTestingModule.withRoutes([]),
-        HttpClientInMemoryWebApiModule.forRoot(InMemoryUsersService)
       ],
       providers: [
         { provide: APP_BASE_HREF, useValue : '/' }
