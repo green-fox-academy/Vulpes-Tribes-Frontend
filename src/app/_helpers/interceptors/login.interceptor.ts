@@ -27,11 +27,12 @@ export class LoginInterceptor implements HttpInterceptor {
       (req.body.username.length > 0 &&
         req.body.password.length > 0)) {
       if (this.checkUser(req.body.username, req.body.password)) {
+        console.log('test passed');
         return this.sendResponse({
           id: 1,
           tribes_token: this.generateToken()
-
         }, 200);
+
       } else {
         return throwError({error: {message: 'No such user ' + req.body.username + '!'}});
       }
