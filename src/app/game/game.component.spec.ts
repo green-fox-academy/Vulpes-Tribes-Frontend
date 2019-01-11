@@ -21,11 +21,13 @@ import {BuildingComponent} from './buildings/building/building.component';
 import {BuildingDetailComponent} from './buildings/building-details/building-detail.component';
 import {ModalService} from './buildings/building-details/modal.service';
 import {DomService} from './buildings/building-details/domService';
+import {BuildingFactory} from '../_helpers/factories/building.factory';
 
 
 
 describe('GameComponent', () => {
   let component: GameComponent;
+  let buildingsComponent: BuildingsComponent;
   let fixture: ComponentFixture<GameComponent>;
 
   beforeEach(async(() => {
@@ -62,6 +64,11 @@ describe('GameComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(GameComponent);
+    buildingsComponent.buildings = [
+      new BuildingFactory().createBuildingComponent(123, 'mine'),
+      new BuildingFactory().createBuildingComponent(124, 'academy')
+
+    ];
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
