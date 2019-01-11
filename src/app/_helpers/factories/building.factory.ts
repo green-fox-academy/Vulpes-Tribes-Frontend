@@ -8,6 +8,7 @@ export class BuildingFactory {
   createBuildingComponent(id: number, type: string): Building {
     let newBuilding = new Building();
     newBuilding.id = id;
+    console.log(type);
     if (type === 'mine') {
       newBuilding.type = 'mine';
     } else if (type === 'factory') {

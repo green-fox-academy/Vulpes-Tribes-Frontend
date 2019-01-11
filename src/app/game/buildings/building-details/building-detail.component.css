@@ -57,13 +57,14 @@ app-building-detail {
 }
 
 #overlay {
-  position: absolute;
-  top: 60px;
+  position: fixed;
+  top: 0;
   left:  0;
   z-index:  99;
   background:  rgba(0,0,0,0.8);
   width:  100vw;
   height: 100vh;
+  overflow: hidden;
 }
 
 .building__details--table {
