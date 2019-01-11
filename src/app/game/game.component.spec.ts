@@ -19,6 +19,8 @@ import {APP_BASE_HREF} from '@angular/common';
 import {BuildingsComponent} from './buildings/buildings.component';
 import {BuildingComponent} from './buildings/building/building.component';
 import {BuildingDetailComponent} from './buildings/building-details/building-detail.component';
+import {ModalService} from './buildings/building-details/modal.service';
+import {DomService} from './buildings/building-details/domService';
 
 
 
@@ -50,7 +52,9 @@ describe('GameComponent', () => {
         HttpClientModule,
       ],
       providers: [
-        { provide: APP_BASE_HREF, useValue : '/' }
+        { provide: APP_BASE_HREF, useValue : '/' },
+        ModalService,
+        DomService
       ]
     })
       .compileComponents();

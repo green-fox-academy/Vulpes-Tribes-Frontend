@@ -9,6 +9,7 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {Building} from '../../../_models/building.model';
 import {Component} from '@angular/core';
+import {BuildingFactory} from '../../../_helpers/factories/building.factory';
 
 describe('BuildingDetailComponent', () => {
   @Component({
@@ -16,7 +17,7 @@ describe('BuildingDetailComponent', () => {
     template: `<app-building-detail [building]="building"></app-building-detail>`
   })
   class TestHostComponent {
-    building = new Building(123, 'mine');
+    building = new BuildingFactory().createBuildingComponent(123, 'mine');
   }
 
   let component: BuildingDetailComponent;

@@ -15,6 +15,9 @@ import {AppRoutingModule} from '../app.routes';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {APP_BASE_HREF} from '@angular/common';
+import {BuildingsComponent} from '../game/buildings/buildings.component';
+import {BuildingComponent} from '../game/buildings/building/building.component';
+import {BuildingDetailComponent} from '../game/buildings/building-details/building-detail.component';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -31,7 +34,12 @@ describe('HeaderComponent', () => {
         GameComponent,
         ResourcesComponent,
         SettingsComponent,
-        AlertComponent],
+        AlertComponent,
+        BuildingsComponent,
+        BuildingComponent,
+        BuildingDetailComponent
+      ],
+
       imports: [
         RouterTestingModule.withRoutes([]),
         BrowserModule,

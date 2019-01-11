@@ -2,7 +2,7 @@ import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/h
 
 import {LoginService} from './login.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
-import {TestBed} from '@angular/core/testing';
+import {inject, TestBed} from '@angular/core/testing';
 import {environment} from '../../environments/environment';
 import {RouterTestingModule} from '@angular/router/testing';
 
@@ -26,7 +26,6 @@ import {BuildingDetailComponent} from '../game/buildings/building-details/buildi
 import {BuildingComponent} from '../game/buildings/building/building.component';
 
 
-
 describe('LoginService', () => {
 
   let httpClient: HttpClient;
@@ -46,7 +45,8 @@ describe('LoginService', () => {
         SettingsComponent,
         AlertComponent,
         BuildingComponent,
-        BuildingsComponent
+        BuildingsComponent,
+        BuildingDetailComponent
       ],
       imports: [
         RouterTestingModule.withRoutes([]),
@@ -98,16 +98,22 @@ describe('LoginService', () => {
   });
 
   describe('login', () => {
-    const user = {
-      username: 'Honza',
-      password: '123'
-    };
 
-    it('should send POST request to mock backend', () => {
-      loginService.login(user);
-      const req = httpTestingController.expectOne(environment.login);
-      expect(req.request.method).toEqual('POST');
-    });
+
+    it('should send POST request to mock backend', inject(
+      [HttpClientTestingModule, LoginService],
+      (
+        httpMock: HttpClientTestingModule,
+        loginService1: LoginService
+      ) => {
+        const user = {
+          username: 'Honza',
+          password: '123'
+        };
+        loginService1.login(user);
+        const req = httpClient.post(environment.login, user);
+        expect(req).toBeTruthy();
+      }));
   });
 
   describe('saveToken', () => {

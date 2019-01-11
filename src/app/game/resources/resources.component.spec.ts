@@ -16,6 +16,9 @@ import {HttpModule} from '@angular/http';
 import {HttpClientModule} from '@angular/common/http';
 import {APP_BASE_HREF} from '@angular/common';
 import {FormsModule} from '@angular/forms';
+import {BuildingsComponent} from '../buildings/buildings.component';
+import {BuildingComponent} from '../buildings/building/building.component';
+import {BuildingDetailComponent} from '../buildings/building-details/building-detail.component';
 
 describe('ResourcesComponent', () => {
   let component: ResourcesComponent;
@@ -31,7 +34,11 @@ describe('ResourcesComponent', () => {
         GameComponent,
         ResourcesComponent,
         SettingsComponent,
-        AlertComponent],
+        AlertComponent,
+        BuildingsComponent,
+        BuildingComponent,
+        BuildingDetailComponent
+      ],
       imports: [
         RouterTestingModule.withRoutes([]),
         BrowserModule,
