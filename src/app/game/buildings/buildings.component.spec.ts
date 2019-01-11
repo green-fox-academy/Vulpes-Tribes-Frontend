@@ -19,10 +19,17 @@ import {GameComponent} from '../game.component';
 import {ResourcesComponent} from '../resources/resources.component';
 import {SettingsComponent} from '../settings/settings.component';
 import {AlertComponent} from '../../alert/alert.component';
+import {BuildingsService} from './buildings.service';
+import {Observable, of} from 'rxjs';
+import {Building} from '../../_models/building.model';
+import {BuildingResponseMock} from '../../_helpers/mocks/buildingResponse.mock';
 
 describe('BuildingsComponent', () => {
   let component: BuildingsComponent;
   let fixture: ComponentFixture<BuildingsComponent>;
+  let service: BuildingsService;
+  let serviceSpy = jasmine.createSpyObj('BuildingService', ['getBuildings']);
+  let buildingsMock = BuildingResponseMock;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -46,7 +53,11 @@ describe('BuildingsComponent', () => {
         FormsModule,
         HttpClientModule
       ],
-      providers: [ModalService, DomService]
+      providers: [
+        ModalService,
+        BuildingResponseMock,
+        DomService
+      ]
     })
       .compileComponents();
   }));
@@ -54,10 +65,18 @@ describe('BuildingsComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(BuildingsComponent);
     component = fixture.componentInstance;
+    service = TestBed.get(BuildingsService);
+    buildingsMock = TestBed.get(BuildingResponseMock);
+    spyOn(service, 'getBuildings').and.returnValue(of(buildingsMock));
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the Buildings component', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('getBuildings method on initialization', () => {
+    expect(service.getBuildings).toHaveBeenCalled();
+
   });
 });

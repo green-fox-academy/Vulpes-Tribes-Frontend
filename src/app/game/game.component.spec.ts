@@ -1,6 +1,4 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-
-
 import { GameComponent } from './game.component';
 import {AppComponent} from '../app.component';
 import {LoginComponent} from '../login/login.component';
@@ -29,6 +27,8 @@ import {BuildingsService} from './buildings/buildings.service';
 describe('GameComponent', () => {
   let component: GameComponent;
   let fixture: ComponentFixture<GameComponent>;
+  let buildingsComponent: BuildingsComponent;
+  let buildingsService: BuildingsService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -68,6 +68,9 @@ describe('GameComponent', () => {
     fixture = TestBed.createComponent(GameComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    buildingsComponent = TestBed.get(BuildingsComponent);
+    buildingsService = TestBed.get(BuildingsService);
+    buildingsService.getBuildings();
   });
 
   it('should create', () => {

@@ -12,27 +12,21 @@ import {AlertService} from '../../alert/alert.service';
 })
 export class BuildingsComponent implements OnInit, OnChanges {
 
-  buildings;
+  buildings: Building[];
 
   @Output() building: Building;
 
   constructor(private buildingsService: BuildingsService,
               private alertService: AlertService,
               private modalService: ModalService) {
-
   }
 
   ngOnInit() {
-    console.log('Buildings component initialized');
-    this.buildingsService.getBuildings().subscribe(response =>
-      this.buildings = {...response.body});
-    console.log(this.buildings);
+    this.getBuildings();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.buildingsService.getBuildings().subscribe(response =>
-      this.buildings = {...response.body});
-    console.log(this.buildings);
+    this.getBuildings();
   }
 
   initBuildingModal(building: Building): Building {
@@ -43,7 +37,12 @@ export class BuildingsComponent implements OnInit, OnChanges {
   createBuilding(buildingType: string) {
     this.buildingsService.createBuilding(buildingType)
       .subscribe(response => this.alertService.success(response.type + ' was created successfully'));
-    console.log(this.buildings);
   }
+
+  getBuildings() {
+    this.buildingsService.getBuildings().subscribe(response =>
+      this.buildings = {...response.body});
+  }
+
 
 }
