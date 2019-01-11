@@ -20,6 +20,8 @@ export class BuildingsService {
 
   createBuilding(buildingType: string): Observable<any> {
     console.log('Call to create new building made');
-    return this.http.post<any>(environment.createBuilding, buildingType);
+    return this.http.post<any>(environment.createBuilding, {
+      type: buildingType
+    });
   }
 }
