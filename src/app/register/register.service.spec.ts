@@ -8,7 +8,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from '../app.routes';
 import {FormsModule} from '@angular/forms';
 
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 
 import {LogoutComponent} from '../logout/logout.component';
 
@@ -23,7 +23,6 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {BuildingsComponent} from '../game/buildings/buildings.component';
 import {BuildingDetailComponent} from '../game/buildings/building-details/building-detail.component';
 import {BuildingComponent} from '../game/buildings/building/building.component';
-
 
 describe('RegisterService', () => {
   beforeEach(() => TestBed.configureTestingModule({
@@ -58,6 +57,4 @@ describe('RegisterService', () => {
     const service: RegisterService = TestBed.get(RegisterService);
     expect(service).toBeTruthy();
   });
-
-
 });

@@ -32,7 +32,7 @@ describe('LoginService', () => {
   let httpTestingController: HttpTestingController;
   let loginService: LoginService;
 
-  beforeEach(() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
@@ -62,9 +62,6 @@ describe('LoginService', () => {
       ]
     });
 
-    httpClient = TestBed.get(HttpClient);
-    httpTestingController = TestBed.get(HttpTestingController);
-    loginService = TestBed.get(LoginService);
 
 
     let store = {};
@@ -93,6 +90,10 @@ describe('LoginService', () => {
 
   });
 
+  beforeEach(() => {
+    loginService = TestBed.get(LoginService);
+  });
+
   afterEach(() => {
     httpTestingController.verify();
   });
@@ -100,20 +101,17 @@ describe('LoginService', () => {
   describe('login', () => {
 
 
-    it('should send POST request to mock backend', inject(
-      [HttpClientTestingModule, LoginService],
-      (
-        httpMock: HttpClientTestingModule,
-        loginService1: LoginService
-      ) => {
+    it('should send POST request to mock backend', () => {
+        httpTestingController = TestBed.get(HttpTestingController);
+        httpClient = TestBed.get(HttpClient);
         const user = {
           username: 'Honza',
           password: '123'
         };
-        loginService1.login(user);
+        loginService.login(user);
         const req = httpClient.post(environment.login, user);
         expect(req).toBeTruthy();
-      }));
+      });
   });
 
   describe('saveToken', () => {
