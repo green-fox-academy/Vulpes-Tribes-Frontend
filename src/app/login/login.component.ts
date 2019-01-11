@@ -1,7 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {LoginService} from './login.service';
-import {environment} from '../../environments/environment';
 
 @Component({
   selector: 'app-login',

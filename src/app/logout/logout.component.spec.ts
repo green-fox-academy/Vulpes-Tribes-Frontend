@@ -1,6 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { LogoutComponent } from './logout.component';
+import {LogoutComponent} from './logout.component';
+
 import {AppComponent} from '../app.component';
 import {LoginComponent} from '../login/login.component';
 import {RegisterComponent} from '../register/register.component';
@@ -10,7 +11,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {HttpClientModule} from '@angular/common/http';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
-import {InMemoryUsersService} from '../_helpers/InMemoryUsersService';
 import {CustomHeaders} from '../_models/head.model';
 import {APP_BASE_HREF} from '@angular/common';
 import {GameComponent} from '../game/game.component';
@@ -19,6 +19,10 @@ import {ResourcesComponent} from '../game/resources/resources.component';
 import {SettingsComponent} from '../game/settings/settings.component';
 import {AlertComponent} from '../alert/alert.component';
 import {RouterTestingModule} from '@angular/router/testing';
+import {BuildingsComponent} from '../game/buildings/buildings.component';
+import {BuildingDetailComponent} from '../game/buildings/building-details/building-detail.component';
+import {BuildingComponent} from '../game/buildings/building/building.component';
+
 
 describe('LogoutComponent', () => {
   let component: LogoutComponent;
@@ -35,7 +39,10 @@ describe('LogoutComponent', () => {
         GameComponent,
         ResourcesComponent,
         SettingsComponent,
-        AlertComponent
+        AlertComponent,
+        BuildingsComponent,
+        BuildingDetailComponent,
+        BuildingComponent
       ],
       imports: [
         RouterTestingModule.withRoutes([]),
@@ -43,16 +50,14 @@ describe('LogoutComponent', () => {
         AppRoutingModule,
         FormsModule,
         ReactiveFormsModule,
-        HttpModule,
         HttpClientModule,
-        HttpClientInMemoryWebApiModule.forRoot(InMemoryUsersService)
       ],
       providers: [
         CustomHeaders,
-        { provide: APP_BASE_HREF, useValue : '/' }
+        {provide: APP_BASE_HREF, useValue: '/'}
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

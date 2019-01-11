@@ -10,8 +10,8 @@ import {
 } from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable, throwError} from 'rxjs';
-import {User} from '../_models/user.model';
-import {BackendResponse} from '../_models/response.model';
+import {User} from '../../_models/user.model';
+import {BackendResponse} from '../../_models/response.model';
 
 const users: User[] = [
   {userId: 1, username: 'Honza', kingdomId: 1, kingdomName: 'Honza\'s kingdom', password: '12345'},

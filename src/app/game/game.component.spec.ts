@@ -1,6 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {GameComponent} from './game.component';
+
+import { GameComponent } from './game.component';
 import {AppComponent} from '../app.component';
 import {LoginComponent} from '../login/login.component';
 import {LogoutComponent} from '../logout/logout.component';
@@ -18,6 +19,10 @@ import {HttpClientModule} from '@angular/common/http';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {InMemoryUsersService} from '../_helpers/InMemoryUsersService';
 import {APP_BASE_HREF} from '@angular/common';
+import {BuildingsComponent} from './buildings/buildings.component';
+import {BuildingDetailComponent} from './buildings/building-details/building-detail.component';
+import {BuildingComponent} from './buildings/building/building.component';
+
 
 describe('GameComponent', () => {
   let component: GameComponent;

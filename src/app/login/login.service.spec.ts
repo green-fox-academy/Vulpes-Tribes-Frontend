@@ -5,11 +5,12 @@ import {HttpClientTestingModule, HttpTestingController} from '@angular/common/ht
 import {TestBed} from '@angular/core/testing';
 import {environment} from '../../environments/environment';
 import {RouterTestingModule} from '@angular/router/testing';
+
 import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from '../app.routes';
 import {FormsModule} from '@angular/forms';
-import {RegisterService} from '../register/register.service';
-import {LoginInterceptor} from '../_helpers/login.interceptor';
+import {LoginInterceptor} from '../_helpers/interceptors/login.interceptor';
+
 import {AppComponent} from '../app.component';
 import {LoginComponent} from './login.component';
 import {LogoutComponent} from '../logout/logout.component';
@@ -19,6 +20,10 @@ import {GameComponent} from '../game/game.component';
 import {ResourcesComponent} from '../game/resources/resources.component';
 import {SettingsComponent} from '../game/settings/settings.component';
 import {AlertComponent} from '../alert/alert.component';
+
+import {BuildingsComponent} from '../game/buildings/buildings.component';
+import {BuildingDetailComponent} from '../game/buildings/building-details/building-detail.component';
+
 
 
 describe('LoginService', () => {

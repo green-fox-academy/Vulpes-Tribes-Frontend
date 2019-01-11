@@ -17,7 +17,13 @@ import {GameComponent} from '../game/game.component';
 import {ResourcesComponent} from '../game/resources/resources.component';
 import {SettingsComponent} from '../game/settings/settings.component';
 import {AlertComponent} from '../alert/alert.component';
+<<<<<<< HEAD
 import {RouterTestingModule} from '@angular/router/testing';
+=======
+import {BuildingsComponent} from '../game/buildings/buildings.component';
+import {BuildingDetailComponent} from '../game/buildings/building-details/building-detail.component';
+import {BuildingComponent} from '../game/buildings/building/building.component';
+>>>>>>> buildings-HonzaDudek
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -34,7 +40,14 @@ describe('LoginComponent', () => {
         GameComponent,
         ResourcesComponent,
         SettingsComponent,
+<<<<<<< HEAD
         AlertComponent
+=======
+        AlertComponent,
+        BuildingsComponent,
+        BuildingDetailComponent,
+        BuildingComponent
+>>>>>>> buildings-HonzaDudek
       ],
       imports: [
         RouterTestingModule.withRoutes([]),

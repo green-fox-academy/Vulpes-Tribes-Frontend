@@ -1,0 +1,88 @@
+.hidden{
+  display:none;
+}
+.show{
+  display:block;
+}
+
+#modal-container {
+  position:  fixed;
+  top: 300px;
+  left: 50%;
+  width: 375px;
+  background: white;
+  margin-left: -187.5px;
+  text-align: center;
+  box-shadow: 0 0 2px 1px black;
+  z-index: 100;
+  border-radius: 10px;
+}
+
+app-building-detail {
+  width: 50%;
+  margin-top: 12.5%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 75%;
+
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px  rgba(255, 255, 255, 0.8) solid;
+
+}
+
+.building__details button {
+  width: 100px;
+  height: 30px;
+
+  margin: 15px auto;
+
+  background: #FD8B4F;
+  color: white;
+  border-radius: 10px;
+
+  font-weight: bold;
+}
+
+.building__details button:hover {
+  cursor: pointer;
+}
+
+.building__details button:last-child {
+  background: #67A835;
+}
+
+.building__details img {
+  width: 50%;
+  margin: 20px auto;
+}
+
+#overlay {
+  position: absolute;
+  top: 60px;
+  left:  0;
+  z-index:  99;
+  background:  rgba(0,0,0,0.8);
+  width:  100vw;
+  height: 100vh;
+}
+
+.building__details--table {
+  width: 80%;
+  margin-left: 10%;
+}
+
+.building__details--table thead {
+  text-align: center;
+  height: 30px;
+  font-weight: bold;
+}
+
+.building__details--tableRow {
+  text-align: left;
+}
+
+.building__details--tableRow td:last-child{
+  text-align: right;
+}
+
+
