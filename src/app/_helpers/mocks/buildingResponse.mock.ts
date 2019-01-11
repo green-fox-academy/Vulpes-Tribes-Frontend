@@ -1,5 +1,6 @@
 import {Building} from '../../_models/building.model';
 import {OnInit} from '@angular/core';
+import {BuildingFactory} from '../factories/building.factory';
 
 const buildings = [
   {
@@ -51,7 +52,7 @@ export class BuildingResponseMock implements OnInit {
   }
 
   createBuilding(type: string): Building {
-    const newBuilding = new Building(this.buildings.length, type);
+    const newBuilding = new BuildingFactory().createBuildingComponent(this.buildings.length, type);
     buildings.push(newBuilding);
     return newBuilding;
   }
