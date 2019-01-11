@@ -1,3 +1,19 @@
-<p>
-  troops works!
-</p>
+<div class="troops-container">
+  <div class="unit">
+    <img src="../../../assets/images/troopbg.svg">
+    <p>Attack tbd</p>
+    <p>Defence tbd</p>
+    <p>Sustenance tbd</p>
+  </div>
+  <div class="troops">
+    <li *ngFor="let troop of troops" (click)="onSelect(troop)">
+      <div class="side">
+        <img src="../../../assets/images/troops.svg">
+      </div>
+      <div class="side">
+        <p>ID: {{troop.id}}, level: {{troop.level}}</p>
+      </div>
+    </li>
+  </div>
+</div>
+<p>{{level1troops}}</p>

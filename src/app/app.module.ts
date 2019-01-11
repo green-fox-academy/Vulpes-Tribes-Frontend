@@ -28,7 +28,8 @@ import { AlertComponent } from './alert/alert.component';
 import {AlertService} from './alert/alert.service';
 import { ResourceInterceptor } from './_helpers/resources.interceptor';
 import {WelcomeScreenComponent} from './welcome-screen/welcome-screen.component';
-import { TroopsComponent } from './troops/troops.component';
+import { TroopsComponent } from './game/troops/troops.component';
+import { TroopComponent } from './game/troops/troop/troop.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { TroopsComponent } from './troops/troops.component';
     SettingsComponent,
     AlertComponent,
     WelcomeScreenComponent,
-    TroopsComponent
+    TroopsComponent,
+    TroopComponent
   ],
   imports: [
     BrowserModule,
