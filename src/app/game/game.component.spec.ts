@@ -21,6 +21,8 @@ import {ModalService} from './buildings/building-details/modal.service';
 import {DomService} from './buildings/building-details/domService';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {BuildingsService} from './buildings/buildings.service';
+import {BuildingResponseMock} from '../_helpers/mocks/buildingResponse.mock';
+import {of} from 'rxjs';
 
 
 
@@ -29,8 +31,9 @@ describe('GameComponent', () => {
   let fixture: ComponentFixture<GameComponent>;
   let buildingsComponent: BuildingsComponent;
   let buildingsService: BuildingsService;
+  let buildingsMock = BuildingResponseMock;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
@@ -57,23 +60,28 @@ describe('GameComponent', () => {
         { provide: APP_BASE_HREF, useValue : '/' },
         ModalService,
         DomService,
-        BuildingsService
+        BuildingsService,
+        BuildingsComponent,
+        BuildingResponseMock
       ],
       schemas: [NO_ERRORS_SCHEMA]
     })
       .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(GameComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
     buildingsComponent = TestBed.get(BuildingsComponent);
     buildingsService = TestBed.get(BuildingsService);
-    buildingsService.getBuildings();
+    buildingsMock = TestBed.get(BuildingResponseMock);
+    spyOn(buildingsService, 'getBuildings').and.returnValue(of(buildingsMock));
+    console.log(buildingsComponent.buildings);
+    fixture.detectChanges();
   });
 
   it('should create', () => {
+    console.log(component);
     expect(component).toBeTruthy();
   });
 });

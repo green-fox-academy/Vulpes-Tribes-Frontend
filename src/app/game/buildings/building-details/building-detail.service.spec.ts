@@ -1,10 +1,10 @@
-import { TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { BuildingDetailService } from './building-detail.service';
+import {BuildingDetailService} from './building-detail.service';
 import {BuildingsComponent} from '../buildings.component';
 import {BuildingComponent} from '../building/building.component';
 import {BuildingDetailComponent} from './building-detail.component';
-import {BrowserModule} from '@angular/platform-browser';
+import {BrowserModule, By} from '@angular/platform-browser';
 import {AppRoutingModule} from '../../../app.routes';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
@@ -20,8 +20,13 @@ import {ResourcesComponent} from '../../resources/resources.component';
 import {SettingsComponent} from '../../settings/settings.component';
 import {AlertComponent} from '../../../alert/alert.component';
 
+
 describe('BuildingDetailService', () => {
-  beforeEach(() => TestBed.configureTestingModule({
+  let service: BuildingDetailService;
+  let fixture: ComponentFixture<BuildingDetailComponent>;
+  let buildingDetailComponent: BuildingDetailComponent;
+
+  beforeEach(async () => TestBed.configureTestingModule({
     declarations: [
       AppComponent,
       LoginComponent,
@@ -48,8 +53,25 @@ describe('BuildingDetailService', () => {
     ]
   }));
 
+  beforeEach(() => {
+    fixture = TestBed.createComponent(BuildingDetailComponent);
+    buildingDetailComponent = fixture.componentInstance;
+    service = TestBed.get(BuildingDetailService);
+  });
+
   it('should be created', () => {
-    const service: BuildingDetailService = TestBed.get(BuildingDetailService);
     expect(service).toBeTruthy();
+  });
+
+  it('should level up building on click', async () => {
+    spyOn(buildingDetailComponent, 'levelUpBuilding');
+
+    let buttons = fixture.debugElement.queryAll(By.css('button'));
+    console.log(buttons);
+    buttons[1].triggerEventHandler('click', buildingDetailComponent);
+
+    fixture.whenStable().then(() => {
+      expect(buildingDetailComponent.levelUpBuilding).toHaveBeenCalled();
+    });
   });
 });

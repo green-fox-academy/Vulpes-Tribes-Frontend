@@ -28,7 +28,6 @@ describe('BuildingsComponent', () => {
   let component: BuildingsComponent;
   let fixture: ComponentFixture<BuildingsComponent>;
   let service: BuildingsService;
-  let serviceSpy = jasmine.createSpyObj('BuildingService', ['getBuildings']);
   let buildingsMock = BuildingResponseMock;
 
   beforeEach(async(() => {

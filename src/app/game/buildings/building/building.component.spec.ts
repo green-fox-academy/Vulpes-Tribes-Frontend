@@ -18,10 +18,13 @@ import {GameComponent} from '../../game.component';
 import {ResourcesComponent} from '../../resources/resources.component';
 import {SettingsComponent} from '../../settings/settings.component';
 import {AlertComponent} from '../../../alert/alert.component';
+import {Building} from '../../../_models/building.model';
+import {BuildingFactory} from '../../../_helpers/factories/building.factory';
 
 describe('BuildingComponent', () => {
   let component: BuildingComponent;
   let fixture: ComponentFixture<BuildingComponent>;
+  let building: Building;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -47,7 +50,8 @@ describe('BuildingComponent', () => {
       ],
       providers: [
         ModalService,
-        DomService
+        DomService,
+        BuildingFactory
       ]
     })
     .compileComponents();
@@ -56,10 +60,17 @@ describe('BuildingComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(BuildingComponent);
     component = fixture.componentInstance;
+    building = new BuildingFactory().createBuildingComponent(1, 'mine');
+    component.building = building;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+
+  it('should create Building component', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('Building should have id 1', () => {
+    expect(component.building.id).toBe(1);
   });
 });
