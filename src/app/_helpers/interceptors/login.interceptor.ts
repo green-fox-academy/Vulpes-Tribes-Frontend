@@ -10,13 +10,16 @@ import {
 } from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable, throwError} from 'rxjs';
-import {User} from '../_models/user.model';
-import {BackendResponse} from '../_models/response.model';
+import {User} from '../../_models/user.model';
+import {InterceptorUtilities} from '../../_utilities/interceptor.utilities';
+
 
 const users: User[] = [
   {userId: 1, username: 'Honza', kingdomId: 1, kingdomName: 'Honza\'s kingdom', password: '12345'},
   {userId: 2, username: 'Karel', kingdomId: 1, kingdomName: 'Karel\'s kingdom', password: '12345'}
 ];
+
+const utilities = new InterceptorUtilities();
 
 @Injectable()
 export class LoginInterceptor implements HttpInterceptor {
@@ -25,55 +28,32 @@ export class LoginInterceptor implements HttpInterceptor {
     if (req.url.endsWith('/login') &&
       (req.method === 'POST') &&
       (req.body.username.length > 0 &&
-       req.body.password.length > 0)) {
+        req.body.password.length > 0)) {
       if (this.checkUser(req.body.username, req.body.password)) {
-        return new Observable(observer => {
-          observer.next(new HttpResponse<any>(
-            {
-              body:
-                {
-                  id: 1,
-                  tribes_token: this.generateToken()
-                },
-              status: 200
-            }
-          ));
-          observer.complete();
-        });
+        console.log('test passed');
+        return utilities.sendResponse({
+          id: 1,
+          tribes_token: this.generateToken()
+        }, 200);
+
       } else {
-        return throwError({ error: { message: 'No such user ' + req.body.username + '!'} });
+        return throwError({error: {message: 'No such user ' + req.body.username + '!'}});
       }
     } else if (req.url.endsWith('/register')) {
       users.push(new User(req.body.username, (users.length + 1), req.body.password, req.body.kingdom, users.length + 100));
-      return new Observable(
-        observer => {
-          observer.next(new HttpResponse<any>(
-            {
-              body: {
-                id: users[users.length - 1].userId,
-                username: users[users.length - 1].username,
-                kingdom_id: users[users.length - 1].kingdomId,
-                avatar: 'http://avatar.loc/my.png',
-                points: 0,
-                tribes_token: this.generateToken()
-              }
-            }
-          ));
-          observer.complete();
-        });
+      return utilities.sendResponse({
+        id: users[users.length - 1].userId,
+        username: users[users.length - 1].username,
+        kingdom_id: users[users.length - 1].kingdomId,
+        avatar: 'http://avatar.loc/my.png',
+        points: 0,
+        tribes_token: this.generateToken()
+      }, 200);
     } else if (req.url.endsWith('/logout')) {
-      return new Observable(
-        observer => {
-          observer.next(new HttpResponse<any>(
-            {
-              body: {
-                status: 'ok',
-                message: 'Logged out successfully!'
-              }
-            }
-          ));
-          observer.complete();
-        });
+      return utilities.sendResponse({
+        status: 'ok',
+        message: 'Logged out successfully!'
+      }, 200);
     }
     return next.handle(req);
   }

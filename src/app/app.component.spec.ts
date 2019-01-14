@@ -9,6 +9,14 @@ import {LogoutComponent} from './logout/logout.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {CustomHeaders} from './_models/head.model';
 import {APP_BASE_HREF} from '@angular/common';
+import {GameComponent} from './game/game.component';
+import {HeaderComponent} from './header/header.component';
+import {ResourcesComponent} from './game/resources/resources.component';
+import {SettingsComponent} from './game/settings/settings.component';
+import {AlertComponent} from './alert/alert.component';
+import {BuildingsComponent} from './game/buildings/buildings.component';
+import {BuildingDetailComponent} from './game/buildings/building-details/building-detail.component';
+import {BuildingComponent} from './game/buildings/building/building.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -17,7 +25,15 @@ describe('AppComponent', () => {
         AppComponent,
         LoginComponent,
         LogoutComponent,
-        RegisterComponent
+        RegisterComponent,
+        HeaderComponent,
+        GameComponent,
+        ResourcesComponent,
+        SettingsComponent,
+        AlertComponent,
+        BuildingsComponent,
+        BuildingDetailComponent,
+        BuildingComponent
       ],
       imports: [
         BrowserModule,
@@ -42,12 +58,5 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app.title).toEqual('Vulpes|Tribes');
-  });
-
-  it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to Vulpes|Tribes!');
   });
 });

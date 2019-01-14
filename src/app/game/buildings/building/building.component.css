@@ -1,0 +1,20 @@
+img {
+  max-height: 135px;
+  width: 90%;
+  margin: 5px auto;
+}
+
+.building p {
+  text-transform: capitalize;
+}
+
+.building__type {
+  margin-bottom: 0;
+}
+
+.building__level {
+  margin-top: 5px;
+}
+
+
+
