@@ -10,13 +10,11 @@ import {
 export class DomService {
 
   private childComponentRef: any;
-
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
     private appRef: ApplicationRef,
     private injector: Injector
-  ) {
-  }
+  ) { }
 
   public appendComponentTo(parentId: string, child: any, childConfig?: childConfig) {
     // Create a component reference from the component
@@ -46,21 +44,19 @@ export class DomService {
   }
 
 
-  private attachConfig(config, componentRef) {
-    const inputs = config.inputs;
-    const outputs = config.outputs;
-    for (let key in inputs) {
-      console.log(componentRef.instance);
+  private attachConfig(config, componentRef){
+    let inputs = config.inputs;
+    let outputs = config.outputs;
+    for(var key in inputs){
       componentRef.instance[key] = inputs[key];
     }
-    for (let key in outputs) {
+    for(var key in outputs){
       componentRef.instance[key] = outputs[key];
     }
 
   }
 }
-
-interface childConfig {
-  inputs: object,
-  outputs: object
+interface childConfig{
+  inputs:object,
+  outputs:object
 }
