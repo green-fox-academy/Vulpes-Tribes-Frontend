@@ -26,7 +26,7 @@ describe('ResourcesComponent', () => {
   it(`should render 'food' and 'money' from <p>`, () => {
     expect(By.html('p').nativeElement.innerText).toContain('food' || 'money');
   });
-  it(`should render values of the <p> if 'food' or 'money'`, () => {
-    expect();
+  it(`should render values of the <p> if 'food' or 'money' is greater than 0`, () => {
+    expect(By.html('p').nativeElement.innerText).toBeGreaterThan(0);
   });
 });
