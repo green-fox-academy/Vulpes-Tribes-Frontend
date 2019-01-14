@@ -6,7 +6,6 @@ import {LogoutComponent} from '../logout/logout.component';
 import {RegisterComponent} from '../register/register.component';
 import {HeaderComponent} from '../header/header.component';
 import {ResourcesComponent} from './resources/resources.component';
-import {SettingsComponent} from './settings/settings.component';
 import {AlertComponent} from '../alert/alert.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {BrowserModule} from '@angular/platform-browser';
@@ -23,6 +22,7 @@ import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {BuildingsService} from './buildings/buildings.service';
 import {BuildingResponseMock} from '../_helpers/mocks/buildingResponse.mock';
 import {of} from 'rxjs';
+import {KingdomSettingsComponent} from '../kingdom-settings/kingdom-settings.component';
 
 
 
@@ -43,7 +43,7 @@ describe('GameComponent', () => {
         HeaderComponent,
         GameComponent,
         ResourcesComponent,
-        SettingsComponent,
+        KingdomSettingsComponent,
         AlertComponent,
         BuildingsComponent,
         BuildingComponent,

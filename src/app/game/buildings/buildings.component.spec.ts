@@ -17,12 +17,12 @@ import {RegisterComponent} from '../../register/register.component';
 import {HeaderComponent} from '../../header/header.component';
 import {GameComponent} from '../game.component';
 import {ResourcesComponent} from '../resources/resources.component';
-import {SettingsComponent} from '../settings/settings.component';
 import {AlertComponent} from '../../alert/alert.component';
 import {BuildingsService} from './buildings.service';
 import {Observable, of} from 'rxjs';
 import {Building} from '../../_models/building.model';
 import {BuildingResponseMock} from '../../_helpers/mocks/buildingResponse.mock';
+import {KingdomSettingsComponent} from '../../kingdom-settings/kingdom-settings.component';
 
 describe('BuildingsComponent', () => {
   let component: BuildingsComponent;
@@ -40,7 +40,7 @@ describe('BuildingsComponent', () => {
         HeaderComponent,
         GameComponent,
         ResourcesComponent,
-        SettingsComponent,
+        KingdomSettingsComponent,
         AlertComponent,
         BuildingsComponent,
         BuildingComponent,

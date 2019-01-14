@@ -15,11 +15,11 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {HeaderComponent} from './header/header.component';
 import {GameComponent} from './game/game.component';
 import {ResourcesComponent} from './game/resources/resources.component';
-import {SettingsComponent} from './game/settings/settings.component';
 import {AlertComponent} from './alert/alert.component';
 import {BuildingsComponent} from './game/buildings/buildings.component';
 import {BuildingDetailComponent} from './game/buildings/building-details/building-detail.component';
 import {BuildingComponent} from './game/buildings/building/building.component';
+import {KingdomSettingsComponent} from './kingdom-settings/kingdom-settings.component';
 
 
 describe('AppComponent', () => {
@@ -37,7 +37,7 @@ describe('AppComponent', () => {
         HeaderComponent,
         GameComponent,
         ResourcesComponent,
-        SettingsComponent,
+        KingdomSettingsComponent,
         AlertComponent,
         BuildingsComponent,
         BuildingDetailComponent,

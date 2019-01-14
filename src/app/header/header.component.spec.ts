@@ -7,7 +7,6 @@ import {LogoutComponent} from '../logout/logout.component';
 import {RegisterComponent} from '../register/register.component';
 import {GameComponent} from '../game/game.component';
 import {ResourcesComponent} from '../game/resources/resources.component';
-import {SettingsComponent} from '../game/settings/settings.component';
 import {AlertComponent} from '../alert/alert.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {BrowserModule} from '@angular/platform-browser';
@@ -18,6 +17,7 @@ import {APP_BASE_HREF} from '@angular/common';
 import {BuildingsComponent} from '../game/buildings/buildings.component';
 import {BuildingComponent} from '../game/buildings/building/building.component';
 import {BuildingDetailComponent} from '../game/buildings/building-details/building-detail.component';
+import {KingdomSettingsComponent} from '../kingdom-settings/kingdom-settings.component';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -33,7 +33,7 @@ describe('HeaderComponent', () => {
         HeaderComponent,
         GameComponent,
         ResourcesComponent,
-        SettingsComponent,
+        KingdomSettingsComponent,
         AlertComponent,
         BuildingsComponent,
         BuildingComponent,

@@ -11,7 +11,7 @@ export class ResourcesService implements Resources {
   mockDb() {
     const resources = [
       this.type = 'food',
-      this.amount = 250,
+      this.amount = 500,
       this.generation = 0
     ];
   }
