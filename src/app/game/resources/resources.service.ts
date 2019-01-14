@@ -7,14 +7,13 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ResourcesService {
-
-    resourceInfo: Resources;
+  resourceInfo: Resources;
   showResources: any;
 
-    constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-    getResources(): Observable<any> {
-      console.log('request sent');
-      return this.http.get('/game/resources');
-    }
+  getResources(): Observable<any> {
+    console.log('request sent');
+    return this.http.get('/game/resources');
+  }
 }

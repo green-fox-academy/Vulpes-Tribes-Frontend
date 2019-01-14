@@ -1,6 +1,5 @@
-export class Resources {
+export interface Resources {
   amount: number;
   type: string;
   generation: number;
-
 }

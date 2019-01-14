@@ -1,7 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ResourcesComponent } from './resources.component';
-import { debug } from 'util';
 import { By } from 'selenium-webdriver';
 
 describe('ResourcesComponent', () => {
@@ -10,9 +9,8 @@ describe('ResourcesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ResourcesComponent ]
-    })
-    .compileComponents();
+      declarations: [ResourcesComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -26,6 +24,9 @@ describe('ResourcesComponent', () => {
   });
 
   it(`should render 'food' and 'money' from <p>`, () => {
-    expect(debug.query(By.html('p')).nativeElement.innerText).toContain('food' || 'money');
+    expect(By.html('p').nativeElement.innerText).toContain('food' || 'money');
+  });
+  it(`should render values of the <p> if 'food' or 'money'`, () => {
+    expect();
   });
 });
