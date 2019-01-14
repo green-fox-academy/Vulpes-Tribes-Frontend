@@ -6,14 +6,18 @@
     <p>Sustenance tbd</p>
   </div>
   <div class="troops">
+    <div>
     <li *ngFor="let troop of troops" (click)="onSelect(troop)">
-      <div class="side">
-        <img src="../../../assets/images/troops.svg">
-      </div>
-      <div class="side">
+      <img src="../../../assets/images/troops.svg">
+      <div class="troop_text">
         <p>ID: {{troop.id}}, level: {{troop.level}}</p>
       </div>
     </li>
+    </div>
+    <div>
+    <div class="upgrade_button" *ngFor="let troop of troops">
+      <p>upgrade</p>
+    </div>
+    </div>
   </div>
 </div>
-<p>{{level1troops}}</p>
