@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 
-import { RegisterService } from './register.service';
+import { LogoutService } from './logout.service';
 import {AppComponent} from '../app.component';
 import {LoginComponent} from '../login/login.component';
-import {RegisterComponent} from './register.component';
+import {RegisterComponent} from '../register/register.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from '../app.routes';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -12,9 +12,11 @@ import {HttpClientModule} from '@angular/common/http';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {InMemoryUsersService} from '../_helpers/InMemoryUsersService';
 import {LoginService} from '../login/login.service';
-import {LogoutComponent} from '../logout/logout.component';
+import {RegisterService} from '../register/register.service';
+import {CustomHeaders} from '../_models/head.model';
+import {LogoutComponent} from './logout.component';
 
-describe('RegisterService', () => {
+describe('LogoutService', () => {
   beforeEach(() => TestBed.configureTestingModule({
     declarations: [
       AppComponent,
@@ -32,12 +34,12 @@ describe('RegisterService', () => {
       HttpClientInMemoryWebApiModule.forRoot(InMemoryUsersService)
     ],
     providers: [
-      RegisterService,
+      CustomHeaders
     ]
   }));
 
   it('should be created', () => {
-    const service: RegisterService = TestBed.get(RegisterService);
+    const service: LogoutService = TestBed.get(LogoutService);
     expect(service).toBeTruthy();
   });
 });

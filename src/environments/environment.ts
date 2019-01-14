@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+
+  // Endpoints
+  login: '/login',
+  register: '/register',
+  logout: '/logout',
+  root: '/root',
+  game: '/game',
+
+  // Global variables
+  tribes_token: 'tribes_token',
 };
 
 /*

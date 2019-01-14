@@ -1,9 +1,9 @@
-<form #loginFormElement="ngForm" (ngSubmit)="onSubmit(loginFormElement)">
+<form #loginFormElement="ngForm" (ngSubmit)="onSubmit()">
   <div class="form__row">
     <label for="username">Username</label>
     <input id="username"
            type="text"
-           ngModel
+           [(ngModel)]="user.username"
            name="username"
            required>
   </div>
@@ -11,9 +11,9 @@
     <label for="password">Password</label>
     <input id="password"
            type="password"
-           ngModel
+           [(ngModel)]="user.password"
            name="password"
            required>
   </div>
-  <button type="submit" [disabled]="!loginFormElement.valid">Login</button>
+  <button type="submit" [disabled]="!loginFormElement.form.valid">Login</button>
 </form>

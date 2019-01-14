@@ -1,21 +1,34 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { InMemoryTokenService } from '../_helpers/InMemoryTokenService';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {environment} from '../../environments/environment';
+import {delay} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class LoginService {
 
-  constructor(private http: HttpClient,
-              private token: InMemoryTokenService) { }
+  constructor(private http: HttpClient) {
+  }
 
   login(user) {
-    this.http.post('login', user);
-    this.token.saveToken();
+    this.http.post<any>(environment.login, user, {reportProgress: true})
+      .pipe(
+        delay(5000)
+      )
+      .subscribe(
+        response => {
+          this.saveToken(response.tribes_token);
+        }
+      );
+  }
+
+  saveToken(tokenValue: number) {
+    localStorage.setItem(environment.tribes_token, tokenValue.toString());
   }
 
   isLoggedIn() {
-    return true;
+    return (localStorage.getItem(environment.tribes_token) !== null);
   }
 }
