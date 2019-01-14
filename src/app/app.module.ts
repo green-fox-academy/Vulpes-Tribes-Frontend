@@ -1,14 +1,11 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
 import { AppComponent} from './app.component';
 import { LoginComponent} from './login/login.component';
 import { RegisterComponent} from './register/register.component';
 import { FormsModule} from '@angular/forms';
 import { AppRoutingModule} from './app.routes';
-
 import { HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-
 import { LoginInterceptor} from './_helpers/interceptors/login.interceptor';
 import { LogoutComponent} from './logout/logout.component';
 import { CustomHeaders} from './_models/head.model';
@@ -28,6 +25,8 @@ import { BuildingDetailComponent} from './game/buildings/building-details/buildi
 import { ModalService} from './game/buildings/building-details/modal.service';
 import { DomService} from './game/buildings/building-details/domService';
 import { BuildingComponent } from './game/buildings/building/building.component';
+import { WelcomeScreenComponent} from './welcome-screen/welcome-screen.component';
+import {KingdomSettingsComponent} from './kingdom-settings/kingdom-settings.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +34,8 @@ import { BuildingComponent } from './game/buildings/building/building.component'
     LoginComponent,
     LogoutComponent,
     RegisterComponent,
+    LogoutComponent,
+    KingdomSettingsComponent,
     HeaderComponent,
     GameComponent,
     ResourcesComponent,
@@ -43,6 +44,7 @@ import { BuildingComponent } from './game/buildings/building/building.component'
     BuildingsComponent,
     BuildingDetailComponent,
     BuildingComponent,
+    WelcomeScreenComponent
   ],
   imports: [
     BrowserModule,
