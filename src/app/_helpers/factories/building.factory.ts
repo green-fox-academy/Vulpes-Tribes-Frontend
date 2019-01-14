@@ -5,7 +5,7 @@ export class BuildingFactory {
   constructor() {
   }
 
-  createBuildingComponent(id: number, type: string): Building {
+  createBuilding(id: number, type: string): Building {
     let newBuilding = new Building();
     newBuilding.id = id;
     console.log(type);

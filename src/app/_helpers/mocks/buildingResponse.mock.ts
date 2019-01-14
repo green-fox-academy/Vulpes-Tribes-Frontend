@@ -52,7 +52,7 @@ export class BuildingResponseMock implements OnInit {
   }
 
   createBuilding(type: string): Building {
-    const newBuilding = new BuildingFactory().createBuildingComponent(this.buildings.length, type);
+    const newBuilding = new BuildingFactory().createBuilding(this.buildings.length, type);
     console.log(type);
     buildings.push(newBuilding);
     return newBuilding;
