@@ -16,5 +16,4 @@ export class BuildingComponent implements OnInit {
   ngOnInit() {
     this.imgSrc = '/assets/images/buildings/' + this.building.type + '.svg';
   }
-
 }
