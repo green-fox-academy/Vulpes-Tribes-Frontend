@@ -23,6 +23,7 @@ import {BuildingsService} from './buildings/buildings.service';
 import {BuildingResponseMock} from '../_helpers/mocks/buildingResponse.mock';
 import {of} from 'rxjs';
 import {KingdomSettingsComponent} from '../kingdom-settings/kingdom-settings.component';
+import {WelcomeScreenComponent} from '../welcome-screen/welcome-screen.component';
 
 
 
@@ -47,7 +48,8 @@ describe('GameComponent', () => {
         AlertComponent,
         BuildingsComponent,
         BuildingComponent,
-        BuildingDetailComponent
+        BuildingDetailComponent,
+        WelcomeScreenComponent
       ],
       imports: [
         RouterTestingModule.withRoutes([]),

@@ -2,7 +2,7 @@ import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/h
 
 import {LoginService} from './login.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
-import {inject, TestBed} from '@angular/core/testing';
+import {ComponentFixture, inject, TestBed} from '@angular/core/testing';
 import {environment} from '../../environments/environment';
 import {RouterTestingModule} from '@angular/router/testing';
 
@@ -24,6 +24,7 @@ import {BuildingsComponent} from '../game/buildings/buildings.component';
 import {BuildingDetailComponent} from '../game/buildings/building-details/building-detail.component';
 import {BuildingComponent} from '../game/buildings/building/building.component';
 import {KingdomSettingsComponent} from '../kingdom-settings/kingdom-settings.component';
+import {WelcomeScreenComponent} from '../welcome-screen/welcome-screen.component';
 
 
 describe('LoginService', () => {
@@ -31,6 +32,8 @@ describe('LoginService', () => {
   let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
   let loginService: LoginService;
+  let fixture: ComponentFixture<LoginComponent>;
+  let component: LoginComponent;
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
@@ -46,7 +49,8 @@ describe('LoginService', () => {
         AlertComponent,
         BuildingComponent,
         BuildingsComponent,
-        BuildingDetailComponent
+        BuildingDetailComponent,
+        WelcomeScreenComponent
       ],
       imports: [
         RouterTestingModule.withRoutes([]),
@@ -61,7 +65,6 @@ describe('LoginService', () => {
         {provide: HTTP_INTERCEPTORS, useClass: LoginInterceptor, multi: true},
       ]
     });
-
 
 
     let store = {};
@@ -91,7 +94,10 @@ describe('LoginService', () => {
   });
 
   beforeEach(() => {
+    fixture = TestBed.createComponent(LoginComponent);
     loginService = TestBed.get(LoginService);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
   afterEach(() => {
@@ -100,18 +106,24 @@ describe('LoginService', () => {
 
   describe('login', () => {
 
+    beforeEach(() => {
+      fixture = TestBed.createComponent(LoginComponent);
+      loginService = TestBed.get(LoginService);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+    });
 
     it('should send POST request to mock backend', () => {
-        httpTestingController = TestBed.get(HttpTestingController);
-        httpClient = TestBed.get(HttpClient);
-        const user = {
-          username: 'Honza',
-          password: '123'
-        };
-        loginService.login(user);
-        const req = httpClient.post(environment.login, user);
-        expect(req).toBeTruthy();
-      });
+      httpTestingController = TestBed.get(HttpTestingController);
+      httpClient = TestBed.get(HttpClient);
+      const user = {
+        username: 'Honza',
+        password: '123'
+      };
+      loginService.login(user);
+      const req = httpClient.post(environment.login, user);
+      expect(req).toBeTruthy();
+    });
   });
 
   describe('saveToken', () => {
@@ -127,9 +139,5 @@ describe('LoginService', () => {
       username: 'Honza',
       password: '123',
     };
-
-    it('should redirect to game component upon successful login', () => {
-      loginService.login(user);
-    });
   });
 });

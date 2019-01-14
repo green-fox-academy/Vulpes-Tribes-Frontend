@@ -17,8 +17,9 @@ import {RegisterComponent} from '../../../register/register.component';
 import {HeaderComponent} from '../../../header/header.component';
 import {GameComponent} from '../../game.component';
 import {ResourcesComponent} from '../../resources/resources.component';
-import {SettingsComponent} from '../../settings/settings.component';
 import {AlertComponent} from '../../../alert/alert.component';
+import {KingdomSettingsComponent} from '../../../kingdom-settings/kingdom-settings.component';
+import {WelcomeScreenComponent} from '../../../welcome-screen/welcome-screen.component';
 
 
 describe('BuildingDetailService', () => {
@@ -35,10 +36,11 @@ describe('BuildingDetailService', () => {
       HeaderComponent,
       GameComponent,
       ResourcesComponent,
-      SettingsComponent,
+      KingdomSettingsComponent,
       AlertComponent,
       BuildingsComponent,
       BuildingComponent,
+      WelcomeScreenComponent,
       BuildingDetailComponent
     ],
     imports: [

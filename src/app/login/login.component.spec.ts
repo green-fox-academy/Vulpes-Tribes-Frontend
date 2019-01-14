@@ -20,6 +20,7 @@ import {BuildingsComponent} from '../game/buildings/buildings.component';
 import {BuildingDetailComponent} from '../game/buildings/building-details/building-detail.component';
 import {BuildingComponent} from '../game/buildings/building/building.component';
 import {KingdomSettingsComponent} from '../kingdom-settings/kingdom-settings.component';
+import {WelcomeScreenComponent} from '../welcome-screen/welcome-screen.component';
 
 
 describe('LoginComponent', () => {
@@ -40,7 +41,8 @@ describe('LoginComponent', () => {
         AlertComponent,
         BuildingsComponent,
         BuildingDetailComponent,
-        BuildingComponent
+        BuildingComponent,
+        WelcomeScreenComponent
       ],
       imports: [
         RouterTestingModule.withRoutes([]),

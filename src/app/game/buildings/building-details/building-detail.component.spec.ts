@@ -29,7 +29,7 @@ describe('BuildingDetailComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(BuildingDetailComponent);
     component = fixture.componentInstance;
-    building = new BuildingFactory().createBuildingComponent(123, 'mine');
+    building = new BuildingFactory().createBuilding(123, 'mine');
     component.building = building;
     fixture.detectChanges();
   });
@@ -54,7 +54,4 @@ describe('BuildingDetailComponent', () => {
     expect(component.building.type).toBe('mine');
   });
 
-  it('displayed building started at', () => {
-    expect(component.building.started_at).toBe(Date.now() - 1);
-  });
 });

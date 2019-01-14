@@ -16,10 +16,11 @@ import {RegisterComponent} from '../../../register/register.component';
 import {HeaderComponent} from '../../../header/header.component';
 import {GameComponent} from '../../game.component';
 import {ResourcesComponent} from '../../resources/resources.component';
-import {SettingsComponent} from '../../settings/settings.component';
 import {AlertComponent} from '../../../alert/alert.component';
 import {Building} from '../../../_models/building.model';
 import {BuildingFactory} from '../../../_helpers/factories/building.factory';
+import {KingdomSettingsComponent} from '../../../kingdom-settings/kingdom-settings.component';
+import {WelcomeScreenComponent} from '../../../welcome-screen/welcome-screen.component';
 
 describe('BuildingComponent', () => {
   let component: BuildingComponent;
@@ -36,11 +37,12 @@ describe('BuildingComponent', () => {
         HeaderComponent,
         GameComponent,
         ResourcesComponent,
-        SettingsComponent,
+        KingdomSettingsComponent,
         AlertComponent,
         BuildingsComponent,
         BuildingComponent,
-        BuildingDetailComponent
+        BuildingDetailComponent,
+        WelcomeScreenComponent
       ],
       imports: [
         BrowserModule,
@@ -60,7 +62,7 @@ describe('BuildingComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(BuildingComponent);
     component = fixture.componentInstance;
-    building = new BuildingFactory().createBuildingComponent(1, 'mine');
+    building = new BuildingFactory().createBuilding(1, 'mine');
     component.building = building;
     fixture.detectChanges();
   });
