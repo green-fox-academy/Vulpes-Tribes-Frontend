@@ -11,7 +11,6 @@ import {ResourcesComponent} from '../game/resources/resources.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from '../app.routes';
-import {HttpModule} from '@angular/http';
 import {HttpClientModule} from '@angular/common/http';
 import {APP_BASE_HREF} from '@angular/common';
 import {FormsModule} from '@angular/forms';

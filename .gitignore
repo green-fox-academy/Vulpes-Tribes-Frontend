@@ -123,4 +123,7 @@ fabric.properties
 # Sonarlint plugin
 .idea/sonarlint
 
+#Debug logs
+debug.log
+
 # End of https://www.gitignore.io/api/angular,webstorm,visualstudiocode

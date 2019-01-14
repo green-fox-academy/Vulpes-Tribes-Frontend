@@ -68,9 +68,8 @@ describe('BuildingDetailService', () => {
   it('should level up building on click', async () => {
     spyOn(buildingDetailComponent, 'levelUpBuilding');
 
-    let buttons = fixture.debugElement.queryAll(By.css('button'));
-    console.log(buttons);
-    buttons[1].triggerEventHandler('click', buildingDetailComponent);
+    const button = fixture.debugElement.query(By.css('.button__levelUp'));
+    button.triggerEventHandler('click', buildingDetailComponent);
 
     fixture.whenStable().then(() => {
       expect(buildingDetailComponent.levelUpBuilding).toHaveBeenCalled();
