@@ -14,7 +14,6 @@ import { TokenInterceptor} from './_helpers/interceptors/token.interceptor';
 import { HeaderComponent} from './header/header.component';
 import { GameComponent} from './game/game.component';
 import { ResourcesComponent} from './game/resources/resources.component';
-import { SettingsComponent} from './game/settings/settings.component';
 import { AuthService} from './_helpers/authentication/auth.service';
 import { AlertComponent} from './alert/alert.component';
 import { AlertService} from './alert/alert.service';
@@ -26,7 +25,7 @@ import { ModalService} from './game/buildings/building-details/modal.service';
 import { DomService} from './game/buildings/building-details/domService';
 import { BuildingComponent } from './game/buildings/building/building.component';
 import { WelcomeScreenComponent} from './welcome-screen/welcome-screen.component';
-import {KingdomSettingsComponent} from './kingdom-settings/kingdom-settings.component';
+import { KingdomSettingsComponent} from './kingdom-settings/kingdom-settings.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +38,6 @@ import {KingdomSettingsComponent} from './kingdom-settings/kingdom-settings.comp
     HeaderComponent,
     GameComponent,
     ResourcesComponent,
-    SettingsComponent,
     AlertComponent,
     BuildingsComponent,
     BuildingDetailComponent,

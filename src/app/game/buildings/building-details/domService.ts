@@ -48,7 +48,6 @@ export class DomService {
     let inputs = config.inputs;
     let outputs = config.outputs;
     for(var key in inputs){
-      console.log(componentRef.instance);
       componentRef.instance[key] = inputs[key];
     }
     for(var key in outputs){

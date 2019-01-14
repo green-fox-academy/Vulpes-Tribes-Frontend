@@ -1,10 +1,16 @@
-import {HttpClient} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 
 import {LoginService} from './login.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
-import {TestBed} from '@angular/core/testing';
+import {ComponentFixture, inject, TestBed} from '@angular/core/testing';
 import {environment} from '../../environments/environment';
 import {RouterTestingModule} from '@angular/router/testing';
+
+import {BrowserModule} from '@angular/platform-browser';
+import {AppRoutingModule} from '../app.routes';
+import {FormsModule} from '@angular/forms';
+import {LoginInterceptor} from '../_helpers/interceptors/login.interceptor';
+
 import {AppComponent} from '../app.component';
 import {LoginComponent} from './login.component';
 import {LogoutComponent} from '../logout/logout.component';
@@ -12,11 +18,13 @@ import {RegisterComponent} from '../register/register.component';
 import {HeaderComponent} from '../header/header.component';
 import {GameComponent} from '../game/game.component';
 import {ResourcesComponent} from '../game/resources/resources.component';
-import {SettingsComponent} from '../game/settings/settings.component';
 import {AlertComponent} from '../alert/alert.component';
+
 import {BuildingsComponent} from '../game/buildings/buildings.component';
 import {BuildingDetailComponent} from '../game/buildings/building-details/building-detail.component';
 import {BuildingComponent} from '../game/buildings/building/building.component';
+import {KingdomSettingsComponent} from '../kingdom-settings/kingdom-settings.component';
+import {WelcomeScreenComponent} from '../welcome-screen/welcome-screen.component';
 
 
 describe('LoginService', () => {
@@ -24,8 +32,10 @@ describe('LoginService', () => {
   let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
   let loginService: LoginService;
+  let fixture: ComponentFixture<LoginComponent>;
+  let component: LoginComponent;
 
-  beforeEach(() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
@@ -35,19 +45,26 @@ describe('LoginService', () => {
         HeaderComponent,
         GameComponent,
         ResourcesComponent,
-        SettingsComponent,
+        KingdomSettingsComponent,
         AlertComponent,
+        BuildingComponent,
         BuildingsComponent,
         BuildingDetailComponent,
-        BuildingComponent
+        WelcomeScreenComponent
       ],
-      imports: [HttpClientTestingModule],
-      providers: [LoginService]
+      imports: [
+        RouterTestingModule.withRoutes([]),
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientTestingModule,
+        HttpClientModule
+      ],
+      providers: [
+        LoginService,
+        {provide: HTTP_INTERCEPTORS, useClass: LoginInterceptor, multi: true},
+      ]
     });
-
-    httpClient = TestBed.get(HttpClient);
-    httpTestingController = TestBed.get(HttpTestingController);
-    loginService = TestBed.get(LoginService);
 
 
     let store = {};
@@ -76,20 +93,36 @@ describe('LoginService', () => {
 
   });
 
+  beforeEach(() => {
+    fixture = TestBed.createComponent(LoginComponent);
+    loginService = TestBed.get(LoginService);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
   afterEach(() => {
     httpTestingController.verify();
   });
 
   describe('login', () => {
-    const user = {
-      username: 'Honza',
-      password: '123'
-    };
+
+    beforeEach(() => {
+      fixture = TestBed.createComponent(LoginComponent);
+      loginService = TestBed.get(LoginService);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+    });
 
     it('should send POST request to mock backend', () => {
+      httpTestingController = TestBed.get(HttpTestingController);
+      httpClient = TestBed.get(HttpClient);
+      const user = {
+        username: 'Honza',
+        password: '123'
+      };
       loginService.login(user);
-      const req = httpTestingController.expectOne(environment.login);
-      expect(req.request.method).toEqual('POST');
+      const req = httpClient.post(environment.login, user);
+      expect(req).toBeTruthy();
     });
   });
 
@@ -106,9 +139,5 @@ describe('LoginService', () => {
       username: 'Honza',
       password: '123',
     };
-
-    it('should redirect to game component upon successful login', () => {
-      loginService.login(user);
-    });
   });
 });

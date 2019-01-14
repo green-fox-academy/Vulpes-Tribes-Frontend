@@ -1,23 +1,27 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { LogoutComponent } from './logout.component';
-import { AppComponent} from '../app.component';
-import { LoginComponent} from '../login/login.component';
-import { RegisterComponent} from '../register/register.component';
-import { BrowserModule} from '@angular/platform-browser';
-import { AppRoutingModule} from '../app.routes';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { HttpClientModule} from '@angular/common/http';
-import { CustomHeaders} from '../_models/head.model';
-import { APP_BASE_HREF} from '@angular/common';
-import { HeaderComponent} from '../header/header.component';
-import { GameComponent} from '../game/game.component';
-import { ResourcesComponent} from '../game/resources/resources.component';
-import { SettingsComponent} from '../game/settings/settings.component';
-import { AlertComponent} from '../alert/alert.component';
-import { BuildingsComponent} from '../game/buildings/buildings.component';
-import { BuildingDetailComponent} from '../game/buildings/building-details/building-detail.component';
-import { BuildingComponent} from '../game/buildings/building/building.component';
+import {LogoutComponent} from './logout.component';
+
+import {AppComponent} from '../app.component';
+import {LoginComponent} from '../login/login.component';
+import {RegisterComponent} from '../register/register.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {AppRoutingModule} from '../app.routes';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import {CustomHeaders} from '../_models/head.model';
+import {APP_BASE_HREF} from '@angular/common';
+import {GameComponent} from '../game/game.component';
+import {HeaderComponent} from '../header/header.component';
+import {ResourcesComponent} from '../game/resources/resources.component';
+import {AlertComponent} from '../alert/alert.component';
+import {RouterTestingModule} from '@angular/router/testing';
+import {BuildingsComponent} from '../game/buildings/buildings.component';
+import {BuildingDetailComponent} from '../game/buildings/building-details/building-detail.component';
+import {BuildingComponent} from '../game/buildings/building/building.component';
+import {KingdomSettingsComponent} from '../kingdom-settings/kingdom-settings.component';
+import {WelcomeScreenComponent} from '../welcome-screen/welcome-screen.component';
+
 
 describe('LogoutComponent', () => {
   let component: LogoutComponent;
@@ -33,13 +37,15 @@ describe('LogoutComponent', () => {
         HeaderComponent,
         GameComponent,
         ResourcesComponent,
-        SettingsComponent,
+        KingdomSettingsComponent,
         AlertComponent,
         BuildingsComponent,
         BuildingDetailComponent,
-        BuildingComponent
+        BuildingComponent,
+        WelcomeScreenComponent
       ],
       imports: [
+        RouterTestingModule.withRoutes([]),
         BrowserModule,
         AppRoutingModule,
         FormsModule,
@@ -48,10 +54,10 @@ describe('LogoutComponent', () => {
       ],
       providers: [
         CustomHeaders,
-        { provide: APP_BASE_HREF, useValue : '/' }
+        {provide: APP_BASE_HREF, useValue: '/'}
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -8,25 +8,18 @@ import {DomService} from './domService';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {Building} from '../../../_models/building.model';
-import {Component} from '@angular/core';
+import {BuildingFactory} from '../../../_helpers/factories/building.factory';
 
 describe('BuildingDetailComponent', () => {
-  @Component({
-    selector: 'app-host-component',
-    template: `<app-building-detail [building]="building"></app-building-detail>`
-  })
-  class TestHostComponent {
-    building = new Building(123, 'mine');
-  }
 
   let component: BuildingDetailComponent;
   let fixture: ComponentFixture<BuildingDetailComponent>;
-  let testHostComponent: TestHostComponent;
-  let testHostFixture: ComponentFixture<TestHostComponent>;
+
+  let building: Building;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [BuildingsComponent, BuildingComponent, BuildingDetailComponent, TestHostComponent],
+      declarations: [BuildingsComponent, BuildingComponent, BuildingDetailComponent],
       imports: [HttpClientTestingModule, RouterTestingModule.withRoutes([])],
       providers: [ModalService, DomService]
     })
@@ -34,18 +27,31 @@ describe('BuildingDetailComponent', () => {
   }));
 
   beforeEach(() => {
-    testHostFixture = TestBed.createComponent(TestHostComponent);
-    testHostComponent = testHostFixture.componentInstance;
-    testHostFixture.detectChanges();
-
     fixture = TestBed.createComponent(BuildingDetailComponent);
     component = fixture.componentInstance;
+    building = new BuildingFactory().createBuilding(123, 'mine');
+    component.building = building;
     fixture.detectChanges();
-
-
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('displayed building type should be mine', () => {
+    expect(component.building.type).toBe('mine');
+  });
+
+  it('displayed building id should be 123', () => {
+    expect(component.building.id).toBe(123);
+  });
+
+  it('displayed building should be 1', () => {
+    expect(component.building.level).toBe(1);
+  });
+
+  it('displayed building hp should be 100', () => {
+    expect(component.building.type).toBe('mine');
+  });
+
 });
