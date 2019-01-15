@@ -18,10 +18,10 @@ const APP_ROUTES: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'logout', component: LogoutComponent },
   { path: '**', redirectTo: 'game', pathMatch: 'full', canActivate: [AuthGuard] },
-  {path: 'game', component: GameComponent, canActivate: [AuthGuard], children: [
+  { path: 'game', component: GameComponent, canActivate: [AuthGuard], children: [
     { path: 'settings', component: KingdomSettingsComponent },
     { path: 'resources', component: ResourcesComponent },
-    {path: 'buildings', component: BuildingsComponent, children: [
+    { path: 'buildings', component: BuildingsComponent, children: [
       { path: ':id', component: BuildingDetailComponent },
     ]},
   ],
