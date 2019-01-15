@@ -67,10 +67,7 @@ export class LoginInterceptor implements HttpInterceptor {
   }
 
   checkUser(username, password): boolean {
-    for (const user of users) {
-      if (user.username === username && user.password === password) {
-        return true;
-      }
-    }
+    return users.some(user =>
+      user.username === username && user.password === password);
   }
 }
