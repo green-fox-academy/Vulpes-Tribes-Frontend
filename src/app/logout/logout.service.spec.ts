@@ -24,6 +24,7 @@ import {BuildingDetailComponent} from '../game/buildings/building-details/buildi
 import {CustomHeaders} from '../_models/head.model';
 import {LoginInterceptor} from '../_helpers/interceptors/login.interceptor';
 import {RouterTestingModule} from '@angular/router/testing';
+import {mockLocalStorage, store} from '../_utilities/authTesting.utilities';
 
 
 describe('LogoutService', () => {
@@ -32,6 +33,8 @@ describe('LogoutService', () => {
   let httpTestingController: HttpTestingController;
   let logoutService: LogoutService;
   let router: Router;
+  const mockStore = store;
+  const mockStorage = mockLocalStorage;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -70,29 +73,15 @@ describe('LogoutService', () => {
     router = TestBed.get(Router);
     httpTestingController = TestBed.get(HttpTestingController);
 
-    let store = {};
-    const mockLocalStorage = {
-      getItem: (key: string): string => {
-        return key in store ? store[key] : null;
-      },
-      setItem: (key: string, value: string) => {
-        store[key] = `${value}`;
-      },
-      removeItem: (key: string) => {
-        delete store[key];
-      },
-      clear: () => {
-        store = {};
-      }
-    };
+
     spyOn(localStorage, 'getItem')
-      .and.callFake(mockLocalStorage.getItem);
+      .and.callFake(mockStorage.getItem);
     spyOn(localStorage, 'setItem')
-      .and.callFake(mockLocalStorage.setItem);
+      .and.callFake(mockStorage.setItem);
     spyOn(localStorage, 'removeItem')
-      .and.callFake(mockLocalStorage.removeItem);
+      .and.callFake(mockStorage.removeItem);
     spyOn(localStorage, 'clear')
-      .and.callFake(mockLocalStorage.clear);
+      .and.callFake(mockStorage.clear);
 
   });
 

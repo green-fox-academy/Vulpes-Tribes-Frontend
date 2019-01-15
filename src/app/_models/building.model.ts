@@ -5,4 +5,10 @@ export class Building {
   hp: number;
   started_at: number;
   finished_at: number;
+
+
+
+  constructor() {
+
+  }
 }
