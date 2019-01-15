@@ -8,13 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResourcesComponent implements OnInit {
 
-  constructor(private _http: HttpClient) {
+  constructor(private http: HttpClient) {
   }
 
   ngOnInit() {
-    this._http.get('https://api.myjson.com/bins/7xq2x1').subscribe(() => {
+    this.http.get('https://api.myjson.com/bins/7xq2x1').subscribe(() => {
       console.log('Http Call is success from component');
-    },                                                             (error) => {
+    },                                                            (error) => {
       console.log('Http Call is failed from component');
     });
   }

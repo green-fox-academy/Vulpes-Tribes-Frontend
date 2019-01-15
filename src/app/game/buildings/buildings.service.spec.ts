@@ -46,11 +46,9 @@ describe('BuildingsService', () => {
   it('Should create a new building', () => {
     let building: Building;
 
-    service.createBuilding('mine').subscribe(response => {
+    service.createBuilding('mine').subscribe((response) => {
       building = response;
       expect(building.type).not.toBe(null);
     });
-
   });
-
 });

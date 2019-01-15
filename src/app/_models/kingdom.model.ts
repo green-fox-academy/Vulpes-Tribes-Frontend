@@ -8,8 +8,8 @@ export class Kingdom {
         type: string,
         level: number,
         hp: number,
-        started_at: number,
-        finished_at: number,
+        startedAt: number,
+        finishedAt: number,
       }
     ];
   resources: [
@@ -26,8 +26,8 @@ export class Kingdom {
         hp: number,
         attack: number,
         defence: number,
-        started_at: number,
-        finished_at: number,
+        startedAt: number,
+        finishedAt: number,
       }
     ];
   location: {
