@@ -18,12 +18,12 @@ export class LoginService {
   login(user) {
     this.http.post<any>(environment.login, user, { reportProgress: true })
       .subscribe(
-        response => {
+        (response) => {
           this.saveToken(response.responseBody.tribes_token);
           this.router.navigate(['/game']);
         },
-        error => {
-          this.alert.error('No such user ' + user.username + '!');
+        (error) => {
+          this.alert.error(`No such user ${user.username}!`);
         },
       );
   }

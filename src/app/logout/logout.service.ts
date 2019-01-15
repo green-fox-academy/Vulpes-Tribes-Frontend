@@ -24,7 +24,7 @@ export class LogoutService {
 
   logout() {
     this.http.delete<any>('/logout', httpOptions).subscribe(
-      response => {
+      () => {
         localStorage.removeItem(environment.tribes_token);
         this.router.navigate(['/login']);
         this.alert.success('Logged out successfully!');

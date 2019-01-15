@@ -31,4 +31,3 @@ export class BuildingsInterceptor implements HttpInterceptor {
     return next.handle(req);
   }
 }
-

@@ -18,7 +18,7 @@ export class RegisterService {
   createUser(user) {
     this.http.post<any>(environment.register, user)
       .subscribe(
-        response => {
+        (response) => {
           this.login.saveToken(response.tribes_token);
           this.router.navigate(['/game']);
         },

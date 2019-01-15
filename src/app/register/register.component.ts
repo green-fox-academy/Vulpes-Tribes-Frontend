@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSumbit() {
+  onSubmit() {
     this.registerService.createUser(this.user);
   }
 

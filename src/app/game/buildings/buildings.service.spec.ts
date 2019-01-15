@@ -1,11 +1,7 @@
 import { TestBed } from '@angular/core/testing';
-
 import { BuildingsService } from './buildings.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { BuildingResponseMock } from '../../_helpers/mocks/buildingResponse.mock';
-import { Observable } from 'rxjs';
-import { any } from 'codelyzer/util/function';
 import { Building } from '../../_models/building.model';
 
 describe('BuildingsService', () => {
@@ -33,7 +29,7 @@ describe('BuildingsService', () => {
 
   it('should return list of buildings from the database', () => {
     let buildings: Building[];
-    service.getBuildings().subscribe(response => {
+    service.getBuildings().subscribe((response) => {
       buildings.push(response.body);
       expect(buildings[0]).toEqual(
         {
@@ -41,8 +37,8 @@ describe('BuildingsService', () => {
           type: 'townhall',
           level: 1,
           hp: 100,
-          started_at: 1231232312,
-          finished_at: 7652146122,
+          startedAt: 1231232312,
+          finishedAt: 7652146122,
         });
     });
   });
@@ -58,4 +54,3 @@ describe('BuildingsService', () => {
   });
 
 });
-

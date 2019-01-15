@@ -1,7 +1,7 @@
 export class Kingdom {
   id: number;
   name: string;
-  user_id: number;
+  userId: number;
   buildings: [
       {
         id: number,
@@ -31,8 +31,7 @@ export class Kingdom {
       }
     ];
   location: {
-      x: number,
-      y: number,
-    };
+    x: number,
+    y: number,
+  };
 }
-

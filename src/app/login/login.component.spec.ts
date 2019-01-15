@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { LoginComponent } from './login.component';
 import { AppComponent } from '../app.component';
 import { RegisterComponent } from '../register/register.component';
@@ -13,9 +12,7 @@ import { HeaderComponent } from '../header/header.component';
 import { GameComponent } from '../game/game.component';
 import { ResourcesComponent } from '../game/resources/resources.component';
 import { AlertComponent } from '../alert/alert.component';
-
 import { RouterTestingModule } from '@angular/router/testing';
-
 import { BuildingsComponent } from '../game/buildings/buildings.component';
 import { BuildingDetailComponent } from '../game/buildings/building-details/building-detail.component';
 import { BuildingComponent } from '../game/buildings/building/building.component';

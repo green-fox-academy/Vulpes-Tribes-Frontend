@@ -127,9 +127,9 @@ describe('LoginService', () => {
   describe('saveToken', () => {
     it('should store the token in localStorage',
        () => {
-        loginService.saveToken(123456);
-        expect(localStorage.getItem(environment.tribes_token)).toEqual('123456');
-      });
+         loginService.saveToken(123456);
+         expect(localStorage.getItem(environment.tribes_token)).toEqual('123456');
+       });
   });
 
   describe('Checking credentials', () => {

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { AlertService } from '../../alert/alert.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +9,7 @@ import { AlertService } from '../../alert/alert.service';
 
 export class BuildingsService {
 
-  constructor(private http: HttpClient, private alertService: AlertService) { }
+  constructor(private http: HttpClient) { }
 
   getBuildings(): Observable<any> {
     return this.http.get('/game/buildings', { observe: 'response' });

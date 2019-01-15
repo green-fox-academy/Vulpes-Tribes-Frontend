@@ -1,19 +1,31 @@
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpResponse,
-    HttpSentEvent, HttpHeaderResponse, HttpProgressEvent, HttpUserEvent } from '@angular/common/http';
+import { HttpInterceptor,
+  HttpRequest,
+  HttpHandler,
+  HttpResponse,
+  HttpSentEvent,
+  HttpHeaderResponse,
+  HttpProgressEvent,
+  HttpUserEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Kingdom } from '../_models/kingdom.model';
 @Injectable()
 export class KingdomInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler):
-    Observable<HttpSentEvent | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any>> {
-      if (req.url.endsWith('/kingdom') && (req.method === 'GET')) {
-          return new Observable(observer => {
-              observer.next(new HttpResponse<Kingdom>(
-                {body: {
+    Observable<HttpSentEvent |
+      HttpHeaderResponse |
+      HttpProgressEvent |
+      HttpResponse<any> |
+      HttpUserEvent<any>> {
+    if (!(req.url.endsWith('/kingdom') && (req.method === 'GET'))) {
+    } else {
+      return new Observable(observer => {
+        observer.next(new HttpResponse<Kingdom>(
+          {
+            body: {
               id: 213,
               name: 'My Kingdom',
-              user_id: 22,
+              userId: 22,
               buildings: [
                 {
                   id: 123,
@@ -45,10 +57,11 @@ export class KingdomInterceptor implements HttpInterceptor {
               location: {
                 x: 12,
                 y: 24,
-              }}, status: 200}));
-              observer.complete();
-            });
-        }
+              },
+            }, status: 200,
+          }));
+        observer.complete();
+      });
     }
-
+  }
 }

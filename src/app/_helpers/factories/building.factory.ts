@@ -18,8 +18,8 @@ export class BuildingFactory {
     }
     newBuilding.level = 1;
     newBuilding.hp = 100;
-    newBuilding.started_at = Date.now();
-    newBuilding.finished_at = Date.now() + 1000;
+    newBuilding.startedAt = Date.now();
+    newBuilding.finishedAt = Date.now() + 1000;
     return newBuilding;
   }
 }

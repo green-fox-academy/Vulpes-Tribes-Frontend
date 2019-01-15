@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { HeaderComponent } from './header.component';
 import { AppComponent } from '../app.component';
 import { LoginComponent } from '../login/login.component';

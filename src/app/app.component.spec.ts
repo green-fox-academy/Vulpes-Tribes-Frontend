@@ -6,7 +6,7 @@ import { BrowserModule, By } from '@angular/platform-browser';
 import { AppRoutingModule } from './app.routes';
 import { FormsModule } from '@angular/forms';
 import { LogoutComponent } from './logout/logout.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { CustomHeaders } from './_models/head.model';
 import { APP_BASE_HREF } from '@angular/common';
 

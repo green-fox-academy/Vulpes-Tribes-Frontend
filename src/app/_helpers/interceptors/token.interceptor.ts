@@ -15,7 +15,11 @@ import { environment } from '../../../environments/environment';
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler):
-    Observable<HttpEvent<any> | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any>> {
+    Observable<HttpEvent<any> |
+      HttpHeaderResponse |
+      HttpProgressEvent |
+      HttpResponse<any> |
+      HttpUserEvent<any>> {
     const authHeader = req.clone({
       setHeaders: {
         'Content-Type': 'application/json',

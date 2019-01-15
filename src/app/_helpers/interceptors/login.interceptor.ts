@@ -35,9 +35,9 @@ export class LoginInterceptor implements HttpInterceptor {
           tribes_token: this.generateToken(),
         },                            200);
 
-      } 
-        return throwError({ error: { message: 'No such user ' + req.body.username + '!' } });
-      
+      }
+      return throwError({ error: { message: 'No such user ' + req.body.username + '!' } });
+
     }  if (req.url.endsWith('/register')) {
       users.push(new User(req.body.username, (users.length + 1), req.body.password, req.body.kingdom, users.length + 100));
       return utilities.sendResponse({
@@ -48,7 +48,7 @@ export class LoginInterceptor implements HttpInterceptor {
         points: 0,
         tribes_token: this.generateToken(),
       },                            200);
-    } else if (req.url.endsWith('/logout')) {
+    }  if (req.url.endsWith('/logout')) {
       return utilities.sendResponse({
         status: 'ok',
         message: 'Logged out successfully!',
