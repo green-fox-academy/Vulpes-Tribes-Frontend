@@ -7,9 +7,7 @@ export class InterceptorUtilities {
       observer => {
         observer.next(new HttpResponse<any>(
           {
-            body: {
-              responseBody
-            },
+            body: responseBody,
             status: status
           }
         ));
