@@ -19,7 +19,7 @@ export class KingdomInterceptor implements HttpInterceptor {
       HttpUserEvent<any>> {
     if (!(req.url.endsWith('/kingdom') && (req.method === 'GET'))) {
     } else {
-      return new Observable(observer => {
+      return new Observable((observer) => {
         observer.next(new HttpResponse<Kingdom>(
           {
             body: {
@@ -32,8 +32,8 @@ export class KingdomInterceptor implements HttpInterceptor {
                   type: 'townhall',
                   level: 1,
                   hp: 100,
-                  started_at: 1231232312,
-                  finished_at: 7652146122,
+                  startedAt: 1231232312,
+                  finishedAt: 7652146122,
                 },
               ],
               resources: [
@@ -50,8 +50,8 @@ export class KingdomInterceptor implements HttpInterceptor {
                   hp: 100,
                   attack: 50,
                   defence: 20,
-                  started_at: 1231232312,
-                  finished_at: 7652146122,
+                  startedAt: 1231232312,
+                  finishedAt: 7652146122,
                 },
               ],
               location: {

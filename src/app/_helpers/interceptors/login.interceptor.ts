@@ -14,8 +14,18 @@ import { User } from '../../_models/user.model';
 import { InterceptorUtilities } from '../../_utilities/interceptor.utilities';
 
 const users: User[] = [
-  { userId: 1, username: 'Honza', kingdomId: 1, kingdomName: 'Honza\'s kingdom', password: '12345' },
-  { userId: 2, username: 'Karel', kingdomId: 1, kingdomName: 'Karel\'s kingdom', password: '12345' },
+  {
+    userId: 1,
+    username: 'Honza',
+    kingdomId: 1,
+    kingdomName: 'Honza\'s kingdom',
+    password: '12345' },
+  { userId: 2,
+    username: 'Karel',
+    kingdomId: 1,
+    kingdomName: 'Karel\'s kingdom',
+    password: '12345',
+  },
 ];
 
 const utilities = new InterceptorUtilities();
@@ -23,7 +33,11 @@ const utilities = new InterceptorUtilities();
 @Injectable()
 export class LoginInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler):
-    Observable<HttpEvent<any> | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any>> {
+    Observable<HttpEvent<any> |
+      HttpHeaderResponse |
+      HttpProgressEvent |
+      HttpResponse<any> |
+      HttpUserEvent<any>> {
     if (req.url.endsWith('/login') &&
       (req.method === 'POST') &&
       (req.body.username.length > 0 &&
@@ -35,10 +49,14 @@ export class LoginInterceptor implements HttpInterceptor {
         },                            200);
 
       }
-      return throwError({ error: { message: 'No such user ' + req.body.username + '!' } });
+      return throwError({ error: { message: `No such user ${req.body.username}!` } });
 
     }  if (req.url.endsWith('/register')) {
-      users.push(new User(req.body.username, (users.length + 1), req.body.password, req.body.kingdom, users.length + 100));
+      users.push(new User(req.body.username,
+                          (users.length + 1),
+                          req.body.password,
+                          req.body.kingdom,
+                          users.length + 100));
       return utilities.sendResponse({
         id: users[users.length - 1].userId,
         username: users[users.length - 1].username,
@@ -59,7 +77,7 @@ export class LoginInterceptor implements HttpInterceptor {
   generateToken(): string {
     let token = '';
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 6; i += 1) {
       token += characters.charAt(Math.floor(Math.random() * characters.length));
     }
     return token;
