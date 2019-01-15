@@ -1,0 +1,12 @@
+<div class="header">
+  <div>
+    <h1>Tribes of Vulpes</h1>
+  </div>
+  <div *ngIf="!loginStatus()">
+    <a routerLink="/login">Login</a>
+    <a routerLink="/register">Register</a>
+  </div>
+  <div *ngIf="loginStatus()">
+    <a routerLink="/logout">Logout</a>
+  </div>
+</div>

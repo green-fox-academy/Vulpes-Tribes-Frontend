@@ -1,0 +1,47 @@
+.buildings {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  width: 90%;
+  max-width: 1024px;
+  margin: 10px auto;
+  justify-content: flex-start;
+
+
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.building,
+.building-add {
+  width: 25%;
+  height: 150px;
+}
+
+.building-add img {
+  margin: 5px auto;
+  max-width: 150px;
+}
+
+.building:hover {
+  background: white;
+  cursor: pointer;
+
+  -webkit-box-shadow: 10px 10px 47px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 47px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 47px 0px rgba(0,0,0,0.75);
+}
+
+.building__type--add {
+  color: #67A835;
+}
+
+@media (min-width: 576px) {
+  .buildings {
+    width: 90%;
+  }
+
+  .building {
+    height: 250px;
+  }
+}

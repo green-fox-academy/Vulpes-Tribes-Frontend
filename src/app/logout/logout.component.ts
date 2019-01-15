@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {LogoutService} from './logout.service';
+import { LogoutService} from './logout.service';
 
 @Component({
   selector: 'app-logout',
