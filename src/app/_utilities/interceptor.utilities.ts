@@ -1,5 +1,5 @@
-import {Observable} from 'rxjs';
-import {HttpResponse} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { HttpResponse } from '@angular/common/http';
 
 export class InterceptorUtilities {
   sendResponse(responseBody: {}, status: number): Observable<any> {
@@ -8,10 +8,10 @@ export class InterceptorUtilities {
         observer.next(new HttpResponse<any>(
           {
             body: {
-              responseBody
+              responseBody,
             },
-            status: status
-          }
+            status,
+          },
         ));
         observer.complete();
       });

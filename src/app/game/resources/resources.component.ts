@@ -4,10 +4,9 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-resources',
   templateUrl: './resources.component.html',
-  styleUrls: ['./resources.component.css']
+  styleUrls: ['./resources.component.css'],
 })
 export class ResourcesComponent implements OnInit {
-
 
   constructor(private _http: HttpClient) {
   }
@@ -15,7 +14,7 @@ export class ResourcesComponent implements OnInit {
   ngOnInit() {
     this._http.get('https://api.myjson.com/bins/7xq2x1').subscribe(() => {
       console.log('Http Call is success from component');
-    }, (error) => {
+    },                                                             (error) => {
       console.log('Http Call is failed from component');
     });
   }

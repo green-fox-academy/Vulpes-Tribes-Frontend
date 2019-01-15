@@ -1,11 +1,11 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {environment} from '../../environments/environment';
-import {Router} from '@angular/router';
-import {AlertService} from '../alert/alert.service';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+import { Router } from '@angular/router';
+import { AlertService } from '../alert/alert.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 
 export class LoginService {
@@ -16,7 +16,7 @@ export class LoginService {
   }
 
   login(user) {
-    this.http.post<any>(environment.login, user, {reportProgress: true})
+    this.http.post<any>(environment.login, user, { reportProgress: true })
       .subscribe(
         response => {
           this.saveToken(response.responseBody.tribes_token);
@@ -24,7 +24,7 @@ export class LoginService {
         },
         error => {
           this.alert.error('No such user ' + user.username + '!');
-        }
+        },
       );
   }
 

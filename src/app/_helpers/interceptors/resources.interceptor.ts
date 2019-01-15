@@ -1,13 +1,13 @@
-import {Observable} from 'rxjs';
-import {Injectable} from '@angular/core';
-import {tap} from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { tap } from 'rxjs/operators';
 import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
   HttpResponse,
-  HttpErrorResponse
+  HttpErrorResponse,
 } from '@angular/common/http';
 
 // const resource: Resources[] = [
@@ -28,7 +28,7 @@ export class ResourceInterceptor implements HttpInterceptor {
   // function which will be called for all http calls
   intercept(
     request: HttpRequest<any>,
-    next: HttpHandler
+    next: HttpHandler,
   ):
     Observable<HttpEvent<any>> {
     // how to update the request Parameters
@@ -39,19 +39,19 @@ export class ResourceInterceptor implements HttpInterceptor {
         observable.next(new HttpResponse<any>(
           {
             body:
-              {
-                amount: 500,
-                type: 'food',
-                generation: 0
-              },
-            status: 200
-          }
+            {
+              amount: 500,
+              type: 'food',
+              generation: 0,
+            },
+            status: 200,
+          },
         ));
         observable.complete();
       });
     }
     const newRequest = request.clone({
-      headers: request.headers.set('Authorization', 'Bearer of resources')
+      headers: request.headers.set('Authorization', 'Bearer of resources'),
     });
     // logging the updated Parameters to browser's console
     return next.handle(request).pipe(
@@ -71,7 +71,7 @@ export class ResourceInterceptor implements HttpInterceptor {
             console.log(event);
           }
           console.log(event);
-        }
+        },
       ));
   }
 }

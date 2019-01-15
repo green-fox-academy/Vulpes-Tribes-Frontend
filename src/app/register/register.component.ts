@@ -1,10 +1,10 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {RegisterService} from './register.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { RegisterService } from './register.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
   @ViewChild('registerFormElement') registerForm;

@@ -1,4 +1,4 @@
-import { Building} from '../../_models/building.model';
+import { Building } from '../../_models/building.model';
 
 export class BuildingFactory {
 
@@ -6,7 +6,7 @@ export class BuildingFactory {
   }
 
   createBuilding(id: number, type: string): Building {
-    let newBuilding = new Building();
+    const newBuilding = new Building();
     newBuilding.id = id;
     console.log(type);
     if (type === 'mine') {

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {Building} from '../../../_models/building.model';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Building } from '../../../_models/building.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BuildingDetailService {
 
@@ -12,9 +12,9 @@ export class BuildingDetailService {
 
   levelUpBuilding(building: Building) {
     return this.http.put(`/game/buildings/${building.id}`,
-      {
+                         {
         id: building.id,
-        level: building.level
+        level: building.level,
       });
   }
 

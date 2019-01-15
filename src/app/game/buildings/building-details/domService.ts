@@ -3,7 +3,7 @@ import {
   Injector,
   ComponentFactoryResolver,
   EmbeddedViewRef,
-  ApplicationRef
+  ApplicationRef,
 } from '@angular/core';
 
 @Injectable()
@@ -13,7 +13,7 @@ export class DomService {
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
     private appRef: ApplicationRef,
-    private injector: Injector
+    private injector: Injector,
   ) { }
 
   public appendComponentTo(parentId: string, child: any, childConfig?: childConfig) {
@@ -43,20 +43,19 @@ export class DomService {
     this.childComponentRef.destroy();
   }
 
-
-  private attachConfig(config, componentRef){
-    let inputs = config.inputs;
-    let outputs = config.outputs;
-    for(var key in inputs){
+  private attachConfig(config, componentRef) {
+    const inputs = config.inputs;
+    const outputs = config.outputs;
+    for (let key in inputs) {
       componentRef.instance[key] = inputs[key];
     }
-    for(var key in outputs){
+    for (let key in outputs) {
       componentRef.instance[key] = outputs[key];
     }
 
   }
 }
 interface childConfig{
-  inputs:object,
-  outputs:object
+  inputs:object;
+  outputs:object;
 }

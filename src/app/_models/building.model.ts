@@ -6,8 +6,6 @@ export class Building {
   started_at: number;
   finished_at: number;
 
-
-
   constructor() {
 
   }

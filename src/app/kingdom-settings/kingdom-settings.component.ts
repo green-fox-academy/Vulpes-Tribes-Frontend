@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {KingdomSettingsService} from './kingdom-settings.service';
+import { KingdomSettingsService } from './kingdom-settings.service';
 
 @Component({
   selector: 'app-settings',
   templateUrl: './kingdom-settings.component.html',
-  styleUrls: ['./kingdom-settings.component.css']
+  styleUrls: ['./kingdom-settings.component.css'],
 })
 export class KingdomSettingsComponent implements OnInit {
 
