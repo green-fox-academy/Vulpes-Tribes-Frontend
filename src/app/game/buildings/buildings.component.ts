@@ -12,7 +12,7 @@ import { AlertService } from '../../alert/alert.service';
 })
 export class BuildingsComponent implements OnInit, OnChanges {
 
-  buildings: Building[];
+  buildings;
 
   @Output() building: Building;
 
@@ -23,6 +23,7 @@ export class BuildingsComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.getBuildings();
+    console.log(this.buildings);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
