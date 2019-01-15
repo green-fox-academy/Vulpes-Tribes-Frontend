@@ -29,7 +29,6 @@ export class LoginInterceptor implements HttpInterceptor {
       (req.body.username.length > 0 &&
         req.body.password.length > 0)) {
       if (this.checkUser(req.body.username, req.body.password)) {
-        console.log('test passed');
         return utilities.sendResponse({
           id: 1,
           tribes_token: this.generateToken(),
@@ -67,10 +66,7 @@ export class LoginInterceptor implements HttpInterceptor {
   }
 
   checkUser(username, password): boolean {
-    for (const user of users) {
-      if (user.username === username && user.password === password) {
-        return true;
-      }
-    }
+    return users.some(user =>
+      user.username === username && user.password === password);
   }
 }

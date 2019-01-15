@@ -15,7 +15,7 @@ export class BuildingsInterceptor implements HttpInterceptor {
     const buildings = buildingsMock.buildings;
 
     if (req.url.endsWith('/game/buildings')) {
-      return utilities.sendResponse({ buildings }, 200);
+      return utilities.sendResponse(buildings , 200);
     }  if (req.url.endsWith(environment.createBuilding)) {
       const newBuilding = buildingsMock.createBuilding(req.body.type);
       return utilities.sendResponse({ type: newBuilding.type }, 200);

@@ -1,30 +1,32 @@
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 
-import { LoginService } from './login.service';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
-import { environment } from '../../environments/environment';
-import { RouterTestingModule } from '@angular/router/testing';
+import {LoginService} from './login.service';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {ComponentFixture, inject, TestBed} from '@angular/core/testing';
+import {environment} from '../../environments/environment';
+import {RouterTestingModule} from '@angular/router/testing';
 
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from '../app.routes';
-import { FormsModule } from '@angular/forms';
-import { LoginInterceptor } from '../_helpers/interceptors/login.interceptor';
+import {BrowserModule} from '@angular/platform-browser';
+import {AppRoutingModule} from '../app.routes';
+import {FormsModule} from '@angular/forms';
+import {LoginInterceptor} from '../_helpers/interceptors/login.interceptor';
 
-import { AppComponent } from '../app.component';
-import { LoginComponent } from './login.component';
-import { LogoutComponent } from '../logout/logout.component';
-import { RegisterComponent } from '../register/register.component';
-import { HeaderComponent } from '../header/header.component';
-import { GameComponent } from '../game/game.component';
-import { ResourcesComponent } from '../game/resources/resources.component';
-import { AlertComponent } from '../alert/alert.component';
+import {AppComponent} from '../app.component';
+import {LoginComponent} from './login.component';
+import {LogoutComponent} from '../logout/logout.component';
+import {RegisterComponent} from '../register/register.component';
+import {HeaderComponent} from '../header/header.component';
+import {GameComponent} from '../game/game.component';
+import {ResourcesComponent} from '../game/resources/resources.component';
+import {AlertComponent} from '../alert/alert.component';
 
-import { BuildingsComponent } from '../game/buildings/buildings.component';
-import { BuildingDetailComponent } from '../game/buildings/building-details/building-detail.component';
-import { BuildingComponent } from '../game/buildings/building/building.component';
-import { KingdomSettingsComponent } from '../kingdom-settings/kingdom-settings.component';
-import { WelcomeScreenComponent } from '../welcome-screen/welcome-screen.component';
+import {BuildingsComponent} from '../game/buildings/buildings.component';
+import {BuildingDetailComponent} from '../game/buildings/building-details/building-detail.component';
+import {BuildingComponent} from '../game/buildings/building/building.component';
+import {KingdomSettingsComponent} from '../kingdom-settings/kingdom-settings.component';
+import {WelcomeScreenComponent} from '../welcome-screen/welcome-screen.component';
+import {mockLocalStorage, store} from '../_utilities/authTesting.utilities';
+
 
 describe('LoginService', () => {
 
@@ -33,6 +35,8 @@ describe('LoginService', () => {
   let loginService: LoginService;
   let fixture: ComponentFixture<LoginComponent>;
   let component: LoginComponent;
+  const mockStore = store;
+  const mockStorage = mockLocalStorage;
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
@@ -49,7 +53,7 @@ describe('LoginService', () => {
         BuildingComponent,
         BuildingsComponent,
         BuildingDetailComponent,
-        WelcomeScreenComponent,
+        WelcomeScreenComponent
       ],
       imports: [
         RouterTestingModule.withRoutes([]),
@@ -57,37 +61,22 @@ describe('LoginService', () => {
         AppRoutingModule,
         FormsModule,
         HttpClientTestingModule,
-        HttpClientModule,
+        HttpClientModule
       ],
       providers: [
         LoginService,
-        { provide: HTTP_INTERCEPTORS, useClass: LoginInterceptor, multi: true },
-      ],
+        {provide: HTTP_INTERCEPTORS, useClass: LoginInterceptor, multi: true},
+      ]
     });
 
-    let store = {};
-    const mockLocalStorage = {
-      getItem: (key: string): string => {
-        return key in store ? store[key] : null;
-      },
-      setItem: (key: string, value: string) => {
-        store[key] = `${value}`;
-      },
-      removeItem: (key: string) => {
-        delete store[key];
-      },
-      clear: () => {
-        store = {};
-      },
-    };
     spyOn(localStorage, 'getItem')
-      .and.callFake(mockLocalStorage.getItem);
+      .and.callFake(mockStorage.getItem);
     spyOn(localStorage, 'setItem')
-      .and.callFake(mockLocalStorage.setItem);
+      .and.callFake(mockStorage.setItem);
     spyOn(localStorage, 'removeItem')
-      .and.callFake(mockLocalStorage.removeItem);
+      .and.callFake(mockStorage.removeItem);
     spyOn(localStorage, 'clear')
-      .and.callFake(mockLocalStorage.clear);
+      .and.callFake(mockStorage.clear);
 
   });
 
@@ -116,7 +105,7 @@ describe('LoginService', () => {
       httpClient = TestBed.get(HttpClient);
       const user = {
         username: 'Honza',
-        password: '123',
+        password: '123'
       };
       loginService.login(user);
       const req = httpClient.post(environment.login, user);
@@ -126,10 +115,10 @@ describe('LoginService', () => {
 
   describe('saveToken', () => {
     it('should store the token in localStorage',
-       () => {
-         loginService.saveToken(123456);
-         expect(localStorage.getItem(environment.tribes_token)).toEqual('123456');
-       });
+      () => {
+        loginService.saveToken(123456);
+        expect(localStorage.getItem(environment.tribes_token)).toEqual('123456');
+      });
   });
 
   describe('Checking credentials', () => {
