@@ -44,19 +44,12 @@ export class DomService {
   }
 
 
-  private attachConfig(config, componentRef){
-    let inputs = config.inputs;
-    let outputs = config.outputs;
-    for(var key in inputs){
-      componentRef.instance[key] = inputs[key];
-    }
-    for(var key in outputs){
-      componentRef.instance[key] = outputs[key];
-    }
-
+  private attachConfig(config, componentRef) {
+    const { inputs, outputs } = config;
+    componentRef.instance = Object.assign(componentRef.instance, inputs, outputs);
   }
 }
 interface childConfig{
-  inputs:object,
-  outputs:object
+  inputs: object;
+  outputs: object;
 }

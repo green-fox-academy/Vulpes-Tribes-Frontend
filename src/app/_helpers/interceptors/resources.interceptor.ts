@@ -10,16 +10,6 @@ import {
   HttpErrorResponse
 } from '@angular/common/http';
 
-// const resource: Resources[] = [
-//   {amount: 500,
-//     type: 'food',
-//     generation: 0 },
-
-//    {amount: 320,
-//     type: 'diamond',
-//     generation: 1 }
-// ];
-
 @Injectable()
 export class ResourceInterceptor implements HttpInterceptor {
   constructor() {

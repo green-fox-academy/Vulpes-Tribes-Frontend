@@ -53,16 +53,11 @@ export class BuildingResponseMock implements OnInit {
 
   createBuilding(type: string): Building {
     const newBuilding = new BuildingFactory().createBuilding(this.buildings.length, type);
-    console.log(type);
     buildings.push(newBuilding);
     return newBuilding;
   }
 
   findBuilding(buildingId: number): Building {
-    for (let i = 0; i < buildings.length; i++) {
-      if (buildings[i].id === buildingId) {
-        return buildings[i];
-      }
-    }
+    return buildings.filter(building => building.id === buildingId)[0];
   }
 }

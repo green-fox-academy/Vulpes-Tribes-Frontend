@@ -25,6 +25,7 @@ import {BuildingDetailComponent} from '../game/buildings/building-details/buildi
 import {BuildingComponent} from '../game/buildings/building/building.component';
 import {KingdomSettingsComponent} from '../kingdom-settings/kingdom-settings.component';
 import {WelcomeScreenComponent} from '../welcome-screen/welcome-screen.component';
+import {mockLocalStorage, store} from '../_utilities/authTesting.utilities';
 
 
 describe('LoginService', () => {
@@ -34,6 +35,8 @@ describe('LoginService', () => {
   let loginService: LoginService;
   let fixture: ComponentFixture<LoginComponent>;
   let component: LoginComponent;
+  const mockStore = store;
+  const mockStorage = mockLocalStorage;
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
@@ -66,30 +69,14 @@ describe('LoginService', () => {
       ]
     });
 
-
-    let store = {};
-    const mockLocalStorage = {
-      getItem: (key: string): string => {
-        return key in store ? store[key] : null;
-      },
-      setItem: (key: string, value: string) => {
-        store[key] = `${value}`;
-      },
-      removeItem: (key: string) => {
-        delete store[key];
-      },
-      clear: () => {
-        store = {};
-      }
-    };
     spyOn(localStorage, 'getItem')
-      .and.callFake(mockLocalStorage.getItem);
+      .and.callFake(mockStorage.getItem);
     spyOn(localStorage, 'setItem')
-      .and.callFake(mockLocalStorage.setItem);
+      .and.callFake(mockStorage.setItem);
     spyOn(localStorage, 'removeItem')
-      .and.callFake(mockLocalStorage.removeItem);
+      .and.callFake(mockStorage.removeItem);
     spyOn(localStorage, 'clear')
-      .and.callFake(mockLocalStorage.clear);
+      .and.callFake(mockStorage.clear);
 
   });
 

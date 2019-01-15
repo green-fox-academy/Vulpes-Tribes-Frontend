@@ -6,16 +6,9 @@ export class BuildingFactory {
   }
 
   createBuilding(id: number, type: string): Building {
-    let newBuilding = new Building();
+    const newBuilding = new Building();
     newBuilding.id = id;
-    console.log(type);
-    if (type === 'mine') {
-      newBuilding.type = 'mine';
-    } else if (type === 'factory') {
-      newBuilding.type = 'factory';
-    } else {
-      newBuilding.type = 'academy';
-    }
+    newBuilding.type = type;
     newBuilding.level = 1;
     newBuilding.hp = 100;
     newBuilding.started_at = Date.now();
