@@ -25,7 +25,7 @@ export class ResourceInterceptor implements HttpInterceptor {
 
     if (request.url.endsWith('/kingdom/resources') &&
       (request.method === 'GET')) {
-      return new Observable(observable => {
+      return new Observable((observable) => {
         observable.next(new HttpResponse<any>(
           {
             body:
@@ -46,7 +46,7 @@ export class ResourceInterceptor implements HttpInterceptor {
     // logging the updated Parameters to browser's console
     return next.handle(request).pipe(
       tap(
-        event => {
+        (event) => {
           // logging the http response to browser's console in case of a success
           if (event instanceof HttpResponse) {
             console.log(event);
