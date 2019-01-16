@@ -1,39 +1,39 @@
-import {Building} from '../../_models/building.model';
-import {OnInit} from '@angular/core';
-import {BuildingFactory} from '../factories/building.factory';
+import { Building } from '../../_models/building.model';
+import { OnInit } from '@angular/core';
+import { BuildingFactory } from '../factories/building.factory';
 
 const buildings = [
   {
-    'id': 123,
-    'type': 'townhall',
-    'level': 1,
-    'hp': 100,
-    'started_at': 1231232312,
-    'finished_at': 7652146122
+    id: 123,
+    type: 'townhall',
+    level: 1,
+    hp: 100,
+    startedAt: 1231232312,
+    finishedAt: 7652146122,
   },
   {
-    'id': 124,
-    'type': 'academy',
-    'level': 1,
-    'hp': 100,
-    'started_at': 1231232312,
-    'finished_at': 7652146122
+    id: 124,
+    type: 'academy',
+    level: 1,
+    hp: 100,
+    startedAt: 1231232312,
+    finishedAt: 7652146122,
   },
   {
-    'id': 125,
-    'type': 'factory',
-    'level': 1,
-    'hp': 100,
-    'started_at': 1231232312,
-    'finished_at': 7652146122
+    id: 125,
+    type: 'factory',
+    level: 1,
+    hp: 100,
+    startedAt: 1231232312,
+    finishedAt: 7652146122,
   },
   {
-    'id': 126,
-    'type': 'mine',
-    'level': 1,
-    'hp': 100,
-    'started_at': 1231232312,
-    'finished_at': 7652146122
+    id: 126,
+    type: 'mine',
+    level: 1,
+    hp: 100,
+    startedAt: 1231232312,
+    finishedAt: 7652146122,
   },
 ];
 

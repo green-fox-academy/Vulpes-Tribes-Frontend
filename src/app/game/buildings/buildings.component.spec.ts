@@ -1,29 +1,29 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {BuildingsComponent} from './buildings.component';
-import {BuildingComponent} from './building/building.component';
-import {BuildingDetailComponent} from './building-details/building-detail.component';
-import {ModalService} from './building-details/modal.service';
-import {DomService} from './building-details/domService';
-import {HttpClientModule} from '@angular/common/http';
-import {BrowserModule} from '@angular/platform-browser';
-import {AppRoutingModule} from '../../app.routes';
-import {FormsModule} from '@angular/forms';
-import {RouterTestingModule} from '@angular/router/testing';
-import {AppComponent} from '../../app.component';
-import {LoginComponent} from '../../login/login.component';
-import {LogoutComponent} from '../../logout/logout.component';
-import {RegisterComponent} from '../../register/register.component';
-import {HeaderComponent} from '../../header/header.component';
-import {GameComponent} from '../game.component';
-import {ResourcesComponent} from '../resources/resources.component';
-import {AlertComponent} from '../../alert/alert.component';
-import {BuildingsService} from './buildings.service';
-import {Observable, of} from 'rxjs';
-import {Building} from '../../_models/building.model';
-import {BuildingResponseMock} from '../../_helpers/mocks/buildingResponse.mock';
-import {KingdomSettingsComponent} from '../../kingdom-settings/kingdom-settings.component';
-import {WelcomeScreenComponent} from '../../welcome-screen/welcome-screen.component';
+import { BuildingsComponent } from './buildings.component';
+import { BuildingComponent } from './building/building.component';
+import { BuildingDetailComponent } from './building-details/building-detail.component';
+import { ModalService } from './building-details/modal.service';
+import { DomService } from './building-details/domService';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from '../../app.routes';
+import { FormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { AppComponent } from '../../app.component';
+import { LoginComponent } from '../../login/login.component';
+import { LogoutComponent } from '../../logout/logout.component';
+import { RegisterComponent } from '../../register/register.component';
+import { HeaderComponent } from '../../header/header.component';
+import { GameComponent } from '../game.component';
+import { ResourcesComponent } from '../resources/resources.component';
+import { AlertComponent } from '../../alert/alert.component';
+import { BuildingsService } from './buildings.service';
+import { Observable, of } from 'rxjs';
+import { Building } from '../../_models/building.model';
+import { BuildingResponseMock } from '../../_helpers/mocks/buildingResponse.mock';
+import { KingdomSettingsComponent } from '../../kingdom-settings/kingdom-settings.component';
+import { WelcomeScreenComponent } from '../../welcome-screen/welcome-screen.component';
 
 describe('BuildingsComponent', () => {
   let component: BuildingsComponent;
@@ -46,19 +46,19 @@ describe('BuildingsComponent', () => {
         BuildingsComponent,
         BuildingComponent,
         BuildingDetailComponent,
-        WelcomeScreenComponent
+        WelcomeScreenComponent,
       ],
       imports: [
         BrowserModule,
         RouterTestingModule,
         FormsModule,
-        HttpClientModule
+        HttpClientModule,
       ],
       providers: [
         ModalService,
         BuildingResponseMock,
-        DomService
-      ]
+        DomService,
+      ],
     })
       .compileComponents();
   }));

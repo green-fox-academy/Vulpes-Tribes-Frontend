@@ -1,11 +1,11 @@
-import {Injectable, ViewChild} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Router} from '@angular/router';
-import {LoginService} from '../login/login.service';
-import {environment} from '../../environments/environment';
+import { Injectable, ViewChild } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { LoginService } from '../login/login.service';
+import { environment } from '../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RegisterService {
   @ViewChild('registerFormElement') registerForm;
@@ -18,10 +18,10 @@ export class RegisterService {
   createUser(user) {
     this.http.post<any>(environment.register, user)
       .subscribe(
-        response => {
+        (response) => {
           this.login.saveToken(response.tribes_token);
           this.router.navigate(['/game']);
-        }
+        },
       );
   }
 }
