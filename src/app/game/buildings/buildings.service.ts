@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
+import {Building} from '../../_models/building.model';
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +16,8 @@ export class BuildingsService {
   getBuildings(): Observable<any> {
     const buildings =  this.http.get(environment.getBuildings, { observe: 'response' });
     buildings.subscribe((response) => {
-      localStorage.setItem('buildings', JSON.stringify(response.body));
-      console.log(`Local storage ${localStorage.getItem('buildings')}`);
+      localStorage.setItem('buildings', JSON.stringify(response.body['buildings']));
+      console.log(localStorage);
     });
     return buildings;
   }
