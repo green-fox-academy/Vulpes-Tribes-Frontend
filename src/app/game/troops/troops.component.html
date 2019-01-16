@@ -1,23 +1,40 @@
 <div class="troops-container">
   <div class="unit">
     <img src="../../../assets/images/troopbg.svg">
-    <p>Attack tbd</p>
-    <p>Defence tbd</p>
-    <p>Sustenance tbd</p>
+    <p>Attack: {{totalAttack}}</p>
+    <p>Defence: {{totalDefence}}</p>
+    <p>Sustenance: {{totalSustenance}}</p>
   </div>
   <div class="troops">
-    <div>
-    <li *ngFor="let troop of troops" (click)="onSelect(troop)">
-      <img src="../../../assets/images/troops.svg">
-      <div class="troop_text">
-        <p>ID: {{troop.id}}, level: {{troop.level}}</p>
+    <li>
+      <div>
+        <img src="../../../assets/images/troops.svg">
+        <div class="troop_text">
+          <p><b>{{levels[0]}}</b> Troop level 1</p>
+        </div>
+      </div>
+      <div class="upgrade_button">
+        <p>upgrade</p>
       </div>
     </li>
-    </div>
-    <div>
-    <div class="upgrade_button" *ngFor="let troop of troops">
-      <p>upgrade</p>
-    </div>
-    </div>
+    <li>
+      <div>
+        <img src="../../../assets/images/troops.svg">
+        <div class="troop_text">
+          <p><b>{{levels[1]}}</b> Troop level 2</p>
+        </div>
+      </div>
+      <div class="upgrade_button">
+        <p>upgrade</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <img src="../../../assets/images/troops.svg">
+        <div class="troop_text">
+          <p><b>{{levels[2]}}</b> Troop level 3</p>
+        </div>
+      </div>
+    </li>
   </div>
 </div>

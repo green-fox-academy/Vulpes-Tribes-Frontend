@@ -30,6 +30,7 @@ import { ResourceInterceptor } from './_helpers/resources.interceptor';
 import {WelcomeScreenComponent} from './welcome-screen/welcome-screen.component';
 import { TroopsComponent } from './game/troops/troops.component';
 import { TroopComponent } from './game/troops/troop/troop.component';
+import { TroopsInterceptor } from './_helpers/troops.interceptor';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { TroopComponent } from './game/troops/troop/troop.component';
   providers: [
     InMemoryUsersService,
     { provide: HTTP_INTERCEPTORS, useClass: ResourceInterceptor, multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: TroopsInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: LoginInterceptor, multi: true},
     LoginInterceptor,

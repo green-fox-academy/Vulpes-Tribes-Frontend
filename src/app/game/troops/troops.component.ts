@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Troop } from '../../_models/troop.model';
-import { Troops } from '../../_helpers/mock-troops';
+import { TroopsService } from './troops.service';
 
 @Component({
   selector: 'app-troops',
@@ -9,38 +8,46 @@ import { Troops } from '../../_helpers/mock-troops';
 })
 export class TroopsComponent implements OnInit {
 
-  troops = Troops;
-  selectedTroop: Troop;
-  level1troops = 0;
-  level2troops = 0;
-  level3troops = 0;
+  troops = [];
+  levels = [0, 0, 0];
+  totalAttack = 0;
+  totalDefence = 0;
+  totalSustenance = '???';
 
-  constructor() { }
+  constructor(private troopsService: TroopsService) { }
 
   ngOnInit() {
-    this.countLevel1(Troops);
+    this.troopsService.getTroops()
+    .subscribe(response => {
+      this.troops = response.body.troops;
+      console.log(this.troops);
+    });
+    this.setLevelArray(this.troops);
+    this.countAttack(this.troops);
+    this.countDefence(this.troops);
   }
 
-  onSelect(troop: Troop): void {
-    this.selectedTroop = troop;
+  setLevelArray (troops): void {
+    troops.forEach(troop => {
+      if (troop.level === 1) {
+        this.levels[0]++;
+      } else if (troop.level === 2) {
+        this.levels[1]++;
+      } else if (troop.level === 3) {
+        this.levels[2]++;
+      }
+    });
   }
 
-  isLevel1(troop: Troop): void {
-    if ([troop.level === 1]) {
-      this.level1troops++;
-    }
-    // return troop.level === 1;
+  countAttack (troops): void {
+    troops.forEach(troop => {
+      this.totalAttack += troop.attack;
+    });
   }
 
-  countLevel1(troops: Troop[]): void {
-    for (let i = 0; i < troops.length; i++) {
-      
-    }
+  countDefence (troops): void {
+    troops.forEach(troop => {
+      this.totalDefence += troop.defence;
+    });
   }
-  /*countLevel1(troops): number {
-    if ([troops.find(this.isLevel1)]) {
-    this.level1troops++;
-    return this.level1troops;
-    }
-  }*/
 }
