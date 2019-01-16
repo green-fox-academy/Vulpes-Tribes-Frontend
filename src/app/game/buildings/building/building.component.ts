@@ -10,10 +10,9 @@ export class BuildingComponent implements OnInit {
 
   @Input() building: Building;
   imgSrc: string;
-
   constructor() {}
 
   ngOnInit() {
-    this.imgSrc = `/assets/images/buildings/${this.building.type}`;
+    this.imgSrc = `/assets/images/buildings/${this.building.type}.svg`;
   }
 }
