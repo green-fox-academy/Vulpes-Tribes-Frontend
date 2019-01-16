@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {environment} from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -9,10 +9,16 @@ import { environment } from '../../../environments/environment';
 
 export class BuildingsService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getBuildings(): Observable<any> {
-    return this.http.get('/game/buildings', { observe: 'response' });
+    const buildings =  this.http.get(environment.getBuildings, { observe: 'response' });
+    buildings.subscribe((response) => {
+      localStorage.setItem('buildings', JSON.stringify(response.body));
+      console.log(`Local storage ${localStorage.getItem('buildings')}`);
+    });
+    return buildings;
   }
 
   createBuilding(buildingType: string): Observable<any> {

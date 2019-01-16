@@ -11,6 +11,7 @@ export const environment = {
   logout: '/logout',
   root: '/root',
   game: '/game',
+  getBuildings: '/game/buildings',
   createBuilding: '/game/buildings-new',
 
   // Global variables
