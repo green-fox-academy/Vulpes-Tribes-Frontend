@@ -1,6 +1,6 @@
 <div class="buildings">
   <app-building class="building"
-                *ngFor="let building of buildings"
+                *ngFor="let building of buildings.buildings"
                 (click)="initBuildingModal(building)"
                 [building]="building"></app-building>
   <div class="building building-add" (click)="createBuilding('academy')">

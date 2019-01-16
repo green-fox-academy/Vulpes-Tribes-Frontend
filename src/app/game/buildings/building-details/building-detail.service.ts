@@ -1,30 +1,26 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Building} from '../../../_models/building.model';
-import {environment} from '../../../../environments/environment';
-import {BuildingsService} from '../buildings.service';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Building } from '../../../_models/building.model';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BuildingDetailService {
 
-  constructor(private http: HttpClient, private buildingsService: BuildingsService) {
-  }
+  constructor(private http: HttpClient) { }
 
   levelUpBuilding(building: Building) {
-    const response = this.http.put(`${environment.getBuildings}/${building.id}`,
-        {
-          id: building.id,
-          level: building.level,
-        });
-    const buildings: Building[] = this.buildingsService.getBuildings();
+    let buildings: Building[];
     const buildingToUpdate = building;
-    buildingToUpdate.level += 1;
-    const index = buildings.findIndex(building => building.id === buildingToUpdate.id);
-    buildings[index] = buildingToUpdate;
+    buildings = JSON.parse(localStorage.getItem('buildings'));
+    buildings.find(building => building.id === buildingToUpdate.id).level += 1;
     localStorage.setItem('buildings', JSON.stringify(buildings));
-    console.log(localStorage.getItem('buildings'));
-    return buildingToUpdate;
+    return this.http
+      .put(`${environment.getBuildings}/${building.id}`,
+           {
+        id: building.id,
+        level: building.level,
+      });
   }
 }

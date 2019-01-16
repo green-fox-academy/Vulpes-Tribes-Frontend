@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Building } from '../../../_models/building.model';
 
 @Component({

@@ -28,8 +28,8 @@ export class BuildingDetailComponent implements OnInit {
   }
 
   levelUpBuilding(building: Building) {
-    this.buildingDetailService.levelUpBuilding(building);
-    console.log(this.building);
+    this.buildingDetailService.levelUpBuilding(building)
+      .subscribe(response => this.alertService.success('Building leveled up'));
   }
 
 }

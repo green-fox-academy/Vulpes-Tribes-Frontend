@@ -60,8 +60,4 @@ export class BuildingResponseMock implements OnInit {
   findBuilding(buildingId: number): Building {
     return buildings.filter(building => building.id === buildingId)[0];
   }
-
-  updateBuildingsArray(newArray) {
-    this.buildings = newArray;
-  }
 }
