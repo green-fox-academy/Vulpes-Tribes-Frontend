@@ -15,7 +15,13 @@ export class BuildingsInterceptor implements HttpInterceptor {
     const buildings = buildingsMock.buildings;
 
     if (req.url.endsWith(environment.getBuildings)) {
-      return utilities.sendResponse({ buildings } , 200);
+      if (req.method === 'GET') {
+        return utilities.sendResponse({ buildings } , 200);
+      } else if (req.method === 'PUT') {
+        console.log(req.body);
+        buildingsMock.updateBuildingsArray(req.body);
+        return utilities.sendResponse({ buildings }, 200);
+      }
     }  if (req.url.endsWith(environment.createBuilding)) {
       const newBuilding = buildingsMock.createBuilding(req.body.type);
       return utilities.sendResponse({ type: newBuilding.type }, 200);

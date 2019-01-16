@@ -1,5 +1,6 @@
 import { Building } from '../../_models/building.model';
 
+
 export class BuildingFactory {
 
   constructor() {

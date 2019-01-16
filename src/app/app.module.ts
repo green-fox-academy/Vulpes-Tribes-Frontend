@@ -26,6 +26,7 @@ import { DomService } from './game/buildings/building-details/domService';
 import { BuildingComponent } from './game/buildings/building/building.component';
 import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.component';
 import { KingdomSettingsComponent } from './kingdom-settings/kingdom-settings.component';
+import {BuildingFactory} from './_helpers/factories/building.factory';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { KingdomSettingsComponent } from './kingdom-settings/kingdom-settings.co
     AlertService,
     ModalService,
     DomService,
+    BuildingFactory,
   ],
 
   entryComponents: [
