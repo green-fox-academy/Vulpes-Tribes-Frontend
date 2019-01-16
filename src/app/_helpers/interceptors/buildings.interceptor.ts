@@ -14,12 +14,12 @@ export class BuildingsInterceptor implements HttpInterceptor {
     const buildingsMock = new BuildingResponseMock();
     const buildings = buildingsMock.buildings;
 
-    if (req.url.endsWith('/game/buildings')) {
+    if (req.url.endsWith(environment.getBuildings)) {
       return utilities.sendResponse({ buildings } , 200);
     }  if (req.url.endsWith(environment.createBuilding)) {
       const newBuilding = buildingsMock.createBuilding(req.body.type);
       return utilities.sendResponse({ type: newBuilding.type }, 200);
-    } else if (req.url.endsWith(`/game/buildings/${req.body.id}`)) {
+    } else if (req.url.endsWith(`${environment.getBuildings}/${req.body.id}`)) {
       const building = buildingsMock.findBuilding(req.body.id);
       if (req.method === 'PUT') {
         building.level += 1;
