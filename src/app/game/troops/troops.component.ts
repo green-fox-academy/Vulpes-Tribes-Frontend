@@ -20,7 +20,6 @@ export class TroopsComponent implements OnInit {
     this.troopsService.getTroops()
     .subscribe(response => {
       this.troops = response.body.troops;
-      console.log(this.troops);
     });
     this.setLevelArray(this.troops);
     this.countAttack(this.troops);

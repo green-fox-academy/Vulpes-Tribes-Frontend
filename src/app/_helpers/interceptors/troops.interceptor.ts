@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Troops} from '../_helpers/mock-troops';
+import {Troops} from '../mock-troops';
 
 @Injectable()
 export class TroopsInterceptor implements HttpInterceptor {

@@ -28,7 +28,7 @@ import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.componen
 import { KingdomSettingsComponent } from './kingdom-settings/kingdom-settings.component';
 import { TroopsComponent } from './game/troops/troops.component';
 import { TroopComponent } from './game/troops/troop/troop.component';
-import { TroopsInterceptor } from './_helpers/troops.interceptor';
+import { TroopsInterceptor } from './_helpers/interceptors/troops.interceptor';
 
 @NgModule({
   declarations: [
