@@ -1,39 +1,37 @@
 export class Kingdom {
-    id: number;
-    name: string;
-    user_id: number;
-    buildings: [
+  id: number;
+  name: string;
+  userId: number;
+  buildings: [
       {
         id: number,
         type: string,
         level: number,
         hp: number,
-        started_at: number,
-        finished_at: number
+        startedAt: number,
+        finishedAt: number,
       }
     ];
-    resources: [
+  resources: [
       {
         type: string,
         amount: number,
-        generation: number
+        generation: number,
       }
     ];
-    troops: [
+  troops: [
       {
         id: number,
         level: number,
         hp: number,
         attack: number,
         defence: number,
-        started_at: number,
-        finished_at: number
+        startedAt: number,
+        finishedAt: number,
       }
     ];
-    location: {
-      x: number,
-      y: number
-    };
-  }
-
-
+  location: {
+    x: number,
+    y: number,
+  };
+}

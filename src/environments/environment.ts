@@ -14,7 +14,7 @@ export const environment = {
   createBuilding: '/game/buildings-new',
 
   // Global variables
-  tribes_token: 'tribes_token'
+  tribes_token: 'tribes_token',
 };
 
 /*
