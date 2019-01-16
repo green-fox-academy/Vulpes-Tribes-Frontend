@@ -24,6 +24,7 @@ export class BuildingsInterceptor implements HttpInterceptor {
       if (req.method === 'PUT') {
         building.level += 1;
         buildingsMock.updateBuilding(building);
+        return utilities.sendResponse(building, 200);
       } else {
         return utilities.sendResponse({ building }, 200);
       }
