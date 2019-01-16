@@ -1,0 +1,38 @@
+<div id="overlay" >
+  <div id="modal-container">
+    <div class="building__details">
+      <img [src]="imgSrc" alt="">
+      <table class="building__details--table">
+        <thead>
+        <tr >
+          <td colspan="2">{{building.type}}  details</td>
+        </tr>
+        </thead>
+        <tbody>
+          <tr class="building__details--tableRow">
+            <td>Id:</td>
+            <td>{{building.id}}</td>
+          </tr>
+          <tr class="building__details--tableRow">
+            <td>Type:</td>
+            <td>{{building.type}}</td>
+          </tr>
+          <tr class="building__details--tableRow">
+            <td>Level:</td>
+            <td>{{building.level}}</td>
+          </tr>
+          <tr class="building__details--tableRow">
+            <td>Started:</td>
+            <td>{{building.startedAt}}</td>
+          </tr>
+          <tr class="building__details--tableRow">
+            <td>Finished:</td>
+            <td>{{building.finishedAt}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <button (click)="destroy()">Close</button>
+      <button (click)="levelUpBuilding(building)" class="button__levelUp">Level up</button>
+    </div>
+  </div>
+</div>
