@@ -1,9 +1,9 @@
-import { Component, OnInit, Output, OnChanges, SimpleChanges } from '@angular/core';
-import { BuildingsService } from './buildings.service';
-import { BuildingDetailComponent } from './building-details/building-detail.component';
-import { ModalService } from './building-details/modal.service';
-import { Building } from '../../_models/building.model';
-import { AlertService } from '../../alert/alert.service';
+import {Component, OnInit, Output, OnChanges, SimpleChanges} from '@angular/core';
+import {BuildingsService} from './buildings.service';
+import {BuildingDetailComponent} from './building-details/building-detail.component';
+import {ModalService} from './building-details/modal.service';
+import {Building} from '../../_models/building.model';
+import {AlertService} from '../../alert/alert.service';
 
 @Component({
   selector: 'app-buildings',
@@ -12,7 +12,7 @@ import { AlertService } from '../../alert/alert.service';
 })
 export class BuildingsComponent implements OnInit, OnChanges {
 
-  buildings;
+  buildings: Building[] = [];
 
   @Output() building: Building;
 
@@ -23,30 +23,24 @@ export class BuildingsComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.getBuildings();
-    console.log(this.buildings);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.getBuildings();
-    console.log(`component state ${this.buildings}`);
-    console.log(localStorage.getItem('buildings'));
   }
 
   initBuildingModal(building: Building): Building {
-    this.modalService.init(BuildingDetailComponent, { building }, {});
+    this.modalService.init(BuildingDetailComponent, {building}, {});
     return building;
   }
 
   createBuilding(buildingType: string) {
-    this.buildingsService.createBuilding(buildingType)
-      .subscribe(response => this.alertService
-        .success(`${response.type} was created successfully`));
-    this.getBuildings();
+    this.buildingsService.createBuilding(buildingType);
+    console.log(this.buildings);
   }
 
   getBuildings() {
-    this.buildingsService.getBuildings().subscribe(response =>
-      this.buildings = { ...response.body });
+    this.buildingsService.getBuildings().subscribe(response => {
+      this.buildings = response.body.buildings;
+    });
   }
-
 }
