@@ -51,6 +51,15 @@ export class BuildingResponseMock implements OnInit {
     this.buildings[this.buildings.indexOf(building)] = this.findBuilding(building.id);
   }
 
+  updateMultipleBuildings(buildings: Building[]) {
+    console.log(buildings);
+      buildings.forEach((building) => {
+        if (this.checkDuplicateBuildings(building)) {
+          this.buildings.push(building);
+        }
+      });
+  }
+
   createBuilding(type: string): Building {
     const newBuilding = new BuildingFactory().createBuilding(this.buildings.length, type);
     buildings.push(newBuilding);
@@ -60,4 +69,9 @@ export class BuildingResponseMock implements OnInit {
   findBuilding(buildingId: number): Building {
     return buildings.filter(building => building.id === buildingId)[0];
   }
+
+  checkDuplicateBuildings(buildingToCheck: Building) {
+    return !this.buildings.some(building => building.id === buildingToCheck.id);
+  }
+
 }

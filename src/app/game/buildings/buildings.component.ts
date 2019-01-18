@@ -1,9 +1,9 @@
-import {Component, OnInit, Output, OnChanges, SimpleChanges} from '@angular/core';
-import {BuildingsService} from './buildings.service';
-import {BuildingDetailComponent} from './building-details/building-detail.component';
-import {ModalService} from './building-details/modal.service';
-import {Building} from '../../_models/building.model';
-import {AlertService} from '../../alert/alert.service';
+import { Component, OnInit, Output, OnChanges, SimpleChanges } from '@angular/core';
+import { BuildingsService } from './buildings.service';
+import { BuildingDetailComponent } from './building-details/building-detail.component';
+import { ModalService } from './building-details/modal.service';
+import { Building } from '../../_models/building.model';
+import { AlertService } from '../../alert/alert.service';
 
 @Component({
   selector: 'app-buildings',
@@ -22,25 +22,38 @@ export class BuildingsComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.getBuildings();
+    this.getInitialBuildings();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-  }
+  ngOnChanges(changes: SimpleChanges): void {}
 
   initBuildingModal(building: Building): Building {
-    this.modalService.init(BuildingDetailComponent, {building}, {});
+    this.modalService.init(BuildingDetailComponent, { building }, {});
     return building;
+  }
+
+  getInitialBuildings() {
+    const localBuildings = JSON.parse(localStorage.getItem('buildings'));
+    if (localBuildings !== null &&
+      localBuildings.length !== this.buildings.length &&
+      localBuildings.length > this.buildings.length) {
+      this.buildingsService.updateBuildings().subscribe((response) => {
+        this.buildings = response.body['updatedBuildings'];
+      });
+    } else {
+      this.getBackendBuildings();
+    }
+  }
+
+  getBackendBuildings() {
+    this.buildingsService.getBuildingsFromBackend()
+      .subscribe((response) =>  {
+        this.buildings = response.body.buildings;
+        localStorage.setItem('buildings', JSON.stringify(response.body.buildings));
+      });
   }
 
   createBuilding(buildingType: string) {
     this.buildingsService.createBuilding(buildingType);
-    console.log(this.buildings);
-  }
-
-  getBuildings() {
-    this.buildingsService.getBuildings().subscribe(response => {
-      this.buildings = response.body.buildings;
-    });
   }
 }
