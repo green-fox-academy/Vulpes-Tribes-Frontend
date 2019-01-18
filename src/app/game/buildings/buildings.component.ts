@@ -55,7 +55,22 @@ export class BuildingsComponent implements OnInit, OnChanges {
       });
   }
 
+  showFinishedBuildings() {
+    this.showAllBuildings();
+    this.buildings = this.buildings.filter(building => building.finishedAt <= Date.now());
+  }
+
+  showUnfinishedBuildings() {
+    this.showAllBuildings();
+    this.buildings = this.buildings.filter(building => building.finishedAt > Date.now());
+  }
+
+  showAllBuildings() {
+    this.buildings = JSON.parse(localStorage.getItem('buildings'));
+  }
+
   createBuilding(buildingType: string) {
     this.buildingsService.createBuilding(buildingType);
+    this.showAllBuildings();
   }
 }

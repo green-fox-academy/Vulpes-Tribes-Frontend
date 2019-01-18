@@ -1,8 +1,15 @@
 <div class="buildings">
+  <div class="buildings__filter">
+    <button (click)="showFinishedBuildings()" class="buildings__filter--finished">Finished Buildings</button>
+    <button (click)="showUnfinishedBuildings()" class="buildings__filter--unfinished">Unfinished Buildings</button>
+    <button (click)="showAllBuildings()" class="buildings__filter--all">All Buildings</button>
+  </div>
+
   <app-building class="building"
                 *ngFor="let building of buildings"
                 (click)="initBuildingModal(building)"
-                [building]="building"></app-building>
+                [building]="building">
+  </app-building>
   <div class="building building-add" (click)="createBuilding('academy')">
     <img src="../../../assets/images/buildings/addacademy.svg" alt="">
     <p class="building__type--add">Add Academy</p>

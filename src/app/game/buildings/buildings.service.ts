@@ -9,7 +9,6 @@ import { environment } from '../../../environments/environment';
 
 export class BuildingsService {
 
-  return;
   building;
 
   constructor(private http: HttpClient) {
