@@ -28,6 +28,8 @@ export class BuildingsComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.getBuildings();
+    console.log(`component state ${this.buildings}`);
+    console.log(localStorage.getItem('buildings'));
   }
 
   initBuildingModal(building: Building): Building {
