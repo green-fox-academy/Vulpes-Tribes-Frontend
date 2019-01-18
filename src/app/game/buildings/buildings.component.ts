@@ -35,11 +35,13 @@ export class BuildingsComponent implements OnInit, OnChanges {
   getInitialBuildings() {
     const localBuildings = JSON.parse(localStorage.getItem('buildings'));
     if (localBuildings !== null &&
-      localBuildings.length !== this.buildings.length &&
       localBuildings.length > this.buildings.length) {
       this.buildingsService.updateBuildings().subscribe((response) => {
         this.buildings = response.body['updatedBuildings'];
       });
+    } else if (localBuildings !== null &&
+      localBuildings.length < this.buildings.length) {
+      localStorage.setItem('buildings', JSON.stringify(this.buildings));
     } else {
       this.getBackendBuildings();
     }

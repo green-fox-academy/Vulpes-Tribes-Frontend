@@ -22,7 +22,7 @@ export class BuildingsService {
   createBuilding(buildingType: string): Observable<any> {
     const buildingResponse = this.http.post<any>(environment.createBuilding, {
       type: buildingType,
-    },                                          { observe: 'response' });
+    },                                           { observe: 'response' });
     buildingResponse.subscribe((response) => {
       if (response.status === 200) {
         const buildings = JSON.parse(localStorage.getItem('buildings'));
