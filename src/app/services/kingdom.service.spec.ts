@@ -1,10 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 
-import { KingdomService } from './services/kingdom.service';
-import { async } from 'q';
+import { KingdomService } from './kingdom.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Kingdom } from './_models/kingdom.model';
+import { Kingdom } from '../_models/kingdom.model';
 
 describe('KingdomService', () => {
   let service: KingdomService;
