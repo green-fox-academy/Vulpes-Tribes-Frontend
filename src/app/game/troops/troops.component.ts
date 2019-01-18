@@ -12,7 +12,7 @@ export class TroopsComponent implements OnInit {
   levels = [0, 0, 0];
   totalAttack = 0;
   totalDefence = 0;
-  totalSustenance = '???';
+  sustenance = this.troops.length;
 
   constructor(private troopsService: TroopsService) { }
 
@@ -20,10 +20,11 @@ export class TroopsComponent implements OnInit {
     this.troopsService.getTroops()
     .subscribe(response => {
       this.troops = response.body.troops;
+      this.setLevelArray(this.troops);
+      this.countAttack(this.troops);
+      this.countDefence(this.troops);
     });
-    this.setLevelArray(this.troops);
-    this.countAttack(this.troops);
-    this.countDefence(this.troops);
+
   }
 
   setLevelArray (troops): void {
