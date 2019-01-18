@@ -33,7 +33,7 @@ fdescribe('KingdomSettingsService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should return kingdom', () => {
+  it('should call the getSettings function', () => {
  //    let kingdom: Kingdom;
      spyOn(kingdomService, 'getKingdom');
      service.getSettings();
