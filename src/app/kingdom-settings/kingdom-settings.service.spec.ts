@@ -8,7 +8,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { Kingdom } from '../_models/kingdom.model';
 
 
-fdescribe('KingdomSettingsService', () => {
+describe('KingdomSettingsService', () => {
   let service: KingdomSettingsService;
   let kingdomService: KingdomService;
 
