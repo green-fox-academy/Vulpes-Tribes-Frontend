@@ -19,7 +19,7 @@ export class BuildingsInterceptor implements HttpInterceptor {
     }  if (req.url.endsWith(environment.createBuilding)) {
       const newBuilding = buildingsMock.createBuilding(req.body.type);
       return utilities.sendResponse({ type: newBuilding.type }, 200);
-    } else if (req.url.endsWith(`/game/buildings/${req.body.id}`)) {
+    } else if (req.body !== null && req.url.endsWith(`/game/buildings/${req.body.id}`)) {
       const building = buildingsMock.findBuilding(req.body.id);
       if (req.method === 'PUT') {
         building.level += 1;

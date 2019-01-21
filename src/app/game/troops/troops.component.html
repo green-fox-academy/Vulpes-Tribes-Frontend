@@ -6,34 +6,15 @@
     <p>Sustenance: {{sustenance}}</p>
   </div>
   <div class="troops">
-    <li>
+    <li *ngFor="let level of levels | keyvalue; let lastInList = last">
       <div>
         <img src="../../../assets/images/troops.svg">
         <div class="troop_text">
-          <p><b>{{levels[0]}}</b> Troop level 1</p>
+          <p><b>{{level.value}}</b> Troop level {{level.key}}</p>
         </div>
       </div>
-      <div class="upgrade_button">
+      <div class="upgrade_button" *ngIf="!lastInList">
         <p>upgrade</p>
-      </div>
-    </li>
-    <li>
-      <div>
-        <img src="../../../assets/images/troops.svg">
-        <div class="troop_text">
-          <p><b>{{levels[1]}}</b> Troop level 2</p>
-        </div>
-      </div>
-      <div class="upgrade_button">
-        <p>upgrade</p>
-      </div>
-    </li>
-    <li>
-      <div>
-        <img src="../../../assets/images/troops.svg">
-        <div class="troop_text">
-          <p><b>{{levels[2]}}</b> Troop level 3</p>
-        </div>
       </div>
     </li>
   </div>

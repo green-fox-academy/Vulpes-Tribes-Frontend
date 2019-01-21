@@ -32,7 +32,6 @@ describe('TroopsComponent', () => {
   });
 
   it('should count attack values from array of troops', () => {
-    //component.countAttack(Troops);
     expect(component.totalAttack).toEqual(10);
   })
 });

@@ -8,46 +8,18 @@ import { TroopsService } from './troops.service';
 })
 export class TroopsComponent implements OnInit {
 
-  troops = [];
-  levels = [0, 0, 0];
+  levels = {};
   totalAttack = 0;
   totalDefence = 0;
-  sustenance = this.troops.length;
+  sustenance = 0;
 
   constructor(private troopsService: TroopsService) { }
 
   ngOnInit() {
-    this.troopsService.getTroops()
-    .subscribe(response => {
-      this.troops = response.body.troops;
-      this.setLevelArray(this.troops);
-      this.countAttack(this.troops);
-      this.countDefence(this.troops);
-    });
-
-  }
-
-  setLevelArray (troops): void {
-    troops.forEach(troop => {
-      if (troop.level === 1) {
-        this.levels[0]++;
-      } else if (troop.level === 2) {
-        this.levels[1]++;
-      } else if (troop.level === 3) {
-        this.levels[2]++;
-      }
-    });
-  }
-
-  countAttack (troops): void {
-    troops.forEach(troop => {
-      this.totalAttack += troop.attack;
-    });
-  }
-
-  countDefence (troops): void {
-    troops.forEach(troop => {
-      this.totalDefence += troop.defence;
-    });
+    let values =  this.troopsService.run();
+    this.levels = values.levels;
+    this.totalAttack = values.totalAttack;
+    this.totalDefence = values.totalDefence
+    this.sustenance = values.sustenance;
   }
 }
