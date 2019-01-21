@@ -28,9 +28,7 @@ export class ResourceInterceptor implements HttpInterceptor {
                   amount: 500,
                   type: 'food',
                   generation: 0
-                }
-              ],
-              resources2: [
+                },
                 {
                   amount: 340,
                   type: 'money',
