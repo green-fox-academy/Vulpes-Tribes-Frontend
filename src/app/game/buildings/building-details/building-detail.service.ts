@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Building } from '../../../_models/building.model';
-import { environment } from '../../../../environments/environment';
 import { ENDPOINTS } from '../../../../environments/endpoints';
 
 @Injectable({

@@ -22,23 +22,16 @@ export class BuildingsComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.showAllBuildings();
+    this.showFinishedBuildings();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    this.showFinishedBuildings();
   }
 
   initBuildingModal(building: Building): Building {
-    this.modalService.init(BuildingDetailComponent, {building}, {});
+    this.modalService.init(BuildingDetailComponent, { building }, {});
     return building;
-  }
-
-  getBackendBuildings() {
-    this.buildingsService.getBuildingsFromBackend()
-      .subscribe((response) => {
-        this.buildings = response.body.buildings;
-        localStorage.setItem('buildings', JSON.stringify(response.body.buildings));
-      });
   }
 
   showFinishedBuildings() {
@@ -50,18 +43,15 @@ export class BuildingsComponent implements OnInit, OnChanges {
   }
 
   showAllBuildings() {
-    if (localStorage.getItem('buildings') !== null) {
-      this.buildings = JSON.parse(localStorage.getItem('buildings'));
-    } else {
-      this.getBackendBuildings();
-    }
+   this.buildings = this.buildingsService.showAllBuildings();
   }
 
   createBuilding(buildingType: string) {
     this.buildingsService.createBuilding(buildingType)
       .subscribe((response) => {
-        localStorage.setItem('buildings', JSON.stringify(this.buildings));
+        this.buildingsService.updateLocalStorage(response.newBuilding);
         this.alertService.success(`${response.newBuilding.type} was created`);
       });
+    this.showFinishedBuildings();
   }
 }

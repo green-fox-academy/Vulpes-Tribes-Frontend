@@ -41,7 +41,7 @@ describe('BuildingsService', () => {
 
   it('should return list of buildings from the database', () => {
     const buildings: Building[] = [];
-    service.getBuildings().subscribe((response) => {
+    service.getBuildingsFromBackend().subscribe((response) => {
       buildings.push(response.body);
       expect(buildings[0]).toEqual(
         {
@@ -62,5 +62,12 @@ describe('BuildingsService', () => {
       building = response;
       expect(building.type).not.toBe(null);
     });
+  });
+
+  it('When new building was created, unfinishedBuildings should return 1 ', () => {
+    service.createBuilding('mine');
+    let building;
+    service.showUnfinishedBuildings().subscribe(response => building = response.body['unfinishedBuildings']);
+    expect(building).not.toBe(null);
   });
 });

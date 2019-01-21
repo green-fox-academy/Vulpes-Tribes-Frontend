@@ -25,6 +25,7 @@ import { CustomHeaders } from '../_models/head.model';
 import { LoginInterceptor } from '../_helpers/interceptors/login.interceptor';
 import { RouterTestingModule } from '@angular/router/testing';
 import { mockLocalStorage, store } from '../_utilities/authTesting.utilities';
+import {ENDPOINTS} from '../../environments/endpoints';
 
 describe('LogoutService', () => {
 
@@ -94,7 +95,7 @@ describe('LogoutService', () => {
       httpClient = TestBed.get(HttpClient);
 
       logoutService.logout();
-      const req = httpClient.delete(environment.logout);
+      const req = httpClient.delete(ENDPOINTS.logout);
       expect(req).toBeTruthy();
     });
   });

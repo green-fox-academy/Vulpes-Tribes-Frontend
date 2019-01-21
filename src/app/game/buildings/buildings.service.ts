@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment';
 import { ENDPOINTS } from '../../../environments/endpoints';
+import {Building} from '../../_models/building.model';
 
 @Injectable({
   providedIn: 'root',
@@ -31,5 +31,26 @@ export class BuildingsService {
 
   showUnfinishedBuildings() {
     return this.http.get(ENDPOINTS.getBuildings, { params: new HttpParams().set('status', 'unfinished'), observe: 'response' });
+  }
+
+  showAllBuildings(): Building[] {
+    let buildings: Building[] = [];
+    if (localStorage.getItem('buildings') !== null) {
+      buildings = JSON.parse(localStorage.getItem('buildings'));
+    } else {
+      this.getBuildingsFromBackend().subscribe((response) => {
+        buildings = response.body.buildings;
+        localStorage.setItem('buildings', JSON.stringify(buildings));
+      });
+    }
+    console.log(buildings);
+    return buildings;
+  }
+
+  updateLocalStorage(building: Building) {
+    const buildings: Building[] = JSON.parse(localStorage.getItem('buildings'));
+    console.log(buildings);
+    buildings.push(building);
+    localStorage.setItem('buildings', JSON.stringify(buildings));
   }
 }
