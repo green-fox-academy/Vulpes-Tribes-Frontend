@@ -64,10 +64,15 @@ describe('BuildingsService', () => {
     });
   });
 
-  it('When new building was created, unfinishedBuildings should return 1 ', () => {
+  it('When new building was created, unfinishedBuildings should not be null ', () => {
     service.createBuilding('mine');
     let building;
-    service.showUnfinishedBuildings().subscribe(response => building = response.body['unfinishedBuildings']);
-    expect(building).not.toBe(null);
+    service.showUnfinishedBuildings()
+      .subscribe(response => {
+        building = response.body['response'];
+        console.log(building);
+        expect(building.type).toBe('mine');
+      });
+
   });
 });

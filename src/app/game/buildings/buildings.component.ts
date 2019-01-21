@@ -1,9 +1,9 @@
-import {Component, OnInit, Output, OnChanges, SimpleChanges} from '@angular/core';
-import {BuildingsService} from './buildings.service';
-import {BuildingDetailComponent} from './building-details/building-detail.component';
-import {ModalService} from './building-details/modal.service';
-import {Building} from '../../_models/building.model';
-import {AlertService} from '../../alert/alert.service';
+import { Component, OnInit, Output, OnChanges, SimpleChanges } from '@angular/core';
+import { BuildingsService } from './buildings.service';
+import { BuildingDetailComponent } from './building-details/building-detail.component';
+import { ModalService } from './building-details/modal.service';
+import { Building } from '../../_models/building.model';
+import { AlertService } from '../../alert/alert.service';
 
 @Component({
   selector: 'app-buildings',
@@ -22,7 +22,7 @@ export class BuildingsComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.showFinishedBuildings();
+    this.showAllBuildings();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -35,11 +35,11 @@ export class BuildingsComponent implements OnInit, OnChanges {
   }
 
   showFinishedBuildings() {
-    this.buildingsService.showFinishedBuildings().subscribe(response => this.buildings = response.body['finishedBuildings']);
+    this.buildingsService.showFinishedBuildings().subscribe(response => this.buildings = response.body['response']);
   }
 
   showUnfinishedBuildings() {
-    this.buildingsService.showUnfinishedBuildings().subscribe(response => this.buildings = response.body['unfinishedBuildings']);
+    this.buildingsService.showUnfinishedBuildings().subscribe(response => this.buildings = response.body['response']);
   }
 
   showAllBuildings() {
@@ -49,8 +49,8 @@ export class BuildingsComponent implements OnInit, OnChanges {
   createBuilding(buildingType: string) {
     this.buildingsService.createBuilding(buildingType)
       .subscribe((response) => {
-        this.buildingsService.updateLocalStorage(response.newBuilding);
-        this.alertService.success(`${response.newBuilding.type} was created`);
+        this.buildingsService.updateLocalStorage(response.response);
+        this.alertService.success(`${response.response.type} was created`);
       });
     this.showFinishedBuildings();
   }

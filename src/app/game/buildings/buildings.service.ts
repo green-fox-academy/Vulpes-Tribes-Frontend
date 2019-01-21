@@ -39,17 +39,15 @@ export class BuildingsService {
       buildings = JSON.parse(localStorage.getItem('buildings'));
     } else {
       this.getBuildingsFromBackend().subscribe((response) => {
-        buildings = response.body.buildings;
+        buildings = response.body.response;
         localStorage.setItem('buildings', JSON.stringify(buildings));
       });
     }
-    console.log(buildings);
     return buildings;
   }
 
   updateLocalStorage(building: Building) {
     const buildings: Building[] = JSON.parse(localStorage.getItem('buildings'));
-    console.log(buildings);
     buildings.push(building);
     localStorage.setItem('buildings', JSON.stringify(buildings));
   }
