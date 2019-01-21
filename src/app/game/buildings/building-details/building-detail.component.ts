@@ -29,7 +29,10 @@ export class BuildingDetailComponent implements OnInit {
 
   levelUpBuilding(building: Building) {
     this.buildingDetailService.levelUpBuilding(building)
-      .subscribe(response => this.alertService.success('Building leveled up'));
+      .subscribe(response => {
+        this.alertService.success('Building leveled up');
+        console.log(response);
+      });
   }
 
 }

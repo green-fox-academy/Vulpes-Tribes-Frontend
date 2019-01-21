@@ -1,9 +1,9 @@
-import { Component, OnInit, Output, OnChanges, SimpleChanges } from '@angular/core';
-import { BuildingsService } from './buildings.service';
-import { BuildingDetailComponent } from './building-details/building-detail.component';
-import { ModalService } from './building-details/modal.service';
-import { Building } from '../../_models/building.model';
-import { AlertService } from '../../alert/alert.service';
+import {Component, OnInit, Output, OnChanges, SimpleChanges} from '@angular/core';
+import {BuildingsService} from './buildings.service';
+import {BuildingDetailComponent} from './building-details/building-detail.component';
+import {ModalService} from './building-details/modal.service';
+import {Building} from '../../_models/building.model';
+import {AlertService} from '../../alert/alert.service';
 
 @Component({
   selector: 'app-buildings',
@@ -22,55 +22,46 @@ export class BuildingsComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.getInitialBuildings();
+    this.showAllBuildings();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {}
+  ngOnChanges(changes: SimpleChanges): void {
+  }
 
   initBuildingModal(building: Building): Building {
-    this.modalService.init(BuildingDetailComponent, { building }, {});
+    this.modalService.init(BuildingDetailComponent, {building}, {});
     return building;
-  }
-
-  getInitialBuildings() {
-    const localBuildings = JSON.parse(localStorage.getItem('buildings'));
-    if (localBuildings !== null &&
-      localBuildings.length > this.buildings.length) {
-      this.buildingsService.updateBuildings().subscribe((response) => {
-        this.buildings = response.body['updatedBuildings'];
-      });
-    } else if (localBuildings !== null &&
-      localBuildings.length < this.buildings.length) {
-      localStorage.setItem('buildings', JSON.stringify(this.buildings));
-    } else {
-      this.getBackendBuildings();
-    }
   }
 
   getBackendBuildings() {
     this.buildingsService.getBuildingsFromBackend()
-      .subscribe((response) =>  {
+      .subscribe((response) => {
         this.buildings = response.body.buildings;
         localStorage.setItem('buildings', JSON.stringify(response.body.buildings));
       });
   }
 
   showFinishedBuildings() {
-    this.showAllBuildings();
-    this.buildings = this.buildings.filter(building => building.finishedAt <= Date.now());
+    this.buildingsService.showFinishedBuildings().subscribe(response => this.buildings = response.body['finishedBuildings']);
   }
 
   showUnfinishedBuildings() {
-    this.showAllBuildings();
-    this.buildings = this.buildings.filter(building => building.finishedAt > Date.now());
+    this.buildingsService.showUnfinishedBuildings().subscribe(response => this.buildings = response.body['unfinishedBuildings']);
   }
 
   showAllBuildings() {
-    this.buildings = JSON.parse(localStorage.getItem('buildings'));
+    if (localStorage.getItem('buildings') !== null) {
+      this.buildings = JSON.parse(localStorage.getItem('buildings'));
+    } else {
+      this.getBackendBuildings();
+    }
   }
 
   createBuilding(buildingType: string) {
-    this.buildingsService.createBuilding(buildingType);
-    this.showAllBuildings();
+    this.buildingsService.createBuilding(buildingType)
+      .subscribe((response) => {
+        localStorage.setItem('buildings', JSON.stringify(this.buildings));
+        this.alertService.success(`${response.newBuilding.type} was created`);
+      });
   }
 }

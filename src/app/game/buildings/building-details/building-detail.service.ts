@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Building } from '../../../_models/building.model';
 import { environment } from '../../../../environments/environment';
+import { ENDPOINTS } from '../../../../environments/endpoints';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,7 @@ export class BuildingDetailService {
     buildings.find(building => building.id === buildingToUpdate.id).level += 1;
     localStorage.setItem('buildings', JSON.stringify(buildings));
     return this.http
-      .put(`${environment.getBuildings}/${building.id}`,
+      .put(`${ENDPOINTS.getBuildings}/${building.id}`,
            {
         id: building.id,
         level: building.level,
