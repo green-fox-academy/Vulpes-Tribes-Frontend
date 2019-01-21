@@ -26,6 +26,7 @@ import { DomService } from './game/buildings/building-details/domService';
 import { BuildingComponent } from './game/buildings/building/building.component';
 import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.component';
 import { KingdomSettingsComponent } from './kingdom-settings/kingdom-settings.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { KingdomSettingsComponent } from './kingdom-settings/kingdom-settings.co
     BuildingDetailComponent,
     BuildingComponent,
     WelcomeScreenComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,
