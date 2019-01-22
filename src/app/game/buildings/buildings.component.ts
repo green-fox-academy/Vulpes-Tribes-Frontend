@@ -43,7 +43,7 @@ export class BuildingsComponent implements OnInit, OnChanges {
   }
 
   showAllBuildings() {
-   this.buildings = this.buildingsService.showAllBuildings();
+    this.buildings = this.buildingsService.showAllBuildings();
   }
 
   createBuilding(buildingType: string) {
