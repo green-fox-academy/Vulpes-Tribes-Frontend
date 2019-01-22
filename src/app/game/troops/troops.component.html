@@ -17,5 +17,13 @@
         <p>upgrade</p>
       </div>
     </li>
+    <li *ngIf="!checkLevels()">
+      <div>
+        <img src="../../../assets/images/troops.svg">
+        <div class="troop_text">
+          <p>You've got no troops!</p>
+        </div>
+      </div>
+    </li>
   </div>
 </div>

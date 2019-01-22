@@ -8,10 +8,10 @@ import { TroopsService } from './troops.service';
 })
 export class TroopsComponent implements OnInit {
 
-  levels = {};
-  totalAttack = 0;
-  totalDefence = 0;
-  sustenance = 0;
+  levels: Object;
+  totalAttack: number;
+  totalDefence: number;
+  sustenance: number;
 
   constructor(private troopsService: TroopsService) { }
 
@@ -22,4 +22,9 @@ export class TroopsComponent implements OnInit {
     this.totalDefence = values.totalDefence
     this.sustenance = values.sustenance;
   }
+
+  checkLevels() {
+    let keys = Object.keys(this.levels);
+    if (keys.length > 0) return true;
+ }
 }

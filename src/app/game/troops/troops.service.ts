@@ -11,11 +11,11 @@ export class TroopsService {
   constructor(private http: HttpClient) {}
 
   run() {
-    let troops: [];
-    let levels: {};
-    let totalAttack: number;
-    let totalDefence: number;
-    let sustenance: number;
+    let troops = [];
+    let levels = {};
+    let totalAttack = 0;
+    let totalDefence = 0;
+    let sustenance = 0;
     this.getTroops().subscribe(response => {
       troops = response.body.troops;
       levels = this.setLevels(troops);
@@ -30,25 +30,25 @@ export class TroopsService {
     return this.http.get('/game/troops', {observe: 'response'});
   }
 
-  setLevels (troops): any{
+  setLevels (troops): any {
     let levels = {};
     troops.forEach(troop => levels[troop.level] ? levels[troop.level]++ : levels[troop.level] = 1);
     return levels;
   }
 
   countAttack (troops): number {
-    let x = 0;
+    let totalAttack = 0;
     troops.forEach(troop => {
-      x += troop.attack;
+      totalAttack += troop.attack;
     });
-    return x;
+    return totalAttack;
   }
 
   countDefence (troops): number {
-    let x = 0;
+    let totalDefence = 0;
     troops.forEach(troop => {
-      x += troop.defence;
+      totalDefence += troop.defence;
     });
-    return x;
+    return totalDefence;
   }
 }

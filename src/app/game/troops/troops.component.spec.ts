@@ -2,7 +2,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TroopsComponent } from './troops.component';
 import { TroopsService } from './troops.service';
 import { HttpClientModule } from '@angular/common/http';
-import { Troop } from '../../_models/troop.model';
 
 
 describe('TroopsComponent', () => {
@@ -23,7 +22,6 @@ describe('TroopsComponent', () => {
     fixture = TestBed.createComponent(TroopsComponent);
     component = fixture.componentInstance;
     service = TestBed.get(TroopsService);
-    //spyOn(service, 'getTroops').and.returnValue(Troops);
     fixture.detectChanges();
   });
 
@@ -31,7 +29,12 @@ describe('TroopsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should count attack values from array of troops', () => {
-    expect(component.totalAttack).toEqual(10);
+  it('should set totalAttack to any number >= 0', () => {
+    expect(component.totalAttack).toBeGreaterThanOrEqual(0);
+  })
+
+  it('should return false if levels object is empty', () => {
+    component.levels = {};
+    expect(component.checkLevels()).toBeFalsy();
   })
 });
