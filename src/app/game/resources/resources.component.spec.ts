@@ -4,14 +4,17 @@ import { ResourcesComponent } from './resources.component';
 import { ResourcesService } from './resources.service';
 import { of } from 'rxjs';
 
-fdescribe('ResourcesComponent', () => {
+describe('ResourcesComponent', () => {
   let component: ResourcesComponent;
   let fixture: ComponentFixture<ResourcesComponent>;
   let p;
   let bannerElement: HTMLElement;
-  // let resourcesServiceSpy: jasmine.SpyObj<ResourcesService>;
-  const mockValues = [
-    {
+  let p2;
+  let bannerElement2: HTMLElement;
+
+  const mockValues = {
+    resources: [
+      {
       amount: 500,
       type: 'food',
       generation: 0
@@ -21,7 +24,7 @@ fdescribe('ResourcesComponent', () => {
       type: 'money',
       generation: 1
     }
-  ];
+  ]};
 
   beforeEach(() => {
     const spy = jasmine.createSpyObj('ResourcesService', ['getResources']);
@@ -36,7 +39,9 @@ fdescribe('ResourcesComponent', () => {
     fixture = TestBed.createComponent(ResourcesComponent);
     component = fixture.componentInstance;
     bannerElement = fixture.nativeElement;
-    p = bannerElement.querySelector('p');
+    p = bannerElement.getElementsByClassName('resourceMoney')[0];
+    bannerElement2 = fixture.nativeElement;
+    p2 = bannerElement2.getElementsByClassName('resourceFood')[0];
     // resourcesServiceSpy = TestBed.get(ResourcesService);
   });
 
@@ -50,8 +55,6 @@ fdescribe('ResourcesComponent', () => {
   });
 
   it(`should render 'food' amount from <p class='resourceFood'>`, () => {
-    const bannerElement2: HTMLElement = fixture.nativeElement;
-    const p2 = bannerElement2.getElementsByClassName('resourceFood')[0];
     fixture.detectChanges();
     expect(p2.textContent).toContain('500');
   });

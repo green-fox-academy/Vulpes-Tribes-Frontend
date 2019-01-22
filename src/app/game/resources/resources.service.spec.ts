@@ -3,7 +3,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { ResourcesService } from './resources.service';
 import { async, TestBed, ComponentFixture } from '@angular/core/testing';
 import { ResourcesComponent } from './resources.component';
-import { componentFactoryName } from '@angular/compiler';
 
 
 describe('ResourcesService', () => {
