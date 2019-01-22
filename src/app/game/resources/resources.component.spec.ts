@@ -28,13 +28,17 @@ describe('ResourcesComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it(`should render 'food' and 'money' from <p>`, () => {
+  it(`should render 'money' amount from <p class='resourceMoney'>`, () => {
     const bannerElement: HTMLElement = fixture.nativeElement;
-    const p = bannerElement.querySelector('p');
+    const p = bannerElement.getElementsByClassName('resourceMoney')[0];
     fixture.detectChanges();
     expect(p.textContent).toContain('340');
   });
-  // it(`should render values of the <p> if 'food' or 'money' is greater than 0`, () => {
-  //   expect(p).toBeGreaterThan(0);
-  // });
+
+  it(`should render 'food' amount from <p class='resourceFood'>`, () => {
+    const bannerElement2: HTMLElement = fixture.nativeElement;
+    const p2 = bannerElement2.getElementsByClassName('resourceFood')[0];
+    fixture.detectChanges();
+    expect(p2.textContent).toContain('500');
+  });
 });

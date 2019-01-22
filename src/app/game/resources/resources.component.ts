@@ -8,7 +8,7 @@ import { ResourcesService } from './resources.service';
 })
 export class ResourcesComponent implements OnInit {
   constructor(private resourceService: ResourcesService) {}
-  food;
+  food = 500;
   money = 340;
 
   ngOnInit() {
@@ -18,7 +18,7 @@ export class ResourcesComponent implements OnInit {
   showResources() {
     this.resourceService
       .getResources()
-      .subscribe(response => (this.food = response.resources[0].amount));
+      .subscribe(response => (this.food = response.resources[0]));
     // this.resourceService
       // .getResources()
       // .subscribe(response => (this.money = response.resources2[0].amount));
