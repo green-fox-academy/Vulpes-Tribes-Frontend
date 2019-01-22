@@ -22,10 +22,10 @@ export class KingdomSettingsComponent implements OnInit {
       this.name = response.body.name));
   }
   updateSettings(name): void {
-    this.settingsService.updateSettings(name).subscribe(response =>
-      this.name = response.body.name)
-
-
+    this.settingsService.updateSettings(name).subscribe(response => {
+      console.log(response);
+      this.name = response.body.name});
+      console.log(name);
   }
 
 }

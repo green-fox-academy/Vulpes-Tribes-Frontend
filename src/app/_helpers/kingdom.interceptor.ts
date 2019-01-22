@@ -6,7 +6,7 @@ import { Kingdom } from '../_models/kingdom.model';
 
 const kingdom: Kingdom = {
   'id': 213,
-  'name': 'My Kingdom',
+  name: 'My Kingdom',
   'user_id': 22,
   'buildings': [
     {
@@ -47,6 +47,7 @@ const kingdom: Kingdom = {
 export class KingdomInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler):
   Observable<HttpSentEvent | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any>> {
+    console.log(req);
       if (req.url.endsWith('/kingdom') && (req.method === 'GET')) {
           return new Observable(observer => {
             observer.next(new HttpResponse<Kingdom>(
@@ -57,12 +58,13 @@ export class KingdomInterceptor implements HttpInterceptor {
             observer.complete();
           });
         }
-        if (req.method === 'PUT') {
-          kingdom.name = req.body.name;
+        else if (req.url.endsWith('/kingdom') && (req.method === 'PUT')) {
+          console.log(req);
+          kingdom.name = req.body;
           return new Observable(observer => {
-            observer.next(new HttpResponse<Kingdom>(
+            observer.next(new HttpResponse<any>(
               {
-                body: kingdom.name,
+                body: kingdom,
                 status: 200,
               }));
               observer.complete();

@@ -15,6 +15,6 @@ export class KingdomService {
     return this.http.get<Kingdom>('/kingdom', {observe: 'response'});
   }
   updateKingdom(name): Observable<any> {
-    return this.http.put<Kingdom>('/kingdom',name, {observe:'response'})
+    return this.http.put<any>('/kingdom', name, {observe:'response'})
   }
 }
