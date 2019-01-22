@@ -12,7 +12,7 @@ import { AlertService } from '../../alert/alert.service';
 })
 export class BuildingsComponent implements OnInit, OnChanges {
 
-  buildings;
+  buildings: Building[] = [];
 
   @Output() building: Building;
 
@@ -22,12 +22,11 @@ export class BuildingsComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.getBuildings();
-    console.log(this.buildings);
+    this.showAllBuildings();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.getBuildings();
+    this.showFinishedBuildings();
   }
 
   initBuildingModal(building: Building): Building {
@@ -35,15 +34,24 @@ export class BuildingsComponent implements OnInit, OnChanges {
     return building;
   }
 
+  showFinishedBuildings() {
+    this.buildingsService.filterBuildings('finished');
+  }
+
+  showUnfinishedBuildings() {
+    this.buildingsService.filterBuildings('unfinished');
+  }
+
+  showAllBuildings() {
+    this.buildings = this.buildingsService.showAllBuildings();
+  }
+
   createBuilding(buildingType: string) {
     this.buildingsService.createBuilding(buildingType)
-      .subscribe(response => this.alertService
-        .success(`${response.type} was created successfully`));
+      .subscribe((response) => {
+        this.buildingsService.updateLocalStorage(response.response);
+        this.alertService.success(`${response.response.type} was created`);
+      });
+    this.showFinishedBuildings();
   }
-
-  getBuildings() {
-    this.buildingsService.getBuildings().subscribe(response =>
-      this.buildings = { ...response.body });
-  }
-
 }

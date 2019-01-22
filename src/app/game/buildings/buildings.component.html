@@ -1,8 +1,9 @@
 <div class="buildings">
   <app-building class="building"
-                *ngFor="let building of buildings.buildings"
+                *ngFor="let building of buildings"
                 (click)="initBuildingModal(building)"
-                [building]="building"></app-building>
+                [building]="building">
+  </app-building>
   <div class="building building-add" (click)="createBuilding('academy')">
     <img src="../../../assets/images/buildings/addacademy.svg" alt="">
     <p class="building__type--add">Add Academy</p>

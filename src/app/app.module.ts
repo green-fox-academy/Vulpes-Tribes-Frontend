@@ -53,9 +53,10 @@ import { KingdomSettingsComponent } from './kingdom-settings/kingdom-settings.co
 
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ResourceInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LoginInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: BuildingsInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ResourceInterceptor, multi: true },
+
     CustomHeaders,
     { provide: APP_BASE_HREF, useValue: '/' },
     AuthService,

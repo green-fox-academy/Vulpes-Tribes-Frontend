@@ -3,9 +3,12 @@ import { BuildingsService } from './buildings.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Building } from '../../_models/building.model';
+import { mockLocalStorage, store} from '../../_utilities/authTesting.utilities';
 
 describe('BuildingsService', () => {
   let service: BuildingsService;
+  const mockStore = store;
+  const mockStorage = mockLocalStorage;
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
@@ -17,6 +20,15 @@ describe('BuildingsService', () => {
         BuildingsService,
       ],
     });
+
+    spyOn(localStorage, 'getItem')
+      .and.callFake(mockStorage.getItem);
+    spyOn(localStorage, 'setItem')
+      .and.callFake(mockStorage.setItem);
+    spyOn(localStorage, 'removeItem')
+      .and.callFake(mockStorage.removeItem);
+    spyOn(localStorage, 'clear')
+      .and.callFake(mockStorage.clear);
   });
 
   beforeEach(() => {
@@ -28,8 +40,8 @@ describe('BuildingsService', () => {
   });
 
   it('should return list of buildings from the database', () => {
-    let buildings: Building[];
-    service.getBuildings().subscribe((response) => {
+    const buildings: Building[] = [];
+    service.getBuildingsFromBackend().subscribe((response) => {
       buildings.push(response.body);
       expect(buildings[0]).toEqual(
         {
@@ -40,15 +52,27 @@ describe('BuildingsService', () => {
           startedAt: 1231232312,
           finishedAt: 7652146122,
         });
+      expect(localStorage.getItem('buildings').length).toEqual(4);
     });
   });
 
   it('Should create a new building', () => {
     let building: Building;
-
     service.createBuilding('mine').subscribe((response) => {
       building = response;
       expect(building.type).not.toBe(null);
     });
+  });
+
+  it('When new building was created, unfinishedBuildings should not be null ', () => {
+    service.createBuilding('mine');
+    let building;
+    service.showUnfinishedBuildings()
+      .subscribe(response => {
+        building = response.body['response'];
+        console.log(building);
+        expect(building.type).toBe('mine');
+      });
+
   });
 });

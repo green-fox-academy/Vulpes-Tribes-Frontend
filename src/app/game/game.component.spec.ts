@@ -75,7 +75,7 @@ describe('GameComponent', () => {
     buildingsComponent = TestBed.get(BuildingsComponent);
     buildingsService = TestBed.get(BuildingsService);
     buildingsMock = TestBed.get(BuildingResponseMock);
-    spyOn(buildingsService, 'getBuildings').and.returnValue(of(buildingsMock));
+    spyOn(buildingsService, 'getBuildingsFromBackend').and.returnValue(of(buildingsMock));
     console.log(buildingsComponent.buildings);
     fixture.detectChanges();
   });

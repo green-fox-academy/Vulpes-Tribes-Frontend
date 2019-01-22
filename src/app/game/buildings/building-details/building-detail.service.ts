@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { Building } from '../../../_models/building.model';
+import { ENDPOINTS } from '../../../../environments/endpoints';
 
 @Injectable({
   providedIn: 'root',
@@ -11,11 +11,12 @@ export class BuildingDetailService {
   constructor(private http: HttpClient) { }
 
   levelUpBuilding(building: Building) {
+    let buildings: Building[];
+    const buildingToUpdate = building;
+    buildings = JSON.parse(localStorage.getItem('buildings'));
+    buildings.find(building => building.id === buildingToUpdate.id).level += 1;
+    localStorage.setItem('buildings', JSON.stringify(buildings));
     return this.http
-      .put(`/game/buildings/${building.id}`,
-      {
-        id: building.id,
-        level: building.level,
-      });
+      .put(`${ENDPOINTS.getBuildings}/${building.id}`, { id: building.id, level: building.level });
   }
 }
