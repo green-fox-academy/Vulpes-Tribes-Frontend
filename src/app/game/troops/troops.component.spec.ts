@@ -34,7 +34,6 @@ describe('TroopsComponent', () => {
   })
 
   it('should return false if levels object is empty', () => {
-    component.levels = {};
     expect(component.checkLevels()).toBeFalsy();
   })
 });

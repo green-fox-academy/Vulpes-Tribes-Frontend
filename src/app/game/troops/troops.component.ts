@@ -25,6 +25,6 @@ export class TroopsComponent implements OnInit {
 
   checkLevels() {
     let keys = Object.keys(this.levels);
-    if (keys.length > 0) return true;
+    return keys.length > 0;
  }
 }
