@@ -26,10 +26,19 @@ export class BuildingsService {
                  { type: buildingType });
   }
 
-  showFinishedBuildings() {
-    return this.http
-      .get(ENDPOINTS.getBuildings,
-           { params: new HttpParams().set('status', 'finished'), observe: 'response' });
+  filterBuildings(status: string) {
+    let buildings = [];
+    this.http
+      .get(ENDPOINTS.getBuildings, { observe: 'response' })
+      .subscribe((response) => {
+        const buildingsInResponse = response.body['response'];
+        if (status === 'finished') {
+          buildings = (buildingsInResponse.filter(building => building.finishedAt <= Date.now()));
+        } else if (status === 'unfinished') {
+          buildings = buildingsInResponse.filter(building => building.finishedAt > Date.now());
+        }
+      });
+    return buildings;
   }
 
   showUnfinishedBuildings() {

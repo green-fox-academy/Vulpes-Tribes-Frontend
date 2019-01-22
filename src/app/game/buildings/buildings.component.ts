@@ -35,11 +35,11 @@ export class BuildingsComponent implements OnInit, OnChanges {
   }
 
   showFinishedBuildings() {
-    this.buildingsService.showFinishedBuildings().subscribe(response => this.buildings = response.body['response']);
+    this.buildingsService.filterBuildings('finished');
   }
 
   showUnfinishedBuildings() {
-    this.buildingsService.showUnfinishedBuildings().subscribe(response => this.buildings = response.body['response']);
+    this.buildingsService.filterBuildings('unfinished');
   }
 
   showAllBuildings() {
