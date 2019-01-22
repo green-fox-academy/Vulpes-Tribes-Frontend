@@ -1,6 +1,8 @@
 <div class="notifications__header">
-  <p>Constructioon log:</p>
+  <p>Construction log:</p>
 </div>
-<div class="notifications__items" *ngFor="let buildinig of buildings">
 
-</div>
+  <app-notification class="notifications__item"
+    *ngFor="let notification of notifications"
+    [notification]="notification">
+  </app-notification>

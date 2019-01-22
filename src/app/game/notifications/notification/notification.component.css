@@ -1,0 +1,9 @@
+.notifications__item {
+  display: flex;
+  flex-direction: row;
+}
+
+.notifications__item div {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,20 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import {Building} from '../../_models/building.model';
-import {NotificationsService} from './notifications.service';
+import { Component, OnInit, Output } from '@angular/core';
+import { NotificationsResponseMock } from '../../_helpers/mocks/notificationResponse.mock';
+import { TribesNotification } from '../../_models/notification.model';
 
 @Component({
   selector: 'app-notifications',
   templateUrl: './notifications.component.html',
-  styleUrls: ['./notifications.component.css']
+  styleUrls: ['./notifications.component.css'],
 })
 export class NotificationsComponent implements OnInit {
 
-  buildings: Building[];
+  notifications: TribesNotification[];
+  notification: TribesNotification;
 
-  constructor(private notificationService: NotificationsService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.buildings = this.notificationService.getUnfinishedBuildings();
+    this.notifications = new NotificationsResponseMock().notifications;
+    console.log(this.notifications);
   }
 
 }

@@ -1,0 +1,24 @@
+import { Component, Input, OnInit } from '@angular/core';
+import { TribesNotification } from '../../../_models/notification.model';
+
+@Component({
+  selector: 'app-notification',
+  templateUrl: './notification.component.html',
+  styleUrls: ['./notification.component.css'],
+})
+export class NotificationComponent implements OnInit {
+
+  @Input() notification: TribesNotification;
+  completion: number;
+
+  constructor() {
+
+  }
+
+  ngOnInit() {
+    console.log(this.notification);
+    this.completion = this.notification.startedAt / this.notification.finishedAt;
+    console.log(this.completion);
+  }
+
+}

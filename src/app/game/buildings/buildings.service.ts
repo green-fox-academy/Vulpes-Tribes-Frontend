@@ -62,7 +62,6 @@ export class BuildingsService {
         localStorage.setItem('buildings', JSON.stringify(buildings));
       });
     }
-    console.log(buildings);
     return buildings;
   }
 

@@ -1,0 +1,32 @@
+.notifications {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  width: 90%;
+  max-width: 1024px;
+  margin: 10px auto;
+  justify-content: flex-start;
+
+
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.notifications__header {
+  width: 90%;
+  margin: 10px auto;
+  background: white;
+}
+
+.notifications__item {
+  width: 90%;
+  margin: 10px auto;
+  background: white;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.notifications__item img {
+  max-width: 25px;
+}

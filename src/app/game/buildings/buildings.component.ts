@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Output, OnChanges, SimpleChanges, EventEmitter} from '@angular/core';
 import { BuildingsService } from './buildings.service';
 import { BuildingDetailComponent } from './building-details/building-detail.component';
 import { ModalService } from './building-details/modal.service';
@@ -36,7 +36,6 @@ export class BuildingsComponent implements OnInit, OnChanges {
 
   showFinishedBuildings() {
     this.buildings = this.buildingsService.filterBuildings('finished');
-    console.log(this.showUnfinishedBuildings());
   }
 
   showUnfinishedBuildings() {
@@ -45,11 +44,10 @@ export class BuildingsComponent implements OnInit, OnChanges {
 
   showAllBuildings() {
     this.buildings = this.buildingsService.showAllBuildings();
-    console.log(this.buildings);
 
   }
 
-  createBuilding(buildingType: string) {
+  createBuilding(buildingType: string): void {
     this.buildingsService.createBuilding(buildingType);
     this.showFinishedBuildings();
   }

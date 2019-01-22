@@ -27,6 +27,7 @@ import { BuildingComponent } from './game/buildings/building/building.component'
 import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.component';
 import { KingdomSettingsComponent } from './kingdom-settings/kingdom-settings.component';
 import { NotificationsComponent } from './game/notifications/notifications.component';
+import { NotificationComponent } from './game/notifications/notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { NotificationsComponent } from './game/notifications/notifications.compo
     BuildingComponent,
     WelcomeScreenComponent,
     NotificationsComponent,
+    NotificationComponent,
   ],
   imports: [
     BrowserModule,
