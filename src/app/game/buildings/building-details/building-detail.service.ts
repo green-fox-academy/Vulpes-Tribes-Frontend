@@ -16,10 +16,7 @@ export class BuildingDetailService {
     buildings = JSON.parse(localStorage.getItem('buildings'));
     buildings.find(building => building.id === buildingToUpdate.id).level += 1;
     localStorage.setItem('buildings', JSON.stringify(buildings));
-    return this.http.put(`${ENDPOINTS.getBuildings}/${building.id}`,
-      {
-        id: building.id,
-        level: building.level,
-      });
+    return this.http
+      .put(`${ENDPOINTS.getBuildings}/${building.id}`, { id: building.id, level: building.level });
   }
 }

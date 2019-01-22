@@ -2,8 +2,7 @@ import { Injectable, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { LoginService } from '../login/login.service';
-import { environment } from '../../environments/environment';
-import {ENDPOINTS} from '../../environments/endpoints';
+import { ENDPOINTS } from '../../environments/endpoints';
 
 @Injectable({
   providedIn: 'root',

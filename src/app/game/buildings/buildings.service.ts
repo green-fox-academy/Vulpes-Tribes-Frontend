@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ENDPOINTS } from '../../../environments/endpoints';
-import {Building} from '../../_models/building.model';
+import { Building } from '../../_models/building.model';
 
 @Injectable({
   providedIn: 'root',
@@ -16,21 +16,26 @@ export class BuildingsService {
   }
 
   getBuildingsFromBackend(): Observable<any> {
-    return this.http.get(ENDPOINTS.getBuildings, { observe: 'response' });
+    return this.http
+      .get(ENDPOINTS.getBuildings, { observe: 'response' });
   }
 
   createBuilding(buildingType: string): Observable<any> {
-    return this.http.post<any>(ENDPOINTS.createBuilding, {
-      type: buildingType,
-    });
+    return this.http
+      .post<any>(ENDPOINTS.createBuilding,
+                 { type: buildingType });
   }
 
   showFinishedBuildings() {
-    return this.http.get(ENDPOINTS.getBuildings, { params: new HttpParams().set('status', 'finished'), observe: 'response' });
+    return this.http
+      .get(ENDPOINTS.getBuildings,
+           { params: new HttpParams().set('status', 'finished'), observe: 'response' });
   }
 
   showUnfinishedBuildings() {
-    return this.http.get(ENDPOINTS.getBuildings, { params: new HttpParams().set('status', 'unfinished'), observe: 'response' });
+    return this.http
+      .get(ENDPOINTS.getBuildings,
+           { params: new HttpParams().set('status', 'unfinished'), observe: 'response' });
   }
 
   showAllBuildings(): Building[] {
