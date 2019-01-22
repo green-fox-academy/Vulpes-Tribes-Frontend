@@ -1,21 +1,33 @@
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { ResourcesService } from './resources.service';
-import { async, TestBed } from '@angular/core/testing';
+import { async, TestBed, ComponentFixture } from '@angular/core/testing';
 import { ResourcesComponent } from './resources.component';
+import { componentFactoryName } from '@angular/compiler';
 
 
 describe('ResourcesService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+let component: ResourcesComponent;
+let fixture: ComponentFixture<ResourcesComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
+  const spy = jasmine.createSpyObj('ResourcesService', ['getResources']);
+
     TestBed.configureTestingModule({
       imports: [
         HttpClientModule,
         HttpModule,
       ],
-      declarations: [ResourcesComponent]
-    }).compileComponents();
+      declarations: [ResourcesComponent],
+      providers: [
+        { provide: ResourcesService, useValue: spy }
+      ]
+    });
+    fixture = TestBed.createComponent(ResourcesComponent);
+    component = fixture.componentInstance;
+  });
+
+  beforeEach(async(() => {
   }));
 
   it('should be created', () => {

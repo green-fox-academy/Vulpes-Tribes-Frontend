@@ -1,27 +1,43 @@
-import { HttpModule } from '@angular/http';
-import { HttpClientModule } from '@angular/common/http';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ResourcesComponent } from './resources.component';
+import { ResourcesService } from './resources.service';
+import { of } from 'rxjs';
 
-describe('ResourcesComponent', () => {
+fdescribe('ResourcesComponent', () => {
   let component: ResourcesComponent;
   let fixture: ComponentFixture<ResourcesComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        HttpClientModule,
-        HttpModule,
-      ],
-      declarations: [ResourcesComponent]
-    }).compileComponents();
-  }));
+  let p;
+  let bannerElement: HTMLElement;
+  // let resourcesServiceSpy: jasmine.SpyObj<ResourcesService>;
+  const mockValues = [
+    {
+      amount: 500,
+      type: 'food',
+      generation: 0
+    },
+    {
+      amount: 340,
+      type: 'money',
+      generation: 1
+    }
+  ];
 
   beforeEach(() => {
+    const spy = jasmine.createSpyObj('ResourcesService', ['getResources']);
+    spy.getResources.and.returnValue( of(mockValues));
+
+    TestBed.configureTestingModule({
+      declarations: [ResourcesComponent],
+      providers: [
+        { provide: ResourcesService, useValue: spy }
+      ]
+    });
     fixture = TestBed.createComponent(ResourcesComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    bannerElement = fixture.nativeElement;
+    p = bannerElement.querySelector('p');
+    // resourcesServiceSpy = TestBed.get(ResourcesService);
   });
 
   it('should create', () => {
@@ -29,8 +45,6 @@ describe('ResourcesComponent', () => {
   });
 
   it(`should render 'money' amount from <p class='resourceMoney'>`, () => {
-    const bannerElement: HTMLElement = fixture.nativeElement;
-    const p = bannerElement.getElementsByClassName('resourceMoney')[0];
     fixture.detectChanges();
     expect(p.textContent).toContain('340');
   });

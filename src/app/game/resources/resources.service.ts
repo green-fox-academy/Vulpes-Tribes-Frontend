@@ -15,4 +15,5 @@ export class ResourcesService {
   getResources(): Observable<any> {
     return this.http.get('/game/resources');
   }
+
 }
