@@ -15,20 +15,25 @@ export class BuildingsInterceptor implements HttpInterceptor {
     const buildingsMock = new BuildingResponseMock();
     const buildings: Building[] = buildingsMock.buildings;
     let response;
+    console.log(req);
     if (req.url.endsWith(ENDPOINTS.getBuildings)) {
       if (req.method === 'GET') {
         response = buildings;
-      } else if (req.url.endsWith(ENDPOINTS.createBuilding)) {
+        console.log(response);
+      } else if (req.method === 'POST') {
         response = buildingsMock.createBuilding(req.body.type);
-      } else if (req.body && req.url.endsWith(`/${req.body.id}`)) {
-        const building = buildingsMock.findBuilding(req.body.id);
-        if (req.method === 'PUT') {
-          building.level += 1;
-          buildingsMock.updateBuilding(building);
-          response = building;
-        }
+        console.log(response);
       }
-      return utilities.sendResponse({response}, 200);
+    } else if (req.body && req.url.endsWith(`/${req.body.id}`)) {
+      const building = buildingsMock.findBuilding(req.body.id);
+      if (req.method === 'PUT') {
+        building.level += 1;
+        buildingsMock.updateBuilding(building);
+        response = building;
+      }
     }
+    next.handle(req);
+    console.log(response);
+    return utilities.sendResponse({ response }, 200);
   }
 }
