@@ -20,10 +20,15 @@ export class BuildingsService {
       .get(ENDPOINTS.getBuildings, { observe: 'response' });
   }
 
-  createBuilding(buildingType: string): Observable<any> {
-    return this.http
-      .post<any>(ENDPOINTS.createBuilding,
-                 { type: buildingType });
+  createBuilding(buildingType: string): Building {
+    let building: Building;
+     this.http
+      .post<any>(ENDPOINTS.getBuildings,
+                 { type: buildingType }).subscribe((response) => {
+                   building = response.response;
+                   this.updateLocalStorage(building);
+                 });
+     return building;
   }
 
   filterBuildings(status: string) {
@@ -57,6 +62,7 @@ export class BuildingsService {
         localStorage.setItem('buildings', JSON.stringify(buildings));
       });
     }
+    console.log(buildings);
     return buildings;
   }
 
