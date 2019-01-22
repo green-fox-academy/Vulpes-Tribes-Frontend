@@ -39,7 +39,6 @@ export class ResourceInterceptor implements HttpInterceptor {
             }
           })
         );
-        console.log(observable);
         observable.complete();
       });
     }

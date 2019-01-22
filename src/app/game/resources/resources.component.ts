@@ -21,6 +21,6 @@ export class ResourcesComponent implements OnInit {
       .subscribe(response => (this.food = response.resources[0]));
     // this.resourceService
       // .getResources()
-      // .subscribe(response => (this.money = response.resources2[0].amount));
+      // .subscribe(response => (this.money = response.resources2[0]));
   }
 }

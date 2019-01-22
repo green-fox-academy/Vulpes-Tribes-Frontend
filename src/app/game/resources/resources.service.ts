@@ -13,7 +13,6 @@ export class ResourcesService {
   constructor(private http: HttpClient) {}
 
   getResources(): Observable<any> {
-    console.log('request sent');
     return this.http.get('/game/resources');
   }
 }
