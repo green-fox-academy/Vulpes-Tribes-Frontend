@@ -1,6 +1,4 @@
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
-
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { LogoutService } from './logout.service';
 import { Router } from '@angular/router';
@@ -25,6 +23,10 @@ import { LoginInterceptor } from '../_helpers/interceptors/login.interceptor';
 import { RouterTestingModule } from '@angular/router/testing';
 import { mockLocalStorage, store } from '../_utilities/authTesting.utilities';
 import { ENDPOINTS } from '../../environments/endpoints';
+
+class mockRouter {
+  navigate(path) {}
+}
 
 describe('LogoutService', () => {
 
@@ -97,5 +99,17 @@ describe('LogoutService', () => {
       const req = httpClient.delete(ENDPOINTS.logout);
       expect(req).toBeTruthy();
     });
+  });
+
+  it('should call navigate method after the logout method is called', () => {
+    spyOn(router, 'navigate');
+    logoutService.logout();
+    expect(router.navigate).toHaveBeenCalled();
+  });
+
+  it('should navigate to /login route after the logout method is called', () => {
+    spyOn(router, 'navigate');
+    logoutService.logout();
+    expect(router.navigate).toHaveBeenCalledWith(['/login']);
   });
 });
