@@ -26,7 +26,11 @@ import { DomService } from './game/buildings/building-details/domService';
 import { BuildingComponent } from './game/buildings/building/building.component';
 import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.component';
 import { KingdomSettingsComponent } from './kingdom-settings/kingdom-settings.component';
+<<<<<<< HEAD
 import { LoadingComponent } from './loading/loading.component';
+=======
+import { KingdomInterceptor } from './_helpers/interceptors/kingdom.interceptor';
+>>>>>>> week2
 
 @NgModule({
   declarations: [
@@ -54,10 +58,12 @@ import { LoadingComponent } from './loading/loading.component';
   ],
 
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ResourceInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: LoginInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: BuildingsInterceptor, multi: true },
+   { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+   { provide: HTTP_INTERCEPTORS, useClass: ResourceInterceptor, multi: true },
+   { provide: HTTP_INTERCEPTORS, useClass: LoginInterceptor, multi: true },
+   { provide: HTTP_INTERCEPTORS, useClass: BuildingsInterceptor, multi: true },
+   { provide: HTTP_INTERCEPTORS, useClass: KingdomInterceptor, multi: true },
+
     CustomHeaders,
     { provide: APP_BASE_HREF, useValue: '/' },
     AuthService,
