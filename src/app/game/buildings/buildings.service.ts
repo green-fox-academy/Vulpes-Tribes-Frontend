@@ -10,8 +10,6 @@ import { Building } from '../../_models/building.model';
 
 export class BuildingsService {
 
-  building;
-
   constructor(private http: HttpClient) {
   }
 
