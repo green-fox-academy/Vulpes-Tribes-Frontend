@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { TroopsService } from './troops.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Troop } from 'src/app/_models/troop.model';
+import { Troop } from '../../_models/troop.model';
 
 describe('TroopsService', () => {
 
@@ -68,7 +68,7 @@ describe('TroopsService', () => {
       {id: 2, level: 2},
       {id: 3, level: 2}
     ];
-    expect(service.setLevels(troops)).toEqual({1:1,2:2});
+    expect(service.calculateTroopLevels(troops)).toEqual({1:1,2:2});
   });
 
   it('should return an object with given properties', () => {

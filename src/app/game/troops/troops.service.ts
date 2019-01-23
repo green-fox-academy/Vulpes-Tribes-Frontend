@@ -17,8 +17,8 @@ export class TroopsService {
     let totalDefence = 0;
     let sustenance = 0;
     this.getTroops().subscribe(response => {
-      troops = response.body.troops;
-      levels = this.setLevels(troops);
+      troops = response.body.troopList;
+      levels = this.calculateTroopLevels(troops);
       totalAttack = this.countAttack(troops);
       totalDefence = this.countDefence(troops);
       sustenance = troops.length;
@@ -30,7 +30,7 @@ export class TroopsService {
     return this.http.get('/game/troops', {observe: 'response'});
   }
 
-  setLevels (troops): any {
+  calculateTroopLevels (troops): any {
     let levels = {};
     troops.forEach(troop => levels[troop.level] ? levels[troop.level]++ : levels[troop.level] = 1);
     return levels;
