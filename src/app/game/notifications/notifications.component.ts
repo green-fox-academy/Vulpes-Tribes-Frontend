@@ -16,7 +16,6 @@ export class NotificationsComponent implements OnInit {
 
   ngOnInit() {
     this.notifications = new NotificationsResponseMock().notifications;
-    console.log(this.notifications);
   }
 
 }

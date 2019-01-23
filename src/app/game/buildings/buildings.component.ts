@@ -43,12 +43,17 @@ export class BuildingsComponent implements OnInit, OnChanges {
   }
 
   showAllBuildings() {
-    this.buildings = this.buildingsService.showAllBuildings();
-
+    this.buildingsService.showAllBuildings()
+      .subscribe(response => this.buildings = response);
   }
 
   createBuilding(buildingType: string): void {
-    this.buildingsService.createBuilding(buildingType);
+    let building: Building;
+    this.buildingsService.createBuilding(buildingType)
+      .subscribe((response) => {
+        building = response['response'];
+        this.buildingsService.updateLocalStorage(building);
+      });
     this.showFinishedBuildings();
   }
 }

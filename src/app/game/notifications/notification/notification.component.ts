@@ -16,9 +16,15 @@ export class NotificationComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.notification);
-    this.completion = this.notification.startedAt / this.notification.finishedAt;
-    console.log(this.completion);
+    console.log(Date.now());
+    this.getCompletion();
+    setInterval(() => {
+      this.getCompletion();
+    },          1000);
+  }
+
+  getCompletion(): number {
+    return this.completion = Date.now() / this.notification.finishedAt;
   }
 
 }

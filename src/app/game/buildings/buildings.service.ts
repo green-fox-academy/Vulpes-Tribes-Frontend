@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ENDPOINTS } from '../../../environments/endpoints';
 import { Building } from '../../_models/building.model';
@@ -12,23 +12,16 @@ export class BuildingsService {
 
   building;
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   getBuildingsFromBackend(): Observable<any> {
     return this.http
       .get(ENDPOINTS.getBuildings, { observe: 'response' });
   }
 
-  createBuilding(buildingType: string): Building {
-    let building: Building;
-     this.http
-      .post<any>(ENDPOINTS.getBuildings,
-                 { type: buildingType }).subscribe((response) => {
-                   building = response.response;
-                   this.updateLocalStorage(building);
-                 });
-     return building;
+  createBuilding(buildingType: string): Observable<Building> {
+    return this.http
+      .post<any>(ENDPOINTS.getBuildings, { type: buildingType });
   }
 
   filterBuildings(status: string) {
@@ -46,23 +39,18 @@ export class BuildingsService {
     return buildings;
   }
 
-  showUnfinishedBuildings() {
-    return this.http
-      .get(ENDPOINTS.getBuildings,
-           { params: new HttpParams().set('status', 'unfinished'), observe: 'response' });
-  }
-
-  showAllBuildings(): Building[] {
-    let buildings: Building[] = [];
-    if (localStorage.getItem('buildings') !== null) {
-      buildings = JSON.parse(localStorage.getItem('buildings'));
-    } else {
-      this.getBuildingsFromBackend().subscribe((response) => {
-        buildings = response.body.response;
-        localStorage.setItem('buildings', JSON.stringify(buildings));
-      });
-    }
-    return buildings;
+  showAllBuildings() : Observable<Building[]> {
+    return new Observable<Building[]>((observer) => {
+      if (localStorage.getItem('buildings')) {
+        observer.next(JSON.parse(localStorage.getItem('buildings')));
+        observer.complete();
+      } else {
+        this.getBuildingsFromBackend().subscribe(response => {
+          observer.next(response.response);
+          observer.complete();
+        });
+      }
+    });
   }
 
   updateLocalStorage(building: Building) {

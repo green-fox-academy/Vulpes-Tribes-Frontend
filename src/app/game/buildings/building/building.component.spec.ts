@@ -21,6 +21,8 @@ import { Building } from '../../../_models/building.model';
 import { BuildingFactory } from '../../../_helpers/factories/building.factory';
 import { KingdomSettingsComponent } from '../../../kingdom-settings/kingdom-settings.component';
 import { WelcomeScreenComponent } from '../../../welcome-screen/welcome-screen.component';
+import {NotificationsComponent} from '../../notifications/notifications.component';
+import {NotificationComponent} from '../../notifications/notification/notification.component';
 
 describe('BuildingComponent', () => {
   let component: BuildingComponent;
@@ -34,15 +36,18 @@ describe('BuildingComponent', () => {
         LoginComponent,
         LogoutComponent,
         RegisterComponent,
+        LogoutComponent,
+        KingdomSettingsComponent,
         HeaderComponent,
         GameComponent,
         ResourcesComponent,
-        KingdomSettingsComponent,
         AlertComponent,
         BuildingsComponent,
-        BuildingComponent,
         BuildingDetailComponent,
+        BuildingComponent,
         WelcomeScreenComponent,
+        NotificationsComponent,
+        NotificationComponent,
       ],
       imports: [
         BrowserModule,
