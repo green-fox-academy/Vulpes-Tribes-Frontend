@@ -1,19 +1,17 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {LoginService} from './login.service';
-import {environment} from '../../environments/environment';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
   @ViewChild('loginFormElement') loginForm;
 
   user = {
     username: '',
-    password: ''
+    password: '',
   };
 
   constructor(private loginService: LoginService) { }

@@ -1,11 +1,11 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {environment} from '../../environments/environment';
-import {Router} from '@angular/router';
-import {AlertService} from '../alert/alert.service';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+import { Router } from '@angular/router';
+import { AlertService } from '../alert/alert.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 
 export class LoginService {
@@ -16,25 +16,24 @@ export class LoginService {
   }
 
   login(user) {
-    this.http.post<any>(environment.login, user, {reportProgress: true})
+    this.http.post<any>(environment.login, user, { reportProgress: true })
       .subscribe(
+<<<<<<< HEAD
         response => {
           console.log(response);
+=======
+        (response) => {
+>>>>>>> 17f90ece5b40c323caf080b179a30b6c1f68c34d
           this.saveToken(response.tribes_token);
           this.router.navigate(['/game']);
         },
-        error => {
-          this.alert.error('No such user ' + user.username + '!');
-        }
+        (error) => {
+          this.alert.error(`No such user ${user.username}!`);
+        },
       );
   }
 
   saveToken(tokenValue: number) {
     localStorage.setItem(environment.tribes_token, tokenValue.toString());
-  }
-
-  isLoggedIn(): boolean {
-    console.log(localStorage.getItem(environment.tribes_token) !== null);
-    return (localStorage.getItem(environment.tribes_token) !== null);
   }
 }
