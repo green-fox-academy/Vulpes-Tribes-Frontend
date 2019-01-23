@@ -42,7 +42,6 @@ describe('ResourcesComponent', () => {
     p = bannerElement.getElementsByClassName('resourceMoney')[0];
     bannerElement2 = fixture.nativeElement;
     p2 = bannerElement2.getElementsByClassName('resourceFood')[0];
-    // resourcesServiceSpy = TestBed.get(ResourcesService);
   });
 
   it('should create', () => {
