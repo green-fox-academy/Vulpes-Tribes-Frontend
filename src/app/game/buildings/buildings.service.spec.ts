@@ -3,11 +3,10 @@ import { BuildingsService } from './buildings.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Building } from '../../_models/building.model';
-import { mockLocalStorage, store} from '../../_utilities/authTesting.utilities';
+import { mockLocalStorage } from '../../_utilities/authTesting.utilities';
 
 describe('BuildingsService', () => {
   let service: BuildingsService;
-  const mockStore = store;
   const mockStorage = mockLocalStorage;
 
   beforeEach(async () => {
@@ -67,9 +66,10 @@ describe('BuildingsService', () => {
   it('When new building was created, unfinishedBuildings should not be null ', () => {
     service.createBuilding('mine');
     let building;
-    service.filterBuildings('unfinished')
+    service.showUnfinishedBuildings()
       .subscribe(response => {
-        building = response;
+        building = response.body['response'];
+        console.log(building);
         expect(building.type).toBe('mine');
       });
 
