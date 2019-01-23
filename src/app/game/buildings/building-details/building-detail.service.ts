@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Building } from '../../../_models/building.model';
 import { ENDPOINTS } from '../../../../environments/endpoints';
+import {BuildingsService} from '../buildings.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BuildingDetailService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private buildingsService: BuildingsService) { }
 
   levelUpBuilding(building: Building) {
     let buildings: Building[];

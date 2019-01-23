@@ -35,22 +35,27 @@ export class BuildingsComponent implements OnInit, OnChanges {
   }
 
   showFinishedBuildings() {
-    this.buildings = this.buildingsService.filterBuildings('finished');
-    console.log(this.showUnfinishedBuildings());
+    this.buildingsService.filterBuildings('finished')
+      .subscribe(response => this.buildings = response);
   }
 
   showUnfinishedBuildings() {
-    this.buildings = this.buildingsService.filterBuildings('unfinished');
+    this.buildingsService.filterBuildings('unfinished')
+      .subscribe(response => this.buildings = response);
   }
 
   showAllBuildings() {
-    this.buildings = this.buildingsService.showAllBuildings();
-    console.log(this.buildings);
-
+    this.buildingsService.showAllBuildings()
+      .subscribe(response => {
+        console.log(response);
+        this.buildings = response;
+      });
   }
 
   createBuilding(buildingType: string) {
-    this.buildingsService.createBuilding(buildingType);
+    this.buildingsService.createBuilding(buildingType).subscribe((response) => {
+      this.buildings.push(response);
+    });
     this.showFinishedBuildings();
   }
 }

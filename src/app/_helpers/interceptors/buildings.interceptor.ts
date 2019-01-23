@@ -21,7 +21,7 @@ export class BuildingsInterceptor implements HttpInterceptor {
         response = buildings;
         console.log(response);
       } else if (req.method === 'POST') {
-        response = buildingsMock.createBuilding(req.body.type);
+        response = buildingsMock.createBuilding(req.body);
         console.log(response);
       }
     } else if (req.body && req.url.endsWith(`/${req.body.id}`)) {
