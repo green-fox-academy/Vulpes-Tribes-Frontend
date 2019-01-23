@@ -2,7 +2,7 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpResponse,
   HttpSentEvent, HttpHeaderResponse, HttpProgressEvent, HttpUserEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { Kingdom } from '../_models/kingdom.model';
+import { Kingdom } from '../../_models/kingdom.model';
 
 const kingdom: Kingdom = {
   'id': 213,
@@ -58,7 +58,6 @@ export class KingdomInterceptor implements HttpInterceptor {
           });
         }
         else if (req.url.endsWith('/kingdom') && (req.method === 'PUT')) {
-          kingdom.name = req.body;
           return new Observable(observer => {
             observer.next(new HttpResponse<any>(
               {

@@ -18,7 +18,6 @@ export class KingdomSettingsComponent implements OnInit {
 
   showSettings(): void {
     this.settingsService.getSettings().subscribe(response => (
-      console.log(response),
       this.name = response.body.name));
   }
   updateSettings(name): void {
