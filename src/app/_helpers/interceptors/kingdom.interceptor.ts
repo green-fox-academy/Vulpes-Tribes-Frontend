@@ -6,16 +6,16 @@ import { Kingdom } from '../_models/kingdom.model';
 
 const kingdom: Kingdom = {
   'id': 213,
-  name: 'My Kingdom',
-  'user_id': 22,
+  'name': 'My Kingdom',
+  'userId': 22,
   'buildings': [
     {
       'id': 123,
       'type': 'townhall',
       'level': 1,
       'hp': 100,
-      'started_at': 1231232312,
-      'finished_at': 7652146122
+      'startedAt': 1231232312,
+      'finishedAt': 7652146122
     }
   ],
   'resources': [
@@ -32,8 +32,8 @@ const kingdom: Kingdom = {
       'hp': 100,
       'attack': 50,
       'defence': 20,
-      'started_at': 1231232312,
-      'finished_at': 7652146122
+      'startedAt': 1231232312,
+      'finishedAt': 7652146122
     }
   ],
   'location': {
@@ -47,7 +47,6 @@ const kingdom: Kingdom = {
 export class KingdomInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler):
   Observable<HttpSentEvent | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any>> {
-    console.log(req);
       if (req.url.endsWith('/kingdom') && (req.method === 'GET')) {
           return new Observable(observer => {
             observer.next(new HttpResponse<Kingdom>(
@@ -59,7 +58,6 @@ export class KingdomInterceptor implements HttpInterceptor {
           });
         }
         else if (req.url.endsWith('/kingdom') && (req.method === 'PUT')) {
-          console.log(req);
           kingdom.name = req.body;
           return new Observable(observer => {
             observer.next(new HttpResponse<any>(
