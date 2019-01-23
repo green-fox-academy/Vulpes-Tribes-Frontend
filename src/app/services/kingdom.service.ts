@@ -7,11 +7,14 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class KingdomService {
-  kingdom: Kingdom;
+  
 
   constructor(private http: HttpClient) { }
 
   getKingdom(): Observable<any> {
-    return this.http.get<Kingdom>('/kingdom');
+    return this.http.get<Kingdom>('/kingdom', {observe: 'response'});
+  }
+  updateKingdom(name): Observable<any> {
+    return this.http.put<any>('/kingdom', name, {observe:'response'})
   }
 }

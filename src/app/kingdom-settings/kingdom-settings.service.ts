@@ -15,4 +15,8 @@ export class KingdomSettingsService {
   getSettings(): Observable<any> {
     return this.kingdomService.getKingdom();
   }
+  
+  updateSettings(name): Observable<any> {
+    return this.kingdomService.updateKingdom(name);
+  }
 }
