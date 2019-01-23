@@ -1,15 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 import { BuildingsService } from './buildings.service';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Building } from '../../_models/building.model';
-import { mockLocalStorage, store } from '../../_utilities/authTesting.utilities';
-import {ENDPOINTS} from '../../../environments/endpoints';
-import {Observable} from 'rxjs';
+import { mockLocalStorage, store} from '../../_utilities/authTesting.utilities';
 
 describe('BuildingsService', () => {
   let service: BuildingsService;
-  let httpMock: HttpTestingController;
   const mockStore = store;
   const mockStorage = mockLocalStorage;
 
@@ -36,7 +33,6 @@ describe('BuildingsService', () => {
 
   beforeEach(() => {
     service = TestBed.get(BuildingsService);
-    httpMock = TestBed.get(HttpTestingController);
   });
 
   it('should be created', () => {
@@ -62,19 +58,20 @@ describe('BuildingsService', () => {
 
   it('Should create a new building', () => {
     let building: Building;
-    service.createBuilding('mine')
-      .subscribe(response => {
-        building = response['response'];
-        expect(building.type).toBe('mine');
-      });
+    service.createBuilding('mine').subscribe((response) => {
+      building = response;
+      expect(building.type).not.toBe(null);
     });
+  });
 
   it('When new building was created, unfinishedBuildings should not be null ', () => {
-    let newBuilding;
-    service.createBuilding('mine')
-      .subscribe(response => newBuilding = response['response']);
+    service.createBuilding('mine');
     let building;
-    building = service.filterBuildings('unfinished');
-    expect(building.type).not.toBeNull();
+    service.filterBuildings('unfinished')
+      .subscribe(response => {
+        building = response;
+        expect(building.type).toBe('mine');
+      });
+
   });
 });

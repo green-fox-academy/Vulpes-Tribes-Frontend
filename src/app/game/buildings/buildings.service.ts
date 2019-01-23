@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ENDPOINTS } from '../../../environments/endpoints';
 import { Building } from '../../_models/building.model';
@@ -10,9 +10,8 @@ import { Building } from '../../_models/building.model';
 
 export class BuildingsService {
 
-  building;
-
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   getBuildingsFromBackend(): Observable<any> {
     return this.http
@@ -20,33 +19,41 @@ export class BuildingsService {
   }
 
   createBuilding(buildingType: string): Observable<Building> {
-    return this.http
-      .post<any>(ENDPOINTS.getBuildings, { type: buildingType });
+    return new Observable<Building>((observer) => {
+      this.http.post(ENDPOINTS.getBuildings, buildingType)
+        .subscribe((response) => {
+          this.updateLocalStorage(response['response']);
+          observer.next(response['response']);
+          observer.complete();
+        });
+    });
   }
 
-  filterBuildings(status: string) {
-    let buildings = [];
-    this.http
-      .get(ENDPOINTS.getBuildings, { observe: 'response' })
-      .subscribe((response) => {
-        const buildingsInResponse = response.body['response'];
-        if (status === 'finished') {
-          buildings = (buildingsInResponse.filter(building => building.finishedAt <= Date.now()));
-        } else if (status === 'unfinished') {
-          buildings = buildingsInResponse.filter(building => building.finishedAt > Date.now());
-        }
-      });
-    return buildings;
+  filterBuildings(status: string): Observable<Building[]> {
+    return new Observable<Building[]>((observer) => {
+      this.showAllBuildings()
+        .subscribe((response) => {
+          if (status === 'finished') {
+            observer.next(response
+              .filter(building => building.finishedAt <= Date.now()));
+            observer.complete();
+          } else if (status === 'unfinished') {
+            observer.next(response
+              .filter(building => building.finishedAt > Date.now()));
+          }
+        });
+    });
   }
 
-  showAllBuildings() : Observable<Building[]> {
+  showAllBuildings(): Observable<Building[]> {
     return new Observable<Building[]>((observer) => {
       if (localStorage.getItem('buildings')) {
         observer.next(JSON.parse(localStorage.getItem('buildings')));
         observer.complete();
       } else {
-        this.getBuildingsFromBackend().subscribe(response => {
-          observer.next(response.response);
+        this.getBuildingsFromBackend().subscribe((response) => {
+          localStorage.setItem('buildings', JSON.stringify(response.body.response));
+          observer.next(response.body.response);
           observer.complete();
         });
       }

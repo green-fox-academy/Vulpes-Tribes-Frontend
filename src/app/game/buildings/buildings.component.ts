@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, OnChanges, SimpleChanges, EventEmitter} from '@angular/core';
+import { Component, OnInit, Output, OnChanges, SimpleChanges } from '@angular/core';
 import { BuildingsService } from './buildings.service';
 import { BuildingDetailComponent } from './building-details/building-detail.component';
 import { ModalService } from './building-details/modal.service';
@@ -35,11 +35,13 @@ export class BuildingsComponent implements OnInit, OnChanges {
   }
 
   showFinishedBuildings() {
-    this.buildings = this.buildingsService.filterBuildings('finished');
+    this.buildingsService.filterBuildings('finished')
+      .subscribe(response => this.buildings = response);
   }
 
   showUnfinishedBuildings() {
-    this.buildings = this.buildingsService.filterBuildings('unfinished');
+    this.buildingsService.filterBuildings('unfinished')
+      .subscribe(response => this.buildings = response);
   }
 
   showAllBuildings() {
@@ -47,13 +49,10 @@ export class BuildingsComponent implements OnInit, OnChanges {
       .subscribe(response => this.buildings = response);
   }
 
-  createBuilding(buildingType: string): void {
-    let building: Building;
-    this.buildingsService.createBuilding(buildingType)
-      .subscribe((response) => {
-        building = response['response'];
-        this.buildingsService.updateLocalStorage(building);
-      });
+  createBuilding(buildingType: string) {
+    this.buildingsService.createBuilding(buildingType).subscribe((response) => {
+      this.buildings.push(response);
+    });
     this.showFinishedBuildings();
   }
 }
