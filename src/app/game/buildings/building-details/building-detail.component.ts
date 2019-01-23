@@ -1,8 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, Input, OnInit, SimpleChange} from '@angular/core';
 import { DomService } from './domService';
 import { Building } from '../../../_models/building.model';
 import { BuildingDetailService } from './building-detail.service';
 import { AlertService } from '../../../alert/alert.service';
+import {detectChanges} from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-building-detail',
@@ -29,7 +30,10 @@ export class BuildingDetailComponent implements OnInit {
 
   levelUpBuilding(building: Building) {
     this.buildingDetailService.levelUpBuilding(building)
-      .subscribe(response => this.alertService.success('Building leveled up'));
+      .subscribe((response) => {
+        this.building.level = response.body.response.level;
+        this.alertService.success('Building leveled up');
+      });
   }
 
 }

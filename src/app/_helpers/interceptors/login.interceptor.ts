@@ -12,6 +12,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { User } from '../../_models/user.model';
 import { InterceptorUtilities } from '../../_utilities/interceptor.utilities';
+import {ENDPOINTS} from '../../../environments/endpoints';
 
 const users: User[] = [
   {
@@ -38,7 +39,7 @@ export class LoginInterceptor implements HttpInterceptor {
       HttpProgressEvent |
       HttpResponse<any> |
       HttpUserEvent<any>> {
-    if (req.url.endsWith('/login') &&
+    if (req.url.endsWith(ENDPOINTS.login) &&
       (req.method === 'POST') &&
       (req.body.username.length > 0 &&
         req.body.password.length > 0)) {
@@ -51,7 +52,7 @@ export class LoginInterceptor implements HttpInterceptor {
       }
       return throwError({ error: { message: `No such user ${req.body.username}!` } });
 
-    }  if (req.url.endsWith('/register')) {
+    }  if (req.url.endsWith(ENDPOINTS.register)) {
       users.push(new User(req.body.username,
                           (users.length + 1),
                           req.body.password,
@@ -65,7 +66,7 @@ export class LoginInterceptor implements HttpInterceptor {
         points: 0,
         tribes_token: this.generateToken(),
       },                            200);
-    }  if (req.url.endsWith('/logout')) {
+    }  if (req.url.endsWith(ENDPOINTS.logout)) {
       return utilities.sendResponse({
         status: 'ok',
         message: 'Logged out successfully!',

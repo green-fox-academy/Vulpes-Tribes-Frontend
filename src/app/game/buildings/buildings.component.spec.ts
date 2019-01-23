@@ -68,7 +68,7 @@ describe('BuildingsComponent', () => {
     component = fixture.componentInstance;
     service = TestBed.get(BuildingsService);
     buildingsMock = TestBed.get(BuildingResponseMock);
-    spyOn(service, 'getBuildings').and.returnValue(of(buildingsMock));
+    spyOn(service, 'getBuildingsFromBackend').and.returnValue(of(buildingsMock));
     fixture.detectChanges();
   });
 
@@ -76,8 +76,8 @@ describe('BuildingsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('getBuildings method on initialization', () => {
-    expect(service.getBuildings).toHaveBeenCalled();
+  it('getBackendBuildings method on initialization', () => {
+    expect(service.getBuildingsFromBackend).toHaveBeenCalled();
 
   });
 });

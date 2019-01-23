@@ -26,6 +26,7 @@ import { BuildingComponent } from '../game/buildings/building/building.component
 import { KingdomSettingsComponent } from '../kingdom-settings/kingdom-settings.component';
 import { WelcomeScreenComponent } from '../welcome-screen/welcome-screen.component';
 import { mockLocalStorage, store } from '../_utilities/authTesting.utilities';
+import {ENDPOINTS} from '../../environments/endpoints';
 
 describe('LoginService', () => {
 
@@ -107,7 +108,7 @@ describe('LoginService', () => {
         password: '123',
       };
       loginService.login(user);
-      const req = httpClient.post(environment.login, user);
+      const req = httpClient.post(ENDPOINTS.login, user);
       expect(req).toBeTruthy();
     });
   });
