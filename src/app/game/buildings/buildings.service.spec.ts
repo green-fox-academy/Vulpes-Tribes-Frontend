@@ -67,10 +67,9 @@ describe('BuildingsService', () => {
   it('When new building was created, unfinishedBuildings should not be null ', () => {
     service.createBuilding('mine');
     let building;
-    service.showUnfinishedBuildings()
+    service.filterBuildings('unfinished')
       .subscribe(response => {
-        building = response.body['response'];
-        console.log(building);
+        building = response;
         expect(building.type).toBe('mine');
       });
 

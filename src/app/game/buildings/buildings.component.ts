@@ -46,10 +46,7 @@ export class BuildingsComponent implements OnInit, OnChanges {
 
   showAllBuildings() {
     this.buildingsService.showAllBuildings()
-      .subscribe(response => {
-        console.log(response);
-        this.buildings = response;
-      });
+      .subscribe(response => this.buildings = response);
   }
 
   createBuilding(buildingType: string) {

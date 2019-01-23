@@ -33,24 +33,18 @@ export class BuildingsService {
 
   filterBuildings(status: string): Observable<Building[]> {
     return new Observable<Building[]>((observer) => {
-      this.http.get(ENDPOINTS.getBuildings)
+      this.showAllBuildings()
         .subscribe((response) => {
           if (status === 'finished') {
-            observer.next(response['response']
+            observer.next(response
               .filter(building => building.finishedAt <= Date.now()));
             observer.complete();
           } else if (status === 'unfinished') {
-            observer.next(response['response']
+            observer.next(response
               .filter(building => building.finishedAt > Date.now()));
           }
         });
     });
-  }
-
-  showUnfinishedBuildings() {
-    return this.http
-      .get(ENDPOINTS.getBuildings,
-           { params: new HttpParams().set('status', 'unfinished'), observe: 'response' });
   }
 
   showAllBuildings(): Observable<Building[]> {
