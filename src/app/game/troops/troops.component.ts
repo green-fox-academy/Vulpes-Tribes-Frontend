@@ -16,7 +16,7 @@ export class TroopsComponent implements OnInit {
   constructor(private troopsService: TroopsService) { }
 
   ngOnInit() {
-    let values =  this.troopsService.run();
+    let values =  this.troopsService.getTroopsAndStats();
     this.levels = values.levels;
     this.totalAttack = values.totalAttack;
     this.totalDefence = values.totalDefence

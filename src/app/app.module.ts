@@ -27,7 +27,6 @@ import { BuildingComponent } from './game/buildings/building/building.component'
 import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.component';
 import { KingdomSettingsComponent } from './kingdom-settings/kingdom-settings.component';
 import { TroopsComponent } from './game/troops/troops.component';
-import { TroopComponent } from './game/troops/troop/troop.component';
 import { TroopsInterceptor } from './_helpers/interceptors/troops.interceptor';
 
 @NgModule({
@@ -47,7 +46,6 @@ import { TroopsInterceptor } from './_helpers/interceptors/troops.interceptor';
     BuildingComponent,
     WelcomeScreenComponent,
     TroopsComponent,
-    TroopComponent
   ],
   imports: [
     BrowserModule,

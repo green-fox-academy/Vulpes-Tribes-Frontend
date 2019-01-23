@@ -10,7 +10,7 @@ export class TroopsService {
 
   constructor(private http: HttpClient) {}
 
-  run() {
+  getTroopsAndStats() {
     let troops = [];
     let levels = {};
     let totalAttack = 0;
@@ -23,7 +23,7 @@ export class TroopsService {
       totalDefence = this.countDefence(troops);
       sustenance = troops.length;
     });
-      return {levels,totalAttack,totalDefence,sustenance};
+    return {levels,totalAttack,totalDefence,sustenance};
   }
 
   getTroops(): Observable<any> {

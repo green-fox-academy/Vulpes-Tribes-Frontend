@@ -4,8 +4,8 @@ export class Troop {
   hp: number;
   attack: number;
   defence: number;
-  started_at: number;
-  finished_at: number;
+  startedAt: number;
+  finishedAt: number;
 
   constructor (id: number) {
     this.id = id;
@@ -13,7 +13,7 @@ export class Troop {
     this.hp = 1;
     this.attack = 1;
     this.defence = 1;
-    this.started_at = Date.now();
-    this.finished_at = Date.now() + 1000;
+    this.startedAt = Date.now();
+    this.finishedAt = Date.now() + 1000;
   }
 }

@@ -1,27 +1,24 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TroopsComponent } from './troops.component';
 import { TroopsService } from './troops.service';
-import { HttpClientModule } from '@angular/common/http';
 
 
 describe('TroopsComponent', () => {
   let component: TroopsComponent;
   let fixture: ComponentFixture<TroopsComponent>;
-  let service: TroopsService;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [TroopsComponent],
-      imports: [HttpClientModule],
-      providers: [TroopsService]
-    })
-    .compileComponents();
-  }));
+  const mockValues = {levels:{1:3,2:2,3:1},totalAttack:10,totalDefence:10,sustenance:6};
 
   beforeEach(() => {
+
+    const spy = jasmine.createSpyObj('TroopsService', ['getTroopsAndStats']);
+    spy.getTroopsAndStats.and.returnValue(mockValues);
+    TestBed.configureTestingModule({
+      declarations: [TroopsComponent],
+      providers: [{provide: TroopsService, useValue: spy}]
+    });
     fixture = TestBed.createComponent(TroopsComponent);
     component = fixture.componentInstance;
-    service = TestBed.get(TroopsService);
     fixture.detectChanges();
   });
 
@@ -29,11 +26,11 @@ describe('TroopsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should set totalAttack to any number >= 0', () => {
-    expect(component.totalAttack).toBeGreaterThanOrEqual(0);
+  it('should set totalAttack to 10', () => {
+    expect(component.totalAttack).toEqual(10);
   })
 
-  it('should return false if levels object is empty', () => {
-    expect(component.checkLevels()).toBeFalsy();
+  it('should return true if levels object is not empty', () => {
+    expect(component.checkLevels()).toBeTruthy();
   })
 });

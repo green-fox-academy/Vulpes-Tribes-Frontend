@@ -39,8 +39,8 @@ describe('TroopsService', () => {
           hp: 1,
           attack: 1,
           defence: 1,
-          started_at: 1231232312,
-          finished_at: 7652146122,
+          startedAt: 1231232312,
+          finishedAt: 7652146122,
         }
       )
     })
@@ -72,6 +72,6 @@ describe('TroopsService', () => {
   });
 
   it('should return an object with given properties', () => {
-    expect(service.run().hasOwnProperty('levels' && 'totalAttack' && 'totalDefence' && 'sustenance')).toBeTruthy();
+    expect(service.getTroopsAndStats().hasOwnProperty('levels' && 'totalAttack' && 'totalDefence' && 'sustenance')).toBeTruthy();
   })
 });
