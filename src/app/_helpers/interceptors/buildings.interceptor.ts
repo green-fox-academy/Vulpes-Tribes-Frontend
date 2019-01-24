@@ -15,14 +15,12 @@ export class BuildingsInterceptor implements HttpInterceptor {
     const buildingsMock = new BuildingResponseMock();
     const buildings: Building[] = buildingsMock.buildings;
     let response;
-    console.log(req);
     if (req.url.endsWith(ENDPOINTS.getBuildings)) {
       if (req.method === 'GET') {
         response = buildings;
         console.log(response);
       } else if (req.method === 'POST') {
-        response = buildingsMock.createBuilding(req.body.type);
-        console.log(response);
+        response = buildingsMock.createBuilding(req.body);
       }
     } else if (req.body && req.url.endsWith(`/${req.body.id}`)) {
       const building = buildingsMock.findBuilding(req.body.id);
@@ -33,7 +31,6 @@ export class BuildingsInterceptor implements HttpInterceptor {
       }
     }
     next.handle(req);
-    console.log(response);
     return utilities.sendResponse({ response }, 200);
   }
 }

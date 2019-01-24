@@ -1,0 +1,58 @@
+import { Troop } from '../_models/troop.model';
+
+export const troops: Troop[] = [
+  {
+    'id': 1,
+    'level': 1,
+    'hp': 1,
+    'attack': 1,
+    'defence': 1,
+    'startedAt': 1231232312,
+    'finishedAt': 7652146122,
+  },
+  {
+    'id': 2,
+    'level': 1,
+    'hp': 1,
+    'attack': 1,
+    'defence': 1,
+    'startedAt': 1231232312,
+    'finishedAt': 7652146122,
+  },
+  {
+    'id': 3,
+    'level': 1,
+    'hp': 1,
+    'attack': 1,
+    'defence': 1,
+    'startedAt': 1231232312,
+    'finishedAt': 7652146122,
+  },
+  {
+    'id': 4,
+    'level': 2,
+    'hp': 2,
+    'attack': 2,
+    'defence': 2,
+    'startedAt': 1231232312,
+    'finishedAt': 7652146122,
+  },
+  {
+    'id': 5,
+    'level': 2,
+    'hp': 2,
+    'attack': 2,
+    'defence': 2,
+    'startedAt': 1231232312,
+    'finishedAt': 7652146122,
+  },
+  {
+    'id': 6,
+    'level': 3,
+    'hp': 3,
+    'attack': 3,
+    'defence': 3,
+    'startedAt': 1231232312,
+    'finishedAt': 7652146122,
+  },
+];

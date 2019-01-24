@@ -19,7 +19,9 @@ export class LoginService {
   login(user) {
     this.http.post<any>(ENDPOINTS.login, user, { reportProgress: true })
       .subscribe(
-        (response) => {
+        response => {
+          console.log(response);
+
           this.saveToken(response.tribes_token);
           this.router.navigate(['/game']);
         },
