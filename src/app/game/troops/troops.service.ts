@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import { ENDPOINTS } from 'src/environments/endpoints';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,7 @@ export class TroopsService {
   }
 
   getTroops(): Observable<any> {
-    return this.http.get('/game/troops', {observe: 'response'});
+    return this.http.get(ENDPOINTS.getTroops, {observe: 'response'});
   }
 
   calculateTroopLevels (troops): any {

@@ -1,4 +1,4 @@
-import { Troop } from '../_models/troop.model';
+import { Troop } from '../../_models/troop.model';
 
 export const troops: Troop[] = [
   {
