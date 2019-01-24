@@ -47,11 +47,7 @@ import { LoaderComponent } from './loader/loader.component';
     BuildingDetailComponent,
     BuildingComponent,
     WelcomeScreenComponent,
-<<<<<<< HEAD
-    LoaderComponent,
-=======
     TroopsComponent,
->>>>>>> a7da4d361eb10a766379e2296ee5afa2dc4efce4
   ],
   imports: [
     BrowserModule,
