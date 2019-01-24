@@ -1,4 +1,5 @@
 import {
+  HttpErrorResponse,
   HttpEvent,
   HttpHandler,
   HttpHeaderResponse, HttpHeaders,
@@ -9,8 +10,12 @@ import {
   HttpUserEvent,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { environment } from '../../../environments/environment';
+import { InterceptorUtilities } from '../../_utilities/interceptor.utilities';
+import { error } from '@angular/compiler/src/util';
+
+const utilities = new InterceptorUtilities();
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -20,12 +25,19 @@ export class TokenInterceptor implements HttpInterceptor {
       HttpProgressEvent |
       HttpResponse<any> |
       HttpUserEvent<any>> {
-    const authHeader = req.clone({
-      setHeaders: {
-        'Content-Type': 'application/json',
-        'X-Tribes-Token': localStorage.getItem(environment.tribes_token),
-      },
-    });
-    return next.handle(authHeader);
+
+    const token: string = localStorage.getItem(environment.tribes_token);
+
+    if (token) {
+      const authHeader = req.clone({
+        setHeaders: {
+          'Content-Type': 'application/json',
+          'X-Tribes-Token': localStorage.getItem(environment.tribes_token),
+        },
+      });
+      return next.handle(authHeader);
+    } else {
+      next.handle(req);
+    }
   }
 }

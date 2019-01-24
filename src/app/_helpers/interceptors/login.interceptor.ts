@@ -12,7 +12,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { User } from '../../_models/user.model';
 import { InterceptorUtilities } from '../../_utilities/interceptor.utilities';
-import {ENDPOINTS} from '../../../environments/endpoints';
+import { ENDPOINTS } from '../../../environments/endpoints';
 
 const users: User[] = [
   {
@@ -40,28 +40,26 @@ export class LoginInterceptor implements HttpInterceptor {
       HttpResponse<any> |
       HttpUserEvent<any>> {
     if (req.url.endsWith(ENDPOINTS.login) &&
-      (req.method === 'POST') &&
-      (req.body.username.length > 0 &&
+       (req.method === 'POST') &&
+       (req.body.username.length > 0 &&
         req.body.password.length > 0)) {
       if (this.checkUser(req.body.username, req.body.password)) {
         return utilities.sendResponse({
           id: 1,
           tribes_token: this.generateToken(),
         },                            200);
-
       }
       return throwError({ error: { message: `No such user ${req.body.username}!` } });
 
     }  if (req.url.endsWith(ENDPOINTS.register)) {
-      users.push(new User(req.body.username,
-                          (users.length + 1),
-                          req.body.password,
-                          req.body.kingdom,
-                          users.length + 100));
+      const newUser = new User(req.body.username, (users.length + 1), req.body.password,
+                               req.body.kingdom,
+                               users.length + 100);
+      users.push(newUser);
       return utilities.sendResponse({
-        id: users[users.length - 1].userId,
-        username: users[users.length - 1].username,
-        kingdom_id: users[users.length - 1].kingdomId,
+        id: newUser.userId,
+        username: newUser.username,
+        kingdom_id: newUser.kingdomId,
         avatar: 'http://avatar.loc/my.png',
         points: 0,
         tribes_token: this.generateToken(),
