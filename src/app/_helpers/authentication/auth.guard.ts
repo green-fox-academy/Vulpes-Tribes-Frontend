@@ -1,7 +1,7 @@
-import { ENDPOINTS } from './../../../environments/endpoints';
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { AuthService } from './auth.service';
+import { ENDPOINTS } from '../../../environments/endpoints';
 
 @Injectable({
   providedIn: 'root',
