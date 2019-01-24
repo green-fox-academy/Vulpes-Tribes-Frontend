@@ -26,11 +26,8 @@ import { DomService } from './game/buildings/building-details/domService';
 import { BuildingComponent } from './game/buildings/building/building.component';
 import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.component';
 import { KingdomSettingsComponent } from './kingdom-settings/kingdom-settings.component';
-<<<<<<< HEAD
-import { LoadingComponent } from './loading/loading.component';
-=======
 import { KingdomInterceptor } from './_helpers/interceptors/kingdom.interceptor';
->>>>>>> week2
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +45,7 @@ import { KingdomInterceptor } from './_helpers/interceptors/kingdom.interceptor'
     BuildingDetailComponent,
     BuildingComponent,
     WelcomeScreenComponent,
-    LoadingComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,

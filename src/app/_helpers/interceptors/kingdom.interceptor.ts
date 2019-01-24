@@ -3,6 +3,7 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpResponse,
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Kingdom } from '../../_models/kingdom.model';
+import { LoaderService } from 'src/app/services/loader.service';
 
 const kingdom: Kingdom = {
   'id': 213,
@@ -45,8 +46,16 @@ const kingdom: Kingdom = {
 
 @Injectable()
 export class KingdomInterceptor implements HttpInterceptor {
+  constructor(private loaderService: LoaderService) { }
+  private showLoader(): void {
+    this.loaderService.show();
+  }
+  private hideLoader(): void {
+    this.loaderService.hide();
+  }
   intercept(req: HttpRequest<any>, next: HttpHandler):
   Observable<HttpSentEvent | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any>> {
+    this.showLoader();
       if (req.url.endsWith('/kingdom') && (req.method === 'GET')) {
           return new Observable(observer => {
             observer.next(new HttpResponse<Kingdom>(
@@ -55,6 +64,8 @@ export class KingdomInterceptor implements HttpInterceptor {
                   status: 200,
               }));
             observer.complete();
+            setTimeout(() => console.log( 'loading'), 2000 )
+            this.hideLoader();
           });
         }
         else if (req.url.endsWith('/kingdom') && (req.method === 'PUT')) {
