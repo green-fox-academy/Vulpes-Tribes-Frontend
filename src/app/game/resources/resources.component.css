@@ -21,31 +21,30 @@ div {
   justify-content: flex-start;
   width: 90%;
   margin: 7px auto;
-  max-width: 500px;
+  max-width: 65%;
   position: relative;
 }
 
 .resource1 {
-  width: 40%;
-  height: 80%;
+  width: 100%;
+  height: 100%;
   border-radius: 10px;
   display: flex;
-  flex-direction: column;
-  z-index: 2;
+  flex-direction: row;
 }
 
 .resource2 {
-  width: 40%;
-  height: 80%;
+  width: 100%;
+  height: 100%;
   border-radius: 10px;
   display: flex;
-  flex-direction: column;
+  flex-direction:row;
 }
 
 p {
   color:#67A835;
-  text-align: right;
-  font-size: 21px;
+  text-align: auto;
+  font-size: 27px;
 }
 
 /* #Capa_1 {

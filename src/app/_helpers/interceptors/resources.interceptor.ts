@@ -44,5 +44,6 @@ export class ResourceInterceptor implements HttpInterceptor {
         observable.complete();
       });
     }
+    next.handle(request)
   }
 }
