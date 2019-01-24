@@ -1,6 +1,6 @@
 import { Troop } from '../_models/troop.model';
 
-export const Troops: Troop[] = [
+export const troops: Troop[] = [
   {
     'id': 1,
     'level': 1,

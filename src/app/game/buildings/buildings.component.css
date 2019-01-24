@@ -15,7 +15,6 @@
 .building,
 .building-add {
   width: 25%;
-  height: 150px;
 }
 
 .building-add img {
@@ -36,12 +35,36 @@
   color: #67A835;
 }
 
+.buildings__filter {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.buildings__filter button {
+  color: white;
+  width: 150px;
+  height: 60px;
+  border: hidden;
+  border-radius: 10px;
+}
+
+.buildings__filter--finished {
+  background: #0B5D1E;
+}
+
+.buildings__filter--unfinished {
+  background: #FD8B4F;
+}
+
+.buildings__filter--all {
+  background: #000000;
+}
+
 @media (min-width: 576px) {
   .buildings {
     width: 90%;
-  }
-
-  .building {
-    height: 250px;
   }
 }

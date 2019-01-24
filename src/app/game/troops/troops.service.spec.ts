@@ -68,7 +68,7 @@ describe('TroopsService', () => {
       {id: 2, level: 2},
       {id: 3, level: 2}
     ];
-    expect(service.setLevels(troops)).toEqual({1:1,2:2});
+    expect(service.calculateTroopLevels(troops)).toEqual({1:1,2:2});
   });
 
   it('should return an object with given properties', () => {
