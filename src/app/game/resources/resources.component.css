@@ -1,5 +1,5 @@
 div {
-  padding: 5%;
+  padding: 7%;
   background-color: rgba(255, 255, 255, 0.8);
   ;
   font-family: 'Roboto', sans-serif;
@@ -7,23 +7,34 @@ div {
 
 }
 
-h3 {
+/* h3 {
   font-family: 'Roboto', sans-serif;
   color: rgba(255, 255, 255, 0.8);
   text-align: center;
-}
+} */
 
 .resources {
   background: transparent;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  width: 50%;
-  margin-left: auto;
-  max-height: 300px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 90%;
+  margin: 7px auto;
+  max-width: 500px;
+  position: relative;
 }
 
-.resource {
+.resource1 {
+  width: 40%;
+  height: 80%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+
+.resource2 {
   width: 40%;
   height: 80%;
   border-radius: 10px;
@@ -32,12 +43,12 @@ h3 {
 }
 
 p {
-  color: rgba(27, 179, 47, 0.973);
-  text-align: center;
+  color:#67A835;
+  text-align: right;
   font-size: 21px;
 }
 
-#Capa_1 {
+/* #Capa_1 {
   animation: Capa1 1s infinite;
 }
 
@@ -71,4 +82,4 @@ p {
   100% {
     transform: rotate3d(2eg)
   }
-}
+} */
