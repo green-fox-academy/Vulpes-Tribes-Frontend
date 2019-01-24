@@ -17,8 +17,6 @@ const utilities = new InterceptorUtilities();
 export class ResourceInterceptor implements HttpInterceptor {
   // function which will be called for all http calls
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log(5);
-
     const resources: Resources[] = [
       {
         amount: 500,

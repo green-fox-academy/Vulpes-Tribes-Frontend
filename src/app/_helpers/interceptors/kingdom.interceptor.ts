@@ -52,8 +52,6 @@ const utilities = new InterceptorUtilities();
 export class KingdomInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler):
     Observable<HttpSentEvent | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any>> {
-    console.log(6);
-
     if (req.url.endsWith(ENDPOINTS.getKingdom) && (req.method === 'GET')) {
       return utilities.sendResponse({ kingdom }, 200);
     } else if (req.url.endsWith(ENDPOINTS.getKingdom) && (req.method === 'PUT')) {

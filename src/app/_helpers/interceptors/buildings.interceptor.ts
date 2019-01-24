@@ -12,8 +12,6 @@ const utilities = new InterceptorUtilities();
 export class BuildingsInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log(3);
-
     const buildingsMock = new BuildingResponseMock();
     const buildings: Building[] = buildingsMock.buildings;
     let response;
