@@ -18,12 +18,13 @@ export class TroopsService {
     let sustenance = 0;
     this.getTroops().subscribe(response => {
       troops = response.body.troops;
+      console.log(troops);
       levels = this.setLevels(troops);
       totalAttack = this.countAttack(troops);
       totalDefence = this.countDefence(troops);
       sustenance = troops.length;
+      this.saveTroops(troops);
     });
-    this.saveTroops(troops);
     console.log(JSON.stringify({levels,totalAttack,totalDefence,sustenance}));
     return {levels,totalAttack,totalDefence,sustenance};
   }
@@ -56,7 +57,6 @@ export class TroopsService {
 
   saveTroops (troops) {
     localStorage.setItem('troops', JSON.stringify(troops));
-    console.log(localStorage.getItem('troops'));
   }
 
   loadTroops(): [] {
