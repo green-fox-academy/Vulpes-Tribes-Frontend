@@ -7,5 +7,7 @@ export const ENDPOINTS = {
   root: '/root',
   game: '/game',
   getBuildings: '/game/buildings',
+  getResources: '/game/resources',
+  getTroops: '/game/troops',
   createBuilding: '/game/buildings-new',
-}
+};
