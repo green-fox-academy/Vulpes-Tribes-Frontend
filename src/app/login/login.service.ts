@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { AlertService } from '../alert/alert.service';
+import {ENDPOINTS} from '../../environments/endpoints';
 
 @Injectable({
   providedIn: 'root',
@@ -16,9 +17,10 @@ export class LoginService {
   }
 
   login(user) {
-    this.http.post<any>(environment.login, user, { reportProgress: true })
+    this.http.post<any>(ENDPOINTS.login, user, { reportProgress: true })
       .subscribe(
         (response) => {
+          console.log(response);
           this.saveToken(response.tribes_token);
           this.router.navigate(['/game']);
         },

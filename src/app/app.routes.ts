@@ -10,6 +10,7 @@ import { AuthGuard } from './_helpers/authentication/auth.guard';
 import { ResourcesComponent } from './game/resources/resources.component';
 import { BuildingsComponent } from './game/buildings/buildings.component';
 import { BuildingDetailComponent } from './game/buildings/building-details/building-detail.component';
+import { TroopsComponent } from './game/troops/troops.component';
 
 const APP_ROUTES: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
@@ -21,7 +22,8 @@ const APP_ROUTES: Routes = [
   {path: 'game', component: GameComponent, canActivate: [AuthGuard], children: [
       { path: 'settings', component: KingdomSettingsComponent },
       { path: 'resources', component: ResourcesComponent },
-    {path: 'buildings', component: BuildingsComponent, children: [
+      { path: 'troops', component: TroopsComponent },
+      {path: 'buildings', component: BuildingsComponent, children: [
           { path: ':id', component: BuildingDetailComponent },
     ]},
   ],

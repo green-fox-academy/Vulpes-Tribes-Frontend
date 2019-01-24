@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ResourcesService } from './resources.service';
 
 @Component({
   selector: 'app-resources',
@@ -7,15 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./resources.component.css'],
 })
 export class ResourcesComponent implements OnInit {
-
-  constructor(private http: HttpClient) {
-  }
+  constructor(private resourceService: ResourcesService) {}
+  food;
+  money;
 
   ngOnInit() {
-    this.http.get('https://api.myjson.com/bins/7xq2x1').subscribe(() => {
-      console.log('Http Call is success from component');
-    },                                                            (error) => {
-      console.log('Http Call is failed from component');
-    });
+    this.showResources();
+  }
+
+  showResources() {
+    this.resourceService.getResources()
+      .subscribe((response) => {
+        console.log(response);
+        this.food = response.resources[0].amount;
+        this.money = response.resources[1].amount;
+      });
   }
 }

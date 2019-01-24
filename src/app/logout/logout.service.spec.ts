@@ -1,6 +1,5 @@
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { environment } from '../../environments/environment';
 import { LogoutService } from './logout.service';
 import { Router } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
@@ -18,11 +17,12 @@ import { AlertComponent } from '../alert/alert.component';
 import { BuildingsComponent } from '../game/buildings/buildings.component';
 import { BuildingComponent } from '../game/buildings/building/building.component';
 import { WelcomeScreenComponent } from '../welcome-screen/welcome-screen.component';
-import { BuildingDetailComponent } from '../game/buildings/building-details/building-detail.component';
+import { BuildingDetailComponent } from '../game/buildings/building-details/building-detail.component'; // tslint:disable-line
 import { CustomHeaders } from '../_models/head.model';
 import { LoginInterceptor } from '../_helpers/interceptors/login.interceptor';
 import { RouterTestingModule } from '@angular/router/testing';
 import { mockLocalStorage, store } from '../_utilities/authTesting.utilities';
+import { ENDPOINTS } from '../../environments/endpoints';
 
 class mockRouter {
   navigate(path) {}
@@ -96,7 +96,7 @@ describe('LogoutService', () => {
       httpClient = TestBed.get(HttpClient);
 
       logoutService.logout();
-      const req = httpClient.delete(environment.logout);
+      const req = httpClient.delete(ENDPOINTS.logout);
       expect(req).toBeTruthy();
     });
   });

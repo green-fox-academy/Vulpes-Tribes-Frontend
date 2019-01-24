@@ -78,6 +78,7 @@ export class KingdomInterceptor implements HttpInterceptor {
               observer.complete();
           }); 
         }
+        next.handle(req);
   }
 
 }
