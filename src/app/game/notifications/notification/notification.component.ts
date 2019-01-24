@@ -20,11 +20,12 @@ export class NotificationComponent implements OnInit {
     this.getCompletion();
     setInterval(() => {
       this.getCompletion();
-    },          1000);
+      console.log(this.completion);
+    }, 1000);
   }
 
-  getCompletion(): number {
-    return this.completion = Date.now() / this.notification.finishedAt;
+  getCompletion() {
+    this.completion = Date.now() / (this.notification.finishedAt);
   }
 
 }
