@@ -1,17 +1,26 @@
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Injectable } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {Injectable} from '@angular/core';
 import {ENDPOINTS} from '../../../environments/endpoints';
+import {Building} from '../../_models/building.model';
+import {Resources} from '../../_models/resources.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ResourcesService {
 
-  constructor(private http: HttpClient) {}
-
-  getResources(): Observable<any> {
-    return this.http.get(ENDPOINTS.getResources, { observe: 'response' });
+  constructor(private http: HttpClient) {
   }
 
+  getResources(): Observable<any> {
+    return new Observable<any>((observer) => {
+      this.http.get(ENDPOINTS.getResources)
+        .subscribe((response) => {
+          observer.next(response);
+          console.log(response);
+          observer.complete();
+        });
+    });
+  }
 }

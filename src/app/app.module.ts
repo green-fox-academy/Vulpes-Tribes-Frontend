@@ -56,12 +56,13 @@ import { KingdomInterceptor } from './_helpers/interceptors/kingdom.interceptor'
   ],
 
   providers: [
-   { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LoginInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: TroopsInterceptor, multi: true },
-   { provide: HTTP_INTERCEPTORS, useClass: BuildingsInterceptor, multi: true },
-   { provide: HTTP_INTERCEPTORS, useClass: KingdomInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ResourceInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: BuildingsInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: TroopsInterceptor, multi: true },
+
+    { provide: HTTP_INTERCEPTORS, useClass: KingdomInterceptor, multi: true },
 
     CustomHeaders,
     { provide: APP_BASE_HREF, useValue: '/' },

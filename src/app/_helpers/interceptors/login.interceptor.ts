@@ -43,7 +43,6 @@ export class LoginInterceptor implements HttpInterceptor {
       (req.method === 'POST') &&
       (req.body.username.length > 0 &&
         req.body.password.length > 0)) {
-      console.log(req);
       if (this.checkUser(req.body.username, req.body.password)) {
         return utilities.sendResponse({
           id: 1,

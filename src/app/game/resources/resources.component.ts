@@ -19,8 +19,8 @@ export class ResourcesComponent implements OnInit {
     this.resourceService.getResources()
       .subscribe((response) => {
         console.log(response);
-        this.food = response.resources[0].amount;
-        this.money = response.resources[1].amount;
+        this.food = response[0].amount;
+        this.money = response[1].amount;
       });
   }
 }
