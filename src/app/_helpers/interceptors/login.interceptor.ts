@@ -49,7 +49,7 @@ export class LoginInterceptor implements HttpInterceptor {
           tribes_token: this.generateToken(),
         },                            200);
       }
-      return throwError({ error: { message: `No such user ${req.body.username}!` } });
+      return utilities.sendResponse({ message: 'No such user' }, 401);
 
     }  if (req.url.endsWith(ENDPOINTS.register)) {
       const newUser = new User(req.body.username, (users.length + 1), req.body.password,

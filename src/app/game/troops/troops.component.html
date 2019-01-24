@@ -1,0 +1,29 @@
+<div class="troops-container">
+  <div class="unit">
+    <img src="../../../assets/images/troopbg.svg">
+    <p>Attack: {{totalAttack}}</p>
+    <p>Defence: {{totalDefence}}</p>
+    <p>Sustenance: {{sustenance}}</p>
+  </div>
+  <div class="troops">
+    <li *ngFor="let level of levels | keyvalue; let lastInList = last">
+      <div>
+        <img src="../../../assets/images/troops.svg">
+        <div class="troop_text">
+          <p><b>{{level.value}}</b> Troop level {{level.key}}</p>
+        </div>
+      </div>
+      <div class="upgrade_button" *ngIf="!lastInList">
+        <p>upgrade</p>
+      </div>
+    </li>
+    <li *ngIf="!checkLevels()">
+      <div>
+        <img src="../../../assets/images/troops.svg">
+        <div class="troop_text">
+          <p>You've got no troops!</p>
+        </div>
+      </div>
+    </li>
+  </div>
+</div>
