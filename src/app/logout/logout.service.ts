@@ -4,6 +4,7 @@ import { environment } from '../../environments/environment';
 import { CustomHeaders } from '../_models/head.model';
 import { Router } from '@angular/router';
 import { AlertService } from '../alert/alert.service';
+import { ENDPOINTS } from '../../environments/endpoints';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -23,7 +24,7 @@ export class LogoutService {
   }
 
   logout() {
-    this.http.delete<any>('/logout', httpOptions).subscribe(
+    this.http.delete<any>(ENDPOINTS.logout, httpOptions).subscribe(
       () => {
         localStorage.removeItem(environment.tribes_token);
         this.router.navigate(['/login']);

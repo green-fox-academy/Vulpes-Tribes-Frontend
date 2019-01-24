@@ -28,6 +28,7 @@ import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.componen
 import { KingdomSettingsComponent } from './kingdom-settings/kingdom-settings.component';
 import { TroopsComponent } from './game/troops/troops.component';
 import { TroopsInterceptor } from './_helpers/interceptors/troops.interceptor';
+import { KingdomInterceptor } from './_helpers/interceptors/kingdom.interceptor';
 
 @NgModule({
   declarations: [
@@ -55,11 +56,11 @@ import { TroopsInterceptor } from './_helpers/interceptors/troops.interceptor';
   ],
 
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ResourceInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: LoginInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: BuildingsInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: TroopsInterceptor, multi: true},
+   { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+   { provide: HTTP_INTERCEPTORS, useClass: ResourceInterceptor, multi: true },
+   { provide: HTTP_INTERCEPTORS, useClass: LoginInterceptor, multi: true },
+   { provide: HTTP_INTERCEPTORS, useClass: BuildingsInterceptor, multi: true },
+   { provide: HTTP_INTERCEPTORS, useClass: KingdomInterceptor, multi: true },
     CustomHeaders,
     { provide: APP_BASE_HREF, useValue: '/' },
     AuthService,
