@@ -26,6 +26,8 @@ import { DomService } from './game/buildings/building-details/domService';
 import { BuildingComponent } from './game/buildings/building/building.component';
 import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.component';
 import { KingdomSettingsComponent } from './kingdom-settings/kingdom-settings.component';
+import { TroopsComponent } from './game/troops/troops.component';
+import { TroopsInterceptor } from './_helpers/interceptors/troops.interceptor';
 import { KingdomInterceptor } from './_helpers/interceptors/kingdom.interceptor';
 
 @NgModule({
@@ -44,6 +46,7 @@ import { KingdomInterceptor } from './_helpers/interceptors/kingdom.interceptor'
     BuildingDetailComponent,
     BuildingComponent,
     WelcomeScreenComponent,
+    TroopsComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +61,6 @@ import { KingdomInterceptor } from './_helpers/interceptors/kingdom.interceptor'
    { provide: HTTP_INTERCEPTORS, useClass: LoginInterceptor, multi: true },
    { provide: HTTP_INTERCEPTORS, useClass: BuildingsInterceptor, multi: true },
    { provide: HTTP_INTERCEPTORS, useClass: KingdomInterceptor, multi: true },
-
     CustomHeaders,
     { provide: APP_BASE_HREF, useValue: '/' },
     AuthService,
