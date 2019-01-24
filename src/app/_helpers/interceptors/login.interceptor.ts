@@ -39,6 +39,8 @@ export class LoginInterceptor implements HttpInterceptor {
       HttpProgressEvent |
       HttpResponse<any> |
       HttpUserEvent<any>> {
+    console.log(2);
+
     if (req.url.endsWith(ENDPOINTS.login) &&
       (req.method === 'POST') &&
       (req.body.username.length > 0 &&

@@ -12,6 +12,8 @@ const utilities = new InterceptorUtilities();
 export class BuildingsInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    console.log(3);
+
     const buildingsMock = new BuildingResponseMock();
     const buildings: Building[] = buildingsMock.buildings;
     let response;
@@ -22,6 +24,7 @@ export class BuildingsInterceptor implements HttpInterceptor {
       } else if (req.method === 'POST') {
         response = buildingsMock.createBuilding(req.body);
       }
+      return utilities.sendResponse({ response }, 200);
     } else if (req.body && req.url.endsWith(`/${req.body.id}`)) {
       const building = buildingsMock.findBuilding(req.body.id);
       if (req.method === 'PUT') {
@@ -29,8 +32,8 @@ export class BuildingsInterceptor implements HttpInterceptor {
         buildingsMock.updateBuilding(building);
         response = building;
       }
+      return utilities.sendResponse({ response }, 200);
     }
-    next.handle(req);
-    return utilities.sendResponse({ response }, 200);
+    return next.handle(req);
   }
 }

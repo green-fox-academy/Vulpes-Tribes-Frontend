@@ -20,6 +20,7 @@ export class TokenInterceptor implements HttpInterceptor {
       HttpProgressEvent |
       HttpResponse<any> |
       HttpUserEvent<any>> {
+    console.log(1);
     const authHeader = req.clone({
       setHeaders: {
         'Content-Type': 'application/json',
