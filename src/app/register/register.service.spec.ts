@@ -19,6 +19,8 @@ import { BuildingDetailComponent } from '../game/buildings/building-details/buil
 import { BuildingComponent } from '../game/buildings/building/building.component';
 import { KingdomSettingsComponent } from '../kingdom-settings/kingdom-settings.component';
 import { WelcomeScreenComponent } from '../welcome-screen/welcome-screen.component';
+import {NotificationsComponent} from '../game/notifications/notifications.component';
+import {NotificationComponent} from '../game/notifications/notification/notification.component';
 
 describe('RegisterService', () => {
   beforeEach(() => TestBed.configureTestingModule({
@@ -27,15 +29,18 @@ describe('RegisterService', () => {
       LoginComponent,
       LogoutComponent,
       RegisterComponent,
+      LogoutComponent,
+      KingdomSettingsComponent,
       HeaderComponent,
       GameComponent,
       ResourcesComponent,
-      KingdomSettingsComponent,
       AlertComponent,
       BuildingsComponent,
       BuildingDetailComponent,
       BuildingComponent,
       WelcomeScreenComponent,
+      NotificationsComponent,
+      NotificationComponent,
     ],
     imports: [
       RouterTestingModule.withRoutes([]),

@@ -11,7 +11,6 @@ export class InterceptorUtilities {
             status,
           },
         ));
-        console.log(responseBody);
         observer.complete();
       });
   }

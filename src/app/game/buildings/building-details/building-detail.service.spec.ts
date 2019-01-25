@@ -20,6 +20,8 @@ import { ResourcesComponent } from '../../resources/resources.component';
 import { AlertComponent } from '../../../alert/alert.component';
 import { KingdomSettingsComponent } from '../../../kingdom-settings/kingdom-settings.component';
 import { WelcomeScreenComponent } from '../../../welcome-screen/welcome-screen.component';
+import {NotificationsComponent} from '../../notifications/notifications.component';
+import {NotificationComponent} from '../../notifications/notification/notification.component';
 
 describe('BuildingDetailService', () => {
   let service: BuildingDetailService;
@@ -32,15 +34,18 @@ describe('BuildingDetailService', () => {
       LoginComponent,
       LogoutComponent,
       RegisterComponent,
+      LogoutComponent,
+      KingdomSettingsComponent,
       HeaderComponent,
       GameComponent,
       ResourcesComponent,
-      KingdomSettingsComponent,
       AlertComponent,
       BuildingsComponent,
+      BuildingDetailComponent,
       BuildingComponent,
       WelcomeScreenComponent,
-      BuildingDetailComponent,
+      NotificationsComponent,
+      NotificationComponent,
     ],
     imports: [
       BrowserModule,

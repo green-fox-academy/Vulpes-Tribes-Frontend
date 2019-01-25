@@ -18,6 +18,8 @@ import { BuildingComponent } from '../game/buildings/building/building.component
 import { BuildingDetailComponent } from '../game/buildings/building-details/building-detail.component';
 import { KingdomSettingsComponent } from '../kingdom-settings/kingdom-settings.component';
 import { WelcomeScreenComponent } from '../welcome-screen/welcome-screen.component';
+import {NotificationsComponent} from '../game/notifications/notifications.component';
+import {NotificationComponent} from '../game/notifications/notification/notification.component';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -30,15 +32,18 @@ describe('HeaderComponent', () => {
         LoginComponent,
         LogoutComponent,
         RegisterComponent,
+        LogoutComponent,
+        KingdomSettingsComponent,
         HeaderComponent,
         GameComponent,
         ResourcesComponent,
-        KingdomSettingsComponent,
         AlertComponent,
         BuildingsComponent,
-        BuildingComponent,
         BuildingDetailComponent,
+        BuildingComponent,
         WelcomeScreenComponent,
+        NotificationsComponent,
+        NotificationComponent,
       ],
 
       imports: [
