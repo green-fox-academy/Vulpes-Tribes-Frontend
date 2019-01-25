@@ -11,6 +11,7 @@ import { ResourcesComponent } from './game/resources/resources.component';
 import { BuildingsComponent } from './game/buildings/buildings.component';
 import { BuildingDetailComponent } from './game/buildings/building-details/building-detail.component';
 import { NotificationsComponent } from './game/notifications/notifications.component';
+import { TroopsComponent } from './game/troops/troops.component';
 
 const APP_ROUTES: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
@@ -23,7 +24,8 @@ const APP_ROUTES: Routes = [
       { path: 'notifications', component: NotificationsComponent },
       { path: 'settings', component: KingdomSettingsComponent },
       { path: 'resources', component: ResourcesComponent },
-    {path: 'buildings', component: BuildingsComponent, children: [
+      { path: 'troops', component: TroopsComponent },
+      {path: 'buildings', component: BuildingsComponent, children: [
           { path: ':id', component: BuildingDetailComponent },
     ]},
   ],

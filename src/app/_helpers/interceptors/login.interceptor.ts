@@ -12,7 +12,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { User } from '../../_models/user.model';
 import { InterceptorUtilities } from '../../_utilities/interceptor.utilities';
-import {ENDPOINTS} from '../../../environments/endpoints';
+import { ENDPOINTS } from '../../../environments/endpoints';
 
 const users: User[] = [
   {
@@ -50,7 +50,7 @@ export class LoginInterceptor implements HttpInterceptor {
         },                            200);
 
       }
-      return throwError({ error: { message: `No such user ${req.body.username}!` } });
+      return utilities.sendResponse({ message: 'No such user' }, 401);
 
     }  if (req.url.endsWith(ENDPOINTS.register)) {
       users.push(new User(req.body.username,
