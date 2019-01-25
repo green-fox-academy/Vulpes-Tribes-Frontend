@@ -23,6 +23,8 @@ import { LoginInterceptor } from '../_helpers/interceptors/login.interceptor';
 import { RouterTestingModule } from '@angular/router/testing';
 import { mockLocalStorage, store } from '../_utilities/authTesting.utilities';
 import { ENDPOINTS } from '../../environments/endpoints';
+import {NotificationsComponent} from '../game/notifications/notifications.component';
+import {NotificationComponent} from '../game/notifications/notification/notification.component';
 
 class mockRouter {
   navigate(path) {}
@@ -44,15 +46,18 @@ describe('LogoutService', () => {
         LoginComponent,
         LogoutComponent,
         RegisterComponent,
+        LogoutComponent,
+        KingdomSettingsComponent,
         HeaderComponent,
         GameComponent,
         ResourcesComponent,
-        KingdomSettingsComponent,
         AlertComponent,
         BuildingsComponent,
+        BuildingDetailComponent,
         BuildingComponent,
         WelcomeScreenComponent,
-        BuildingDetailComponent,
+        NotificationsComponent,
+        NotificationComponent,
       ],
       imports: [
         RouterTestingModule.withRoutes([]),

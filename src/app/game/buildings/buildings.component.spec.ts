@@ -24,6 +24,8 @@ import { Building } from '../../_models/building.model';
 import { BuildingResponseMock } from '../../_helpers/mocks/buildingResponse.mock';
 import { KingdomSettingsComponent } from '../../kingdom-settings/kingdom-settings.component';
 import { WelcomeScreenComponent } from '../../welcome-screen/welcome-screen.component';
+import {NotificationsComponent} from '../notifications/notifications.component';
+import {NotificationComponent} from '../notifications/notification/notification.component';
 
 describe('BuildingsComponent', () => {
   let component: BuildingsComponent;
@@ -33,21 +35,7 @@ describe('BuildingsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        AppComponent,
-        LoginComponent,
-        LogoutComponent,
-        RegisterComponent,
-        HeaderComponent,
-        GameComponent,
-        ResourcesComponent,
-        KingdomSettingsComponent,
-        AlertComponent,
-        BuildingsComponent,
-        BuildingComponent,
-        BuildingDetailComponent,
-        WelcomeScreenComponent,
-      ],
+      declarations: [BuildingsComponent, BuildingComponent],
       imports: [
         BrowserModule,
         RouterTestingModule,

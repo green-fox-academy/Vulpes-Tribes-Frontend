@@ -24,6 +24,8 @@ import { BuildingResponseMock } from '../_helpers/mocks/buildingResponse.mock';
 import { of } from 'rxjs';
 import { KingdomSettingsComponent } from '../kingdom-settings/kingdom-settings.component';
 import { WelcomeScreenComponent } from '../welcome-screen/welcome-screen.component';
+import {NotificationsComponent} from './notifications/notifications.component';
+import {NotificationComponent} from './notifications/notification/notification.component';
 
 describe('GameComponent', () => {
   let component: GameComponent;
@@ -39,15 +41,18 @@ describe('GameComponent', () => {
         LoginComponent,
         LogoutComponent,
         RegisterComponent,
+        LogoutComponent,
+        KingdomSettingsComponent,
         HeaderComponent,
         GameComponent,
         ResourcesComponent,
-        KingdomSettingsComponent,
         AlertComponent,
         BuildingsComponent,
-        BuildingComponent,
         BuildingDetailComponent,
+        BuildingComponent,
         WelcomeScreenComponent,
+        NotificationsComponent,
+        NotificationComponent,
       ],
       imports: [
         RouterTestingModule.withRoutes([]),

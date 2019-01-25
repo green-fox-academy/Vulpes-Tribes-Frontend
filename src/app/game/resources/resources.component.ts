@@ -20,6 +20,7 @@ export class ResourcesComponent implements OnInit {
       .subscribe((response) => {
         this.food = response.resources[0].amount;
         this.money = response.resources[1].amount;
+
       });
   }
 }
