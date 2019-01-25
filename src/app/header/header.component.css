@@ -10,7 +10,7 @@ h1 {
   height: 60px;
   width: 100vw;
 
-  background: #67A835;
+  background: #10968B;
 }
 
 .header div:first-child {
@@ -48,6 +48,11 @@ h1 {
 }
 
 .header div:last-child a:hover {
-  background: #0B5D1E;
-  color: white;
+  background: white;
+  cursor: pointer;
+  color: #10968B;
+
+  -webkit-box-shadow: 10px 10px 47px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 47px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 47px 0px rgba(0,0,0,0.75);
 }
