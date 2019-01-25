@@ -27,6 +27,8 @@ import { KingdomSettingsComponent } from '../kingdom-settings/kingdom-settings.c
 import { WelcomeScreenComponent } from '../welcome-screen/welcome-screen.component';
 import { mockLocalStorage, store } from '../_utilities/authTesting.utilities';
 import {ENDPOINTS} from '../../environments/endpoints';
+import {NotificationsComponent} from '../game/notifications/notifications.component';
+import {NotificationComponent} from '../game/notifications/notification/notification.component';
 
 describe('LoginService', () => {
 
@@ -45,15 +47,18 @@ describe('LoginService', () => {
         LoginComponent,
         LogoutComponent,
         RegisterComponent,
+        LogoutComponent,
+        KingdomSettingsComponent,
         HeaderComponent,
         GameComponent,
         ResourcesComponent,
-        KingdomSettingsComponent,
         AlertComponent,
-        BuildingComponent,
         BuildingsComponent,
         BuildingDetailComponent,
+        BuildingComponent,
         WelcomeScreenComponent,
+        NotificationsComponent,
+        NotificationComponent,
       ],
       imports: [
         RouterTestingModule.withRoutes([]),
