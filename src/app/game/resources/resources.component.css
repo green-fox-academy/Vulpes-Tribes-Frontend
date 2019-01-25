@@ -19,7 +19,7 @@ div {
   flex-direction: column;
   justify-content: flex-start;
   margin: 7px auto;
-  max-width: 300px;
+  max-width: 400px;
   height: 300px;
 
 }
@@ -28,12 +28,19 @@ div {
   width: 100%;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
-p {
+.resource img {
+  width: 75px;
+}
+
+.resource p {
   color:#67A835;
   text-align: auto;
   font-size: 27px;
+  margin: auto 10px;
+
 }
 
 /* #Capa_1 {
