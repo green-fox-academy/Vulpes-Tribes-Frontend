@@ -4,7 +4,6 @@ import {
   HttpRequest, HttpHandler,
   HttpEvent,
   HttpInterceptor,
-  HttpResponse,
 } from '@angular/common/http';
 import {ENDPOINTS} from '../../../environments/endpoints';
 import {InterceptorUtilities} from '../../_utilities/interceptor.utilities';
