@@ -7,12 +7,6 @@ div {
 
 }
 
-/* h3 {
-  font-family: 'Roboto', sans-serif;
-  color: rgba(255, 255, 255, 0.8);
-  text-align: center;
-} */
-
 .resources {
   background: transparent;
   display: flex;
@@ -42,39 +36,3 @@ div {
   margin: auto 10px;
 
 }
-
-/* #Capa_1 {
-  animation: Capa1 1s infinite;
-}
-
-@keyframes Capa1 {
-  0% {
-    transform: rotate(2deg)
-  }
-
-  50% {
-    transform: rotate(4deg)
-  }
-
-  100% {
-    transform: rotate(2deg)
-  }
-}
-
-#Capa_2 {
-  animation: Capa2 1s infinite;
-}
-
-@keyframes Capa2 {
-  0% {
-    transform: rotate3d(2deg)
-  }
-
-  50% {
-    transform: rotate(4deg)
-  }
-
-  100% {
-    transform: rotate3d(2eg)
-  }
-} */
