@@ -1,0 +1,33 @@
+.settings__form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-width: 1024px;
+  margin: 10px auto;
+  justify-content: flex-start;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.settings__form div{
+  display: flex;
+  flex-direction: row;
+
+  width: 75%;
+  height: 50px;
+  padding: 10px;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+}
+
+.settings__form div input {
+  height: 100%;
+  padding: 10px;
+}
+
+.settings__form button {
+  height: 50px;
+  width: 200px;
+  margin: 10px auto;
+  padding: 10px;
+}
