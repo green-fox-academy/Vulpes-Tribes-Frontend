@@ -31,8 +31,7 @@ import { TroopsInterceptor } from './_helpers/interceptors/troops.interceptor';
 import { NotificationsComponent } from './game/notifications/notifications.component';
 import { NotificationComponent } from './game/notifications/notification/notification.component';
 import { KingdomInterceptor } from './_helpers/interceptors/kingdom.interceptor';
-import {HttpErrorInterceptor} from './_helpers/interceptors/error.interceptor';
-import {HttpErrorInterceptor} from './_helpers/interceptors/error.interceptor';
+import { HttpErrorInterceptor } from './_helpers/interceptors/error.interceptor';
 
 @NgModule({
   declarations: [

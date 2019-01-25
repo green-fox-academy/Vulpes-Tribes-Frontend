@@ -24,7 +24,9 @@ export class BuildingsInterceptor implements HttpInterceptor {
       }
       return utilities.sendResponse({ response }, 200);
     } else if (req.body && req.url.endsWith(`/${req.body.id}`)) {
+      console.log(req.body);
       const building = buildingsMock.findBuilding(req.body.id);
+      console.log(building);
       if (req.method === 'PUT') {
         building.level += 1;
         buildingsMock.updateBuilding(building);

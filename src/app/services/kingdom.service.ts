@@ -13,9 +13,9 @@ export class KingdomService {
   constructor(private http: HttpClient) { }
 
   getKingdom(): Observable<any> {
-    return this.http.get<Kingdom>(ENDPOINTS.getKingdom, {observe: 'response'});
+    return this.http.get<Kingdom>(ENDPOINTS.getKingdom, { observe: 'response' });
   }
   updateKingdom(name): Observable<any> {
-    return this.http.put<any>(ENDPOINTS.getKingdom, name, {observe:'response'})
+    return this.http.put<any>(ENDPOINTS.getKingdom, name, { observe:'response' });
   }
 }
