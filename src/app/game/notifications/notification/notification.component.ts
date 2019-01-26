@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { TribesNotification } from '../../../_models/notification.model';
+import {Component, Input, OnInit} from '@angular/core';
+import {TribesNotification} from '../../../_models/notification.model';
 
 @Component({
   selector: 'app-notification',
@@ -9,19 +9,29 @@ import { TribesNotification } from '../../../_models/notification.model';
 export class NotificationComponent implements OnInit {
 
   @Input() notification: TribesNotification;
-  completion: number;
+  completion: number = 0;
 
   constructor() {
 
   }
 
   ngOnInit() {
-    this.getCompletion();
-    setInterval(() => this.getCompletion(), 1000);
+    if (Date.now() <= this.notification.finishedAt) {
+      this.getCompletion();
+    } else {
+      this.completion = 1;
+    }
   }
 
   getCompletion() {
-    this.completion = Date.now() / (this.notification.finishedAt);
+    setInterval(() => {
+      const buildTime = this.notification.finishedAt - this.notification.startedAt;
+      if (this.completion < 1) {
+        this.completion += (buildTime / 600000000);
+      } else {
+        this.completion = 1;
+      }
+    }, 1000);
   }
 
 }
