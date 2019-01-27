@@ -1,6 +1,6 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { NotificationsResponseMock } from '../../_helpers/mocks/notificationResponse.mock';
+import { Component, OnInit } from '@angular/core';
 import { TribesNotification } from '../../_models/notification.model';
+import { NotificationsService } from './notifications.service';
 
 @Component({
   selector: 'app-notifications',
@@ -12,10 +12,9 @@ export class NotificationsComponent implements OnInit {
   notifications: TribesNotification[];
   notification: TribesNotification;
 
-  constructor() { }
+  constructor(private notificationService: NotificationsService) { }
 
   ngOnInit() {
-    this.notifications = new NotificationsResponseMock().notifications;
+    this.notifications = this.notificationService.getNotifications();
   }
-
 }

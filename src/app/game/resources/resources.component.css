@@ -1,5 +1,5 @@
 div {
-  padding: 5%;
+  padding: 7%;
   background-color: rgba(255, 255, 255, 0.8);
   ;
   font-family: 'Roboto', sans-serif;
@@ -7,68 +7,32 @@ div {
 
 }
 
-h3 {
-  font-family: 'Roboto', sans-serif;
-  color: rgba(255, 255, 255, 0.8);
-  text-align: center;
-}
-
 .resources {
   background: transparent;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 50%;
-  margin-left: auto;
-  max-height: 300px;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 7px auto;
+  max-width: 400px;
+  height: 300px;
+
 }
 
 .resource {
-  width: 40%;
-  height: 80%;
-  border-radius: 10px;
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-p {
-  color: rgba(27, 179, 47, 0.973);
-  text-align: center;
-  font-size: 21px;
+.resource img {
+  width: 75px;
 }
 
-#Capa_1 {
-  animation: Capa1 1s infinite;
-}
+.resource p {
+  color:#67A835;
+  text-align: auto;
+  font-size: 27px;
+  margin: auto 10px;
 
-@keyframes Capa1 {
-  0% {
-    transform: rotate(2deg)
-  }
-
-  50% {
-    transform: rotate(4deg)
-  }
-
-  100% {
-    transform: rotate(2deg)
-  }
-}
-
-#Capa_2 {
-  animation: Capa2 1s infinite;
-}
-
-@keyframes Capa2 {
-  0% {
-    transform: rotate3d(2deg)
-  }
-
-  50% {
-    transform: rotate(4deg)
-  }
-
-  100% {
-    transform: rotate3d(2eg)
-  }
 }

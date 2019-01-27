@@ -1,9 +1,7 @@
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {Injectable} from '@angular/core';
-import {ENDPOINTS} from '../../../environments/endpoints';
-import {Building} from '../../_models/building.model';
-import {Resources} from '../../_models/resources.model';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { ENDPOINTS } from '../../../environments/endpoints';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +16,6 @@ export class ResourcesService {
       this.http.get(ENDPOINTS.getResources)
         .subscribe((response) => {
           observer.next(response);
-          console.log(response);
           observer.complete();
         });
     });
