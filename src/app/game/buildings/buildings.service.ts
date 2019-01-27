@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams} from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ENDPOINTS } from '../../../environments/endpoints';
 import { Building } from '../../_models/building.model';
@@ -15,7 +15,7 @@ export class BuildingsService {
 
   getBuildingsFromBackend(): Observable<any> {
     return this.http
-      .get(ENDPOINTS.getBuildings, { observe: 'response' });
+      .get(ENDPOINTS.getBuildings, {observe: 'response'});
   }
 
   createBuilding(buildingType: string): Observable<Building> {
@@ -51,11 +51,12 @@ export class BuildingsService {
         observer.next(JSON.parse(localStorage.getItem('buildings')));
         observer.complete();
       } else {
-        this.getBuildingsFromBackend().subscribe((response) => {
-          localStorage.setItem('buildings', JSON.stringify(response.body.response));
-          observer.next(response.body.response);
-          observer.complete();
-        });
+        this.getBuildingsFromBackend()
+          .subscribe((response) => {
+            localStorage.setItem('buildings', JSON.stringify(response.body.response));
+            observer.next(response.body.response);
+            observer.complete();
+          });
       }
     });
   }

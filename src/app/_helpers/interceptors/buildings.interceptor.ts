@@ -20,7 +20,24 @@ export class BuildingsInterceptor implements HttpInterceptor {
         response = buildings;
         console.log(response);
       } else if (req.method === 'POST') {
-        response = buildingsMock.createBuilding(req.body);
+        if (!req.body) {
+          response = {
+            error: 'error',
+            message: 'Missing parameter(s): type!',
+          };
+          return utilities.sendResponse(response, 400);
+        } else if (req.body !== 'academy' ||
+                   req.body !== 'mine' ||
+                   req.body !== 'farm' ||
+                   req.body !== 'townhall') {
+          response = {
+            error: 'error',
+            message: 'Invalid building type',
+          };
+          return utilities.sendResponse(response, 406);
+        } else {
+          response = buildingsMock.createBuilding(req.body);
+        }
       }
       return utilities.sendResponse({ response }, 200);
     } else if (req.body && req.url.endsWith(`/${req.body.id}`)) {

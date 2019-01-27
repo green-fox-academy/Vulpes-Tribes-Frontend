@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 
 export class InterceptorUtilities {
   sendResponse(responseBody: {}, status: number): Observable<any> {
@@ -17,7 +17,8 @@ export class InterceptorUtilities {
         } else {
           observer.error(new HttpErrorResponse(
             {
-              status: status,
+              status,
+              statusText: responseBody['message'],
             }));
           observer.complete();
         }
