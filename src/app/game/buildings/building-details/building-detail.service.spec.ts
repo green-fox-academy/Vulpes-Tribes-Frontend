@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { BuildingDetailService } from './building-detail.service';
 import { BuildingsComponent } from '../buildings.component';
 import { BuildingComponent } from '../building/building.component';
@@ -20,8 +19,9 @@ import { ResourcesComponent } from '../../resources/resources.component';
 import { AlertComponent } from '../../../alert/alert.component';
 import { KingdomSettingsComponent } from '../../../kingdom-settings/kingdom-settings.component';
 import { WelcomeScreenComponent } from '../../../welcome-screen/welcome-screen.component';
-import {NotificationsComponent} from '../../notifications/notifications.component';
-import {NotificationComponent} from '../../notifications/notification/notification.component';
+import { NotificationsComponent } from '../../notifications/notifications.component';
+import { NotificationComponent } from '../../notifications/notification/notification.component';
+import { TroopsComponent } from '../../troops/troops.component';
 
 describe('BuildingDetailService', () => {
   let service: BuildingDetailService;
@@ -46,6 +46,7 @@ describe('BuildingDetailService', () => {
       WelcomeScreenComponent,
       NotificationsComponent,
       NotificationComponent,
+      TroopsComponent,
     ],
     imports: [
       BrowserModule,
