@@ -18,7 +18,6 @@ export class BuildingsInterceptor implements HttpInterceptor {
     if (req.url.endsWith(ENDPOINTS.getBuildings)) {
       if (req.method === 'GET') {
         response = buildings;
-        console.log(response);
       } else if (req.method === 'POST') {
         if (!req.body) {
           response = {
@@ -26,10 +25,10 @@ export class BuildingsInterceptor implements HttpInterceptor {
             message: 'Missing parameter(s): type!',
           };
           return utilities.sendResponse(response, 400);
-        } else if (req.body !== 'academy' ||
-                   req.body !== 'mine' ||
-                   req.body !== 'farm' ||
-                   req.body !== 'townhall') {
+        } else if (req.body !== 'academy' &&
+          req.body !== 'mine' &&
+          req.body !== 'factory' &&
+          req.body !== 'townhall') {
           response = {
             error: 'error',
             message: 'Invalid building type',
@@ -40,14 +39,21 @@ export class BuildingsInterceptor implements HttpInterceptor {
         }
       }
       return utilities.sendResponse({ response }, 200);
-    } else if (req.body && req.url.endsWith(`/${req.body.id}`)) {
-      console.log(req.body);
-      const building = buildingsMock.findBuilding(req.body.id);
-      console.log(building);
+    } else if (req.body && req.url.endsWith(`/${ req.params.get('id') }`)) {
+      const id: number = parseInt(req.params.get('id'), 10);
+      const building = buildingsMock.findBuilding(id);
       if (req.method === 'PUT') {
-        building.level += 1;
-        buildingsMock.updateBuilding(building);
-        response = building;
+        if (building) {
+          building.level += 1;
+          buildingsMock.updateBuilding(building);
+          response = building;
+        } else if (building === undefined) {
+          response = {
+            error: 'error',
+            message: 'Building not found',
+          };
+          return utilities.sendResponse(response , 404);
+        }
       }
       return utilities.sendResponse({ response }, 200);
     }
