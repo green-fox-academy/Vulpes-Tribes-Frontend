@@ -1,6 +1,7 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { ENDPOINTS } from 'src/environments/endpoints';
 
 @Injectable({
   providedIn: 'root'
@@ -10,24 +11,32 @@ export class TroopsService {
 
   constructor(private http: HttpClient) {}
 
-  getTroopsAndStats() {
+  getStats(): Observable<any> {
     let troops = [];
     let levels = {};
     let totalAttack = 0;
     let totalDefence = 0;
     let sustenance = 0;
-    this.getTroops().subscribe(response => {
-      troops = response.body.troopList;
+    return new Observable<any>(observer => {
+      if (localStorage.getItem('troops')) {
+        troops = this.loadTroops();
+      } else {
+        this.getTroops().subscribe(response => {
+          troops = response.body.troops;
+          this.saveTroops(troops);
+        })
+      }
       levels = this.calculateTroopLevels(troops);
       totalAttack = this.countAttack(troops);
       totalDefence = this.countDefence(troops);
       sustenance = troops.length;
-    });
-    return {levels,totalAttack,totalDefence,sustenance};
+      observer.next({levels, totalAttack, totalDefence, sustenance});
+      observer.complete();
+    })
   }
 
   getTroops(): Observable<any> {
-    return this.http.get('/game/troops', {observe: 'response'});
+    return this.http.get(ENDPOINTS.getTroops, {observe: 'response'});
   }
 
   calculateTroopLevels (troops): any {
@@ -50,5 +59,15 @@ export class TroopsService {
       totalDefence += troop.defence;
     });
     return totalDefence;
+  }
+
+  saveTroops (troops) {
+    localStorage.setItem('troops', JSON.stringify(troops));
+  }
+
+  loadTroops(): [] {
+    let troops: [];
+    troops = JSON.parse(localStorage.getItem('troops'));
+    return troops;
   }
 }
