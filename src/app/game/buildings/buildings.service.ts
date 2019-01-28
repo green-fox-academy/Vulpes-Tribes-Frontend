@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ENDPOINTS } from '../../../environments/endpoints';
 import { Building } from '../../_models/building.model';
+import { NotificationsService } from '../notifications/notifications.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,8 @@ import { Building } from '../../_models/building.model';
 
 export class BuildingsService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private notificationService: NotificationsService) {
   }
 
   getBuildingsFromBackend(): Observable<any> {
@@ -23,6 +25,9 @@ export class BuildingsService {
       this.http.post(ENDPOINTS.getBuildings, buildingType)
         .subscribe((response) => {
           this.updateLocalStorage(response['response']);
+          this.notificationService
+            .createNotification('Building', response['response'].type, response['response'].startedAt, response['response'].finishedAt);
+          console.log(response['response']);
           observer.next(response['response']);
           observer.complete();
         });

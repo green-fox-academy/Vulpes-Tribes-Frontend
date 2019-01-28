@@ -1,9 +1,10 @@
-import { Component, OnInit, Output, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Output, OnChanges, SimpleChanges, EventEmitter } from '@angular/core';
 import { BuildingsService } from './buildings.service';
 import { BuildingDetailComponent } from './building-details/building-detail.component';
 import { ModalService } from './building-details/modal.service';
 import { Building } from '../../_models/building.model';
 import { AlertService } from '../../alert/alert.service';
+import { NotificationsComponent } from '../notifications/notifications.component';
 
 @Component({
   selector: 'app-buildings',
@@ -13,6 +14,7 @@ import { AlertService } from '../../alert/alert.service';
 export class BuildingsComponent implements OnInit, OnChanges {
 
   buildings: Building[] = [];
+  @Output() createNotification = new EventEmitter();
 
   @Output() building: Building;
 
@@ -52,6 +54,7 @@ export class BuildingsComponent implements OnInit, OnChanges {
   createBuilding(buildingType: string) {
     this.buildingsService.createBuilding(buildingType).subscribe((response) => {
       this.buildings.push(response);
+      this.createNotification.emit(response);
     });
     this.showFinishedBuildings();
   }
