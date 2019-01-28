@@ -4,7 +4,8 @@ import { BuildingDetailComponent } from './building-details/building-detail.comp
 import { ModalService } from './building-details/modal.service';
 import { Building } from '../../_models/building.model';
 import { AlertService } from '../../alert/alert.service';
-import { NotificationsComponent } from '../notifications/notifications.component';
+import { TribesNotification } from '../../_models/notification.model';
+import { NotificationsService } from '../../services/notifications.service';
 
 @Component({
   selector: 'app-buildings',
@@ -14,13 +15,14 @@ import { NotificationsComponent } from '../notifications/notifications.component
 export class BuildingsComponent implements OnInit, OnChanges {
 
   buildings: Building[] = [];
-  @Output() createNotification = new EventEmitter();
+  @Output() createNotification = new EventEmitter<TribesNotification>();
 
   @Output() building: Building;
 
   constructor(private buildingsService: BuildingsService,
               private alertService: AlertService,
-              private modalService: ModalService) {
+              private modalService: ModalService,
+              private notificationService: NotificationsService) {
   }
 
   ngOnInit() {
@@ -54,7 +56,6 @@ export class BuildingsComponent implements OnInit, OnChanges {
   createBuilding(buildingType: string) {
     this.buildingsService.createBuilding(buildingType).subscribe((response) => {
       this.buildings.push(response);
-      this.createNotification.emit(response);
     });
     this.showFinishedBuildings();
   }

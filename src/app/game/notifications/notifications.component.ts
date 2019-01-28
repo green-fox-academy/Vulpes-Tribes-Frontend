@@ -1,6 +1,6 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { TribesNotification } from '../../_models/notification.model';
-import { NotificationsService } from './notifications.service';
+import { NotificationsService } from '../../services/notifications.service';
 import { BuildingsComponent } from '../buildings/buildings.component';
 
 @Component({
@@ -14,17 +14,10 @@ export class NotificationsComponent implements OnInit {
   notifications: TribesNotification[];
   notification: TribesNotification;
 
-  constructor(private notificationService: NotificationsService) { }
+  constructor(private notificationService: NotificationsService) {
+  }
 
   ngOnInit() {
-    setInterval(() => {
-      this.notifications = this.notificationService.getNotifications();
-    }, 1000);
-
+    this.notifications = this.notificationService.getNotifications();
   }
-  //
-  // createNotification(title: string, type: string, startedAt: number, finishedAt: number) {
-  //   this.notifications.push()
-  // }
-
 }
