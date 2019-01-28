@@ -24,11 +24,11 @@ export class BuildingsService {
     return new Observable<Building>((observer) => {
       this.http.post(ENDPOINTS.getBuildings, buildingType)
         .subscribe((response) => {
-          this.updateLocalStorage(response['response']);
+          const newBuilding = response['response'];
+          this.updateLocalStorage(newBuilding);
           this.notificationService
-            .createNotification('Building', response['response'].type, response['response'].startedAt, response['response'].finishedAt);
-          console.log(response['response']);
-          observer.next(response['response']);
+            .createNotification('Building', newBuilding.type, newBuilding.startedAt, newBuilding.finishedAt);
+          observer.next(newBuilding);
           observer.complete();
         });
     });
