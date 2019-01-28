@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { ENDPOINTS } from 'src/environments/endpoints';
 
 @Injectable({
@@ -30,7 +30,7 @@ export class TroopsService {
       totalAttack = this.countAttack(troops);
       totalDefence = this.countDefence(troops);
       sustenance = troops.length;
-      observer.next({levels,totalAttack,totalDefence,sustenance});
+      observer.next({levels, totalAttack, totalDefence, sustenance});
       observer.complete();
     })
   }
