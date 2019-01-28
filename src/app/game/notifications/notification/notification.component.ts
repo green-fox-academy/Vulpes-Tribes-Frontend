@@ -17,16 +17,12 @@ export class NotificationComponent implements OnInit {
 
   ngOnInit() {
     setInterval(() =>
-        (Date.now() <= this.notification.finishedAt) ?
-          this.completion += this.getCompletion() :
-          this.completion = 1
-      ,         1000);
+        (Date.now() <= this.notification.finishedAt) ? this.completion += this.getCompletion() : this.completion = 1 // tslint:disable-line
+    ,           1000);
   }
 
   getCompletion(): number {
-    const buildTime =
-      (this.notification.finishedAt - Date.now()) -
-      (this.notification.startedAt - Date.now());
+    const buildTime = (this.notification.finishedAt - Date.now()) - (this.notification.startedAt - Date.now()); // tslint:disable-line
     return (buildTime / CONSTANTS.BuildingTimePointOnePercent);
   }
 }
