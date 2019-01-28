@@ -8,11 +8,10 @@ import { ENDPOINTS } from 'src/environments/endpoints';
 export class TroopsInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const troopList = troops;
     if (req.url.endsWith(ENDPOINTS.getTroops) && (req.method === 'GET')) {
       return new Observable(observer => observer.next(new HttpResponse<any>({
         body: {
-          troopList,
+          troops,
         },
         status: 200,
       })));

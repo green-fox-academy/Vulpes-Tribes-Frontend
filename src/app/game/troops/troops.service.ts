@@ -22,7 +22,7 @@ export class TroopsService {
         troops = this.loadTroops();
       } else {
         this.getTroops().subscribe(response => {
-          troops = response.body.troopList;
+          troops = response.body.troops;
           this.saveTroops(troops);
         })
       }
