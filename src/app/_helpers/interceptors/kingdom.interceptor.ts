@@ -6,9 +6,9 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Kingdom } from '../../_models/kingdom.model';
 import { ENDPOINTS } from '../../../environments/endpoints';
-import {InterceptorUtilities} from '../../_utilities/interceptor.utilities';
+import { InterceptorUtilities } from '../../_utilities/interceptor.utilities';
 
-const kingdom: Kingdom = {
+let kingdom: Kingdom = {
   id: 213,
   name: 'My Kingdom',
   userId: 22,
@@ -55,6 +55,7 @@ export class KingdomInterceptor implements HttpInterceptor {
     if (req.url.endsWith(ENDPOINTS.getKingdom) && (req.method === 'GET')) {
       return utilities.sendResponse({ kingdom }, 200);
     } else if (req.url.endsWith(ENDPOINTS.getKingdom) && (req.method === 'PUT')) {
+      kingdom.name = req.body;
       return utilities.sendResponse({ kingdom } , 200);
     } else {
       return next.handle(req);
