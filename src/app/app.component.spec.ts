@@ -1,27 +1,28 @@
-import {TestBed, async, ComponentFixture} from '@angular/core/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import {LoginComponent} from './login/login.component';
-import {RegisterComponent} from './register/register.component';
-import {BrowserModule, By} from '@angular/platform-browser';
-import {AppRoutingModule} from './app.routes';
-import {FormsModule} from '@angular/forms';
-import {LogoutComponent} from './logout/logout.component';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {CustomHeaders} from './_models/head.model';
-import {APP_BASE_HREF} from '@angular/common';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { BrowserModule, By } from '@angular/platform-browser';
+import { AppRoutingModule } from './app.routes';
+import { FormsModule } from '@angular/forms';
+import { LogoutComponent } from './logout/logout.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CustomHeaders } from './_models/head.model';
+import { APP_BASE_HREF } from '@angular/common';
 
-import {RouterOutlet} from '@angular/router';
-import {RouterTestingModule} from '@angular/router/testing';
-import {HeaderComponent} from './header/header.component';
-import {GameComponent} from './game/game.component';
-import {ResourcesComponent} from './game/resources/resources.component';
-import {AlertComponent} from './alert/alert.component';
-import {BuildingsComponent} from './game/buildings/buildings.component';
-import {BuildingDetailComponent} from './game/buildings/building-details/building-detail.component';
-import {BuildingComponent} from './game/buildings/building/building.component';
-import {KingdomSettingsComponent} from './kingdom-settings/kingdom-settings.component';
-import {WelcomeScreenComponent} from './welcome-screen/welcome-screen.component';
-
+import { RouterOutlet } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HeaderComponent } from './header/header.component';
+import { GameComponent } from './game/game.component';
+import { ResourcesComponent } from './game/resources/resources.component';
+import { AlertComponent } from './alert/alert.component';
+import { BuildingsComponent } from './game/buildings/buildings.component';
+import { BuildingDetailComponent } from './game/buildings/building-details/building-detail.component';
+import { BuildingComponent } from './game/buildings/building/building.component';
+import { KingdomSettingsComponent } from './kingdom-settings/kingdom-settings.component';
+import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.component';
+import {NotificationsComponent} from './game/notifications/notifications.component';
+import {NotificationComponent} from './game/notifications/notification/notification.component';
 
 describe('AppComponent', () => {
 
@@ -35,15 +36,18 @@ describe('AppComponent', () => {
         LoginComponent,
         LogoutComponent,
         RegisterComponent,
+        LogoutComponent,
+        KingdomSettingsComponent,
         HeaderComponent,
         GameComponent,
         ResourcesComponent,
-        KingdomSettingsComponent,
         AlertComponent,
         BuildingsComponent,
         BuildingDetailComponent,
+        BuildingComponent,
         WelcomeScreenComponent,
-        BuildingComponent
+        NotificationsComponent,
+        NotificationComponent,
 
       ],
       imports: [
@@ -51,12 +55,12 @@ describe('AppComponent', () => {
         BrowserModule,
         AppRoutingModule,
         FormsModule,
-        HttpClientModule
+        HttpClientModule,
       ],
       providers: [
         CustomHeaders,
-        { provide: APP_BASE_HREF, useValue : '/' }
-      ]
+        { provide: APP_BASE_HREF, useValue : '/' },
+      ],
     }).compileComponents();
   }));
 
@@ -71,13 +75,13 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'Vulpes|Tribes'`, () => {
+  it("should have as title 'Vulpes|Tribes'", () => {
     const app = fixture.debugElement.componentInstance;
     expect(app.title).toEqual('Vulpes|Tribes');
   });
 
   it('should have the router outlet ', () => {
-    let de = fixture.debugElement.query(By.directive(RouterOutlet));
+    const de = fixture.debugElement.query(By.directive(RouterOutlet));
     expect(de).not.toBe(null);
   });
 

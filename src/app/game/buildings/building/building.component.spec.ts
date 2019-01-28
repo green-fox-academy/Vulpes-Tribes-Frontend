@@ -1,26 +1,28 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BuildingComponent } from './building.component';
-import {BuildingsComponent} from '../buildings.component';
-import {BuildingDetailComponent} from '../building-details/building-detail.component';
-import {BrowserModule} from '@angular/platform-browser';
-import {AppRoutingModule} from '../../../app.routes';
-import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
-import {ModalService} from '../building-details/modal.service';
-import {DomService} from '../building-details/domService';
-import {AppComponent} from '../../../app.component';
-import {LoginComponent} from '../../../login/login.component';
-import {LogoutComponent} from '../../../logout/logout.component';
-import {RegisterComponent} from '../../../register/register.component';
-import {HeaderComponent} from '../../../header/header.component';
-import {GameComponent} from '../../game.component';
-import {ResourcesComponent} from '../../resources/resources.component';
-import {AlertComponent} from '../../../alert/alert.component';
-import {Building} from '../../../_models/building.model';
-import {BuildingFactory} from '../../../_helpers/factories/building.factory';
-import {KingdomSettingsComponent} from '../../../kingdom-settings/kingdom-settings.component';
-import {WelcomeScreenComponent} from '../../../welcome-screen/welcome-screen.component';
+import { BuildingsComponent } from '../buildings.component';
+import { BuildingDetailComponent } from '../building-details/building-detail.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from '../../../app.routes';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ModalService } from '../building-details/modal.service';
+import { DomService } from '../building-details/domService';
+import { AppComponent } from '../../../app.component';
+import { LoginComponent } from '../../../login/login.component';
+import { LogoutComponent } from '../../../logout/logout.component';
+import { RegisterComponent } from '../../../register/register.component';
+import { HeaderComponent } from '../../../header/header.component';
+import { GameComponent } from '../../game.component';
+import { ResourcesComponent } from '../../resources/resources.component';
+import { AlertComponent } from '../../../alert/alert.component';
+import { Building } from '../../../_models/building.model';
+import { BuildingFactory } from '../../../_helpers/factories/building.factory';
+import { KingdomSettingsComponent } from '../../../kingdom-settings/kingdom-settings.component';
+import { WelcomeScreenComponent } from '../../../welcome-screen/welcome-screen.component';
+import {NotificationsComponent} from '../../notifications/notifications.component';
+import {NotificationComponent} from '../../notifications/notification/notification.component';
 
 describe('BuildingComponent', () => {
   let component: BuildingComponent;
@@ -34,27 +36,30 @@ describe('BuildingComponent', () => {
         LoginComponent,
         LogoutComponent,
         RegisterComponent,
+        LogoutComponent,
+        KingdomSettingsComponent,
         HeaderComponent,
         GameComponent,
         ResourcesComponent,
-        KingdomSettingsComponent,
         AlertComponent,
         BuildingsComponent,
-        BuildingComponent,
         BuildingDetailComponent,
-        WelcomeScreenComponent
+        BuildingComponent,
+        WelcomeScreenComponent,
+        NotificationsComponent,
+        NotificationComponent,
       ],
       imports: [
         BrowserModule,
         AppRoutingModule,
         FormsModule,
-        HttpClientModule
+        HttpClientModule,
       ],
       providers: [
         ModalService,
         DomService,
-        BuildingFactory
-      ]
+        BuildingFactory,
+      ],
     })
     .compileComponents();
   }));
@@ -66,7 +71,6 @@ describe('BuildingComponent', () => {
     component.building = building;
     fixture.detectChanges();
   });
-
 
   it('should create Building component', () => {
     expect(component).toBeTruthy();

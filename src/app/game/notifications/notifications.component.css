@@ -1,0 +1,37 @@
+.notifications {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  width: 95%;
+  max-width: 400px;
+  margin: 10px auto;
+
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.notifications__header {
+  width: 90%;
+  margin: 10px auto;
+  padding-left: 25px;
+
+  font-size: 20px;
+  font-weight: bold;
+  background: white;
+}
+
+.notifications__item {
+  display: flex;
+  flex-direction: row;
+
+  width: 90%;
+  height: 100px;
+  margin: 10px auto;
+
+  background: white;
+}
+
+
+
+

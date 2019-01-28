@@ -1,0 +1,60 @@
+.troops-container {
+  background-color: rgb(220, 220, 220);
+  display: flex;
+  justify-content: center;
+  width: 1100px;
+  margin: auto;
+  font-size: 30px;
+}
+.unit {
+  margin: 40px;
+  width: 250px;
+}
+.unit img {
+  width: 200px;
+}
+.troops {
+  color: white;
+  margin: 40px;
+  display: flex;
+  flex-direction: column;
+}
+.troops li {
+  height: 120px;
+  margin-bottom: 25px;
+  display: flex;
+  flex-flow: row nowrap;
+  border-style: hidden;
+  opacity: 0.99;
+}
+.troops li div:first-child {
+  background-color: cadetblue;
+  display: flex;
+  flex-direction: row;
+  border-radius: 20px;
+  box-shadow: 0px 6px 9px rgb(160, 160, 160);
+}
+.troops img {
+  width: 120px;
+  padding: 20px;
+}
+.troop_text {
+  width: 300px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.upgrade_button {
+  background-color: rgb(255, 119, 56);
+  height: 100px;
+  width: 150px;
+  margin-left: -20px;
+  margin-top: 10px;
+  margin-bottom: 45px;
+  border-style: hidden;
+  border-radius: 20px;
+  box-shadow: 0px 6px 9px rgb(160, 160, 160);
+  z-index: -1;
+}
+.upgrade_button p {
+  margin-left: 30px;
+}

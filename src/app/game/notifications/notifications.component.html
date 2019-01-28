@@ -1,0 +1,10 @@
+<div class="notifications">
+  <div class="notifications__header">
+    <p>Construction log:</p>
+  </div>
+  <app-notification class="notifications__item"
+                    *ngFor="let notification of notifications"
+                    [notification]="notification">
+  </app-notification>
+</div>
+

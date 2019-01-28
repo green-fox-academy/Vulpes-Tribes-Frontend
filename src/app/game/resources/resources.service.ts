@@ -1,19 +1,23 @@
-import { Resources } from '../../_models/resources.model';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { ENDPOINTS } from '../../../environments/endpoints';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class ResourcesService implements Resources {
-  amount: number;
-  type: string;
-  generation: number;
-  mockDb() {
-    const resources = [
-      this.type = 'food',
-      this.amount = 500,
-      this.generation = 0
-    ];
+export class ResourcesService {
+
+  constructor(private http: HttpClient) {
   }
-  constructor() { }
+
+  getResources(): Observable<any> {
+    return new Observable<any>((observer) => {
+      this.http.get(ENDPOINTS.getResources)
+        .subscribe((response) => {
+          observer.next(response);
+          observer.complete();
+        });
+    });
+  }
 }

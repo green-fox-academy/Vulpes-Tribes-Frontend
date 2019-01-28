@@ -23,11 +23,11 @@
           </tr>
           <tr class="building__details--tableRow">
             <td>Started:</td>
-            <td>{{building.started_at}}</td>
+            <td>{{building.startedAt | date: 'medium'}}</td>
           </tr>
           <tr class="building__details--tableRow">
             <td>Finished:</td>
-            <td>{{building.finished_at}}</td>
+            <td>{{building.finishedAt | date: 'medium'}}</td>
           </tr>
         </tbody>
       </table>

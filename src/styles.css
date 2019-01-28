@@ -5,6 +5,7 @@
 
 * {
   font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
 }
 
 body {
@@ -38,7 +39,6 @@ app-register {
   width: 90%;
   max-width: 568px;
 
-  border-radius: 10px;
 }
 
 .form__row {
@@ -61,7 +61,7 @@ app-register {
   background: transparent;
 
   border: none;
-  border-bottom: 2px solid #67A835;
+  border-bottom: 2px solid #10968B;
 }
 
 form button {
@@ -69,12 +69,12 @@ form button {
   color: white;
   font-size: 1.5em;
   font-weight: bold;
-  background-color: #67A835;
+  background-color: #10968B;
 }
 
 form button:hover {
-  color: #67A835;
-  border: 2px solid #67A835;
+  color: #10968B;
+  border: 2px solid #10968B;
   background-color: white;
   cursor: pointer;
 }
@@ -90,7 +90,7 @@ form .error p {
  }
 
 .form-control .ng-valid  {
-  border-bottom: 2px solid #67A835;
+  border-bottom: 2px solid #10968B;
 }
 
 

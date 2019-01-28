@@ -1,14 +1,14 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {BuildingDetailComponent} from './building-detail.component';
-import {BuildingsComponent} from '../buildings.component';
-import {BuildingComponent} from '../building/building.component';
-import {ModalService} from './modal.service';
-import {DomService} from './domService';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {RouterTestingModule} from '@angular/router/testing';
-import {Building} from '../../../_models/building.model';
-import {BuildingFactory} from '../../../_helpers/factories/building.factory';
+import { BuildingDetailComponent } from './building-detail.component';
+import { BuildingsComponent } from '../buildings.component';
+import { BuildingComponent } from '../building/building.component';
+import { ModalService } from './modal.service';
+import { DomService } from './domService';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Building } from '../../../_models/building.model';
+import { BuildingFactory } from '../../../_helpers/factories/building.factory';
 
 describe('BuildingDetailComponent', () => {
 
@@ -21,7 +21,7 @@ describe('BuildingDetailComponent', () => {
     TestBed.configureTestingModule({
       declarations: [BuildingsComponent, BuildingComponent, BuildingDetailComponent],
       imports: [HttpClientTestingModule, RouterTestingModule.withRoutes([])],
-      providers: [ModalService, DomService]
+      providers: [ModalService, DomService],
     })
       .compileComponents();
   }));
