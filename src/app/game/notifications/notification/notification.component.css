@@ -1,0 +1,44 @@
+.notifications__item--image {
+  max-width: 15%;
+}
+
+.notifications__item--content {
+  display: flex;
+  flex-direction: column;
+
+  width: 85%;
+  align-content: center;
+  align-items: flex-start;
+  padding-left: 15px;
+}
+
+.notifications__item--content p,
+.notifications__item--content progress {
+  width: 90%;
+}
+
+.notifications__item--content progress {
+  background: #65A92B;
+  height: 10px;
+}
+
+.notification__time,
+.notification__text--completed {
+  color: darkgray;
+  font-size: 12px;
+}
+
+.notification__content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.notification__time {
+  max-width: 60px;
+  text-align: right;
+  align-self: flex-end;
+  margin: 5px;
+}
+
