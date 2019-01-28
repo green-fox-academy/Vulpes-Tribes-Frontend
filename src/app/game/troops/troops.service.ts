@@ -11,22 +11,28 @@ export class TroopsService {
 
   constructor(private http: HttpClient) {}
 
-  getTroopsAndStats() {
+  getStats(): Observable<any> {
     let troops = [];
     let levels = {};
     let totalAttack = 0;
     let totalDefence = 0;
     let sustenance = 0;
-    this.getTroops().subscribe(response => {
-      troops = response.body.troopList;
+    return new Observable<any>(observer => {
+      if (localStorage.getItem('troops')) {
+        troops = this.loadTroops();
+      } else {
+        this.getTroops().subscribe(response => {
+          troops = response.body.troopList;
+          this.saveTroops(troops);
+        })
+      }
       levels = this.calculateTroopLevels(troops);
       totalAttack = this.countAttack(troops);
       totalDefence = this.countDefence(troops);
       sustenance = troops.length;
-      this.saveTroops(troops);
-    });
-    console.log(JSON.stringify({levels,totalAttack,totalDefence,sustenance}));
-    return {levels,totalAttack,totalDefence,sustenance};
+      observer.next({levels,totalAttack,totalDefence,sustenance});
+      observer.complete();
+    })
   }
 
   getTroops(): Observable<any> {

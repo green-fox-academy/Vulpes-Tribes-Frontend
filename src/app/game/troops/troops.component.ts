@@ -16,11 +16,16 @@ export class TroopsComponent implements OnInit {
   constructor(private troopsService: TroopsService) { }
 
   ngOnInit() {
-    let values =  this.troopsService.getTroopsAndStats();
-    this.levels = values.levels;
-    this.totalAttack = values.totalAttack;
-    this.totalDefence = values.totalDefence
-    this.sustenance = values.sustenance;
+    this.getStats();
+  }
+
+  getStats() {
+    this.troopsService.getStats().subscribe(response => {
+      this.levels = response.levels;
+      this.totalAttack = response.totalAttack;
+      this.totalDefence = response.totalDefence;
+      this.sustenance = response.sustenance;
+    })
   }
 
   checkLevels() {
