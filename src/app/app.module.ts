@@ -31,6 +31,7 @@ import { NotificationComponent } from './game/notifications/notification/notific
 import { TroopsComponent } from './game/troops/troops.component';
 import { TroopsInterceptor } from './_helpers/interceptors/troops.interceptor';
 import { KingdomInterceptor } from './_helpers/interceptors/kingdom.interceptor';
+import { NotificationFactory } from './_helpers/factories/notification.factory';
 
 @NgModule({
   declarations: [
@@ -72,10 +73,12 @@ import { KingdomInterceptor } from './_helpers/interceptors/kingdom.interceptor'
     AlertService,
     ModalService,
     DomService,
+    NotificationFactory,
   ],
 
   entryComponents: [
     BuildingDetailComponent,
+    NotificationComponent
   ],
 
   bootstrap: [AppComponent],
