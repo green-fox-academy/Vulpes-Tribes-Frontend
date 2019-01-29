@@ -4,7 +4,6 @@ div {
   ;
   font-family: 'Roboto', sans-serif;
   opacity: 20%;
-
 }
 
 .resources {
@@ -15,7 +14,6 @@ div {
   margin: 7px auto;
   max-width: 400px;
   height: 300px;
-
 }
 
 .resource {
@@ -34,5 +32,4 @@ div {
   text-align: auto;
   font-size: 27px;
   margin: auto 10px;
-
 }
