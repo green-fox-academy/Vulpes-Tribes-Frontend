@@ -30,7 +30,7 @@ export class TroopsInterceptor implements HttpInterceptor {
 
   returnNewTroop(): Troop {
     let troops: Troop[];
-    troops = this.loadTroops();
+    troops = JSON.parse(localStorage.getItem('troops'));
     if (troops === []) return new Troop(1);
     else {
     troops.sort(function(a, b) {
@@ -38,11 +38,5 @@ export class TroopsInterceptor implements HttpInterceptor {
     });
     return new Troop(troops[troops.length - 1].id + 1);
     }
-  }
-
-  loadTroops(): [] {
-    let troops: [];
-    troops = JSON.parse(localStorage.getItem('troops'));
-    return troops;
   }
 }

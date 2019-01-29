@@ -12,32 +12,51 @@ export class TroopsService {
 
   constructor(private http: HttpClient) {}
 
+  getTroops(): Observable<Troop[]> {
+    let troops: Troop[];
+    return new Observable<Troop[]>(observer => {
+      if (localStorage.getItem('troops')) {
+        troops = this.loadTroopsFromLS();
+      } else {
+        this.getTroopsFromBackEnd().subscribe(response => {
+          troops = response.body.troops;
+          this.saveTroopsToLS(troops);
+        })
+      }
+      observer.next(troops);
+      observer.complete();
+    })
+  }
+  
   getStats(): Observable<any> {
-    let troops = [];
     let levels = {};
     let totalAttack = 0;
     let totalDefence = 0;
     let sustenance = 0;
     return new Observable<any>(observer => {
-      if (localStorage.getItem('troops')) {
-        troops = this.loadTroops();
-      } else {
-        this.getTroops().subscribe(response => {
-          troops = response.body.troops;
-          this.saveTroops(troops);
-        })
-      }
-      levels = this.calculateTroopLevels(troops);
-      totalAttack = this.countAttack(troops);
-      totalDefence = this.countDefence(troops);
-      sustenance = troops.length;
-      observer.next({levels, totalAttack, totalDefence, sustenance});
-      observer.complete();
+      this.getTroops().subscribe(response => {
+        levels = this.calculateTroopLevels(response);
+        totalAttack = this.countAttack(response);
+        totalDefence = this.countDefence(response);
+        sustenance = response.length;
+        observer.next({levels, totalAttack, totalDefence, sustenance});
+        observer.complete();
+      })
     })
   }
 
-  getTroops(): Observable<any> {
+  getTroopsFromBackEnd(): Observable<any> {
     return this.http.get(ENDPOINTS.getTroops, {observe: 'response'});
+  }
+
+  saveTroopsToLS (troops) {
+    localStorage.setItem('troops', JSON.stringify(troops));
+  }
+
+  loadTroopsFromLS(): Troop[] {
+    let troops: Troop[];
+    troops = JSON.parse(localStorage.getItem('troops'));
+    return troops;
   }
 
   calculateTroopLevels (troops): any {
@@ -62,20 +81,10 @@ export class TroopsService {
     return totalDefence;
   }
 
-  saveTroops (troops) {
-    localStorage.setItem('troops', JSON.stringify(troops));
-  }
-
-  loadTroops(): Troop[] {
-    let troops: Troop[];
-    troops = JSON.parse(localStorage.getItem('troops'));
-    return troops;
-  }
-
-  updateTroops (troop) {
-    let troops = this.loadTroops();
+  updateTroopsInLS (troop) {
+    let troops = this.loadTroopsFromLS();
     troops.push(troop);
-    localStorage.setItem('troops', JSON.stringify(troops));
+    this.saveTroopsToLS(troops);
   }
 
   postTroops(): Observable<any> {
@@ -88,9 +97,22 @@ export class TroopsService {
       this.postTroops()
       .subscribe(response => {
         troop = response.body.troop;
-        this.updateTroops(troop);
+        this.updateTroopsInLS(troop);
         observer.complete();
       });
+    })
+  }
+
+  filterTroops(status: string): Observable<Troop[]> {
+    return new Observable<Troop[]>(observer => {
+      this.getTroops().subscribe(response => {
+        if (status === 'finished') {
+          observer.next(response.filter(troop => troop.finishedAt <= Date.now()));
+        } else if (status === 'unfinished') {
+          observer.next(response.filter(troop => troop.finishedAt > Date.now()));
+        }
+        observer.complete();
+      })
     })
   }
 }
