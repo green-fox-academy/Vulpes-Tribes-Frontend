@@ -3,6 +3,7 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } fr
 import { Observable } from 'rxjs';
 import { troops } from '../mocks/mock-troops';
 import { ENDPOINTS } from 'src/environments/endpoints';
+import { Troop } from 'src/app/_models/troop.model';
 
 @Injectable()
 export class TroopsInterceptor implements HttpInterceptor {
@@ -15,7 +16,33 @@ export class TroopsInterceptor implements HttpInterceptor {
         },
         status: 200,
       })));
+    } else if (req.url.endsWith(ENDPOINTS.getTroops) && (req.method === 'POST')) {
+      let troop = this.returnNewTroop();
+      return new Observable(observer => observer.next(new HttpResponse<any>({
+        body: {
+          troop,
+        },
+        status: 200,
+      })));
     }
     return next.handle(req);
+  }
+
+  returnNewTroop(): Troop {
+    let troops: Troop[];
+    troops = this.loadTroops();
+    if (troops === []) return new Troop(1);
+    else {
+    troops.sort(function(a, b) {
+      return a.id - b.id;
+    });
+    return new Troop(troops[troops.length - 1].id + 1);
+    }
+  }
+
+  loadTroops(): [] {
+    let troops: [];
+    troops = JSON.parse(localStorage.getItem('troops'));
+    return troops;
   }
 }

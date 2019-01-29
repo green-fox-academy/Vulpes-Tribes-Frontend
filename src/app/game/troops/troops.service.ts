@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ENDPOINTS } from 'src/environments/endpoints';
+import { Troop } from 'src/app/_models/troop.model';
 
 @Injectable({
   providedIn: 'root'
@@ -65,9 +66,31 @@ export class TroopsService {
     localStorage.setItem('troops', JSON.stringify(troops));
   }
 
-  loadTroops(): [] {
-    let troops: [];
+  loadTroops(): Troop[] {
+    let troops: Troop[];
     troops = JSON.parse(localStorage.getItem('troops'));
     return troops;
+  }
+
+  updateTroops (troop) {
+    let troops = this.loadTroops();
+    troops.push(troop);
+    localStorage.setItem('troops', JSON.stringify(troops));
+  }
+
+  postTroops(): Observable<any> {
+    return this.http.post(ENDPOINTS.getTroops, '', {observe: 'response'});
+  }
+
+  createTroop(): Observable<any> {
+    let troop: Troop;
+    return new Observable<any>(observer => {
+      this.postTroops()
+      .subscribe(response => {
+        troop = response.body.troop;
+        this.updateTroops(troop);
+        observer.complete();
+      });
+    })
   }
 }
