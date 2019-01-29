@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ENDPOINTS } from '../../../environments/endpoints';
 import { Building } from '../../_models/building.model';
+import { environment } from '../../../environments/environment';
+
+const url = environment.serverApi + ENDPOINTS.getBuildings;
 
 @Injectable({
   providedIn: 'root',
@@ -15,12 +18,12 @@ export class BuildingsService {
 
   getBuildingsFromBackend(): Observable<any> {
     return this.http
-      .get(ENDPOINTS.getBuildings, { observe: 'response' });
+      .get(url, { observe: 'response' });
   }
 
   createBuilding(buildingType: string): Observable<Building> {
     return new Observable<Building>((observer) => {
-      this.http.post(ENDPOINTS.getBuildings, buildingType)
+      this.http.post(url, buildingType)
         .subscribe((response) => {
           this.updateLocalStorage(response['response']);
           observer.next(response['response']);

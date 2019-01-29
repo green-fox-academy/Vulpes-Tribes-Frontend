@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { LoginService } from '../login/login.service';
 import { ENDPOINTS } from '../../environments/endpoints';
+import { environment } from '../../environments/environment';
+
+const url = environment.serverApi + ENDPOINTS.register;
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +19,7 @@ export class RegisterService {
   }
 
   createUser(user) {
-    this.http.post<any>(ENDPOINTS.register, user)
+    this.http.post<any>(url, user)
       .subscribe(
         (response) => {
           this.login.saveToken(response.tribes_token);

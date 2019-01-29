@@ -14,7 +14,7 @@ import { NotificationsComponent } from './game/notifications/notifications.compo
 import { TroopsComponent } from './game/troops/troops.component';
 
 const APP_ROUTES: Routes = [
-  { path: '', redirectTo: '/welcome', pathMatch: 'full' },
+  { path: '', redirectTo: 'welcome', pathMatch: 'full' },
   { path: 'welcome', component: WelcomeScreenComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },

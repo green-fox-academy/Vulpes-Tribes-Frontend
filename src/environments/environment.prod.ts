@@ -2,6 +2,7 @@ export const environment = {
   production: true,
 
   // Global variables
-  envName: 'development',
+  envName: 'production',
   tribes_token: 'tribes_token',
+  serverApi: 'https://vulpes-tribes-backend-dev.herokuapp.com',
 };

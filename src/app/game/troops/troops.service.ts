@@ -2,14 +2,18 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ENDPOINTS } from 'src/environments/endpoints';
+import { environment } from '../../../environments/environment';
+
+const url = environment.serverApi + ENDPOINTS.getTroops;
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 
 export class TroopsService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   getStats(): Observable<any> {
     let troops = [];
@@ -24,28 +28,28 @@ export class TroopsService {
         this.getTroops().subscribe(response => {
           troops = response.body.troops;
           this.saveTroops(troops);
-        })
+        });
       }
       levels = this.calculateTroopLevels(troops);
       totalAttack = this.countAttack(troops);
       totalDefence = this.countDefence(troops);
       sustenance = troops.length;
-      observer.next({levels, totalAttack, totalDefence, sustenance});
+      observer.next({ levels, totalAttack, totalDefence, sustenance });
       observer.complete();
-    })
+    });
   }
 
   getTroops(): Observable<any> {
-    return this.http.get(ENDPOINTS.getTroops, {observe: 'response'});
+    return this.http.get(url, { observe: 'response' });
   }
 
-  calculateTroopLevels (troops): any {
+  calculateTroopLevels(troops): any {
     let levels = {};
     troops.forEach(troop => levels[troop.level] ? levels[troop.level]++ : levels[troop.level] = 1);
     return levels;
   }
 
-  countAttack (troops): number {
+  countAttack(troops): number {
     let totalAttack = 0;
     troops.forEach(troop => {
       totalAttack += troop.attack;
@@ -53,7 +57,7 @@ export class TroopsService {
     return totalAttack;
   }
 
-  countDefence (troops): number {
+  countDefence(troops): number {
     let totalDefence = 0;
     troops.forEach(troop => {
       totalDefence += troop.defence;
@@ -61,7 +65,7 @@ export class TroopsService {
     return totalDefence;
   }
 
-  saveTroops (troops) {
+  saveTroops(troops) {
     localStorage.setItem('troops', JSON.stringify(troops));
   }
 
