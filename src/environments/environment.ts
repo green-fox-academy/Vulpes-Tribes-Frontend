@@ -6,6 +6,7 @@ export const environment = {
   production: false,
 
   // Global variables
+  envName: 'development',
   tribes_token: 'tribes_token',
 };
 
