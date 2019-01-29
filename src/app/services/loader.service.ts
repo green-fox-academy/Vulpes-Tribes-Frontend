@@ -10,8 +10,10 @@ export class LoaderService {
   constructor() { }
   show() {
     this.loaderSubject.next(<LoaderState>{ show: true });
+    console.log('startloading');
   }
   hide() {
     this.loaderSubject.next(<LoaderState>{ show: false });
+    console.log('finishloading');
   }
 }

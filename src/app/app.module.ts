@@ -32,6 +32,7 @@ import { TroopsComponent } from './game/troops/troops.component';
 import { TroopsInterceptor } from './_helpers/interceptors/troops.interceptor';
 import { KingdomInterceptor } from './_helpers/interceptors/kingdom.interceptor';
 import { LoaderComponent } from './loader/loader.component';
+import { LoaderService } from './services/loader.service';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { LoaderComponent } from './loader/loader.component';
     NotificationsComponent,
     NotificationComponent,
     TroopsComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,11 +70,12 @@ import { LoaderComponent } from './loader/loader.component';
     { provide: HTTP_INTERCEPTORS, useClass: TroopsInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: KingdomInterceptor, multi: true },
     CustomHeaders,
-    { provide: APP_BASE_HREF, useValue: '/' },
+       { provide: APP_BASE_HREF, useValue: '/' },
     AuthService,
     AlertService,
     ModalService,
     DomService,
+    LoaderService,
   ],
 
   entryComponents: [
