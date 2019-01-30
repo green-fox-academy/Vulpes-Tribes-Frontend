@@ -20,7 +20,7 @@ import { AlertService } from './alert/alert.service';
 import { ResourceInterceptor } from './_helpers/interceptors/resources.interceptor';
 import { BuildingsComponent } from './game/buildings/buildings.component';
 import { BuildingsInterceptor } from './_helpers/interceptors/buildings.interceptor';
-import { BuildingDetailComponent } from './game/buildings/building-details/building-detail.component';
+import { BuildingDetailComponent } from './game/buildings/building-details/building-detail.component'; // tslint:disable-line
 import { ModalService } from './game/buildings/building-details/modal.service';
 import { DomService } from './game/buildings/building-details/domService';
 import { BuildingComponent } from './game/buildings/building/building.component';
@@ -31,6 +31,7 @@ import { NotificationComponent } from './game/notifications/notification/notific
 import { TroopsComponent } from './game/troops/troops.component';
 import { TroopsInterceptor } from './_helpers/interceptors/troops.interceptor';
 import { KingdomInterceptor } from './_helpers/interceptors/kingdom.interceptor';
+import { environment } from '../environments/environment';
 import { NotificationFactory } from './_helpers/factories/notification.factory';
 
 @NgModule({
@@ -39,7 +40,6 @@ import { NotificationFactory } from './_helpers/factories/notification.factory';
     LoginComponent,
     LogoutComponent,
     RegisterComponent,
-    LogoutComponent,
     KingdomSettingsComponent,
     HeaderComponent,
     GameComponent,
@@ -61,19 +61,22 @@ import { NotificationFactory } from './_helpers/factories/notification.factory';
   ],
 
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: LoginInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ResourceInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: BuildingsInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: TroopsInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: KingdomInterceptor, multi: true },
+    AppComponent,
     CustomHeaders,
-    { provide: APP_BASE_HREF, useValue: '/' },
     AuthService,
     AlertService,
     ModalService,
     DomService,
-    NotificationFactory,
+    { provide: APP_BASE_HREF, useValue: '/' },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    environment.envName === 'development' ? [
+      { provide: HTTP_INTERCEPTORS, useClass: LoginInterceptor, multi: true },
+      { provide: HTTP_INTERCEPTORS, useClass: ResourceInterceptor, multi: true },
+      { provide: HTTP_INTERCEPTORS, useClass: BuildingsInterceptor, multi: true },
+      { provide: HTTP_INTERCEPTORS, useClass: TroopsInterceptor, multi: true },
+      { provide: HTTP_INTERCEPTORS, useClass: KingdomInterceptor, multi: true },
+    ] : [
+    ],
   ],
 
   entryComponents: [

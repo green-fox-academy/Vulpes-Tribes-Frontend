@@ -3,14 +3,18 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ENDPOINTS } from 'src/environments/endpoints';
 import { Troop } from 'src/app/_models/troop.model';
+import { environment } from '../../../environments/environment';
+
+const URL = environment.serverApi + ENDPOINTS.getTroops;
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 
 export class TroopsService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   getTroops(): Observable<Troop[]> {
     let troops: Troop[];
@@ -40,7 +44,7 @@ export class TroopsService {
       })
     })
   }
-  
+
   getStats(): Observable<any> {
     let levels = {};
     let totalAttack = 0;
@@ -58,8 +62,8 @@ export class TroopsService {
     })
   }
 
-  getTroopsFromBackEnd(): Observable<any> {
-    return this.http.get(ENDPOINTS.getTroops, {observe: 'response'});
+  getTroops(): Observable<any> {
+    return this.http.get(URL, { observe: 'response' });
   }
 
   postTroop(): Observable<any> {
@@ -88,7 +92,7 @@ export class TroopsService {
     return levels;
   }
 
-  countAttack (troops): number {
+  countAttack(troops): number {
     let totalAttack = 0;
     troops.forEach(troop => {
       totalAttack += troop.attack;
@@ -96,7 +100,7 @@ export class TroopsService {
     return totalAttack;
   }
 
-  countDefence (troops): number {
+  countDefence(troops): number {
     let totalDefence = 0;
     troops.forEach(troop => {
       totalDefence += troop.defence;
