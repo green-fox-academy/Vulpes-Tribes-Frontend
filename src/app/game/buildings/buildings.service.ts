@@ -5,7 +5,7 @@ import { ENDPOINTS } from '../../../environments/endpoints';
 import { Building } from '../../_models/building.model';
 import { environment } from '../../../environments/environment';
 
-const url = environment.serverApi + ENDPOINTS.getBuildings;
+const URL = environment.serverApi + ENDPOINTS.getBuildings;
 
 @Injectable({
   providedIn: 'root',
@@ -18,12 +18,12 @@ export class BuildingsService {
 
   getBuildingsFromBackend(): Observable<any> {
     return this.http
-      .get(url, { observe: 'response' });
+      .get(URL, { observe: 'response' });
   }
 
   createBuilding(buildingType: string): Observable<Building> {
     return new Observable<Building>((observer) => {
-      this.http.post(url, buildingType)
+      this.http.post(URL, buildingType)
         .subscribe((response) => {
           this.updateLocalStorage(response['response']);
           observer.next(response['response']);

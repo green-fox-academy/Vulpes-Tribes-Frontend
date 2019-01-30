@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { AlertService } from '../alert/alert.service';
 import { ENDPOINTS } from '../../environments/endpoints';
 
-const url = environment.serverApi + ENDPOINTS.login;
+const URL = environment.serverApi + ENDPOINTS.login;
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +19,7 @@ export class LoginService {
   }
 
   login(user) {
-    this.http.post<any>(url, user, { reportProgress: true })
+    this.http.post<any>(URL, user, { reportProgress: true })
       .subscribe(
         (response) => {
           console.log(response);

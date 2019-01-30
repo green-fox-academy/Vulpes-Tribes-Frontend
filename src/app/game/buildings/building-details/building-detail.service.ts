@@ -5,7 +5,7 @@ import { ENDPOINTS } from '../../../../environments/endpoints';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 
-const url = environment.serverApi + ENDPOINTS.getBuildings;
+const URL = environment.serverApi + ENDPOINTS.getBuildings;
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +18,7 @@ export class BuildingDetailService {
   levelUpBuilding(building: Building): Observable<any> {
     return new Observable((observer) => {
       this.http
-        .put(`${ url }/${ building.id }`, { id: building.id, level: building.level }, { observe: 'response' })
+        .put(`${ URL }/${ building.id }`, { id: building.id, level: building.level }, { observe: 'response' })
         .subscribe((response) => {
           if (response['status'] === 200) {
             const buildingToUpdate = building;

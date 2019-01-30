@@ -5,7 +5,7 @@ import { LoginService } from '../login/login.service';
 import { ENDPOINTS } from '../../environments/endpoints';
 import { environment } from '../../environments/environment';
 
-const url = environment.serverApi + ENDPOINTS.register;
+const URL = environment.serverApi + ENDPOINTS.register;
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +19,7 @@ export class RegisterService {
   }
 
   createUser(user) {
-    this.http.post<any>(url, user)
+    this.http.post<any>(URL, user)
       .subscribe(
         (response) => {
           this.router.navigate(['/login']);
