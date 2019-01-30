@@ -50,6 +50,15 @@ export class BuildingsService {
     });
   }
 
+  initializeUnfinishedBuildingsAsNotifications() {
+    this.filterBuildings('unfinished').subscribe((buildings) => {
+      buildings.forEach((building) => {
+        this.notificationService
+          .createNotification('Building', building.type, building.startedAt, building.finishedAt);
+      });
+    });
+  }
+
   showAllBuildings(): Observable<Building[]> {
     return new Observable<Building[]>((observer) => {
       if (localStorage.getItem('buildings')) {

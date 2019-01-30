@@ -27,6 +27,7 @@ export class BuildingsComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.showFinishedBuildings();
+    this.buildingsService.initializeUnfinishedBuildingsAsNotifications();
   }
 
   ngOnChanges(changes: SimpleChanges): void {

@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
-import { NotificationsResponseMock } from '../_helpers/mocks/notificationResponse.mock';
 import { TribesNotification } from '../_models/notification.model';
 import { NotificationFactory } from '../_helpers/factories/notification.factory';
 import { BehaviorSubject } from 'rxjs';
-
-const mockNotifications = new NotificationsResponseMock().notifications;
 
 @Injectable({
   providedIn: 'root',
