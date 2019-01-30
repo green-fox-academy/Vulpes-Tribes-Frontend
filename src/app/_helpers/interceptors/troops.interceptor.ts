@@ -24,12 +24,10 @@ export class TroopsInterceptor implements HttpInterceptor {
   returnNewTroop(): Troop {
     let troops: Troop[];
     troops = JSON.parse(localStorage.getItem('troops'));
-    if (troops === []) return new Troop(1);
-    else {
-    troops.sort(function(a, b) {
-      return a.id - b.id;
-    });
-    return new Troop(troops[troops.length - 1].id + 1);
+    if (troops.length === 0) {
+      return new Troop(1);
+    } else {
+      return new Troop(troops[troops.length - 1].id + 1);
     }
   }
 }

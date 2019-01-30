@@ -28,7 +28,7 @@ export class TroopsService {
     })
   }
 
-  filterTroops(status: string): Observable<Troop[]> {
+  filterTroopsByCompletion(status: string): Observable<Troop[]> {
     return new Observable<Troop[]>(observer => {
       this.getTroops().subscribe(response => {
         if (status === 'finished') {
@@ -47,7 +47,7 @@ export class TroopsService {
     let totalDefence = 0;
     let sustenance = 0;
     return new Observable<any>(observer => {
-      this.filterTroops('finished').subscribe(troops => {
+      this.filterTroopsByCompletion('finished').subscribe(troops => {
         levels = this.calculateTroopLevels(troops);
         totalAttack = this.countAttack(troops);
         totalDefence = this.countDefence(troops);
@@ -62,7 +62,7 @@ export class TroopsService {
     return this.http.get(ENDPOINTS.getTroops, {observe: 'response'});
   }
 
-  postTroops(): Observable<any> {
+  postTroop(): Observable<any> {
     return this.http.post(ENDPOINTS.getTroops, '', {observe: 'response'});
   }
 
@@ -107,7 +107,7 @@ export class TroopsService {
   createTroop(): Observable<any> {
     let troop: Troop;
     return new Observable<any>(observer => {
-      this.postTroops()
+      this.postTroop()
       .subscribe(response => {
         troop = response.body.troop;
         this.addTroopsInLS(troop);
