@@ -1,7 +1,7 @@
 import {
   HttpEvent,
   HttpHandler,
-  HttpHeaderResponse, HttpHeaders,
+  HttpHeaderResponse,
   HttpInterceptor,
   HttpProgressEvent,
   HttpRequest,
@@ -20,18 +20,16 @@ export class TokenInterceptor implements HttpInterceptor {
       HttpProgressEvent |
       HttpResponse<any> |
       HttpUserEvent<any>> {
-    console.log(req);
-    if (localStorage.getItem(environment.tribes_token)) {
-      const requestWithAuthHEader = req.clone({
+    const token = localStorage.getItem(environment.tribes_token);
+    let request = req;
+    if (token) {
+      request = req.clone({
         setHeaders: {
           'Content-Type': 'application/json',
-          'X-Tribes-Token': localStorage.getItem(environment.tribes_token),
+          'X-Tribes-Token': token,
         },
       });
-      return next.handle(requestWithAuthHEader);
-    } else {
-      return next.handle(req);
+      return next.handle(request);
     }
-
   }
 }
