@@ -27,4 +27,5 @@ export class NotificationComponent implements OnInit {
     const buildTime = (this.notification.finishedAt - Date.now()) - (this.notification.startedAt - Date.now()); // tslint:disable-line
     return (buildTime / CONSTANTS.BuildingTimePointOnePercent);
   }
+
 }

@@ -28,4 +28,8 @@ export class NotificationsService {
   getNotifications(): TribesNotification[] {
     return this.notifications;
   }
+
+  removeNotification(notificationToRemove: TribesNotification): void {
+    this.notifications = this.notifications.filter(notification => notification !== notificationToRemove);
+  }
 }
