@@ -1,6 +1,5 @@
-<div id="overlay" >
-  <div id="modal-container">
-    <div class="building__details">
+
+ <!--  <div class="building__details">
       <img [src]="imgSrc" alt="">
       <table class="building__details--table">
         <thead>
@@ -33,6 +32,22 @@
       </table>
       <button (click)="destroy()">Close</button>
       <button (click)="levelUpBuilding(building)" class="button__levelUp">Level up</button>
+    </div> -->
+
+    <div id="building__details">
+      <div class="building_info" >
+          <img [src]="imgSrc" alt="">
+          <p>{{building.type}} </p>
+          <p> {{building.level}} </p>
+      </div>
+      <div class="building_detail_panel">
+        <div class="building_detail_text">
+          
+
+        </div>
+
+      </div>
+
+
     </div>
-  </div>
-</div>
+  
