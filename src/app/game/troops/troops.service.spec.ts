@@ -72,6 +72,6 @@ describe('TroopsService', () => {
   });
 
   it('should return an object with given properties', () => {
-    expect(service.getTroopsAndStats().hasOwnProperty('levels' && 'totalAttack' && 'totalDefence' && 'sustenance')).toBeTruthy();
+    expect(service.getStats().hasOwnProperty('levels' && 'totalAttack' && 'totalDefence' && 'sustenance')).toBeTruthy();
   })
 });

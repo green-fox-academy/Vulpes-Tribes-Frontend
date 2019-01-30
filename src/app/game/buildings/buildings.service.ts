@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ENDPOINTS } from '../../../environments/endpoints';
 import { Building } from '../../_models/building.model';
 import { environment } from '../../../environments/environment';
+import { NotificationsService } from '../../services/notifications.service';
 
 const URL = environment.serverApi + ENDPOINTS.getBuildings;
 
@@ -13,7 +14,8 @@ const URL = environment.serverApi + ENDPOINTS.getBuildings;
 
 export class BuildingsService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private notificationService: NotificationsService) {
   }
 
   getBuildingsFromBackend(): Observable<any> {
@@ -25,8 +27,11 @@ export class BuildingsService {
     return new Observable<Building>((observer) => {
       this.http.post(URL, buildingType)
         .subscribe((response) => {
-          this.updateLocalStorage(response['response']);
-          observer.next(response['response']);
+          const newBuilding = response['response'];
+          this.updateLocalStorage(newBuilding);
+          this.notificationService
+            .createNotification('Building', newBuilding.type, newBuilding.startedAt, newBuilding.finishedAt);
+          observer.next(newBuilding);
           observer.complete();
         });
     });

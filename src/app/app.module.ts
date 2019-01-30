@@ -32,6 +32,7 @@ import { TroopsComponent } from './game/troops/troops.component';
 import { TroopsInterceptor } from './_helpers/interceptors/troops.interceptor';
 import { KingdomInterceptor } from './_helpers/interceptors/kingdom.interceptor';
 import { environment } from '../environments/environment';
+import { NotificationFactory } from './_helpers/factories/notification.factory';
 
 @NgModule({
   declarations: [
@@ -80,10 +81,10 @@ import { environment } from '../environments/environment';
 
   entryComponents: [
     BuildingDetailComponent,
+    NotificationComponent
   ],
 
   bootstrap: [AppComponent],
 })
 export class AppModule {
-
 }

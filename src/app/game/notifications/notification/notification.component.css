@@ -1,5 +1,6 @@
 .notifications__item--image {
   max-width: 15%;
+  margin-left: 5%;
 }
 
 .notifications__item--content {
