@@ -5,7 +5,7 @@ import { ENDPOINTS } from 'src/environments/endpoints';
 import { Troop } from 'src/app/_models/troop.model';
 import { environment } from '../../../environments/environment';
 
-const URL = environment.serverApi + ENDPOINTS.getTroops;
+const URL = ENDPOINTS.getTroops;
 
 @Injectable({
   providedIn: 'root',
@@ -17,8 +17,8 @@ export class TroopsService {
   }
 
   getTroops(): Observable<Troop[]> {
-    let troops: Troop[];
     return new Observable<Troop[]>((observer) => {
+      let troops: Troop[];
       if (localStorage.getItem('troops')) {
         troops = this.loadTroopsFromLS();
         observer.next(troops);

@@ -67,6 +67,7 @@ import { NotificationFactory } from './_helpers/factories/notification.factory';
     AlertService,
     ModalService,
     DomService,
+    NotificationFactory,
     { provide: APP_BASE_HREF, useValue: '/' },
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     environment.envName === 'development' ? [
