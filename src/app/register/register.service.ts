@@ -22,8 +22,7 @@ export class RegisterService {
     this.http.post<any>(url, user)
       .subscribe(
         (response) => {
-          this.login.saveToken(response.tribes_token);
-          this.router.navigate(['/game']);
+          this.router.navigate(['/login']);
         },
       );
   }
