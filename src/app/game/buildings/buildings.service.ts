@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ENDPOINTS } from '../../../environments/endpoints';
 import { Building } from '../../_models/building.model';
-import { NotificationsService } from '../../services/notifications.service';
+import { NotificationsService } from '../../sharedServices/notifications.service';
+import { PurchaseService } from '../../sharedServices/purchase.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,8 @@ import { NotificationsService } from '../../services/notifications.service';
 export class BuildingsService {
 
   constructor(private http: HttpClient,
-              private notificationService: NotificationsService) {
+              private notificationService: NotificationsService,
+              private purchaseService: PurchaseService) {
   }
 
   getBuildingsFromBackend(): Observable<any> {

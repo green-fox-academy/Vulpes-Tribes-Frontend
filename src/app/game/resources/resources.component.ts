@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ResourcesService } from './resources.service';
+import { TribesNotification } from '../../_models/notification.model';
 
 @Component({
   selector: 'app-resources',
@@ -7,6 +8,9 @@ import { ResourcesService } from './resources.service';
   styleUrls: ['./resources.component.css'],
 })
 export class ResourcesComponent implements OnInit {
+
+  @Output() checkResources = new EventEmitter<TribesNotification>();
+
   constructor(private resourceService: ResourcesService) {}
   food;
   money;

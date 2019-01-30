@@ -5,7 +5,8 @@ import { ModalService } from './building-details/modal.service';
 import { Building } from '../../_models/building.model';
 import { AlertService } from '../../alert/alert.service';
 import { TribesNotification } from '../../_models/notification.model';
-import { NotificationsService } from '../../services/notifications.service';
+import { NotificationsService } from '../../sharedServices/notifications.service';
+import { PurchaseService } from '../../sharedServices/purchase.service';
 
 @Component({
   selector: 'app-buildings',
@@ -22,11 +23,11 @@ export class BuildingsComponent implements OnInit, OnChanges {
   constructor(private buildingsService: BuildingsService,
               private alertService: AlertService,
               private modalService: ModalService,
-              private notificationService: NotificationsService) {
+              private purchaseService: PurchaseService) {
   }
 
   ngOnInit() {
-    this.showAllBuildings();
+    this.showFinishedBuildings();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
