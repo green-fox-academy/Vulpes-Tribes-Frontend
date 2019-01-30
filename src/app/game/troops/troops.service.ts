@@ -5,7 +5,7 @@ import { ENDPOINTS } from 'src/environments/endpoints';
 import { Troop } from 'src/app/_models/troop.model';
 import { environment } from '../../../environments/environment';
 
-const url = environment.serverApi + ENDPOINTS.getTroops;
+const URL = environment.serverApi + ENDPOINTS.getTroops;
 
 @Injectable({
   providedIn: 'root',
@@ -63,7 +63,7 @@ export class TroopsService {
   }
 
   getTroops(): Observable<any> {
-    return this.http.get(url, { observe: 'response' });
+    return this.http.get(URL, { observe: 'response' });
   }
 
   postTroop(): Observable<any> {
