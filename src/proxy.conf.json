@@ -1,0 +1,6 @@
+{
+  "/": {
+    "target": "https://vulpes-tribes-backend-dev.herokuapp.com",
+    "secure": false
+  }
+}
