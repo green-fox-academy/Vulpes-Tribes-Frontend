@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TribesNotification } from '../_models/notification.model';
+import { NotificationsService } from '../services/notifications.service';
 
 @Component({
   selector: 'app-game',
@@ -7,7 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameComponent implements OnInit {
 
-  constructor() { }
+  notifications: TribesNotification[];
 
-  ngOnInit() {}
+  constructor(private notificationService: NotificationsService) {
+  }
+
+  ngOnInit() {
+    this.notificationService.currentNotifications.subscribe(notification => {
+      this.notifications = notification;
+    });
+  }
 }
