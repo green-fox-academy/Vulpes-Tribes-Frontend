@@ -17,14 +17,27 @@ export class TroopsService {
     return new Observable<Troop[]>(observer => {
       if (localStorage.getItem('troops')) {
         troops = this.loadTroopsFromLS();
-      } else {
-        this.getTroopsFromBackEnd().subscribe(response => {
-          troops = response.body.troops;
-          this.saveTroopsToLS(troops);
-        })
-      }
-      observer.next(troops);
-      observer.complete();
+        observer.next(troops);
+      };
+      this.getTroopsFromBackEnd().subscribe(response => {
+        troops = response.body.troops;
+        this.saveTroopsToLS(troops);
+        observer.next(troops);
+        observer.complete();
+      })
+    })
+  }
+
+  filterTroops(status: string): Observable<Troop[]> {
+    return new Observable<Troop[]>(observer => {
+      this.getTroops().subscribe(response => {
+        if (status === 'finished') {
+          observer.next(response.filter(troop => troop.finishedAt <= Date.now()));
+        } else if (status === 'unfinished') {
+          observer.next(response.filter(troop => troop.finishedAt > Date.now()));
+        }
+        observer.complete();
+      })
     })
   }
   
@@ -34,11 +47,11 @@ export class TroopsService {
     let totalDefence = 0;
     let sustenance = 0;
     return new Observable<any>(observer => {
-      this.getTroops().subscribe(response => {
-        levels = this.calculateTroopLevels(response);
-        totalAttack = this.countAttack(response);
-        totalDefence = this.countDefence(response);
-        sustenance = response.length;
+      this.filterTroops('finished').subscribe(troops => {
+        levels = this.calculateTroopLevels(troops);
+        totalAttack = this.countAttack(troops);
+        totalDefence = this.countDefence(troops);
+        sustenance = troops.length;
         observer.next({levels, totalAttack, totalDefence, sustenance});
         observer.complete();
       })
@@ -47,6 +60,10 @@ export class TroopsService {
 
   getTroopsFromBackEnd(): Observable<any> {
     return this.http.get(ENDPOINTS.getTroops, {observe: 'response'});
+  }
+
+  postTroops(): Observable<any> {
+    return this.http.post(ENDPOINTS.getTroops, '', {observe: 'response'});
   }
 
   saveTroopsToLS (troops) {
@@ -59,7 +76,13 @@ export class TroopsService {
     return troops;
   }
 
-  calculateTroopLevels (troops): any {
+  addTroopsInLS (troop) {
+    let troops = this.loadTroopsFromLS();
+    troops.push(troop);
+    this.saveTroopsToLS(troops);
+  }
+
+  calculateTroopLevels (troops): {} {
     let levels = {};
     troops.forEach(troop => levels[troop.level] ? levels[troop.level]++ : levels[troop.level] = 1);
     return levels;
@@ -81,38 +104,15 @@ export class TroopsService {
     return totalDefence;
   }
 
-  updateTroopsInLS (troop) {
-    let troops = this.loadTroopsFromLS();
-    troops.push(troop);
-    this.saveTroopsToLS(troops);
-  }
-
-  postTroops(): Observable<any> {
-    return this.http.post(ENDPOINTS.getTroops, '', {observe: 'response'});
-  }
-
   createTroop(): Observable<any> {
     let troop: Troop;
     return new Observable<any>(observer => {
       this.postTroops()
       .subscribe(response => {
         troop = response.body.troop;
-        this.updateTroopsInLS(troop);
+        this.addTroopsInLS(troop);
         observer.complete();
       });
-    })
-  }
-
-  filterTroops(status: string): Observable<Troop[]> {
-    return new Observable<Troop[]>(observer => {
-      this.getTroops().subscribe(response => {
-        if (status === 'finished') {
-          observer.next(response.filter(troop => troop.finishedAt <= Date.now()));
-        } else if (status === 'unfinished') {
-          observer.next(response.filter(troop => troop.finishedAt > Date.now()));
-        }
-        observer.complete();
-      })
     })
   }
 }
