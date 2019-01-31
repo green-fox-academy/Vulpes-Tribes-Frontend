@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
-import { NotificationsResponseMock } from '../_helpers/mocks/notificationResponse.mock';
 import { TribesNotification } from '../_models/notification.model';
 import { NotificationFactory } from '../_helpers/factories/notification.factory';
 import { BehaviorSubject } from 'rxjs';
-
-const mockNotifications = new NotificationsResponseMock().notifications;
 
 @Injectable({
   providedIn: 'root',
@@ -27,5 +24,11 @@ export class NotificationsService {
 
   getNotifications(): TribesNotification[] {
     return this.notifications;
+  }
+
+  removeNotification(notificationToRemove: TribesNotification): void {
+    this.notifications = this.notifications.filter((notification) => {
+      notification.startedAt !== notificationToRemove.startedAt;
+    });
   }
 }

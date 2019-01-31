@@ -28,8 +28,8 @@ export class LogoutService {
   logout() {
     this.http.delete<any>(URL, httpOptions).subscribe(
       () => {
-        localStorage.removeItem(environment.tribes_token);
-        this.router.navigate(['/login']);
+        localStorage.clear();
+        this.router.navigate([ENDPOINTS.login]);
         this.alert.success('Logged out successfully!');
       });
   }

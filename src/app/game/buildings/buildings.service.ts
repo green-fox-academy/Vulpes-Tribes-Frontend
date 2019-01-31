@@ -25,12 +25,12 @@ export class BuildingsService {
 
   createBuilding(buildingType: string): Observable<Building> {
     return new Observable<Building>((observer) => {
-      this.http.post(URL, buildingType)
+      this.http.post(URL, { type: buildingType }, { observe: 'response' })
         .subscribe((response) => {
-          const newBuilding = response['response'];
+          const newBuilding: any = response.body;
           this.updateLocalStorage(newBuilding);
           this.notificationService
-            .createNotification('Building', newBuilding.type, newBuilding.startedAt, newBuilding.finishedAt);
+            .createNotification('building', newBuilding.type, newBuilding.startedAt, newBuilding.finishedAt);
           observer.next(newBuilding);
           observer.complete();
         });
@@ -53,6 +53,15 @@ export class BuildingsService {
     });
   }
 
+  initializeUnfinishedBuildingsAsNotifications() {
+    this.filterBuildings('unfinished').subscribe((buildings) => {
+      buildings.forEach((building) => {
+        this.notificationService
+          .createNotification('building', building.type, building.startedAt, building.finishedAt);
+      });
+    });
+  }
+
   showAllBuildings(): Observable<Building[]> {
     return new Observable<Building[]>((observer) => {
       if (localStorage.getItem('buildings')) {
@@ -60,8 +69,8 @@ export class BuildingsService {
         observer.complete();
       } else {
         this.getBuildingsFromBackend().subscribe((response) => {
-          localStorage.setItem('buildings', JSON.stringify(response.body.response));
-          observer.next(response.body.response);
+          localStorage.setItem('buildings', JSON.stringify(response.body));
+          observer.next(response.body);
           observer.complete();
         });
       }
