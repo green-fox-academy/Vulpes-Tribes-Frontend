@@ -4,23 +4,23 @@ import { TribesNotification } from '../../_models/notification.model';
 export const notifications: TribesNotification[] = [
   {
     title: 'Building Farm Level 1',
-    startedAt: 1548318881113,
-    finishedAt: 1584537439627,
+    startedAt: 1548667804817,
+    finishedAt: 1548668404817,
   },
   {
     title: 'Building Troop Level 1',
     startedAt: 1548237439627,
-    finishedAt: 1548237821668,
+    finishedAt: 1548514370921,
   },
   {
     title: 'My Kingdom',
     startedAt: 1231232312,
-    finishedAt: 1231232312,
+    finishedAt: 1548514370921,
   },
   {
     title: 'My Kingdom',
     startedAt: 1231232312,
-    finishedAt: 1231232312,
+    finishedAt: 1548514370921,
   },
 ];
 

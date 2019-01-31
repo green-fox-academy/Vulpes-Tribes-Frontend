@@ -1,14 +1,9 @@
-import {Observable} from 'rxjs';
-import {Injectable} from '@angular/core';
-import {
-  HttpRequest, HttpHandler,
-  HttpEvent,
-  HttpInterceptor,
-} from '@angular/common/http';
-import {ENDPOINTS} from '../../../environments/endpoints';
-import {InterceptorUtilities} from '../../_utilities/interceptor.utilities';
-import {Resources} from '../../_models/resources.model';
-
+import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
+import { ENDPOINTS } from '../../../environments/endpoints';
+import { InterceptorUtilities } from '../../_utilities/interceptor.utilities';
+import { Resources } from '../../_models/resources.model';
 
 const utilities = new InterceptorUtilities();
 
@@ -28,14 +23,11 @@ export class ResourceInterceptor implements HttpInterceptor {
         generation: 1,
       },
     ];
-
-    // how to update the request Parameters
     let response;
     if (req.url.endsWith(ENDPOINTS.getResources)) {
       response = resources;
       return utilities.sendResponse(response, 200);
     }
     return next.handle(req);
-
   }
 }

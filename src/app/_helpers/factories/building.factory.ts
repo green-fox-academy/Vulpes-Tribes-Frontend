@@ -1,4 +1,5 @@
 import { Building } from '../../_models/building.model';
+import { CONSTANTS } from '../../../environments/constants';
 
 export class BuildingFactory {
 
@@ -12,7 +13,7 @@ export class BuildingFactory {
     newBuilding.level = 1;
     newBuilding.hp = 100;
     newBuilding.startedAt = Date.now();
-    newBuilding.finishedAt = Date.now() + 500000;
+    newBuilding.finishedAt = Date.now() + CONSTANTS.AcademyBuildingTime;
     return newBuilding;
   }
 }
