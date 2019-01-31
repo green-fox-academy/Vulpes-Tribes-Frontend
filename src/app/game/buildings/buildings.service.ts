@@ -59,7 +59,7 @@ export class BuildingsService {
     this.filterBuildings('unfinished').subscribe((buildings) => {
       buildings.forEach((building) => {
         this.notificationService
-          .createNotification('Building', building.type, building.startedAt, building.finishedAt);
+          .createNotification('building', building.type, building.startedAt, building.finishedAt);
       });
     });
   }
