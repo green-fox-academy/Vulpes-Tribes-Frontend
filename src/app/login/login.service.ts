@@ -23,7 +23,7 @@ export class LoginService {
       .subscribe(
         (response) => {
           this.saveToken(response.tribes_token);
-          this.router.navigate(['/game']);
+          this.router.navigate([ENDPOINTS.getKingdom]);
         },
         (error) => {
           this.alert.error(`No such user ${ user.username }!`);
