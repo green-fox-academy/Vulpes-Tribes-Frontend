@@ -27,9 +27,7 @@ export class BuildingsService {
     return new Observable<Building>((observer) => {
       this.http.post(URL, { type: buildingType }, { observe: 'response' })
         .subscribe((response) => {
-          console.log(response.body);
           const newBuilding: any = response.body;
-          console.log(newBuilding);
           this.updateLocalStorage(newBuilding);
           this.notificationService
             .createNotification('building', newBuilding.type, newBuilding.startedAt, newBuilding.finishedAt);
