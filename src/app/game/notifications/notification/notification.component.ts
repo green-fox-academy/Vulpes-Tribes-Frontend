@@ -16,7 +16,7 @@ export class NotificationComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.imgSrc = `/assets/images/${this.notification.title.toLowerCase()}s/${this.notification.type.toLowerCase()}.svg`; // tslint:disable-line
+    this.imgSrc = `/assets/images/${this.notification.title}s/${this.notification.type}.svg`; // tslint:disable-line
     this.completion = this.getCompletion();
     setInterval(() =>
         (Date.now() <= this.notification.finishedAt) ? this.completion = this.getCompletion() : this.completion = 1 // tslint:disable-line

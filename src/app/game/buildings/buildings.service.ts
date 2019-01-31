@@ -29,9 +29,10 @@ export class BuildingsService {
         .subscribe((response) => {
           console.log(response.body);
           const newBuilding: any = response.body;
+          console.log(newBuilding);
           this.updateLocalStorage(newBuilding);
           this.notificationService
-            .createNotification('Building', newBuilding.type, newBuilding.startedAt, newBuilding.finishedAt);
+            .createNotification('building', newBuilding.type, newBuilding.startedAt, newBuilding.finishedAt);
           observer.next(newBuilding);
           observer.complete();
         });
