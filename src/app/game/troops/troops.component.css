@@ -2,51 +2,60 @@
   background-color: rgb(220, 220, 220);
   display: flex;
   justify-content: center;
-  width: 1100px;
+  width: 100%;
   margin: auto;
   font-size: 30px;
 }
 .unit {
   margin: 40px;
-  width: 250px;
+  width: 30%;
 }
 .unit img {
-  width: 200px;
+  width: 90%;
+  margin: 0 auto;
 }
 .troops {
-  color: white;
-  margin: 40px;
   display: flex;
   flex-direction: column;
+  width: 70%;
+  margin: 40px 10px;
+  color: white; 
 }
 .troops li {
   height: 120px;
-  margin-bottom: 25px;
+  margin: 0 0 25px 0;
   display: flex;
   flex-flow: row nowrap;
   border-style: hidden;
   opacity: 0.99;
 }
 .troops li div:first-child {
-  background-color: cadetblue;
+  width: 68%;
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
   border-radius: 20px;
   box-shadow: 0px 6px 9px rgb(160, 160, 160);
+  background-color: cadetblue;
 }
 .troops img {
-  width: 120px;
-  padding: 20px;
+  width: 25%;
+  max-width: 80px;
 }
 .troop_text {
-  width: 300px;
+  width: 60%;
   margin-top: auto;
   margin-bottom: auto;
 }
+.troop_text p {
+  font-size: 25px;
+}
 .upgrade_button {
+  display: flex;
+  align-items: center;
   background-color: rgb(255, 119, 56);
   height: 100px;
-  width: 150px;
+  width: 30%;
   margin-left: -20px;
   margin-top: 10px;
   margin-bottom: 45px;
@@ -56,5 +65,11 @@
   z-index: -1;
 }
 .upgrade_button p {
-  margin-left: 30px;
+  margin-left: 25px;
+  font-size: 20px;
+}
+@media (max-width: 750px) {
+  .troops-container {
+    flex-direction: column;
+  }
 }
