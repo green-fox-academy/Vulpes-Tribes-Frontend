@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { DomService } from './domService';
 import { Building } from '../../../_models/building.model';
 import { BuildingDetailService } from './building-detail.service';
@@ -16,6 +16,8 @@ export class BuildingDetailComponent implements OnInit {
   @Input() building: Building;
   @Input() imgSrc: string;
 
+  @Output() deselectBuilding = new EventEmitter();
+
   constructor(private domService: DomService,
               private buildingDetailService: BuildingDetailService,
               private alertService: AlertService,
@@ -27,7 +29,7 @@ export class BuildingDetailComponent implements OnInit {
   }
 
   destroy() {
-    this.domService.removeComponent();
+    this.deselectBuilding.emit();
   }
 
   createTroop() {

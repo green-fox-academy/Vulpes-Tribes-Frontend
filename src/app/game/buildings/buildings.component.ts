@@ -16,8 +16,11 @@ export class BuildingsComponent implements OnInit, OnChanges {
 
   buildings: Building[] = [];
   @Output() createNotification = new EventEmitter<TribesNotification>();
+  selectedBuilding: Building;
 
   @Output() building: Building;
+
+
 
   constructor(private buildingsService: BuildingsService,
               private alertService: AlertService,
@@ -33,12 +36,15 @@ export class BuildingsComponent implements OnInit, OnChanges {
     this.showFinishedBuildings();
   }
 
-  initBuildingModal(building: Building): Building {
-    this.modalService.init(BuildingDetailComponent, { building }, {});
-    return building;
+  selectBuilding(building: Building) {
+    this.selectedBuilding = building;
   }
 
-  showFinishedBuildings() {
+  deselectBuilding() {
+    this.selectedBuilding = null;
+  }
+
+     showFinishedBuildings() {
     this.buildingsService.filterBuildings('finished')
       .subscribe(response => this.buildings = response);
   }

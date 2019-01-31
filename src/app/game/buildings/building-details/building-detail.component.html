@@ -49,13 +49,15 @@
              </p>
         </div>
         <div class="create_troop_button" (click)="createTroop()">
-          <img src="../../../assets/images/troops/addTroops.svg">
+          <img src="../../../../assets/images/troops/addTroop.svg">
+          <p><b>create troop level 1 </b></p>
           <p>10 $  1:00</p>
         </div>
-
-
+        <div class="upgrade_troop_button" (click)="levelUpBuilding(building)">
+          <img src="../../../assets/images/troops/addTroops.svg">
+          <p><b>upgrade to {{building.level}}</b></p>
+          <p>200 $  2:30</p>
       </div>
-
-
+      <button (click)="destroy()">Close</button>
     </div>
   

@@ -1,7 +1,7 @@
-<div class="buildings">
+<div class="buildings" *ngIf="!selectedBuilding">
   <app-building class="building"
                 *ngFor="let building of buildings"
-                (click)="initBuildingModal(building)"
+                (click)="selectBuilding(building)"
                 [building]="building">
   </app-building>
   <div class="building building-add" (click)="createBuilding('academy')">
@@ -17,5 +17,9 @@
     <p class="building__type--add">Add Factory</p>
   </div>
 </div>
+<div class="building-detail" *ngIf="selectedBuilding">
+    <app-building-detail [building]="selectedBuilding"
+                         (deselectBuilding)="deselectBuilding($event)" ></app-building-detail>
+  </div>
 
 
