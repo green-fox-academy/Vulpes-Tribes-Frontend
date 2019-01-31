@@ -21,6 +21,7 @@ export class TokenInterceptor implements HttpInterceptor {
       HttpResponse<any> |
       HttpUserEvent<any>> {
     if (localStorage.getItem(environment.tribes_token)) {
+      console.log(req);
       const requestWithAuthHEader = req.clone({
         setHeaders: {
           'Content-Type': 'application/json',

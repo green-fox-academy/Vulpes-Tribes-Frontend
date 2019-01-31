@@ -25,9 +25,10 @@ export class BuildingsService {
 
   createBuilding(buildingType: string): Observable<Building> {
     return new Observable<Building>((observer) => {
-      this.http.post(URL, buildingType)
+      this.http.post(URL, { type: buildingType }, { observe: 'response' })
         .subscribe((response) => {
-          const newBuilding = response['response'];
+          console.log(response.body);
+          const newBuilding: any = response.body;
           this.updateLocalStorage(newBuilding);
           this.notificationService
             .createNotification('Building', newBuilding.type, newBuilding.startedAt, newBuilding.finishedAt);
@@ -69,8 +70,8 @@ export class BuildingsService {
         observer.complete();
       } else {
         this.getBuildingsFromBackend().subscribe((response) => {
-          localStorage.setItem('buildings', JSON.stringify(response.body.response));
-          observer.next(response.body.response);
+          localStorage.setItem('buildings', JSON.stringify(response.body));
+          observer.next(response.body);
           observer.complete();
         });
       }
