@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Building } from '../../../_models/building.model';
 import { ENDPOINTS } from '../../../../environments/endpoints';
-import { BuildingsService } from '../buildings.service';
 import { Observable } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 import { PurchaseService } from '../../../sharedServices/purchase.service';
+
+const URL = environment.serverApi + ENDPOINTS.getBuildings;
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +23,7 @@ export class BuildingDetailService {
           console.log(response);
           if (response) {
             this.http
-              .put(`${ ENDPOINTS.getBuildings }/${ building.id }`, { id: building.id, level: building.level }, { observe: 'response' })
+              .put(`${ URL }/${ building.id }`, { id: building.id, level: building.level }, { observe: 'response' })
               .subscribe((response) => {
                 if (response['status'] === 200) {
                   const buildingToUpdate = building;

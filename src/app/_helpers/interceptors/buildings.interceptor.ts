@@ -18,19 +18,18 @@ export class BuildingsInterceptor implements HttpInterceptor {
     if (req.url.endsWith(ENDPOINTS.getBuildings)) {
       if (req.method === 'GET') {
         response = buildings;
-        console.log(response);
       } else if (req.method === 'POST') {
-        response = buildingsMock.createBuilding(req.body);
+        response = buildingsMock.createBuilding(req.body['type']);
       }
-      return utilities.sendResponse({ response }, 200);
-    } else if (req.body && req.url.endsWith(`/${req.body.id}`)) {
+      return utilities.sendResponse(response, 200);
+    } else if (req.body && req.url.endsWith(`/${ req.body.id }`)) {
       const building = buildingsMock.findBuilding(req.body.id);
       if (req.method === 'PUT') {
         building.level += 1;
         buildingsMock.updateBuilding(building);
         response = building;
       }
-      return utilities.sendResponse({ response }, 200);
+      return utilities.sendResponse(response, 200);
     }
     return next.handle(req);
   }

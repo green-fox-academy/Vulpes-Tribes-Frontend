@@ -5,6 +5,9 @@ import { ENDPOINTS } from '../../../environments/endpoints';
 import { Building } from '../../_models/building.model';
 import { NotificationsService } from '../../sharedServices/notifications.service';
 import { PurchaseService } from '../../sharedServices/purchase.service';
+import { environment } from '../../../environments/environment';
+
+const URL = environment.serverApi + ENDPOINTS.getBuildings;
 
 @Injectable({
   providedIn: 'root',
@@ -19,17 +22,17 @@ export class BuildingsService {
 
   getBuildingsFromBackend(): Observable<any> {
     return this.http
-      .get(ENDPOINTS.getBuildings, { observe: 'response' });
+      .get(URL, { observe: 'response' });
   }
 
   createBuilding(buildingType: string): Observable<Building> {
     return new Observable<Building>((observer) => {
-      this.http.post(ENDPOINTS.getBuildings, buildingType)
+      this.http.post(URL, { type: buildingType }, { observe: 'response' })
         .subscribe((response) => {
-          const newBuilding = response['response'];
+          const newBuilding: any = response.body;
           this.updateLocalStorage(newBuilding);
           this.notificationService
-            .createNotification('Building', newBuilding.type, newBuilding.startedAt, newBuilding.finishedAt);
+            .createNotification('building', newBuilding.type, newBuilding.startedAt, newBuilding.finishedAt);
           observer.next(newBuilding);
           observer.complete();
         });
@@ -52,6 +55,15 @@ export class BuildingsService {
     });
   }
 
+  initializeUnfinishedBuildingsAsNotifications() {
+    this.filterBuildings('unfinished').subscribe((buildings) => {
+      buildings.forEach((building) => {
+        this.notificationService
+          .createNotification('building', building.type, building.startedAt, building.finishedAt);
+      });
+    });
+  }
+
   showAllBuildings(): Observable<Building[]> {
     return new Observable<Building[]>((observer) => {
       if (localStorage.getItem('buildings')) {
@@ -59,8 +71,8 @@ export class BuildingsService {
         observer.complete();
       } else {
         this.getBuildingsFromBackend().subscribe((response) => {
-          localStorage.setItem('buildings', JSON.stringify(response.body.response));
-          observer.next(response.body.response);
+          localStorage.setItem('buildings', JSON.stringify(response.body));
+          observer.next(response.body);
           observer.complete();
         });
       }

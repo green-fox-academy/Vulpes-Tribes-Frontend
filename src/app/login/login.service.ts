@@ -3,7 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { AlertService } from '../alert/alert.service';
-import {ENDPOINTS} from '../../environments/endpoints';
+import { ENDPOINTS } from '../../environments/endpoints';
+
+const URL = environment.serverApi + ENDPOINTS.login;
 
 @Injectable({
   providedIn: 'root',
@@ -17,15 +19,14 @@ export class LoginService {
   }
 
   login(user) {
-    this.http.post<any>(ENDPOINTS.login, user, { reportProgress: true })
+    this.http.post<any>(URL, user, { reportProgress: true })
       .subscribe(
         (response) => {
-          console.log(response);
           this.saveToken(response.tribes_token);
           this.router.navigate(['/game']);
         },
         (error) => {
-          this.alert.error(`No such user ${user.username}!`);
+          this.alert.error(`No such user ${ user.username }!`);
         },
       );
   }

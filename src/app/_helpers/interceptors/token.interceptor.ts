@@ -20,12 +20,17 @@ export class TokenInterceptor implements HttpInterceptor {
       HttpProgressEvent |
       HttpResponse<any> |
       HttpUserEvent<any>> {
-    const authHeader = req.clone({
-      setHeaders: {
-        'Content-Type': 'application/json',
-        'X-Tribes-Token': localStorage.getItem(environment.tribes_token),
-      },
-    });
-    return next.handle(authHeader);
+    if (localStorage.getItem(environment.tribes_token)) {
+      const requestWithAuthHeader = req.clone({
+        setHeaders: {
+          'Content-Type': 'application/json',
+          'X-Tribes-Token': localStorage.getItem(environment.tribes_token),
+        },
+      });
+      return next.handle(requestWithAuthHeader);
+    } else {
+      return next.handle(req);
+    }
+
   }
 }

@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TribesNotification } from '../../../_models/notification.model';
-import { CONSTANTS } from '../../../../environments/constants';
 
 @Component({
   selector: 'app-notification',
@@ -17,14 +16,16 @@ export class NotificationComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.imgSrc = `/assets/images/${this.notification.title.toLowerCase()}s/${this.notification.type.toLowerCase()}.svg`;
+    this.imgSrc = `/assets/images/${this.notification.title}s/${this.notification.type}.svg`; // tslint:disable-line
+    this.completion = this.getCompletion();
     setInterval(() =>
-        (Date.now() <= this.notification.finishedAt) ? this.completion += this.getCompletion() : this.completion = 1 // tslint:disable-line
+        (Date.now() <= this.notification.finishedAt) ? this.completion = this.getCompletion() : this.completion = 1 // tslint:disable-line
     ,           1000);
   }
 
   getCompletion(): number {
-    const buildTime = (this.notification.finishedAt - Date.now()) - (this.notification.startedAt - Date.now()); // tslint:disable-line
-    return (buildTime / CONSTANTS.BuildingTimePointOnePercent);
+    const buildTime = (this.notification.finishedAt) - (this.notification.startedAt); // tslint:disable-line
+    return (Date.now() - this.notification.startedAt) / buildTime;
   }
+
 }
