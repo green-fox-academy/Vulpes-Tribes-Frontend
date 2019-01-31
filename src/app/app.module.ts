@@ -33,6 +33,7 @@ import { TroopsInterceptor } from './_helpers/interceptors/troops.interceptor';
 import { KingdomInterceptor } from './_helpers/interceptors/kingdom.interceptor';
 import { environment } from '../environments/environment';
 import { NotificationFactory } from './_helpers/factories/notification.factory';
+import { MenuComponent } from './game/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { NotificationFactory } from './_helpers/factories/notification.factory';
     NotificationsComponent,
     NotificationComponent,
     TroopsComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,

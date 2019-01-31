@@ -25,9 +25,9 @@ const APP_ROUTES: Routes = [
       { path: 'notifications', component: NotificationsComponent },
       { path: 'settings', component: KingdomSettingsComponent },
       { path: 'resources', component: ResourcesComponent },
-      { path: 'troops', component: TroopsComponent },
+      { path: 'troops', component: TroopsComponent, outlet: 'menu' },
       {
-        path: 'buildings', component: BuildingsComponent, children: [
+        path: 'buildings', component: BuildingsComponent, outlet: 'menu', children: [
           { path: ':id', component: BuildingDetailComponent },
         ],
       },
