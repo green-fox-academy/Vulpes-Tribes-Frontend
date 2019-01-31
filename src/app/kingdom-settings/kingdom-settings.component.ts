@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { KingdomSettingsService } from './kingdom-settings.service';
-import { LoaderService } from 'src/app/services/loader.service';
+
 
 
 @Component({
@@ -12,11 +12,8 @@ export class KingdomSettingsComponent implements OnInit {
 
   name;
 
-  constructor(private settingsService: KingdomSettingsService, private loaderService: LoaderService ) { }
-  private showLoader(): void {
-    this.loaderService.show();
-    setTimeout(()=>this.loaderService.hide(), 2000)
-  }
+  constructor(private settingsService: KingdomSettingsService ) { }
+  
 
 
 
@@ -29,9 +26,7 @@ export class KingdomSettingsComponent implements OnInit {
       this.name = response.body.name));
   }
   updateSettings(name): void {
-    this.showLoader();
-    this.settingsService.updateSettings(name).subscribe(response => {
-      console.log(response);
+      this.settingsService.updateSettings(name).subscribe(response => {
       this.name = response.body.name;
     });
   }

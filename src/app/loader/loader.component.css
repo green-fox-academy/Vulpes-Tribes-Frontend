@@ -15,7 +15,8 @@
     justify-content: center;
    
   }
-  /*.loader {
+  /*different loader design - loader bar that we might use, so leaving styling out commented
+  .loader {
     height: 100%;
     width: 100%;
     position: relative;

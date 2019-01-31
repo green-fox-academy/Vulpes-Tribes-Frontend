@@ -23,7 +23,7 @@ export class InterceptorUtilities {
         );
         observer.complete();
 
-      })//.pipe(tap(()=> this.hideLoader()));
+      })
 
   }
 }

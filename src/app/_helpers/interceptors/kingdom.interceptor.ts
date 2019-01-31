@@ -51,10 +51,10 @@ const utilities = new InterceptorUtilities();
 
 @Injectable()
 export class KingdomInterceptor implements HttpInterceptor {
-  //constructor(private loaderService: LoaderService) { }
+
   
   private hideLoader(): void {
-    //this.loaderService.hide();
+    
   }
   intercept(req: HttpRequest<any>, next: HttpHandler):
   Observable<HttpSentEvent | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any>> {
