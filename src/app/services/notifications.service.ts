@@ -28,7 +28,7 @@ export class NotificationsService {
 
   removeNotification(notificationToRemove: TribesNotification): void {
     this.notifications = this.notifications.filter((notification) => {
-      JSON.stringify(notification) !== JSON.stringify(notificationToRemove);
+      notification.startedAt !== notificationToRemove.startedAt;
     });
   }
 }
