@@ -3,6 +3,8 @@ import { DomService } from './domService';
 import { Building } from '../../../_models/building.model';
 import { BuildingDetailService } from './building-detail.service';
 import { AlertService } from '../../../alert/alert.service';
+import { TroopsService } from '../../troops/troops.service';
+
 
 @Component({
   selector: 'app-building-detail',
@@ -16,7 +18,8 @@ export class BuildingDetailComponent implements OnInit {
 
   constructor(private domService: DomService,
               private buildingDetailService: BuildingDetailService,
-              private alertService: AlertService) {
+              private alertService: AlertService,
+              private troopsService: TroopsService) {
   }
 
   ngOnInit() {
@@ -25,6 +28,10 @@ export class BuildingDetailComponent implements OnInit {
 
   destroy() {
     this.domService.removeComponent();
+  }
+
+  createTroop() {
+    this.troopsService.createTroop();
   }
 
   levelUpBuilding(building: Building) {
