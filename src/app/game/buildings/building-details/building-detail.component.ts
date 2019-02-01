@@ -30,7 +30,7 @@ export class BuildingDetailComponent implements OnInit {
   levelUpBuilding(building: Building) {
     this.buildingDetailService.levelUpBuilding(building)
       .subscribe((response) => {
-        this.building.level = response.body.response.level;
+        this.building.level = response.body.level;
         this.alertService.success('Building leveled up');
       });
   }

@@ -4,7 +4,8 @@
   </div>
   <app-notification class="notifications__item"
                     *ngFor="let notification of notifications"
-                    [notification]="notification">
+                    [notification]="notification"
+                    (click)="removeNotification(notification)">
   </app-notification>
 </div>
 

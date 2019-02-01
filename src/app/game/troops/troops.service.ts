@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { ENDPOINTS } from 'src/environments/endpoints';
 import { Troop } from 'src/app/_models/troop.model';
 
-const URL = ENDPOINTS.getTroops;
+const URL = environment.serverApi + ENDPOINTS.getTroops;
 
 @Injectable({
   providedIn: 'root',

@@ -20,4 +20,8 @@ export class NotificationsComponent implements OnInit {
   ngOnInit() {
     this.notifications = this.notificationService.getNotifications();
   }
+
+  removeNotification(notification: TribesNotification) {
+    this.notificationService.removeNotification(notification);
+  }
 }

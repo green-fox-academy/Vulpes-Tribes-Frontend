@@ -21,13 +21,13 @@ export class TokenInterceptor implements HttpInterceptor {
       HttpResponse<any> |
       HttpUserEvent<any>> {
     if (localStorage.getItem(environment.tribes_token)) {
-      const requestWithAuthHEader = req.clone({
+      const requestWithAuthHeader = req.clone({
         setHeaders: {
           'Content-Type': 'application/json',
           'X-Tribes-Token': localStorage.getItem(environment.tribes_token),
         },
       });
-      return next.handle(requestWithAuthHEader);
+      return next.handle(requestWithAuthHeader);
     } else {
       return next.handle(req);
     }
