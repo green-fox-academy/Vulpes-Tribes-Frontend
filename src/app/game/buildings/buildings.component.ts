@@ -1,9 +1,11 @@
-import { Component, OnInit, Output, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Output, OnChanges, SimpleChanges, EventEmitter } from '@angular/core';
 import { BuildingsService } from './buildings.service';
 import { BuildingDetailComponent } from './building-details/building-detail.component';
 import { ModalService } from './building-details/modal.service';
 import { Building } from '../../_models/building.model';
 import { AlertService } from '../../alert/alert.service';
+import { TribesNotification } from '../../_models/notification.model';
+import { NotificationsService } from '../../services/notifications.service';
 
 @Component({
   selector: 'app-buildings',
@@ -13,16 +15,19 @@ import { AlertService } from '../../alert/alert.service';
 export class BuildingsComponent implements OnInit, OnChanges {
 
   buildings: Building[] = [];
+  @Output() createNotification = new EventEmitter<TribesNotification>();
 
   @Output() building: Building;
 
   constructor(private buildingsService: BuildingsService,
               private alertService: AlertService,
-              private modalService: ModalService) {
+              private modalService: ModalService,
+              private notificationService: NotificationsService) {
   }
 
   ngOnInit() {
-    this.showAllBuildings();
+    this.showFinishedBuildings();
+    this.buildingsService.initializeUnfinishedBuildingsAsNotifications();
   }
 
   ngOnChanges(changes: SimpleChanges): void {

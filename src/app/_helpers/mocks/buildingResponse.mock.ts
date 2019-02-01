@@ -13,7 +13,7 @@ const buildings = [
   },
   {
     id: 124,
-    type: 'academy',
+    type: 'barracks',
     level: 1,
     hp: 100,
     startedAt: 1231232312,
@@ -21,7 +21,7 @@ const buildings = [
   },
   {
     id: 125,
-    type: 'factory',
+    type: 'farm',
     level: 1,
     hp: 100,
     startedAt: 1231232312,

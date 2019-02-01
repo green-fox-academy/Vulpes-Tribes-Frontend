@@ -33,13 +33,18 @@ export class TokenInterceptor implements HttpInterceptor {
       HttpProgressEvent |
       HttpResponse<any> |
       HttpUserEvent<any>> {
-       this.showLoader();
-    const authHeader = req.clone({
-      setHeaders: {
-        'Content-Type': 'application/json',
-        'X-Tribes-Token': localStorage.getItem(environment.tribes_token),
-      },
-    });
-    return next.handle(authHeader).pipe(tap(()=> this.hideLoader()));
+    this.showLoader();
+    if (localStorage.getItem(environment.tribes_token)) {
+      this.showLoader();
+      const requestWithAuthHeader = req.clone({
+        setHeaders: {
+          'Content-Type': 'application/json',
+          'X-Tribes-Token': localStorage.getItem(environment.tribes_token),
+        },
+      });
+      return next.handle(requestWithAuthHeader).pipe(tap(()=> this.hideLoader()));
+    } else {
+      return next.handle(req).pipe(tap(()=> this.hideLoader()));
+    }
   }
 }
