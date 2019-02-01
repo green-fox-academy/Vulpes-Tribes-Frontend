@@ -35,6 +35,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { LoaderService } from './services/loader.service';
 import { environment } from '../environments/environment';
 import { NotificationFactory } from './_helpers/factories/notification.factory';
+import { MenuComponent } from './game/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { NotificationFactory } from './_helpers/factories/notification.factory';
     NotificationsComponent,
     NotificationComponent,
     TroopsComponent,
+    MenuComponent,
     LoaderComponent,
   ],
   imports: [
