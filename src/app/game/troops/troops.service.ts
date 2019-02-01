@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ENDPOINTS } from 'src/environments/endpoints';
 import { Troop } from 'src/app/_models/troop.model';
+import { environment} from 'src/environments/environment';
 
 const URL = environment.serverApi + ENDPOINTS.getTroops;
 
