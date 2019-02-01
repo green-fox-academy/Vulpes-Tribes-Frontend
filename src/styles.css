@@ -30,6 +30,10 @@ app-register {
 
 }
 
+app-loading {
+  height: 100%;
+}
+
 form,
 app-login,
 app-register {
