@@ -4,11 +4,11 @@ import { TroopsService } from './troops.service';
 @Component({
   selector: 'app-troops',
   templateUrl: './troops.component.html',
-  styleUrls: ['./troops.component.css']
+  styleUrls: ['./troops.component.css'],
 })
 export class TroopsComponent implements OnInit {
 
-  levels: Object;
+  levels: Object = {};
   totalAttack: number;
   totalDefence: number;
   sustenance: number;
@@ -20,16 +20,16 @@ export class TroopsComponent implements OnInit {
   }
 
   getStats() {
-    this.troopsService.getStats().subscribe(response => {
+    this.troopsService.getStats().subscribe((response) => {
       this.levels = response.levels;
       this.totalAttack = response.totalAttack;
       this.totalDefence = response.totalDefence;
       this.sustenance = response.sustenance;
-    })
+    });
   }
 
   checkLevels() {
     const keys = Object.keys(this.levels);
     return keys.length > 0;
- }
+  }
 }
