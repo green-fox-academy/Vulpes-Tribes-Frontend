@@ -24,7 +24,7 @@ export class TokenInterceptor implements HttpInterceptor {
 
   //when we connect with actual backend we should remove setTimeout
   private hideLoader(): void {
-    setTimeout(()=>this.loaderService.hide(), 2000)
+    setTimeout(()=>this.loaderService.hide(), 1000)
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler):
