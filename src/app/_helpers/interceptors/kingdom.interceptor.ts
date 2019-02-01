@@ -1,6 +1,6 @@
 import {
   HttpInterceptor, HttpRequest, HttpHandler, HttpResponse,
-  HttpSentEvent, HttpHeaderResponse, HttpProgressEvent, HttpUserEvent,
+  HttpSentEvent, HttpHeaderResponse, HttpProgressEvent, HttpUserEvent, HttpEvent
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
@@ -50,6 +50,7 @@ const utilities = new InterceptorUtilities();
 
 @Injectable()
 export class KingdomInterceptor implements HttpInterceptor {
+  
   intercept(req: HttpRequest<any>, next: HttpHandler):
     Observable<HttpSentEvent | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any>> {
     if (req.url.endsWith(ENDPOINTS.getKingdom) && (req.method === 'GET')) {

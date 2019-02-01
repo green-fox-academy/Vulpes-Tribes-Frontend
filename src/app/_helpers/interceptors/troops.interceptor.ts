@@ -12,13 +12,16 @@ const utilities = new InterceptorUtilities();
 export class TroopsInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    let response;
     if (req.url.endsWith(ENDPOINTS.getTroops) && (req.method === 'GET')) {
-      utilities.sendResponse({troops}, 200)
+      response = utilities.sendResponse({ troops }, 200);
     } else if (req.url.endsWith(ENDPOINTS.getTroops) && (req.method === 'POST')) {
       let troop = this.returnNewTroop();
-      utilities.sendResponse(troop, 200);
+      response = utilities.sendResponse(troop, 200);
+    } else {
+      return next.handle(req);
     }
-    return next.handle(req);
+    return response;
   }
 
   returnNewTroop(): Troop {

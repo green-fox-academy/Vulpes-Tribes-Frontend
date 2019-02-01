@@ -17,32 +17,32 @@ export class TroopsService {
   }
 
   getTroops(): Observable<Troop[]> {
-    let troops: Troop[];
-    return new Observable<Troop[]>(observer => {
+    return new Observable<Troop[]>((observer) => {
+      let troops: Troop[];
       if (localStorage.getItem('troops')) {
         troops = this.loadTroopsFromLS();
         observer.next(troops);
-      };
-      this.getTroopsFromBackEnd().subscribe(response => {
+      }
+      this.getTroopsFromBackEnd().subscribe((response) => {
         troops = response.body.troops;
         this.saveTroopsToLS(troops);
         observer.next(troops);
         observer.complete();
-      })
-    })
+      });
+    });
   }
 
   filterTroopsByCompletion(status: string): Observable<Troop[]> {
-    return new Observable<Troop[]>(observer => {
-      this.getTroops().subscribe(response => {
+    return new Observable<Troop[]>((observer) => {
+      this.getTroops().subscribe((response) => {
         if (status === 'finished') {
           observer.next(response.filter(troop => troop.finishedAt <= Date.now()));
         } else if (status === 'unfinished') {
           observer.next(response.filter(troop => troop.finishedAt > Date.now()));
         }
         observer.complete();
-      })
-    })
+      });
+    });
   }
 
   getStats(): Observable<any> {
@@ -50,27 +50,27 @@ export class TroopsService {
     let totalAttack = 0;
     let totalDefence = 0;
     let sustenance = 0;
-    return new Observable<any>(observer => {
-      this.filterTroopsByCompletion('finished').subscribe(troops => {
+    return new Observable<any>((observer) => {
+      this.filterTroopsByCompletion('finished').subscribe((troops) => {
         levels = this.calculateTroopLevels(troops);
         totalAttack = this.countAttack(troops);
         totalDefence = this.countDefence(troops);
         sustenance = troops.length;
-        observer.next({levels, totalAttack, totalDefence, sustenance});
+        observer.next({ levels, totalAttack, totalDefence, sustenance });
         observer.complete();
-      })
-    })
+      });
+    });
   }
 
-  getTroops(): Observable<any> {
+  getTroopsFromBackEnd(): Observable<any> {
     return this.http.get(URL, { observe: 'response' });
   }
 
   postTroop(): Observable<any> {
-    return this.http.post(ENDPOINTS.getTroops, '', {observe: 'response'});
+    return this.http.post(URL, '', { observe: 'response' });
   }
 
-  saveTroopsToLS (troops) {
+  saveTroopsToLS(troops) {
     localStorage.setItem('troops', JSON.stringify(troops));
   }
 
@@ -80,21 +80,23 @@ export class TroopsService {
     return troops;
   }
 
-  addTroopsInLS (troop) {
-    let troops = this.loadTroopsFromLS();
+  addTroopsInLS(troop) {
+    const troops = this.loadTroopsFromLS();
     troops.push(troop);
     this.saveTroopsToLS(troops);
   }
 
-  calculateTroopLevels (troops): {} {
-    let levels = {};
-    troops.forEach(troop => levels[troop.level] ? levels[troop.level]++ : levels[troop.level] = 1);
+  calculateTroopLevels(troops: Troop[]): {} {
+    const levels = {};
+    troops.forEach((troop) => {
+      levels[troop.level] ? levels[troop.level] += 1 : levels[troop.level] = 1;
+    });
     return levels;
   }
 
   countAttack(troops): number {
     let totalAttack = 0;
-    troops.forEach(troop => {
+    troops.forEach((troop) => {
       totalAttack += troop.attack;
     });
     return totalAttack;
@@ -102,7 +104,7 @@ export class TroopsService {
 
   countDefence(troops): number {
     let totalDefence = 0;
-    troops.forEach(troop => {
+    troops.forEach((troop) => {
       totalDefence += troop.defence;
     });
     return totalDefence;
@@ -110,13 +112,13 @@ export class TroopsService {
 
   createTroop(): Observable<any> {
     let troop: Troop;
-    return new Observable<any>(observer => {
+    return new Observable<any>((observer) => {
       this.postTroop()
-      .subscribe(response => {
-        troop = response.body.troop;
-        this.addTroopsInLS(troop);
-        observer.complete();
-      });
-    })
+        .subscribe((response) => {
+          troop = response.body.troop;
+          this.addTroopsInLS(troop);
+          observer.complete();
+        });
+    });
   }
 }

@@ -4,17 +4,17 @@
                 (click)="selectBuilding(building)"
                 [building]="building">
   </app-building>
-  <div class="building building-add" (click)="createBuilding('academy')">
-    <img src="../../../assets/images/buildings/addacademy.svg" alt="">
-    <p class="building__type--add">Add Academy</p>
+  <div class="building building-add" (click)="createBuilding('barracks')">
+    <img src="../../../assets/images/buildings/addbarracks.svg" alt="">
+    <p class="building__type--add">Add Barracks</p>
   </div>
   <div class="building building-add" (click)="createBuilding('mine')">
     <img src="../../../assets/images/buildings/addmine.svg" alt="">
     <p class="building__type--add">Add Mine</p>
   </div>
-  <div class="building building-add " (click)="createBuilding('factory')">
-    <img src="../../../assets/images/buildings/addfactory.svg" alt="">
-    <p class="building__type--add">Add Factory</p>
+  <div class="building building-add " (click)="createBuilding('farm')">
+    <img src="../../../assets/images/buildings/addfarm.svg" alt="">
+    <p class="building__type--add">Add Farm</p>
   </div>
 </div>
 <div class="building-detail" *ngIf="selectedBuilding">
