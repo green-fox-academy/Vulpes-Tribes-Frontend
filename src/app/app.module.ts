@@ -31,6 +31,8 @@ import { NotificationComponent } from './game/notifications/notification/notific
 import { TroopsComponent } from './game/troops/troops.component';
 import { TroopsInterceptor } from './_helpers/interceptors/troops.interceptor';
 import { KingdomInterceptor } from './_helpers/interceptors/kingdom.interceptor';
+import { LoaderComponent } from './loader/loader.component';
+import { LoaderService } from './services/loader.service';
 import { environment } from '../environments/environment';
 import { NotificationFactory } from './_helpers/factories/notification.factory';
 import { MenuComponent } from './game/menu/menu.component';
@@ -54,6 +56,7 @@ import { MenuComponent } from './game/menu/menu.component';
     NotificationComponent,
     TroopsComponent,
     MenuComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,6 +72,7 @@ import { MenuComponent } from './game/menu/menu.component';
     AlertService,
     ModalService,
     DomService,
+    LoaderService,
     NotificationFactory,
     { provide: APP_BASE_HREF, useValue: '/' },
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },

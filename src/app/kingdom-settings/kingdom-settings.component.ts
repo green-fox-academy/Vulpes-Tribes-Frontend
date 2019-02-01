@@ -10,8 +10,8 @@ export class KingdomSettingsComponent implements OnInit {
 
   name;
 
-  constructor(private settingsService: KingdomSettingsService) { }
-
+  constructor(private settingsService: KingdomSettingsService ) { }
+  
   ngOnInit() {
     this.showSettings();
   }
@@ -21,9 +21,8 @@ export class KingdomSettingsComponent implements OnInit {
       this.name = response.body.name));
   }
   updateSettings(name): void {
-    this.settingsService.updateSettings(name).subscribe(response => {
-      this.name = response.body.kingdom.name;
+      this.settingsService.updateSettings(name).subscribe(response => {
+      this.name = response.body.name;
     });
   }
-
 }
