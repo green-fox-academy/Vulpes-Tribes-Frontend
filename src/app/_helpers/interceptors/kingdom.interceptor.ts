@@ -7,7 +7,6 @@ import { Injectable } from '@angular/core';
 import { Kingdom } from '../../_models/kingdom.model';
 import { ENDPOINTS } from '../../../environments/endpoints';
 import { InterceptorUtilities } from '../../_utilities/interceptor.utilities';
-import { map,tap, filter, scan } from 'rxjs/operators';
 
 let kingdom: Kingdom = {
   id: 213,
@@ -51,41 +50,15 @@ const utilities = new InterceptorUtilities();
 
 @Injectable()
 export class KingdomInterceptor implements HttpInterceptor {
-
   
-  private hideLoader(): void {
-    
-  }
-  intercept(req: HttpRequest<any>, next: HttpHandler):
+    intercept(req: HttpRequest<any>, next: HttpHandler):
   Observable<HttpSentEvent | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any>> {
-      if (req.url.endsWith('/kingdom') && (req.method === 'GET')) {
-          return new Observable(observer => {
-            observer.next(new HttpResponse<Kingdom>(
-              {
-                  body: kingdom,
-                  status: 200,
-              }));
-            observer.complete();
-          });
-          
-        }
-        else if (req.url.endsWith('/kingdom') && (req.method === 'PUT')) {
-          return new Observable(observer => {
-            observer.next(new HttpResponse<any>(
-              {
-                body: kingdom,
-                status: 200,
-              }));
-              observer.complete();
-          }); 
-        }
-        next.handle(req)
-    if (req.url.endsWith(ENDPOINTS.getKingdom) && (req.method === 'GET')) {
+       if (req.url.endsWith(ENDPOINTS.getKingdom) && (req.method === 'GET')) {
       return utilities.sendResponse({ kingdom }, 200);
     } else if (req.url.endsWith(ENDPOINTS.getKingdom) && (req.method === 'PUT')) {
       kingdom.name = req.body;
       return utilities.sendResponse({ kingdom } , 200);
     } else {
-      return next.handle(req)
+      return next.handle(req);
     }
     }}

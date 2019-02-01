@@ -11,6 +11,7 @@ export class LoaderService {
   show() {
     this.loaderSubject.next(<LoaderComponent>{ show: true });
   }
+
   hide() {
     this.loaderSubject.next(<LoaderComponent>{ show: false });
   }

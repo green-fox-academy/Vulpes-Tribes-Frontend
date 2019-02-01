@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { KingdomSettingsService } from './kingdom-settings.service';
 
-
-
 @Component({
   selector: 'app-settings',
   templateUrl: './kingdom-settings.component.html',
@@ -14,9 +12,6 @@ export class KingdomSettingsComponent implements OnInit {
 
   constructor(private settingsService: KingdomSettingsService ) { }
   
-
-
-
   ngOnInit() {
     this.showSettings();
   }
@@ -30,5 +25,4 @@ export class KingdomSettingsComponent implements OnInit {
       this.name = response.body.name;
     });
   }
-
 }

@@ -27,7 +27,6 @@ export class TokenInterceptor implements HttpInterceptor {
     setTimeout(()=>this.loaderService.hide(), 2000)
   }
 
-
   intercept(req: HttpRequest<any>, next: HttpHandler):
     Observable<HttpEvent<any> |
       HttpHeaderResponse |
@@ -42,8 +41,5 @@ export class TokenInterceptor implements HttpInterceptor {
       },
     });
     return next.handle(authHeader).pipe(tap(()=> this.hideLoader()));
-
-
-    
   }
 }

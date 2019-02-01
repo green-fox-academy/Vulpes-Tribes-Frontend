@@ -1,4 +1,4 @@
-import { Observable, pipe } from 'rxjs';
+import { Observable} from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
 import { LoaderService } from 'src/app/services/loader.service';
 import { map,tap, filter, scan } from 'rxjs/operators';
@@ -12,18 +12,14 @@ export class InterceptorUtilities {
   }
 
   sendResponse(responseBody: {}, status: number): Observable<any> {
-    return new Observable<any>(
-      (observer) => {
+    return new Observable<any>((observer) => {
         observer.next(new HttpResponse<any>(
           {
             body: responseBody,
             status,
           },
-        )
-        );
+        ));
         observer.complete();
-
       })
-
   }
 }
