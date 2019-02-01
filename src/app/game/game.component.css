@@ -5,6 +5,13 @@
   max-width: 1200px;
 }
 
+.content__menu {
+  height: 150px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
 .content__sidebar {
   display: flex;
   flex-direction: column;
