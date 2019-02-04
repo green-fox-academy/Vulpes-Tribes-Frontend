@@ -36,6 +36,7 @@ export class BuildingsService {
               newBuilding.type,
               newBuilding.startedAt,
               newBuilding.finishedAt);
+
           observer.next(newBuilding);
           observer.complete();
         });

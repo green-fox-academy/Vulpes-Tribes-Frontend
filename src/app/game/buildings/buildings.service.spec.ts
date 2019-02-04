@@ -4,6 +4,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Building } from '../../_models/building.model';
 import { mockLocalStorage, store} from '../../_utilities/authTesting.utilities';
+import { NotificationFactory } from '../../_helpers/factories/notification.factory';
 
 describe('BuildingsService', () => {
   let service: BuildingsService;
@@ -18,6 +19,7 @@ describe('BuildingsService', () => {
       ],
       providers: [
         BuildingsService,
+        NotificationFactory,
       ],
     });
 

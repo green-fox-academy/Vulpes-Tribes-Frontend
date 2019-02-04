@@ -13,7 +13,7 @@ export class BuildingFactory {
     newBuilding.level = 1;
     newBuilding.hp = 100;
     newBuilding.startedAt = Date.now();
-    newBuilding.finishedAt = Date.now() + CONSTANTS.BarracksBuildingTime;
+    newBuilding.finishedAt = Date.now() + CONSTANTS.barracksBuildingTime;
     return newBuilding;
   }
 }
