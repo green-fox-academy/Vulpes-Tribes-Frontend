@@ -19,9 +19,9 @@ export class GameComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.notificationService.currentNotifications.subscribe(notification => {
-      this.notifications = notification;
-    });
-    this.resourcesService.getResources().subscribe(response => this.resources = response);
+    this.notificationService.currentNotifications
+      .subscribe(notification => this.notifications = notification);
+    this.resourcesService.getResources()
+      .subscribe(response => this.resources = response);
   }
 }

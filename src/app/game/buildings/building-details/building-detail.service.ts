@@ -19,26 +19,26 @@ export class BuildingDetailService {
 
   levelUpBuilding(building: Building): Observable<any> {
     return new Observable((observer) => {
-        this.purchaseService.ableToPurchaseBuilding(building.type, building.level).subscribe(response => {
-          console.log(response);
-          if (response) {
-            this.http
-              .put(`${ URL }/${ building.id }`, { id: building.id, level: building.level }, { observe: 'response' })
-              .subscribe((response) => {
-                if (response['status'] === 200) {
-                  const buildingToUpdate = building;
-                  const buildings: Building[] = JSON.parse(localStorage.getItem('buildings'));
-                  buildings.find(building => building.id === buildingToUpdate.id).level += 1;
-                  localStorage.setItem('buildings', JSON.stringify(buildings));
-                  observer.next(response);
-                  observer.complete();
-                } else {
-                  observer.next(response);
-                  observer.complete();
-                }
-              });
-          }
-        });
+        this.purchaseService.ableToPurchaseBuilding(building.type, building.level)
+          .subscribe((response) => {
+            if (response) {
+              this.http
+                .put(`${ URL }/${ building.id }`, { id: building.id, level: building.level }, { observe: 'response' })
+                .subscribe((response) => {
+                  if (response['status'] === 200) {
+                    const buildingToUpdate = building;
+                    const buildings: Building[] = JSON.parse(localStorage.getItem('buildings'));
+                    buildings.find(building => building.id === buildingToUpdate.id).level += 1;
+                    localStorage.setItem('buildings', JSON.stringify(buildings));
+                    observer.next(response);
+                    observer.complete();
+                  } else {
+                    observer.next(response);
+                    observer.complete();
+                  }
+                });
+            }
+          });
       },
     );
   }

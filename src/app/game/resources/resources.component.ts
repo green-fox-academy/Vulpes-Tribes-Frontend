@@ -9,8 +9,6 @@ import { TribesNotification } from '../../_models/notification.model';
 })
 export class ResourcesComponent implements OnInit {
 
-  @Output() checkResources = new EventEmitter<TribesNotification>();
-
   constructor(private resourceService: ResourcesService) {}
   food;
   money;
