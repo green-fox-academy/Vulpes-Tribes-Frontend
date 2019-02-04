@@ -47,7 +47,6 @@ export class BuildingsService {
     return new Observable<Building[]>((observer) => {
       this.showAllBuildings()
         .subscribe((response) => {
-          console.log(response);
           if (status === 'finished') {
             observer.next(response
               .filter(building => building.finishedAt <= Date.now()));
