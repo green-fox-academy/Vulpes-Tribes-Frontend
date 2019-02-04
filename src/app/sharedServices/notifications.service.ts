@@ -17,8 +17,11 @@ export class NotificationsService {
   }
 
   createNotification(title: string, type: string, startedAt: number, finishedAt: number) {
-    this.notifications
-      .push(this.notificationFactory.createNotification(title, type, startedAt, finishedAt));
+    const newNotification = this.notificationFactory
+      .createNotification(title, type, startedAt, finishedAt);
+    if (this.checkIfNotificationExist(newNotification)) {
+      this.notifications.push(newNotification);
+    }
     this.updatedNotifications.next(this.notifications);
   }
 
@@ -30,5 +33,10 @@ export class NotificationsService {
     this.notifications = this.notifications.filter((notification) => {
       notification.startedAt !== notificationToRemove.startedAt;
     });
+  }
+
+  checkIfNotificationExist(notificationToCheck: TribesNotification): boolean {
+    return (this.notifications
+      .filter(notification => notification.startedAt === notificationToCheck.startedAt).length === 0);
   }
 }
