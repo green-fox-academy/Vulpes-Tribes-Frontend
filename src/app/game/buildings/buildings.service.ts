@@ -47,6 +47,7 @@ export class BuildingsService {
     return new Observable<Building[]>((observer) => {
       this.showAllBuildings()
         .subscribe((response) => {
+          console.log(response);
           if (status === 'finished') {
             observer.next(response
               .filter(building => building.finishedAt <= Date.now()));
@@ -74,12 +75,11 @@ export class BuildingsService {
         this.getBuildingsFromBackend().subscribe((response) => {
           observer.next(this.getBuildingsFromLocalStorage());
           localStorage.setItem('buildings', JSON.stringify(response.body.buildings));
-          observer.complete();
         });
       } else {
         this.getBuildingsFromBackend().subscribe((response) => {
           localStorage.setItem('buildings', JSON.stringify(response.body.buildings));
-          observer.next(response.body.buildingList);
+          observer.next(response.body.buildings);
         });
       }
       observer.complete();
