@@ -17,7 +17,7 @@ export class BuildingsInterceptor implements HttpInterceptor {
     let response;
     if (req.url.endsWith(ENDPOINTS.getBuildings)) {
       if (req.method === 'GET') {
-        response = buildings;
+        response = { buildings };
       } else if (req.method === 'POST') {
         response = buildingsMock.createBuilding(req.body['type']);
       }
@@ -29,7 +29,7 @@ export class BuildingsInterceptor implements HttpInterceptor {
         buildingsMock.updateBuilding(building);
         response = building;
       }
-      return utilities.sendResponse(response, 200);
+      return utilities.sendResponse({ building: response }, 200);
     }
     return next.handle(req);
   }

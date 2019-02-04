@@ -23,7 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NotificationsResponseMock } from '../../_helpers/mocks/notificationResponse.mock';
 import { TribesNotification } from '../../_models/notification.model';
 import { TroopsComponent } from '../troops/troops.component';
-import {NotificationsService} from '../../services/notifications.service';
+import {NotificationsService} from '../../sharedServices/notifications.service';
 import {ResourcesService} from '../resources/resources.service';
 import {of} from 'rxjs';
 
