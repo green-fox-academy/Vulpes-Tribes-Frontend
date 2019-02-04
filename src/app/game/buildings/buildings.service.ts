@@ -72,12 +72,12 @@ export class BuildingsService {
       if (localStorage.getItem('buildings')) {
         this.getBuildingsFromBackend().subscribe((response) => {
           observer.next(this.getBuildingsFromLocalStorage());
-          localStorage.setItem('buildings', JSON.stringify(response.body.buildingList));
+          localStorage.setItem('buildings', JSON.stringify(response.body.buildings));
           observer.complete();
         });
       } else {
         this.getBuildingsFromBackend().subscribe((response) => {
-          localStorage.setItem('buildings', JSON.stringify(response.body.buildingList));
+          localStorage.setItem('buildings', JSON.stringify(response.body.buildings));
           observer.next(response.body.buildingList);
         });
       }
