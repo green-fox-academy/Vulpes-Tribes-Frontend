@@ -71,6 +71,7 @@ export class BuildingsService {
     return new Observable<Building[]>((observer) => {
       if (localStorage.getItem('buildings')) {
         observer.next(JSON.parse(localStorage.getItem('buildings')));
+        // send request and update local storage as well
         observer.complete();
       } else {
         this.getBuildingsFromBackend().subscribe((response) => {
