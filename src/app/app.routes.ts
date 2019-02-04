@@ -18,10 +18,7 @@ const APP_ROUTES: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'logout', redirectTo: 'login', pathMatch: 'full' },
-  // For now, everything is redirected straight to the game, for release, update to welcome screen
-  { path: '**', redirectTo: 'kingdom', pathMatch: 'full' },
-  {
-    path: 'kingdom', component: GameComponent, canActivate: [AuthGuard], children: [
+  { path: 'kingdom', component: GameComponent, canActivate: [AuthGuard], children: [
       { path: 'notifications', component: NotificationsComponent },
       { path: 'settings', component: KingdomSettingsComponent },
       { path: 'resources', component: ResourcesComponent },
@@ -33,6 +30,8 @@ const APP_ROUTES: Routes = [
       },
     ],
   },
+  // For now, everything is redirected straight to the game, for release, update to welcome screen
+  { path: '**', redirectTo: 'kingdom', pathMatch: 'full' },
 ];
 
 @NgModule({
