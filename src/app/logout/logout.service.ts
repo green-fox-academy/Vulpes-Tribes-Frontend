@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { AlertService } from '../alert/alert.service';
 import { ENDPOINTS } from '../../environments/endpoints';
 
+const URL = environment.serverApi + ENDPOINTS.logout;
+
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
@@ -24,10 +26,10 @@ export class LogoutService {
   }
 
   logout() {
-    this.http.delete<any>(ENDPOINTS.logout, httpOptions).subscribe(
+    this.http.delete<any>(URL, httpOptions).subscribe(
       () => {
-        localStorage.removeItem(environment.tribes_token);
-        this.router.navigate(['/login']);
+        localStorage.clear();
+        this.router.navigate([ENDPOINTS.login]);
         this.alert.success('Logged out successfully!');
       });
   }

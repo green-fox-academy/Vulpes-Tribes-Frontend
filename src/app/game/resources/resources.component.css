@@ -1,19 +1,16 @@
 div {
-  padding: 7%;
   background-color: rgba(255, 255, 255, 0.8);
-  ;
   font-family: 'Roboto', sans-serif;
   opacity: 20%;
+
 }
 
 .resources {
   background: transparent;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  margin: 7px auto;
-  max-width: 400px;
-  height: 300px;
+  padding: 0;
+  margin: 20px auto 10px auto;
 }
 
 .resource {
@@ -21,10 +18,12 @@ div {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding: 7%;
 }
 
 .resource img {
-  width: 75px;
+  max-height: 30px;
+  width: 25%;
 }
 
 .resource p {

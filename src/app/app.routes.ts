@@ -14,27 +14,29 @@ import { NotificationsComponent } from './game/notifications/notifications.compo
 import { TroopsComponent } from './game/troops/troops.component';
 
 const APP_ROUTES: Routes = [
-  { path: '', redirectTo: '/welcome', pathMatch: 'full' },
-  { path: 'welcome', component: WelcomeScreenComponent },
+  { path: '', component: WelcomeScreenComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'logout', component: LogoutComponent },
-  { path: '**', redirectTo: 'game', pathMatch: 'full' },
-  {path: 'game', component: GameComponent, canActivate: [AuthGuard], children: [
+  { path: 'logout', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'kingdom', component: GameComponent, canActivate: [AuthGuard], children: [
       { path: 'notifications', component: NotificationsComponent },
       { path: 'settings', component: KingdomSettingsComponent },
       { path: 'resources', component: ResourcesComponent },
       { path: 'troops', component: TroopsComponent },
-      {path: 'buildings', component: BuildingsComponent, children: [
+      {
+        path: 'buildings', component: BuildingsComponent, children: [
           { path: ':id', component: BuildingDetailComponent },
-    ]},
-  ],
+        ],
+      },
+    ],
   },
+  // For now, everything is redirected straight to the game, for release, update to welcome screen
+  { path: '**', redirectTo: 'kingdom', pathMatch: 'full' },
 ];
 
 @NgModule({
   exports: [RouterModule],
-  imports: [RouterModule.forRoot(APP_ROUTES)],
+  imports: [RouterModule.forRoot(APP_ROUTES, { useHash: true })],
 })
 
 export class AppRoutingModule {

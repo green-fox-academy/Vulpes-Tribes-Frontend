@@ -2,6 +2,14 @@
   display: flex;
   flex-direction: column;
   width: 65%;
+  max-width: 1200px;
+}
+
+.content__menu {
+  height: 150px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
 }
 
 .content__sidebar {
