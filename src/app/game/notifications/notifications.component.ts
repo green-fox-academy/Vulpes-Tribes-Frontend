@@ -1,6 +1,6 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { TribesNotification } from '../../_models/notification.model';
-import { NotificationsService } from '../../services/notifications.service';
+import { NotificationsService } from '../../sharedServices/notifications.service';
 import { BuildingsComponent } from '../buildings/buildings.component';
 
 @Component({

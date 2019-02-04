@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { KingdomService } from '../services/kingdom.service';
+import { KingdomService } from '../sharedServices/kingdom.service';
 import { KingdomSettingsModel } from './models/kingdom-settings.model';
 import { Observable } from 'rxjs';
 
