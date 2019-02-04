@@ -1,6 +1,5 @@
 import { AppComponent } from '../app/app.component';
 import { LoginComponent } from '../app/login/login.component';
-import { LogoutComponent } from '../app/logout/logout.component';
 import { RegisterComponent } from '../app/register/register.component';
 import { KingdomSettingsComponent } from '../app/kingdom-settings/kingdom-settings.component';
 import { HeaderComponent } from '../app/header/header.component';
@@ -32,7 +31,6 @@ export const TESTINGIMPORTS = {
   declarations: [
     AppComponent,
     LoginComponent,
-    LogoutComponent,
     RegisterComponent,
     KingdomSettingsComponent,
     HeaderComponent,

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { LogoutComponent } from '../logout/logout.component';
-import { LogoutService } from '../logout/logout.service';
+import { LogoutService } from '../sharedServices/logout.service';
 
 @Component({
   selector: 'app-header',
