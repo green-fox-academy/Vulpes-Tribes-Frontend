@@ -32,7 +32,10 @@ export class BuildingsService {
           const newBuilding: any = response.body;
           this.updateLocalStorage(newBuilding);
           this.notificationService
-            .createNotification('building', newBuilding.type, newBuilding.startedAt, newBuilding.finishedAt);
+            .createNotification('building',
+                                newBuilding.type,
+                                newBuilding.startedAt,
+                                newBuilding.finishedAt);
           observer.next(newBuilding);
           observer.complete();
         });
@@ -71,8 +74,8 @@ export class BuildingsService {
         observer.complete();
       } else {
         this.getBuildingsFromBackend().subscribe((response) => {
-          localStorage.setItem('buildings', JSON.stringify(response.body));
-          observer.next(response.body);
+          localStorage.setItem('buildings', JSON.stringify(response.body.buildings));
+          observer.next(response.body.buildings);
           observer.complete();
         });
       }
