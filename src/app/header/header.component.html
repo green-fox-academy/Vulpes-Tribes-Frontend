@@ -6,7 +6,7 @@
     <a routerLink="/login">Login</a>
     <a routerLink="/register">Register</a>
   </div>
-  <div *ngIf="loginStatus()">
+  <div *ngIf="loginStatus()" (click)="logout()">
     <a routerLink="/logout">Logout</a>
   </div>
 </div>
