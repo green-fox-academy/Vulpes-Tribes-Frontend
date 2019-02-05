@@ -1,9 +1,10 @@
 <div class="game">
   <div class="content__main">
-    <app-resources></app-resources>
-    <app-settings></app-settings>
-    <app-buildings></app-buildings>
-    <app-troops></app-troops>
+    <div class="content__menu">
+      <app-menu></app-menu>
+      <app-resources></app-resources>
+    </div>
+    <router-outlet></router-outlet>
   </div>
   <div class="content__sidebar">
     <app-notifications></app-notifications>

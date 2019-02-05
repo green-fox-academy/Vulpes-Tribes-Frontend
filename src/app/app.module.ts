@@ -7,7 +7,6 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app.routes';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoginInterceptor } from './_helpers/interceptors/login.interceptor';
-import { LogoutComponent } from './logout/logout.component';
 import { CustomHeaders } from './_models/head.model';
 import { APP_BASE_HREF } from '@angular/common';
 import { TokenInterceptor } from './_helpers/interceptors/token.interceptor';
@@ -35,12 +34,12 @@ import { LoaderComponent } from './loader/loader.component';
 import { LoaderService } from './services/loader.service';
 import { environment } from '../environments/environment';
 import { NotificationFactory } from './_helpers/factories/notification.factory';
+import { MenuComponent } from './game/menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    LogoutComponent,
     RegisterComponent,
     KingdomSettingsComponent,
     HeaderComponent,
@@ -54,6 +53,7 @@ import { NotificationFactory } from './_helpers/factories/notification.factory';
     NotificationsComponent,
     NotificationComponent,
     TroopsComponent,
+    MenuComponent,
     LoaderComponent,
   ],
   imports: [

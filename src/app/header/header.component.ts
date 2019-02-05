@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../../environments/environment';
+import { LogoutService } from '../sharedServices/logout.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,7 @@ import { environment } from '../../environments/environment';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() {
+  constructor(private logoutService: LogoutService) {
   }
 
   ngOnInit() {
@@ -18,4 +19,7 @@ export class HeaderComponent implements OnInit {
     return (localStorage.getItem(environment.tribes_token) !== null);
   }
 
+  logout() {
+    this.logoutService.logout();
+  }
 }

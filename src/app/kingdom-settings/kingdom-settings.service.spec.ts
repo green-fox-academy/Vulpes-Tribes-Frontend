@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { KingdomService } from '../services/kingdom.service';
+import { KingdomService } from '../sharedServices/kingdom.service';
 import { KingdomSettingsService} from './kingdom-settings.service';
 import { async } from 'q';
 import { HttpClientTestingModule } from '@angular/common/http/testing';

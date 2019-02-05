@@ -3,8 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ENDPOINTS } from '../../../environments/endpoints';
 import { Building } from '../../_models/building.model';
+import { NotificationsService } from '../../sharedServices/notifications.service';
+import { PurchaseService } from '../../sharedServices/purchase.service';
 import { environment } from '../../../environments/environment';
-import { NotificationsService } from '../../services/notifications.service';
 
 const URL = environment.serverApi + ENDPOINTS.getBuildings;
 
@@ -15,7 +16,8 @@ const URL = environment.serverApi + ENDPOINTS.getBuildings;
 export class BuildingsService {
 
   constructor(private http: HttpClient,
-              private notificationService: NotificationsService) {
+              private notificationService: NotificationsService,
+              private purchaseService: PurchaseService) {
   }
 
   getBuildingsFromBackend(): Observable<any> {
@@ -30,7 +32,11 @@ export class BuildingsService {
           const newBuilding: any = response.body;
           this.updateLocalStorage(newBuilding);
           this.notificationService
-            .createNotification('building', newBuilding.type, newBuilding.startedAt, newBuilding.finishedAt);
+            .createNotification('building',
+              newBuilding.type,
+              newBuilding.startedAt,
+              newBuilding.finishedAt);
+
           observer.next(newBuilding);
           observer.complete();
         });
@@ -65,21 +71,40 @@ export class BuildingsService {
   showAllBuildings(): Observable<Building[]> {
     return new Observable<Building[]>((observer) => {
       if (localStorage.getItem('buildings')) {
-        observer.next(JSON.parse(localStorage.getItem('buildings')));
-        observer.complete();
+        this.getBuildingsFromBackend().subscribe((response) => {
+          observer.next(this.getBuildingsFromLocalStorage());
+          localStorage.setItem('buildings', JSON.stringify(response.body.buildings));
+        });
       } else {
         this.getBuildingsFromBackend().subscribe((response) => {
-          localStorage.setItem('buildings', JSON.stringify(response.body));
-          observer.next(response.body);
-          observer.complete();
+          localStorage.setItem('buildings', JSON.stringify(response.body.buildings));
+          observer.next(response.body.buildings);
         });
       }
+      observer.complete();
     });
   }
 
   updateLocalStorage(building: Building) {
-    const buildings: Building[] = JSON.parse(localStorage.getItem('buildings'));
+    const buildings: Building[] = this.getBuildingsFromLocalStorage();
     buildings.push(building);
     localStorage.setItem('buildings', JSON.stringify(buildings));
+  }
+
+  getHighestLevelOfSpecificBuilding(buildingType: string): number {
+    const buildings: Building[] = this.getBuildingsFromLocalStorage();
+    const highestLevel = buildings.filter(building => building.type === buildingType);
+    highestLevel.sort(building => building.level);
+    console.log(highestLevel[0].level);
+    return highestLevel[0].level;
+  }
+
+  getNumberOfSpecificBuildingType(buildingType: string): number {
+    const buildings: Building[] = this.getBuildingsFromLocalStorage();
+    return buildings.filter(building => building.type === buildingType).length;
+  }
+
+  getBuildingsFromLocalStorage(): Building[] {
+    return JSON.parse(localStorage.getItem('buildings'));
   }
 }
