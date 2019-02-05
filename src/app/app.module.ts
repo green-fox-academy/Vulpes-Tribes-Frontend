@@ -70,10 +70,7 @@ import { NotificationFactory } from './_helpers/factories/notification.factory';
     AlertService,
     ModalService,
     DomService,
-<<<<<<< HEAD
-=======
     LoaderService,
->>>>>>> week3
     NotificationFactory,
     { provide: APP_BASE_HREF, useValue: '/' },
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },

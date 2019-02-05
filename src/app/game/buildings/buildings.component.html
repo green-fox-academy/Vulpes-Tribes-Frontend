@@ -2,6 +2,7 @@
   <app-building class="building"
                 *ngFor="let building of buildings"
                 (click)="selectBuilding(building)"
+                routerLink="/kingdom/{{building.type}}/{{building.id}}"
                 [building]="building">
   </app-building>
   <div class="building building-add" (click)="createBuilding('barracks')">
