@@ -17,15 +17,13 @@ export class BuildingsComponent implements OnInit, OnChanges {
 
   buildings: Building[] = [];
   @Output() createNotification = new EventEmitter<TribesNotification>();
-  selectedBuilding: Building;
+  @Output() selectedBuilding: Building;
 
   @Output() building: Building;
 
 
 
   constructor(private buildingsService: BuildingsService,
-              private alertService: AlertService,
-              private modalService: ModalService,
               private purchaseService: PurchaseService) {
   }
 
