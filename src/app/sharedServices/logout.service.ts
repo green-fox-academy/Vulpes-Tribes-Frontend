@@ -29,7 +29,6 @@ export class LogoutService {
     this.http.delete<any>(URL, httpOptions).subscribe(
       () => {
         localStorage.clear();
-        this.router.navigate([ENDPOINTS.login]);
         this.alert.success('Logged out successfully!');
       });
   }

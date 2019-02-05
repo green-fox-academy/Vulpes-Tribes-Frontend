@@ -7,7 +7,6 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app.routes';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoginInterceptor } from './_helpers/interceptors/login.interceptor';
-import { LogoutComponent } from './logout/logout.component';
 import { CustomHeaders } from './_models/head.model';
 import { APP_BASE_HREF } from '@angular/common';
 import { TokenInterceptor } from './_helpers/interceptors/token.interceptor';
@@ -41,7 +40,6 @@ import { MenuComponent } from './game/menu/menu.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    LogoutComponent,
     RegisterComponent,
     KingdomSettingsComponent,
     HeaderComponent,
