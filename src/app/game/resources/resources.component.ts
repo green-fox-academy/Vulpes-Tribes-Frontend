@@ -1,9 +1,6 @@
-import { Building } from './../../_models/building.model';
-import { BuildingComponent } from './../buildings/building/building.component';
-import { Resources } from './../../_models/resources.model';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ResourcesService } from './resources.service';
-import { troops } from 'src/app/_helpers/mocks/mock-troops';
+import { TribesNotification } from '../../_models/notification.model';
 
 @Component({
   selector: 'app-resources',

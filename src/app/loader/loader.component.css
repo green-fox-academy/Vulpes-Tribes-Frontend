@@ -1,0 +1,93 @@
+.hidden {
+    visibility: hidden;
+  }
+  .loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 500000;
+    background-color: rgba(8, 0, 0, 0.568);
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    }
+  
+ .lds-ring {
+    width: 74px;
+    height: 74px;
+  }
+  .lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 51px;
+    height: 51px;
+    margin: 6px;
+    border: 6px solid #fff;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fff transparent transparent transparent;
+    align-items: center;
+    justify-items: center;
+  }
+  .lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+  }
+  .lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+  .lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+  }
+  @keyframes lds-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  /*different loader design - loader bar that we might use, so leaving styling out commented
+  .loader {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background-color: rgba(8, 0, 0, 0.568);
+    display: flex;
+    align-items: center;
+    justify-items: center;
+  }
+
+ /* .loader:before {
+    display: block;
+    position: absolute;
+    content: "";
+    left: -200px;
+    width: 200px;
+    height: 4px;
+    background-color: red;
+    animation: loading 2s linear infinite;
+  }
+  @keyframes loading {
+    from {left: -200px; width: 30%;}
+    50% {width: 30%;}
+    70% {width: 70%;}
+    80% {left: 50%;}
+    95% {left: 120%;}
+    to {left: 100%;}
+  }*/
+/* .loader {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  align-content: center;
+}
+*/
+
+  

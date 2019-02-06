@@ -8,11 +8,12 @@
   max-width: 400px;
   margin: 10px auto;
 
-  background: rgba(255, 255, 255, 0.8);
+  background: transparent;
 }
 
 .notifications__header {
   width: 90%;
+  min-width: 300px;
   margin: 10px auto;
   padding-left: 25px;
 
