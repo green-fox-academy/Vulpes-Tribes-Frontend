@@ -71,7 +71,7 @@ describe('TroopsService', () => {
     expect(service.calculateTroopLevels(troops)).toEqual({1:1,2:2});
   });
 
-  it('should return an object with given properties', () => {
-    expect(service.getTroopsAndStats().hasOwnProperty('levels' && 'totalAttack' && 'totalDefence' && 'sustenance')).toBeTruthy();
-  })
+  // it('should return an object with given properties', () => {
+  //   expect(service.getTroopsAndStats().hasOwnProperty('levels' && 'totalAttack' && 'totalDefence' && 'sustenance')).toBeTruthy();
+  // })
 });
