@@ -1,9 +1,6 @@
 import { Component, OnInit, Output, OnChanges, SimpleChanges, EventEmitter } from '@angular/core';
 import { BuildingsService } from './buildings.service';
-import { BuildingDetailComponent } from './building-details/building-detail.component';
-import { ModalService } from './building-details/modal.service';
 import { Building } from '../../_models/building.model';
-import { AlertService } from '../../alert/alert.service';
 import { TribesNotification } from '../../_models/notification.model';
 import { PurchaseService } from '../../sharedServices/purchase.service';
 
@@ -16,12 +13,14 @@ export class BuildingsComponent implements OnInit, OnChanges {
 
   buildings: Building[] = [];
   @Output() createNotification = new EventEmitter<TribesNotification>();
+  @Output() selectedBuilding: Building;
 
   @Output() building: Building;
 
   constructor(private buildingsService: BuildingsService,
+              private purchaseService: PurchaseService,
               private alertService: AlertService,
-              private modalService: ModalService) {
+              ) {
   }
 
   ngOnInit() {
@@ -33,9 +32,12 @@ export class BuildingsComponent implements OnInit, OnChanges {
     this.showFinishedBuildings();
   }
 
-  initBuildingModal(building: Building): Building {
-    this.modalService.init(BuildingDetailComponent, { building }, {});
-    return building;
+  selectBuilding(building: Building) {
+    this.selectedBuilding = building;
+  }
+
+  deselectBuilding() {
+    this.selectedBuilding = null;
   }
 
   showFinishedBuildings() {

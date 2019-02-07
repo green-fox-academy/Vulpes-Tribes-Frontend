@@ -113,4 +113,9 @@ export class BuildingsService {
   getBuildingsFromLocalStorage(): Building[] {
     return JSON.parse(localStorage.getItem('buildings'));
   }
+
+  getBuildingById(id: number) : Building {
+    let buildings = this.getBuildingsFromLocalStorage();
+    return buildings.filter(building => building.id === id)[0];
+  }
 }

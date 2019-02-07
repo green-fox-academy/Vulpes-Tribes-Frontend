@@ -22,8 +22,8 @@ const APP_ROUTES: Routes = [
       { path: 'settings', component: KingdomSettingsComponent },
       { path: 'resources', component: ResourcesComponent },
       { path: 'troops', component: TroopsComponent },
-      {
-        path: 'buildings', component: BuildingsComponent, children: [
+      { path: ':buildingname/:buildingid', component: BuildingDetailComponent},
+      { path: 'buildings', component: BuildingsComponent, children: [
           { path: ':id', component: BuildingDetailComponent },
         ],
       },

@@ -1,7 +1,8 @@
-<div class="buildings">
+<div class="buildings" *ngIf="!selectedBuilding">
   <app-building class="building"
                 *ngFor="let building of buildings"
-                (click)="initBuildingModal(building)"
+                (click)="selectBuilding(building)"
+                routerLink="/kingdom/{{building.type}}/{{building.id}}"
                 [building]="building">
   </app-building>
   <div class="building building-add" (click)="createBuilding('barracks')">
@@ -16,9 +17,10 @@
     <img src="../../../assets/images/buildings/addfarm.svg" alt="">
     <p class="building__type--add">Add Farm</p>
   </div>
-
-  <div id="modal-container" class="hidden"></div>
-  <div id="overlay" class="hidden"></div>
 </div>
+<div class="building-detail" *ngIf="selectedBuilding">
+    <app-building-detail [building]="selectedBuilding"
+                         (deselectBuilding)="deselectBuilding($event)" ></app-building-detail>
+  </div>
 
 

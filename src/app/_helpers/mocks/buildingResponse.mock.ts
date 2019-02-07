@@ -6,7 +6,7 @@ const buildings = [
   {
     id: 123,
     type: 'townhall',
-    level: 8,
+    level: 5,
     hp: 100,
     startedAt: 1231232312,
     finishedAt: 7652146122,
@@ -14,7 +14,7 @@ const buildings = [
   {
     id: 124,
     type: 'barracks',
-    level: 1,
+    level: 5,
     hp: 100,
     startedAt: 1231232312,
     finishedAt: 7652146122,

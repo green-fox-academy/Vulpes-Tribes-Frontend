@@ -70,7 +70,7 @@
     left: -200px;
     width: 200px;
     height: 4px;
-    background-color: red;
+    background-color: orange;
     animation: loading 2s linear infinite;
   }
   @keyframes loading {
