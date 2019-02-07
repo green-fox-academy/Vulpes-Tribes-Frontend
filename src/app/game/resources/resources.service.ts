@@ -25,11 +25,11 @@ export class ResourcesService {
         });
     });
   }
-  updateResourceLocalStorage(resource: Resources) {
-    const resources: Resources = JSON.parse(localStorage.getItem('type'));
-    resources.push(resource);
-    localStorage.setItem('resources', JSON.stringify(resources));
-  }
+  // updateResourceLocalStorage(resource: Resources) {
+  //   const resources: Resources = JSON.parse(localStorage.getItem('type'));
+  //   resources.push(resource);
+  //   localStorage.setItem('resources', JSON.stringify(resources));
+  // }
   // getResourcesFromBackend(): Observable<any> {
   //   return this.http
   //     .get(ENDPOINTS.getResources, { observe: 'response' })
