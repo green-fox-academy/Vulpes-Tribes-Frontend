@@ -5,30 +5,63 @@
   display:block;
 }
 
-#modal-container {
-  position:  fixed;
-  top: 300px;
-  left: 50%;
-  width: 375px;
-  background: white;
-  margin-left: -187.5px;
-  text-align: center;
-  box-shadow: 0 0 2px 1px black;
-  z-index: 100;
-  border-radius: 10px;
-}
-
-app-building-detail {
-  width: 50%;
-  margin-top: 12.5%;
-  margin-left: auto;
-  margin-right: auto;
-  height: 75%;
-
+#building__details {
   background: rgba(255, 255, 255, 0.8);
-  border: 1px  rgba(255, 255, 255, 0.8) solid;
-
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  height: 60%;
+  margin: auto;
 }
+
+.building_info {
+  width: 15%;
+  margin: 20px;
+  text-align: center;
+}
+
+.building_info p {
+  margin: 5px auto;
+  color: rgb(rgb(150, 147, 158));
+  letter-spacing: 2px;
+}
+
+.building_detail_panel {
+  width: 80%;
+  margin: 20px;
+  text-align: left;
+}
+
+.create_troop_button, .upgrade_troop_button  {
+  background-color: rgb(30, 150, 139);
+  display: flex;
+  width: 60%;
+  margin: 0 auto 15px;
+  height: 60px;
+  align-items: center;
+  border-radius: 12px;
+  box-shadow: 0px 6px 9px rgb(160, 160, 160);
+}
+
+.create_troop_button img, .upgrade_troop_button img {
+  width: 70px;
+  padding: 10px;
+}
+
+.closing_button {
+  text-align: right;
+}
+
+.close {
+  background-color: #FD8B4F;
+  border: none;
+  border-radius: 5px;
+  padding: 4px 8px;
+  color: white;
+}
+
+
+
 
 .building__details button {
   width: 100px;

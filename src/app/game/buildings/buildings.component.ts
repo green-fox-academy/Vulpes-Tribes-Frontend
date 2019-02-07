@@ -1,7 +1,5 @@
 import { Component, OnInit, Output, OnChanges, SimpleChanges, EventEmitter } from '@angular/core';
 import { BuildingsService } from './buildings.service';
-import { BuildingDetailComponent } from './building-details/building-detail.component';
-import { ModalService } from './building-details/modal.service';
 import { Building } from '../../_models/building.model';
 import { AlertService } from '../../alert/alert.service';
 import { TribesNotification } from '../../_models/notification.model';
@@ -16,12 +14,13 @@ export class BuildingsComponent implements OnInit, OnChanges {
 
   buildings: Building[] = [];
   @Output() createNotification = new EventEmitter<TribesNotification>();
+  @Output() selectedBuilding: Building;
 
   @Output() building: Building;
 
   constructor(private buildingsService: BuildingsService,
-              private alertService: AlertService,
-              private modalService: ModalService) {
+              private purchaseService: PurchaseService,
+              private alertService: AlertService) {
   }
 
   ngOnInit() {
@@ -33,14 +32,20 @@ export class BuildingsComponent implements OnInit, OnChanges {
     this.showFinishedBuildings();
   }
 
-  initBuildingModal(building: Building): Building {
-    this.modalService.init(BuildingDetailComponent, { building }, {});
-    return building;
+  selectBuilding(building: Building) {
+    this.selectedBuilding = building;
+  }
+
+  deselectBuilding() {
+    this.selectedBuilding = null;
   }
 
   showFinishedBuildings() {
     this.buildingsService.filterBuildings('finished')
-      .subscribe(response => this.buildings = response);
+      .subscribe(response => {
+        this.buildings = response;
+        console.log(response);
+      });
   }
 
   showUnfinishedBuildings() {
@@ -58,7 +63,7 @@ export class BuildingsComponent implements OnInit, OnChanges {
       setTimeout(() => {
         this.buildings.push(response);
         this.showFinishedBuildings();
-      },         (response.finishedAt - response.startedAt));
+      }, (response.finishedAt - response.startedAt));
     });
   }
 }
