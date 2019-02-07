@@ -22,9 +22,6 @@ export class ResourcesComponent implements OnInit {
 
   ngOnInit() {
     this.showResources();
-    this.generationGenerator();
-    this.getFinishedBulidings();
-    this.getCompletedTroops();
     setInterval(() => this.generationGenerator(), 1000);
     setInterval(() => this.resourceService.getResources, 300000);
   }
@@ -37,17 +34,39 @@ export class ResourcesComponent implements OnInit {
       this.moneygeneration = response[1].generation;
     });
   }
+
   generationGenerator() {
-    this.food += this.foodgeneration;
-    this.money += this.moneygeneration;
+    let generateFood = this.getFoodGeneration();
+    let generatedGold = this.getGoldGeneration();
+    let troopSustenance = this.getSustenaceOfTroops();
+    this.food += generateFood - troopSustenance;
+    this.money += generatedGold;
   }
 
-  getFinishedBulidings() {
-    this.buildingService.loadFinishedBuildingsFromLS;
+  getGoldGeneration() {
+    const completedMines = this.buildingService.loadFinishedBuildingsFromLS();
+    let filteringMinesFromBuildings = completedMines.filter(
+      building => building.finishedAt <= Date.now() && building.type === "mine"
+    );
+    let numberofCompletedMines = filteringMinesFromBuildings.length;
+    return numberofCompletedMines;
   }
 
-  getCompletedTroops() {
-    this.troopsService.loadTroopsFromLS;
-    console.log(this.troopsService.loadTroopsFromLS());
+  getSustenaceOfTroops() {
+    const fetchedTroops = this.troopsService.loadTroopsFromLS();
+    let finishedTroops = fetchedTroops.filter(
+      troop => troop.finishedAt <= Date.now()
+    );
+    let numberOfFinishedTroops = finishedTroops.length;
+    return numberOfFinishedTroops;
+  }
+
+  getFoodGeneration() {
+    const completedFarms = this.buildingService.loadFinishedBuildingsFromLS();
+    let filterFarmsFromBuildings = completedFarms.filter(
+      farm => farm.finishedAt <= Date.now() && farm.type === "farm"
+    );
+    let numberOfCompletedFarms = filterFarmsFromBuildings.length;
+    return numberOfCompletedFarms;
   }
 }
