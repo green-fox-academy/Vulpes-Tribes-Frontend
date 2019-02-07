@@ -15,11 +15,11 @@ export class ResourceInterceptor implements HttpInterceptor {
       {
         amount: 500,
         type: 'food',
-        generation: 0,
+        generation: 2,
       },
       {
         amount: 10000,
-        type: 'money',
+        type: 'gold',
         generation: 1,
       },
     ];
