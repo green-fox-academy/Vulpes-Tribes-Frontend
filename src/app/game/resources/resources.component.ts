@@ -27,7 +27,6 @@ export class ResourcesComponent implements OnInit {
 
   showResources() {
     this.resourceService.getResources().subscribe(response => {
-      console.log(response);
       this.food = response.resources[1].amount;
       this.gold = response.resources[0].amount;
       setInterval(() => this.updateResources(), 1000);

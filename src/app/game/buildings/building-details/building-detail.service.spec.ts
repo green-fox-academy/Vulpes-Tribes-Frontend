@@ -8,11 +8,8 @@ import { BrowserModule, By } from '@angular/platform-browser';
 import { AppRoutingModule } from '../../../app.routes';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { ModalService } from './modal.service';
-import { DomService } from './domService';
 import { AppComponent } from '../../../app.component';
 import { LoginComponent } from '../../../login/login.component';
-import { LogoutComponent } from '../../../logout/logout.component';
 import { RegisterComponent } from '../../../register/register.component';
 import { HeaderComponent } from '../../../header/header.component';
 import { GameComponent } from '../../game.component';
@@ -32,9 +29,7 @@ describe('BuildingDetailService', () => {
     declarations: [
       AppComponent,
       LoginComponent,
-      LogoutComponent,
       RegisterComponent,
-      LogoutComponent,
       KingdomSettingsComponent,
       HeaderComponent,
       GameComponent,
@@ -53,11 +48,7 @@ describe('BuildingDetailService', () => {
       FormsModule,
       HttpClientModule,
     ],
-    providers: [
-      ModalService,
-      DomService,
-    ],
-  }));
+}));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(BuildingDetailComponent);

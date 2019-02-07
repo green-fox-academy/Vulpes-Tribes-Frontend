@@ -1,9 +1,9 @@
 import { Component, OnInit, Output, OnChanges, SimpleChanges, EventEmitter } from '@angular/core';
 import { BuildingsService } from './buildings.service';
 import { Building } from '../../_models/building.model';
-import { AlertService } from '../../alert/alert.service';
 import { TribesNotification } from '../../_models/notification.model';
 import { PurchaseService } from '../../sharedServices/purchase.service';
+import { AlertService } from '../../alert/alert.service';
 
 @Component({
   selector: 'app-buildings',
@@ -21,6 +21,7 @@ export class BuildingsComponent implements OnInit, OnChanges {
   constructor(private buildingsService: BuildingsService,
               private purchaseService: PurchaseService,
               private alertService: AlertService) {
+
   }
 
   ngOnInit() {

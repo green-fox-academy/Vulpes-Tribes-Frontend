@@ -22,14 +22,9 @@ const APP_ROUTES: Routes = [
       { path: 'settings', component: KingdomSettingsComponent },
       { path: 'resources', component: ResourcesComponent },
       { path: 'troops', component: TroopsComponent },
-      { path: ':buildingname/:buildingid', component: BuildingDetailComponent},
-
-      {
-        path: 'buildings', component: BuildingsComponent, children: [
-          { path: ':id', component: BuildingDetailComponent },
-        ],
-      },
-    ],
+      { path: ':buildingname/:buildingid', component: BuildingDetailComponent },
+      { path: 'buildings', component: BuildingsComponent },
+  ],
   },
   // For now, everything is redirected straight to the game, for release, update to welcome screen
   { path: '**', redirectTo: 'kingdom', pathMatch: 'full' },
