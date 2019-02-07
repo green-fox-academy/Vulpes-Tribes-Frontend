@@ -22,6 +22,7 @@ export class ResourcesComponent implements OnInit {
 
   ngOnInit() {
     this.showResources();
+    this.troopsService.getTroops();
     setInterval(() => this.generationGenerator(), 1000);
     setInterval(() => this.resourceService.getResources, 300000);
   }
