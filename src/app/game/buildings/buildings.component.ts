@@ -2,7 +2,6 @@ import { Component, OnInit, Output, OnChanges, SimpleChanges, EventEmitter } fro
 import { BuildingsService } from './buildings.service';
 import { Building } from '../../_models/building.model';
 import { TribesNotification } from '../../_models/notification.model';
-import { NotificationsService } from '../../sharedServices/notifications.service';
 import { PurchaseService } from '../../sharedServices/purchase.service';
 
 @Component({
@@ -19,7 +18,9 @@ export class BuildingsComponent implements OnInit, OnChanges {
   @Output() building: Building;
 
   constructor(private buildingsService: BuildingsService,
-              private purchaseService: PurchaseService) {
+              private purchaseService: PurchaseService,
+              private alertService: AlertService,
+              ) {
   }
 
   ngOnInit() {
@@ -56,8 +57,10 @@ export class BuildingsComponent implements OnInit, OnChanges {
 
   createBuilding(buildingType: string) {
     this.buildingsService.createBuilding(buildingType).subscribe((response) => {
-      this.buildings.push(response);
+      setTimeout(() => {
+        this.buildings.push(response);
+        this.showFinishedBuildings();
+      },         (response.finishedAt - response.startedAt));
     });
-    this.showFinishedBuildings();
   }
 }
