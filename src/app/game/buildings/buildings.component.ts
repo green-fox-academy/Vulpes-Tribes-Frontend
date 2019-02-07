@@ -39,7 +39,7 @@ export class BuildingsComponent implements OnInit, OnChanges {
     this.selectedBuilding = null;
   }
 
-     showFinishedBuildings() {
+  showFinishedBuildings() {
     this.buildingsService.filterBuildings('finished')
       .subscribe(response => this.buildings = response);
   }

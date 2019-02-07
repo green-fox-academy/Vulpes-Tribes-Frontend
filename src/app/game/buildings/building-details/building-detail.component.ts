@@ -50,6 +50,5 @@ export class BuildingDetailComponent implements OnInit {
 
   townhallLevel(): number {
     return this.buildingsService.getHighestLevelOfSpecificBuilding('townhall');
-
   }
 }
