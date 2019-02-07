@@ -91,7 +91,7 @@ export class BuildingsService {
     localStorage.setItem('buildings', JSON.stringify(buildings));
   }
 
-  loadFinishedBuildingsFromLS() {
+  loadBuildingsFromLS() {
     let finishedBuildings: Building[];
     finishedBuildings = JSON.parse(localStorage.getItem('buildings'));
     return finishedBuildings;

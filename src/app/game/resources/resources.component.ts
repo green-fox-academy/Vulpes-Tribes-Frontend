@@ -12,62 +12,69 @@ export class ResourcesComponent implements OnInit {
   constructor(
     private resourceService: ResourcesService,
     private buildingService: BuildingsService,
-    private troopsService: TroopsService
-  ) {}
+    private troopsService: TroopsService) {
+
+  }
 
   food;
-  money;
+  gold;
   foodgeneration;
   moneygeneration;
 
   ngOnInit() {
     this.showResources();
-    this.troopsService.getTroops();
-    setInterval(() => this.generationGenerator(), 1000);
+    setInterval(() => this.updateResources(), 1000);
     setInterval(() => this.resourceService.getResources, 300000);
   }
 
   showResources() {
     this.resourceService.getResources().subscribe(response => {
       this.food = response[0].amount;
-      this.money = response[1].amount;
+      this.gold = response[1].amount;
       this.foodgeneration = response[0].generation;
       this.moneygeneration = response[1].generation;
     });
   }
 
-  generationGenerator() {
-    let generateFood = this.getFoodGeneration();
-    let generatedGold = this.getGoldGeneration();
-    let troopSustenance = this.getSustenaceOfTroops();
+  updateResources() {
+    const generateFood = this.getFoodGeneration();
+    const generatedGold = this.getGoldGeneration();
+    const troopSustenance = this.getSustenaceOfTroops();
     this.food += generateFood - troopSustenance;
-    this.money += generatedGold;
+    this.gold += generatedGold;
   }
 
   getGoldGeneration() {
-    const completedMines = this.buildingService.loadFinishedBuildingsFromLS();
-    let filteringMinesFromBuildings = completedMines.filter(
-      building => building.finishedAt <= Date.now() && building.type === "mine"
-    );
-    let numberofCompletedMines = filteringMinesFromBuildings.length;
-    return numberofCompletedMines;
+    let goldGeneration: number = 0;
+    if (this.buildingService.loadBuildingsFromLS() !== null) {
+      const buildingsFromLS = this.buildingService.loadBuildingsFromLS();
+      const completedMines = buildingsFromLS.filter(
+        building => building.finishedAt <= Date.now() && building.type === 'mine',
+      );
+      goldGeneration = completedMines.length;
+    }
+    return goldGeneration;
   }
 
   getSustenaceOfTroops() {
-    const fetchedTroops = this.troopsService.loadTroopsFromLS();
-    let finishedTroops = fetchedTroops.filter(
-      troop => troop.finishedAt <= Date.now()
-    );
-    let numberOfFinishedTroops = finishedTroops.length;
+    let numberOfFinishedTroops: number = 0;
+    if (this.troopsService.loadTroopsFromLS() !== null) {
+      const troops = this.troopsService.loadTroopsFromLS();
+      const finishedTroops = troops.filter(troop => troop.finishedAt <= Date.now());
+      numberOfFinishedTroops = finishedTroops.length;
+    }
     return numberOfFinishedTroops;
   }
 
   getFoodGeneration() {
-    const completedFarms = this.buildingService.loadFinishedBuildingsFromLS();
-    let filterFarmsFromBuildings = completedFarms.filter(
-      farm => farm.finishedAt <= Date.now() && farm.type === "farm"
-    );
-    let numberOfCompletedFarms = filterFarmsFromBuildings.length;
-    return numberOfCompletedFarms;
+    let foodGeneration: number = 0;
+    if (this.buildingService.loadBuildingsFromLS() !== null) {
+      const buildingsFromLS = this.buildingService.loadBuildingsFromLS();
+      const completedFarms = buildingsFromLS.filter(
+        farm => farm.finishedAt <= Date.now() && farm.type === 'farm',
+      );
+      foodGeneration = completedFarms.length;
+    }
+    return foodGeneration;
   }
 }

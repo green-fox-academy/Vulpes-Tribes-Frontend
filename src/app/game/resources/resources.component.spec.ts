@@ -21,7 +21,7 @@ describe('ResourcesComponent', () => {
     },
     {
       amount: 340,
-      type: 'money',
+      type: 'gold',
       generation: 1
     }
   ]};
