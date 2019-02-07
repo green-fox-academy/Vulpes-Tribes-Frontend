@@ -1,8 +1,9 @@
 export const CONSTANTS = {
   // Buildings constants
-  BarracksBuildingTime: 60000,
-  FarmBuildingTime: 60000,
-  MineBuildingTime: 60000,
+  barracksBuildingTime: 120000,
+  farmBuildingTime: 60000,
+  mineBuildingTime: 60000,
+  townhallBuildingTime: 180000,
   BuildingTimePointOnePercent: 6000000,
 
   barracksPrice: 150,
