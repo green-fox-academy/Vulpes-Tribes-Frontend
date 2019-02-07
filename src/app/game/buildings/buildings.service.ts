@@ -93,6 +93,7 @@ export class BuildingsService {
 
   getHighestLevelOfSpecificBuilding(buildingType: string): number {
     const buildings: Building[] = this.getBuildingsFromLocalStorage();
+    console.log(buildings);
     const highestLevel = buildings.filter(building => building.type === buildingType);
     highestLevel.sort(building => building.level);
     console.log(highestLevel[0].level);

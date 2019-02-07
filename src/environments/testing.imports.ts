@@ -22,8 +22,6 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CustomHeaders } from '../app/_models/head.model';
 import { AuthService } from '../app/_helpers/authentication/auth.service';
 import { AlertService } from '../app/alert/alert.service';
-import { ModalService } from '../app/game/buildings/building-details/modal.service';
-import { DomService } from '../app/game/buildings/building-details/domService';
 import { LoaderService } from '../app/services/loader.service';
 import { NotificationFactory } from '../app/_helpers/factories/notification.factory';
 
@@ -58,8 +56,6 @@ export const TESTINGIMPORTS = {
     CustomHeaders,
     AuthService,
     AlertService,
-    ModalService,
-    DomService,
     LoaderService,
     NotificationFactory,
   ],
