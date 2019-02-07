@@ -20,6 +20,7 @@ export class NotificationsService {
     const newNotification = this.notificationFactory
       .createNotification(title, type, startedAt, finishedAt);
     if (this.checkIfNotificationExist(newNotification)) {
+      console.log(newNotification);
       this.notifications.push(newNotification);
     }
     this.updatedNotifications.next(this.notifications);
@@ -31,7 +32,7 @@ export class NotificationsService {
 
   removeNotification(notificationToRemove: TribesNotification): void {
     this.notifications = this.notifications.filter((notification) => {
-      notification.startedAt !== notificationToRemove.startedAt;
+      return (notification.startedAt !== notificationToRemove.startedAt);
     });
   }
 

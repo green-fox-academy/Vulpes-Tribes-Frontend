@@ -19,7 +19,7 @@ export class ResourcesService {
     return new Observable<any>((observer) => {
       this.http.get(URL)
         .subscribe((response) => {
-          observer.next(response);
+          observer.next(response['resources']);
           observer.complete();
         });
     });

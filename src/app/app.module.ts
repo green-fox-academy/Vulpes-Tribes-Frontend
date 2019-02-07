@@ -81,7 +81,6 @@ import { MenuComponent } from './game/menu/menu.component';
   ],
 
   entryComponents: [
-    BuildingDetailComponent,
     NotificationComponent,
   ],
 

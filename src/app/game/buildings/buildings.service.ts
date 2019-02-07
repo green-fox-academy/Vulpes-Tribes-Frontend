@@ -32,7 +32,7 @@ export class BuildingsService {
           const newBuilding: any = response.body;
           this.updateLocalStorage(newBuilding);
           this.notificationService
-            .createNotification('building',
+            .createNotification('Building',
               newBuilding.type,
               newBuilding.startedAt,
               newBuilding.finishedAt);
@@ -49,7 +49,7 @@ export class BuildingsService {
         .subscribe((response) => {
           if (status === 'finished') {
             observer.next(response
-              .filter(building => building.finishedAt <= Date.now()));
+              .filter(building => (building.finishedAt <= Date.now())));
             observer.complete();
           } else if (status === 'unfinished') {
             observer.next(response
@@ -93,11 +93,9 @@ export class BuildingsService {
 
   getHighestLevelOfSpecificBuilding(buildingType: string): number {
     const buildings: Building[] = this.getBuildingsFromLocalStorage();
-    console.log(buildings);
     const highestLevel = buildings.filter(building => building.type === buildingType);
-    highestLevel.sort(building => building.level);
-    console.log(highestLevel[0].level);
-    return highestLevel[0].level;
+    const sorted = highestLevel.sort(building => building.level);
+    return sorted[0].level;
   }
 
   getNumberOfSpecificBuildingType(buildingType: string): number {

@@ -115,8 +115,9 @@ export class TroopsService {
     return new Observable<any>((observer) => {
       this.postTroop()
         .subscribe((response) => {
-          troop = response.body.troop;
+          troop = response.body;
           this.addTroopsInLS(troop);
+          observer.next(troop);
           observer.complete();
         });
     });

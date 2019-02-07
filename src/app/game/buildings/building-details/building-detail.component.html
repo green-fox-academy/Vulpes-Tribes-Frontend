@@ -19,7 +19,7 @@
           <p><b>create troop level 1 </b></p>
           <p>10 $  1:00</p>
         </div>
-        <div *ngIf="(townhallLevel() > building.level) || (building.type === 'townhall')" 
+        <div *ngIf="(townhallLevel() > building.level) || (building.type === 'townhall')"
         class="upgrade_troop_button" (click)="levelUpBuilding(building)">
           <img src="../../../../assets/images/troops/addTroop.svg">
           <p><b>upgrade to {{building.level}}</b></p>
