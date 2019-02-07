@@ -6,7 +6,7 @@ const buildings = [
   {
     id: 123,
     type: 'townhall',
-    level: 1,
+    level: 8,
     hp: 100,
     startedAt: 1231232312,
     finishedAt: 7652146122,

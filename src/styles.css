@@ -10,7 +10,7 @@
 
 body {
   margin: 0;
-  background: url("/assets/images/bg_main-01.png") repeat-y;
+  background: url("/assets/images/bg_main-01.png") repeat;
 }
 
 /* Development styles */
