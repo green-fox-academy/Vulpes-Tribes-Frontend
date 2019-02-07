@@ -7,7 +7,6 @@ import { AppRoutingModule } from '../app.routes';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from '../app.component';
 import { LoginComponent } from '../login/login.component';
-import { LogoutComponent } from './logout.component';
 import { RegisterComponent } from '../register/register.component';
 import { HeaderComponent } from '../header/header.component';
 import { GameComponent } from '../game/game.component';

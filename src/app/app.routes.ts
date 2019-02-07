@@ -4,7 +4,6 @@ import { LoginComponent } from './login/login.component';
 import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.component';
 import { NgModule } from '@angular/core';
 import { KingdomSettingsComponent } from './kingdom-settings/kingdom-settings.component';
-import { LogoutComponent } from './logout/logout.component';
 import { GameComponent } from './game/game.component';
 import { AuthGuard } from './_helpers/authentication/auth.guard';
 import { ResourcesComponent } from './game/resources/resources.component';

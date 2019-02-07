@@ -1,6 +1,7 @@
 .troops-container {
   display: flex;
   width: 90%;
+  max-width: 1024px;
   margin: 10px auto;
   font-size: 26px;
   background: rgba(255, 255, 255, 0.8);

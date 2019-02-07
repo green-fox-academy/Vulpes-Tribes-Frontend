@@ -15,10 +15,12 @@ div {
 
 .resource {
   width: 100%;
+  height: 50%;
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
-  padding: 7%;
+  padding: 5%;
 }
 
 .resource img {

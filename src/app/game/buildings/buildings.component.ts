@@ -5,7 +5,6 @@ import { ModalService } from './building-details/modal.service';
 import { Building } from '../../_models/building.model';
 import { AlertService } from '../../alert/alert.service';
 import { TribesNotification } from '../../_models/notification.model';
-import { NotificationsService } from '../../sharedServices/notifications.service';
 import { PurchaseService } from '../../sharedServices/purchase.service';
 
 @Component({
@@ -22,8 +21,7 @@ export class BuildingsComponent implements OnInit, OnChanges {
 
   constructor(private buildingsService: BuildingsService,
               private alertService: AlertService,
-              private modalService: ModalService,
-              private purchaseService: PurchaseService) {
+              private modalService: ModalService) {
   }
 
   ngOnInit() {
@@ -57,8 +55,10 @@ export class BuildingsComponent implements OnInit, OnChanges {
 
   createBuilding(buildingType: string) {
     this.buildingsService.createBuilding(buildingType).subscribe((response) => {
-      this.buildings.push(response);
+      setTimeout(() => {
+        this.buildings.push(response);
+        this.showFinishedBuildings();
+      },         (response.finishedAt - response.startedAt));
     });
-    this.showFinishedBuildings();
   }
 }
