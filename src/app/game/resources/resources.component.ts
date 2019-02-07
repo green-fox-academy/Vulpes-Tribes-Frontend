@@ -16,23 +16,22 @@ export class ResourcesComponent implements OnInit {
 
   }
 
-  food;
-  gold;
+  food ;
+  gold ;
   foodgeneration;
   moneygeneration;
 
   ngOnInit() {
     this.showResources();
-    setInterval(() => this.updateResources(), 1000);
-    setInterval(() => this.resourceService.getResources, 300000);
   }
 
   showResources() {
     this.resourceService.getResources().subscribe(response => {
-      this.food = response[0].amount;
-      this.gold = response[1].amount;
-      this.foodgeneration = response[0].generation;
-      this.moneygeneration = response[1].generation;
+      console.log(response);
+      this.food = response.resources[1].amount;
+      this.gold = response.resources[0].amount;
+      setInterval(() => this.updateResources(), 1000);
+      setInterval(() => this.showResources(), 300000);
     });
   }
 
