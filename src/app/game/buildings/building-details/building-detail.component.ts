@@ -1,13 +1,11 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { DomService } from './domService';
 import { Building } from '../../../_models/building.model';
 import { BuildingDetailService } from './building-detail.service';
 import { AlertService } from '../../../alert/alert.service';
 import { TroopsService } from '../../troops/troops.service';
 import { BuildingsService } from '../buildings.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
-let townhallLevel: number;
 
 @Component({
   selector: 'app-building-detail',
@@ -19,12 +17,9 @@ export class BuildingDetailComponent implements OnInit {
   @Input() building: Building;
   @Input() imgSrc: string;
 
-  
-
   @Output() deselectBuilding = new EventEmitter();
 
   constructor(private buildingsService: BuildingsService,
-              private router: Router,
               private route: ActivatedRoute,
               private buildingDetailService: BuildingDetailService,
               private alertService: AlertService,
@@ -35,8 +30,6 @@ export class BuildingDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('buildingid');
     this.building = this.buildingsService.getBuildingById(id);
     this.imgSrc = `/assets/images/buildings/${this.building.type}.svg`;
-    townhallLevel = this.buildingsService.getHighestLevelOfSpecificBuilding('townhall');
-
   }
 
   destroy() {
@@ -59,5 +52,4 @@ export class BuildingDetailComponent implements OnInit {
     return this.buildingsService.getHighestLevelOfSpecificBuilding('townhall');
 
   }
-
 }

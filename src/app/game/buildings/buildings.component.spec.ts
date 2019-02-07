@@ -1,8 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BuildingsComponent } from './buildings.component';
 import { BuildingComponent } from './building/building.component';
-import { ModalService } from './building-details/modal.service';
-import { DomService } from './building-details/domService';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -28,9 +26,7 @@ describe('BuildingsComponent', () => {
         HttpClientModule,
       ],
       providers: [
-        ModalService,
         BuildingResponseMock,
-        DomService,
         NotificationFactory,
       ],
     })

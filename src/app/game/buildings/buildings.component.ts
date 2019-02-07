@@ -1,9 +1,6 @@
 import { Component, OnInit, Output, OnChanges, SimpleChanges, EventEmitter } from '@angular/core';
 import { BuildingsService } from './buildings.service';
-import { BuildingDetailComponent } from './building-details/building-detail.component';
-import { ModalService } from './building-details/modal.service';
 import { Building } from '../../_models/building.model';
-import { AlertService } from '../../alert/alert.service';
 import { TribesNotification } from '../../_models/notification.model';
 import { NotificationsService } from '../../sharedServices/notifications.service';
 import { PurchaseService } from '../../sharedServices/purchase.service';
@@ -20,8 +17,6 @@ export class BuildingsComponent implements OnInit, OnChanges {
   @Output() selectedBuilding: Building;
 
   @Output() building: Building;
-
-
 
   constructor(private buildingsService: BuildingsService,
               private purchaseService: PurchaseService) {

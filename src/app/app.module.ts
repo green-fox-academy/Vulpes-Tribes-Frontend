@@ -20,8 +20,6 @@ import { ResourceInterceptor } from './_helpers/interceptors/resources.intercept
 import { BuildingsComponent } from './game/buildings/buildings.component';
 import { BuildingsInterceptor } from './_helpers/interceptors/buildings.interceptor';
 import { BuildingDetailComponent } from './game/buildings/building-details/building-detail.component'; // tslint:disable-line
-import { ModalService } from './game/buildings/building-details/modal.service';
-import { DomService } from './game/buildings/building-details/domService';
 import { BuildingComponent } from './game/buildings/building/building.component';
 import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.component';
 import { KingdomSettingsComponent } from './kingdom-settings/kingdom-settings.component';
@@ -68,8 +66,6 @@ import { MenuComponent } from './game/menu/menu.component';
     CustomHeaders,
     AuthService,
     AlertService,
-    ModalService,
-    DomService,
     LoaderService,
     NotificationFactory,
     { provide: APP_BASE_HREF, useValue: '/' },
