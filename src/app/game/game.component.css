@@ -1,5 +1,49 @@
-.content__main {
+app-menu,
+app-resources,
+app-notifications,
+.content__main,
+.content__menu,
+.content__sidebar,
+.game {
   display: flex;
+}
+
+app-menu {
+  height: 100%;
+  width: 75%;
+
+  flex-flow: row nowrap;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+app-resources {
+  width: 20%;
+  height: 100%;
+  flex-direction: column;
+
+  background-color: rgba(255, 255, 255, 0.8);
+  font-family: 'Roboto', sans-serif;
+  opacity: 20%;
+}
+
+app-notifications {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  width: 100%;
+  max-width: 400px;
+  margin: 10px auto;
+
+  background: transparent;
+}
+
+app-buildings {
+  width: 90%;
+  margin: auto;
+}
+
+.content__main {
   flex-direction: column;
   width: 65%;
   max-width: 1200px;
@@ -7,18 +51,20 @@
 
 .content__menu {
   height: 150px;
-  display: flex;
   flex-flow: row nowrap;
   align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 1024px;
+  margin: 10px auto;
 }
 
 .content__sidebar {
-  display: flex;
+  width: 25%;
   flex-direction: column;
 }
 
 .game {
-  display: flex;
   flex-direction: row;
 }
 

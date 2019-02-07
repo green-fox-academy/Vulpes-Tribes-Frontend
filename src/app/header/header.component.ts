@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { LogoutService } from '../sharedServices/logout.service';
+import { KingdomService } from '../sharedServices/kingdom.service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,8 @@ import { LogoutService } from '../sharedServices/logout.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private logoutService: LogoutService) {
+  constructor(private logoutService: LogoutService,
+              private kingdomService: KingdomService) {
   }
 
   ngOnInit() {
@@ -21,5 +23,11 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.logoutService.logout();
+  }
+
+  getKingdomName(): string {
+    let kingdomaName: string;
+    this.kingdomService.getKingdom().subscribe(response => kingdomaName = response.name);
+    return kingdomaName;
   }
 }
