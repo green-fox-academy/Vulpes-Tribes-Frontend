@@ -30,9 +30,7 @@ export class NotificationsService {
   }
 
   removeNotification(notificationToRemove: TribesNotification): void {
-    this.notifications = this.notifications.filter((notification) => {
-      notification.startedAt !== notificationToRemove.startedAt;
-    });
+    this.notifications = this.notifications.filter((notification) => notification.startedAt !== notificationToRemove.startedAt);
   }
 
   checkIfNotificationExist(notificationToCheck: TribesNotification): boolean {
