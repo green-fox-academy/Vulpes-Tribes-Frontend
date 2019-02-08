@@ -20,9 +20,8 @@ export class BuildingsComponent implements OnInit, OnChanges {
 
   constructor(private buildingsService: BuildingsService,
               private purchaseService: PurchaseService,
-              private alertService: AlertService) {
+              private alertService: AlertService) {}
 
-  }
 
   ngOnInit() {
     this.showFinishedBuildings();
@@ -43,10 +42,7 @@ export class BuildingsComponent implements OnInit, OnChanges {
 
   showFinishedBuildings() {
     this.buildingsService.filterBuildings('finished')
-      .subscribe(response => {
-        this.buildings = response;
-        console.log(response);
-      });
+      .subscribe(response => this.buildings = response);
   }
 
   showUnfinishedBuildings() {
@@ -64,7 +60,7 @@ export class BuildingsComponent implements OnInit, OnChanges {
       setTimeout(() => {
         this.buildings.push(response);
         this.showFinishedBuildings();
-      }, (response.finishedAt - response.startedAt));
+      },         (response.finishedAt - response.startedAt));
     });
   }
 }

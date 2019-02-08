@@ -16,7 +16,11 @@ export class NotificationComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.imgSrc = `/assets/images/${ this.notification.title.toLowerCase() }s/${ this.notification.type.toLowerCase() }.svg`; // tslint:disable-line
+    if (this.notification.title === 'Building' || this.notification.title === 'Upgrading') {
+      this.imgSrc = `/assets/images/buildings/${ this.notification.type.toLowerCase() }.svg`; // tslint:disable-line
+    } else if (this.notification.title === 'Training') {
+      this.imgSrc = `/assets/images/troops/${ this.notification.type.toLowerCase() }s.svg`; // tslint:disable-line
+    }
     this.completion = this.getCompletion();
     setInterval(() =>
         (Date.now() <= this.notification.finishedAt) ? this.completion = this.getCompletion() : this.completion = 1 // tslint:disable-line

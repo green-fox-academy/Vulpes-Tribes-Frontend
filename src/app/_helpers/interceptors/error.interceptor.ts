@@ -17,10 +17,10 @@ export class HttpErrorInterceptor implements HttpInterceptor {
               private logoutService: LogoutService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    console.log('Interceptor fires');
     return next.handle(req)
       .pipe(
         catchError((error: HttpErrorResponse) => {
-          console.log(error.message);
           let errorMessage = '';
           if (error.error instanceof ErrorEvent) {
             errorMessage = `${error.message}`;
@@ -28,6 +28,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
             errorMessage =
               `Error code : ${error.status}\nError message: ${error.error.message}`;
           }
+          console.log(errorMessage);
           this.alertService.error(errorMessage);
           return throwError(error);
         }),

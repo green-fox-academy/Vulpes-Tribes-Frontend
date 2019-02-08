@@ -16,9 +16,9 @@ export class NotificationsService {
   constructor(private notificationFactory: NotificationFactory) {
   }
 
-  createNotification(title: string, type: string, startedAt: number, finishedAt: number) {
+  createNotification(title: string, type: string, startedAt: number, finishedAt: number, level: number) {
     const newNotification = this.notificationFactory
-      .createNotification(title, type, startedAt, finishedAt);
+      .createNotification(title, type, startedAt, finishedAt, level);
     if (this.checkIfNotificationExist(newNotification)) {
       this.notifications.push(newNotification);
     }

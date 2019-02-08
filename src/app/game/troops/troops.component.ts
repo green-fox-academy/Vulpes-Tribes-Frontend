@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TroopsService } from './troops.service';
+import { BuildingsService } from '../buildings/buildings.service';
 
 @Component({
   selector: 'app-troops',
@@ -13,7 +14,8 @@ export class TroopsComponent implements OnInit {
   totalDefence: number;
   sustenance: number;
 
-  constructor(private troopsService: TroopsService) { }
+  constructor(private troopsService: TroopsService,
+              private buildingsService: BuildingsService) { }
 
   ngOnInit() {
     this.getStats();
@@ -31,5 +33,9 @@ export class TroopsComponent implements OnInit {
   checkLevels() {
     const keys = Object.keys(this.levels);
     return keys.length > 0;
+  }
+
+  townhallLevel(): number {
+    return this.buildingsService.getHighestLevelOfSpecificBuilding('townhall');
   }
 }

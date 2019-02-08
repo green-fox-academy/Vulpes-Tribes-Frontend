@@ -1,7 +1,7 @@
 <img [src]="imgSrc" alt="" class="notifications__item--image">
 <div class="notifications__item--content">
   <div class="notification__content">
-    <p class="notification__text">{{notification.title}} {{notification.type}}</p>
+    <p class="notification__text">{{notification.title}} {{notification.type}} level {{notification.level}}</p>
     <p class="notification__time">{{notification.finishedAt | date: 'shortTime'}}</p>
   </div>
   <progress *ngIf="completion < 1" value="{{completion}}" max="1"></progress>

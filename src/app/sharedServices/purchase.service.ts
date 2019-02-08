@@ -16,7 +16,7 @@ export class PurchaseService {
       this.resourcesService.getResources()
         .subscribe((response) => {
           const objectPrice = this.calculateObjectPrice(buildingType, buildingLevel);
-          const ableToBuild: boolean = objectPrice < response[1].amount;
+          const ableToBuild: boolean = objectPrice < response.resources[1].amount;
           observer.next(ableToBuild);
           observer.complete();
         });

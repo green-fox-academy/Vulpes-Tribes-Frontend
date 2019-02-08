@@ -13,7 +13,7 @@
           <p><b>{{level.value}}</b> Troop level {{level.key}}</p>
         </div>
       </div>
-      <div class="upgrade_button" *ngIf="!lastInList">
+      <div class="upgrade_button" *ngIf="level.key < townhallLevel()">
         <p>upgrade</p>
       </div>
     </li>

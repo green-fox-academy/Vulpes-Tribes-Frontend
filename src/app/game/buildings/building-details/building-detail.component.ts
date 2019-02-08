@@ -4,9 +4,8 @@ import { BuildingDetailService } from './building-detail.service';
 import { AlertService } from '../../../alert/alert.service';
 import { TroopsService } from '../../troops/troops.service';
 import { BuildingsService } from '../buildings.service';
-import { Router, ActivatedRoute } from '@angular/router';
-
-let townhallLevel: number;
+import { ActivatedRoute } from '@angular/router';
+import { NotificationsService } from '../../../sharedServices/notifications.service';
 
 @Component({
   selector: 'app-building-detail',
@@ -23,6 +22,7 @@ export class BuildingDetailComponent implements OnInit {
   constructor(private buildingsService: BuildingsService,
               private route: ActivatedRoute,
               private buildingDetailService: BuildingDetailService,
+              private notificationService: NotificationsService,
               private alertService: AlertService,
               private troopsService: TroopsService) {
   }
@@ -31,8 +31,7 @@ export class BuildingDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('buildingid');
     this.building = this.buildingsService.getBuildingById(id);
     this.imgSrc = `/assets/images/buildings/${ this.building.type }.svg`;
-    townhallLevel = this.buildingsService.getHighestLevelOfSpecificBuilding('townhall');
-
+    this.townhallLevel();
   }
 
   destroy() {
@@ -40,19 +39,23 @@ export class BuildingDetailComponent implements OnInit {
   }
 
   createTroop() {
-    this.troopsService.createTroop();
+    this.troopsService.createTroop().subscribe((response) => {
+      this.notificationService.createNotification('Training', 'troop', response.startedAt, response.finishedAt, response.level);
+    });
   }
 
   levelUpBuilding(building: Building) {
     this.buildingDetailService.levelUpBuilding(building)
       .subscribe((response) => {
-        this.building.level = response.body.level;
-        this.alertService.success('Building leveled up');
+        setTimeout(() => {
+          this.building.level = response.body.level;
+          this.alertService.success('Building leveled up');
+        },         response.finishedAt - response.startedAt);
+
       });
   }
 
   townhallLevel(): number {
     return this.buildingsService.getHighestLevelOfSpecificBuilding('townhall');
   }
-
 }
