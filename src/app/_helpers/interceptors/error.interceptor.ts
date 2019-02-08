@@ -28,7 +28,6 @@ export class HttpErrorInterceptor implements HttpInterceptor {
             errorMessage =
               `Error code : ${error.status}\nError message: ${error.error.message}`;
           }
-          console.log(errorMessage);
           this.alertService.error(errorMessage);
           return throwError(error);
         }),

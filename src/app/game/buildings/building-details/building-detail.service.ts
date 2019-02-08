@@ -31,7 +31,6 @@ export class BuildingDetailService {
               { observe: 'response' })
             .subscribe((response) => {
               const buildingToUpdate = building;
-              console.log(response);
               this.notificationsService
                 .createNotification('Upgrading',
                   response.body['type'],
