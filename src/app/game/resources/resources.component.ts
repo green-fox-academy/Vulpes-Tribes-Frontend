@@ -1,12 +1,12 @@
-import { TroopsService } from "./../troops/troops.service";
-import { Component, OnInit } from "@angular/core";
-import { ResourcesService } from "./resources.service";
-import { BuildingsService } from './../buildings/buildings.service';
+import { TroopsService } from '../troops/troops.service';
+import { Component, OnInit } from '@angular/core';
+import { ResourcesService } from './resources.service';
+import { BuildingsService } from '../buildings/buildings.service';
 
 @Component({
-  selector: "app-resources",
-  templateUrl: "./resources.component.html",
-  styleUrls: ["./resources.component.css"]
+  selector: 'app-resources',
+  templateUrl: './resources.component.html',
+  styleUrls: ['./resources.component.css'],
 })
 export class ResourcesComponent implements OnInit {
   constructor(
@@ -18,7 +18,7 @@ export class ResourcesComponent implements OnInit {
   gold ;
   foodgeneration;
   moneygeneration;
-  
+
   ngOnInit() {
     this.showResources();
   }

@@ -40,7 +40,7 @@ export class BuildingDetailComponent implements OnInit {
 
   createTroop() {
     this.troopsService.createTroop().subscribe((response) => {
-      this.notificationService.createNotification('Training', 'troop', response.startedAt, response.finishedAt);
+      this.notificationService.createNotification('Training', 'troop', response.startedAt, response.finishedAt, response.level);
     });
   }
 

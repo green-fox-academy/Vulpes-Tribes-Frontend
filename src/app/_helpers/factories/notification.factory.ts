@@ -5,7 +5,7 @@ export class NotificationFactory {
   constructor() {
   }
 
-  createNotification(title: string, type: string, startedAt: number, finishedAt: number): TribesNotification {
-    return new TribesNotification(title, type, startedAt, finishedAt);
+  createNotification(title: string, type: string, startedAt: number, finishedAt: number, level: number): TribesNotification {
+    return new TribesNotification(title, type, startedAt, finishedAt, level);
   }
 }

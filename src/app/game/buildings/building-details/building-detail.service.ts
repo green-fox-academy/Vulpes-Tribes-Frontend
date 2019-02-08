@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 import { PurchaseService } from '../../../sharedServices/purchase.service';
 import { NotificationsService } from '../../../sharedServices/notifications.service';
-import { error } from 'util';
+import { AlertService } from '../../../alert/alert.service';
 
 const URL = environment.serverApi + ENDPOINTS.getBuildings;
 
@@ -17,7 +17,8 @@ export class BuildingDetailService {
 
   constructor(private http: HttpClient,
               private purchaseService: PurchaseService,
-              private notificationsService: NotificationsService) {
+              private notificationsService: NotificationsService,
+              private alertService: AlertService) {
   }
 
   levelUpBuilding(building: Building): Observable<any> {
@@ -27,22 +28,23 @@ export class BuildingDetailService {
           if (response) {
             this.http
               .put(`${ URL }/${ building.id }`,
-                   { id: building.id, level: building.level + 1 },
-                   { observe: 'response' })
+                { id: building.id, level: building.level + 1 },
+                { observe: 'response' })
               .subscribe((response) => {
                 const buildingToUpdate = building;
                 this.notificationsService
                   .createNotification('Upgrading',
-                                      response.body['type'],
-                                      response.body['startedAt'],
-                                      response.body['finishedAt']);
-                setTimeout(() => {
-                  const buildings: Building[] = JSON.parse(localStorage.getItem('buildings'));
-                  buildings.find(building => building.id === buildingToUpdate.id).level += 1;
-                  localStorage.setItem('buildings', JSON.stringify(buildings));
-                },         (buildingToUpdate.finishedAt - buildingToUpdate.startedAt));
+                    response.body['type'],
+                    response.body['startedAt'],
+                    response.body['finishedAt'],
+                    response.body['level']);
+                const buildings: Building[] = JSON.parse(localStorage.getItem('buildings'));
+                buildings.find(building => building.id === buildingToUpdate.id).level += 1;
+                localStorage.setItem('buildings', JSON.stringify(buildings));
                 observer.next(buildingToUpdate);
-              },         error => observer.next(response));
+              }, error => {
+                this.alertService.error(error.error.message);
+              });
           }
         });
     });

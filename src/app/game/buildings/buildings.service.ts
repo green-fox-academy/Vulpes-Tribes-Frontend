@@ -35,7 +35,8 @@ export class BuildingsService {
             .createNotification('Building',
               newBuilding.type,
               newBuilding.startedAt,
-              newBuilding.finishedAt);
+              newBuilding.finishedAt,
+              newBuilding.level);
 
           observer.next(newBuilding);
           observer.complete();
@@ -63,7 +64,7 @@ export class BuildingsService {
     this.filterBuildings('unfinished').subscribe((buildings) => {
       buildings.forEach((building) => {
         this.notificationService
-          .createNotification('building', building.type, building.startedAt, building.finishedAt);
+          .createNotification('building', building.type, building.startedAt, building.finishedAt, building.level);
       });
     });
   }
