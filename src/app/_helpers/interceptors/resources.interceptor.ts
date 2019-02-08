@@ -13,20 +13,18 @@ export class ResourceInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const resources: Resources[] = [
       {
-        amount: 500,
-        type: 'food',
-        generation: 2,
-      },
-      {
         amount: 10000,
         type: 'gold',
         generation: 1,
       },
+      {
+        amount: 500,
+        type: 'food',
+        generation: 2,
+      },
     ];
-    let response;
     if (req.url.endsWith(ENDPOINTS.getResources)) {
-      response = resources;
-      return utilities.sendResponse(response, 200);
+      return utilities.sendResponse({ resources }, 200);
     }
     return next.handle(req);
   }

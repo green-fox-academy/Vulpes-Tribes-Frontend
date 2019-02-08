@@ -29,7 +29,7 @@ export class BuildingsInterceptor implements HttpInterceptor {
         buildingsMock.updateBuilding(building);
         response = building;
       }
-      return utilities.sendResponse({ building: response }, 200);
+      return utilities.sendResponse(response , 200);
     }
     return next.handle(req);
   }

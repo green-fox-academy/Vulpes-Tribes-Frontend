@@ -17,7 +17,7 @@ export class NotificationComponent implements OnInit {
 
   ngOnInit() {
     if (this.notification.title === 'Building' || this.notification.title === 'Upgrading') {
-      this.imgSrc = `/assets/images/buildings/${ this.notification.type.toLowerCase() }.svg`; // tslint:disable-line
+      this.imgSrc = `/assets/images/buildings/${ this.notification.type }.svg`; // tslint:disable-line
     } else if (this.notification.title === 'Training') {
       this.imgSrc = `/assets/images/troops/${ this.notification.type.toLowerCase() }s.svg`; // tslint:disable-line
     }
