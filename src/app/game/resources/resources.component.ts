@@ -1,27 +1,76 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ResourcesService } from './resources.service';
-import { TribesNotification } from '../../_models/notification.model';
+import { TroopsService } from "./../troops/troops.service";
+import { Component, OnInit } from "@angular/core";
+import { ResourcesService } from "./resources.service";
+import { BuildingsService } from './../buildings/buildings.service';
 
 @Component({
-  selector: 'app-resources',
-  templateUrl: './resources.component.html',
-  styleUrls: ['./resources.component.css'],
+  selector: "app-resources",
+  templateUrl: "./resources.component.html",
+  styleUrls: ["./resources.component.css"]
 })
 export class ResourcesComponent implements OnInit {
+  constructor(
+    private resourceService: ResourcesService,
+    private buildingService: BuildingsService,
+    private troopsService: TroopsService) {}
 
-  constructor(private resourceService: ResourcesService) {}
-  food;
-  gold;
-
+  food ;
+  gold ;
+  foodgeneration;
+  moneygeneration;
+  
   ngOnInit() {
     this.showResources();
   }
 
   showResources() {
-    this.resourceService.getResources()
-      .subscribe((response) => {
-        this.food = response[1].amount;
-        this.gold = response[0].amount;
-      });
+    this.resourceService.getResources().subscribe(response => {
+      this.food = response.resources[1].amount;
+      this.gold = response.resources[0].amount;
+      setInterval(() => this.updateResources(), 1000);
+      setInterval(() => this.showResources(), 300000);
+    });
+  }
+
+  updateResources() {
+    const generateFood = this.getFoodGeneration();
+    const generatedGold = this.getGoldGeneration();
+    const troopSustenance = this.getSustenaceOfTroops();
+    this.food += generateFood - troopSustenance;
+    this.gold += generatedGold;
+  }
+
+  getGoldGeneration() {
+    let goldGeneration: number = 0;
+    if (this.buildingService.loadBuildingsFromLS() !== null) {
+      const buildingsFromLS = this.buildingService.loadBuildingsFromLS();
+      const completedMines = buildingsFromLS.filter(
+        building => building.finishedAt <= Date.now() && building.type === 'mine',
+      );
+      goldGeneration = completedMines.length;
+    }
+    return goldGeneration;
+  }
+
+  getSustenaceOfTroops() {
+    let numberOfFinishedTroops: number = 0;
+    if (this.troopsService.loadTroopsFromLS() !== null) {
+      const troops = this.troopsService.loadTroopsFromLS();
+      const finishedTroops = troops.filter(troop => troop.finishedAt <= Date.now());
+      numberOfFinishedTroops = finishedTroops.length;
+    }
+    return numberOfFinishedTroops;
+  }
+
+  getFoodGeneration() {
+    let foodGeneration: number = 0;
+    if (this.buildingService.loadBuildingsFromLS() !== null) {
+      const buildingsFromLS = this.buildingService.loadBuildingsFromLS();
+      const completedFarms = buildingsFromLS.filter(
+        farm => farm.finishedAt <= Date.now() && farm.type === 'farm',
+      );
+      foodGeneration = completedFarms.length;
+    }
+    return foodGeneration;
   }
 }

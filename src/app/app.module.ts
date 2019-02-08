@@ -33,6 +33,7 @@ import { LoaderService } from './services/loader.service';
 import { environment } from '../environments/environment';
 import { NotificationFactory } from './_helpers/factories/notification.factory';
 import { MenuComponent } from './game/menu/menu.component';
+import { HttpErrorInterceptor } from './_helpers/interceptors/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { MenuComponent } from './game/menu/menu.component';
     NotificationFactory,
     { provide: APP_BASE_HREF, useValue: '/' },
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
     environment.envName === 'development' ? [
       { provide: HTTP_INTERCEPTORS, useClass: LoginInterceptor, multi: true },
       { provide: HTTP_INTERCEPTORS, useClass: ResourceInterceptor, multi: true },
@@ -81,6 +83,7 @@ import { MenuComponent } from './game/menu/menu.component';
   ],
 
   entryComponents: [
+    BuildingDetailComponent,
     NotificationComponent,
   ],
 

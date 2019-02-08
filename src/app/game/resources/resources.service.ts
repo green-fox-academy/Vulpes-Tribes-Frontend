@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { ENDPOINTS } from '../../../environments/endpoints';
 import { environment } from '../../../environments/environment';
-import { PurchaseService } from '../../sharedServices/purchase.service';
 
 const URL = environment.serverApi + ENDPOINTS.getResources;
 
@@ -11,17 +10,10 @@ const URL = environment.serverApi + ENDPOINTS.getResources;
   providedIn: 'root',
 })
 export class ResourcesService {
-
   constructor(private http: HttpClient) {
   }
 
   getResources(): Observable<any> {
-    return new Observable<any>((observer) => {
-      this.http.get(URL)
-        .subscribe((response) => {
-          observer.next(response['resources']);
-          observer.complete();
-        });
-    });
+    return this.http.get(URL);
   }
 }

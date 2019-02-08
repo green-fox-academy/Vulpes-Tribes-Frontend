@@ -40,7 +40,6 @@ export class BuildingDetailComponent implements OnInit {
 
   createTroop() {
     this.troopsService.createTroop().subscribe((response) => {
-      console.log(response);
       this.notificationService.createNotification('Training', 'troop', response.startedAt, response.finishedAt);
     });
   }
@@ -48,7 +47,6 @@ export class BuildingDetailComponent implements OnInit {
   levelUpBuilding(building: Building) {
     this.buildingDetailService.levelUpBuilding(building)
       .subscribe((response) => {
-        console.log(response);
         setTimeout(() => {
           this.building.level = response.body.level;
           this.alertService.success('Building leveled up');

@@ -40,7 +40,63 @@
   height: 60px;
   align-items: center;
   border-radius: 12px;
-  box-shadow: 0px 6px 9px rgb(160, 160, 160);
+  box-shadow: 0 6px 9px rgb(160, 160, 160);
+}
+
+.create_troop_button img, .upgrade_troop_button img {
+  width: 70px;
+  padding: 10px;
+}
+
+.closing_button {
+  text-align: right;
+}
+
+.close {
+  background-color: #FD8B4F;
+  border: none;
+  border-radius: 5px;
+  padding: 4px 8px;
+  color: white;
+}
+
+
+
+
+.building__details button {
+  width: 100px;
+  height: 30px;
+
+  margin: 15px auto;
+
+  background: #FD8B4F;
+  color: white;
+  border-radius: 10px;
+
+  font-weight: bold;
+}
+
+.building_info p {
+  margin: 5px auto;
+  color: rgb(150, 147, 158);
+  letter-spacing: 2px;
+}
+
+.building_detail_panel {
+  width: 80%;
+  margin: 20px;
+  text-align: left;
+}
+
+.create_troop_button, .upgrade_troop_button  {
+  background-color: rgb(30, 150, 139);
+  display: flex;
+  width: 60%;
+  margin: 0 auto 15px;
+  height: 60px;
+  align-items: center;
+  border-radius: 12px;
+  box-shadow: 0 6px 9px rgb(160, 160, 160);
 }
 
 .create_troop_button img, .upgrade_troop_button img {

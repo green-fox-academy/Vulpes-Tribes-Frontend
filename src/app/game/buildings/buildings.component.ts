@@ -3,6 +3,7 @@ import { BuildingsService } from './buildings.service';
 import { Building } from '../../_models/building.model';
 import { TribesNotification } from '../../_models/notification.model';
 import { PurchaseService } from '../../sharedServices/purchase.service';
+import { AlertService } from '../../alert/alert.service';
 
 @Component({
   selector: 'app-buildings',
@@ -18,8 +19,9 @@ export class BuildingsComponent implements OnInit, OnChanges {
   @Output() building: Building;
 
   constructor(private buildingsService: BuildingsService,
-              private purchaseService: PurchaseService) {
-  }
+              private purchaseService: PurchaseService,
+              private alertService: AlertService) {}
+
 
   ngOnInit() {
     this.showFinishedBuildings();
@@ -38,7 +40,7 @@ export class BuildingsComponent implements OnInit, OnChanges {
     this.selectedBuilding = null;
   }
 
-     showFinishedBuildings() {
+  showFinishedBuildings() {
     this.buildingsService.filterBuildings('finished')
       .subscribe(response => this.buildings = response);
   }

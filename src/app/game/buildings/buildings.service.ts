@@ -91,6 +91,12 @@ export class BuildingsService {
     localStorage.setItem('buildings', JSON.stringify(buildings));
   }
 
+  loadBuildingsFromLS() {
+    let finishedBuildings: Building[];
+    finishedBuildings = JSON.parse(localStorage.getItem('buildings'));
+    return finishedBuildings;
+  }
+
   getHighestLevelOfSpecificBuilding(buildingType: string): number {
     const buildings: Building[] = this.getBuildingsFromLocalStorage();
     const highestLevel = buildings.filter(building => building.type === buildingType);

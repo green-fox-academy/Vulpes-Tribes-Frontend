@@ -1,7 +1,7 @@
 import {
   HttpEvent,
   HttpHandler,
-  HttpHeaderResponse, HttpHeaders,
+  HttpHeaderResponse,
   HttpInterceptor,
   HttpProgressEvent,
   HttpRequest,
@@ -16,15 +16,7 @@ import { tap } from 'rxjs/operators';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-  constructor(private loaderService: LoaderService) { }
-
-  private showLoader(): void {
-    this.loaderService.show();
-  }
-
-  //when we connect with actual backend we should remove setTimeout
-  private hideLoader(): void {
-    setTimeout(()=>this.loaderService.hide(), 1000)
+  constructor(private loaderService: LoaderService) {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler):
@@ -41,9 +33,17 @@ export class TokenInterceptor implements HttpInterceptor {
           'X-Tribes-Token': localStorage.getItem(environment.tribes_token),
         },
       });
-      return next.handle(requestWithAuthHeader).pipe(tap(()=> this.hideLoader()));
+      return next.handle(requestWithAuthHeader).pipe(tap(() => this.hideLoader()));
     } else {
-      return next.handle(req).pipe(tap(()=> this.hideLoader()));
+      return next.handle(req).pipe(tap(() => this.hideLoader()));
     }
+  }
+
+  private showLoader(): void {
+    this.loaderService.show();
+  }
+
+  private hideLoader(): void {
+    setTimeout(() => this.loaderService.hide(), 500);
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TribesNotification } from '../../_models/notification.model';
 import { NotificationsService } from '../../sharedServices/notifications.service';
 import { BuildingsComponent } from '../buildings/buildings.component';
@@ -22,6 +22,9 @@ export class NotificationsComponent implements OnInit {
   }
 
   removeNotification(notification: TribesNotification) {
-    this.notificationService.removeNotification(notification);
+    if (notification.finishedAt <= Date.now()) {
+      this.notificationService.removeNotification(notification);
+      this.notifications = this.notificationService.getNotifications();
+    }
   }
 }
