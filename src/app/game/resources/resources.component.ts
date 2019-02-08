@@ -1,20 +1,18 @@
-import { TroopsService } from "./../troops/troops.service";
-import { Component, OnInit } from "@angular/core";
-import { ResourcesService } from "./resources.service";
-import { BuildingsService } from "./../buildings/buildings.service";
+import { TroopsService } from '../troops/troops.service';
+import { Component, OnInit } from '@angular/core';
+import { ResourcesService } from './resources.service';
+import { BuildingsService } from '../buildings/buildings.service';
 
 @Component({
-  selector: "app-resources",
-  templateUrl: "./resources.component.html",
-  styleUrls: ["./resources.component.css"]
+  selector: 'app-resources',
+  templateUrl: './resources.component.html',
+  styleUrls: ['./resources.component.css'],
 })
 export class ResourcesComponent implements OnInit {
   constructor(
     private resourceService: ResourcesService,
     private buildingService: BuildingsService,
-    private troopsService: TroopsService) {
-
-  }
+    private troopsService: TroopsService) {}
 
   food ;
   gold ;
